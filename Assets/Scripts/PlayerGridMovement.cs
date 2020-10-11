@@ -35,21 +35,24 @@ public class PlayerGridMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            SetPos(xPos, yPos + 1);
+            if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
+            {
+                SetPos(xPos, yPos + 1);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            SetPos(xPos, yPos - 1);
+            SetPos(xPos, GridManager.instance.GetFirstLowerPlatformYPosition(xPos, yPos - 1));
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
-            SetPos(xPos + 1, yPos);
+            SetPos(xPos + 1, GridManager.instance.GetFirstLowerPlatformYPosition(xPos + 1, yPos));
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             sprite.transform.localScale = new Vector3(-Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
-            SetPos(xPos - 1, yPos);
+            SetPos(xPos - 1, GridManager.instance.GetFirstLowerPlatformYPosition(xPos - 1, yPos));
         }
     }
 
@@ -59,9 +62,9 @@ public class PlayerGridMovement : MonoBehaviour
         {
             xPos = 0;
         }
-        else if (x >= GridManager.instance.rowGridCount)
+        else if (x >= GridManager.instance.GetPhaseLength())
         {
-            xPos = GridManager.instance.rowGridCount - 1;
+            xPos = GridManager.instance.GetPhaseLength() - 1;
         }
         else
         {
@@ -71,14 +74,14 @@ public class PlayerGridMovement : MonoBehaviour
         {
             yPos = 0;
         }
-        else if (y >= GridManager.instance.columnGridCount)
+        else if (y >= GridManager.instance.battleColumnGridCount)
         {
-            yPos = GridManager.instance.columnGridCount - 1;
+            yPos = GridManager.instance.battleColumnGridCount - 1;
         }
         else
         {
             yPos = y;
         }
-        targetPos = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
     }
 }
