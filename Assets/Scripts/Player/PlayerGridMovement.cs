@@ -12,16 +12,18 @@ public class PlayerGridMovement : MonoBehaviour
     public int yPos;
 
     private Vector3 targetPos;
+    private PlayerAction action;
 
     void Start()
     {
         transform.position = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
         targetPos = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        action = GetComponent<PlayerAction>();
     }
 
     void Update()
     {
-        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance)
+        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])
         {
             Move();
         }
@@ -42,7 +44,7 @@ public class PlayerGridMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            SetPos(xPos, GridManager.instance.GetFirstLowerPlatformYPosition(xPos, yPos - 1));
+            SetPos(xPos, yPos - 1);
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
@@ -74,6 +76,7 @@ public class PlayerGridMovement : MonoBehaviour
         else
         {
             xPos = x;
+            action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
         }
         if (y < 0)
         {
@@ -85,7 +88,12 @@ public class PlayerGridMovement : MonoBehaviour
         }
         else
         {
-            yPos = GridManager.instance.GetFirstLowerPlatformYPosition(xPos, y);
+            int tempY = GridManager.instance.GetFirstLowerPlatformYPosition(xPos, y);
+            if(yPos != tempY)
+            {
+                action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
+            }
+            yPos = tempY;
         }
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
     }

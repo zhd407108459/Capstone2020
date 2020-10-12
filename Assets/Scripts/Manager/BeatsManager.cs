@@ -86,12 +86,12 @@ public class BeatsManager : MonoBehaviour
 
     void CallOtherMethods()
     {
-        RhythmObject[] enemies = FindObjectsOfType<RhythmObject>();
-        for (int i = 0; i < enemies.Length; i++)
+        RhythmObject[] objects = FindObjectsOfType<RhythmObject>();
+        for (int i = 0; i < objects.Length; i++)
         {
-            if (enemies[i].gameObject.activeSelf)
+            if (objects[i].gameObject.activeSelf)
             {
-                enemies[i].OnBeat();
+                objects[i].OnBeat(beatsIndex);
             }
         }
     }
@@ -106,6 +106,18 @@ public class BeatsManager : MonoBehaviour
     public float GetTimeToNearestBeat()
     {
         return (float)beatsTimer > Mathf.Abs((float)beatsTimer - beatsTime) ? Mathf.Abs((float)beatsTimer - beatsTime) : (float)beatsTimer;
+    }
+
+    public int GetIndexToNearestBeat()
+    {
+        if((float)beatsTimer > Mathf.Abs((float)beatsTimer - beatsTime))
+        {
+            return beatsIndex;
+        }
+        else
+        {
+            return beatsIndex > 0 ? beatsIndex - 1 : (beatsTips.Count - 1);
+        }
     }
 
     public float GetTimeToLastBeat()

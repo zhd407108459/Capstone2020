@@ -23,7 +23,7 @@ public class BasicBulletEnemy : RhythmObject
 
     }
 
-    public override void OnBeat()
+    public override void OnBeat(int beatIndex)
     {
         attackTimer++;
         if (attackTimer >= shootInterval)

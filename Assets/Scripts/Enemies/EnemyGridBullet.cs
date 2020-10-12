@@ -24,7 +24,7 @@ public class EnemyGridBullet : RhythmObject
         }
     }
 
-    public override void OnBeat()
+    public override void OnBeat(int beatIndex)
     {
         Move();
     }

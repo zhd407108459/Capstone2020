@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class RhythmObject : MonoBehaviour
 {
-    public virtual void OnBeat() { }
+    public virtual void OnBeat(int beatIndex) { }
 }
