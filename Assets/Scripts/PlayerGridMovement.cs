@@ -47,12 +47,12 @@ public class PlayerGridMovement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D))
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
-            SetPos(xPos + 1, GridManager.instance.GetFirstLowerPlatformYPosition(xPos + 1, yPos));
+            SetPos(xPos + 1, yPos);
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             sprite.transform.localScale = new Vector3(-Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
-            SetPos(xPos - 1, GridManager.instance.GetFirstLowerPlatformYPosition(xPos - 1, yPos));
+            SetPos(xPos - 1, yPos);
         }
     }
 
@@ -65,6 +65,11 @@ public class PlayerGridMovement : MonoBehaviour
         else if (x >= GridManager.instance.GetPhaseLength())
         {
             xPos = GridManager.instance.GetPhaseLength() - 1;
+            //Temp
+            if(GridManager.instance.phaseIndex < GridManager.instance.phases.Count - 1)
+            {
+                GridManager.instance.StartNextPhase();
+            }
         }
         else
         {
@@ -80,7 +85,7 @@ public class PlayerGridMovement : MonoBehaviour
         }
         else
         {
-            yPos = y;
+            yPos = GridManager.instance.GetFirstLowerPlatformYPosition(xPos, y);
         }
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
     }

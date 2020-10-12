@@ -12,6 +12,7 @@ public class GridManager : MonoBehaviour
     public float cameraDistanceToBoundary;
     public GameObject cameraObject;
     public float cameraFollowLerpValue;
+    public GameObject fixedBackground;
 
     public List<PhaseInfo> phases = new List<PhaseInfo>();
 
@@ -48,6 +49,7 @@ public class GridManager : MonoBehaviour
         {
             UpdateTargetCameraPosition();
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetCameraPos, cameraFollowLerpValue * Time.deltaTime);
+            fixedBackground.transform.position = new Vector3(cameraObject.transform.position.x, cameraObject.transform.position.y, fixedBackground.transform.position.z);
         }
     }
 
@@ -62,6 +64,10 @@ public class GridManager : MonoBehaviour
         else
         {
             isCameraFollowing = false;
+        }
+        for (int i = 0; i < phases.Count; i++)
+        {
+            phases[i].Initialize();
         }
     }
 
@@ -140,9 +146,12 @@ public class GridManager : MonoBehaviour
         int nextY = 0;
         for(int i = 0; i < phases[phaseIndex].basicPlatforms.Count; i++)
         {
-            if(phases[phaseIndex].basicPlatforms[i].posX == x && phases[phaseIndex].basicPlatforms[i].posY > nextY && phases[phaseIndex].basicPlatforms[i].posY <= y)
+            if (phases[phaseIndex].basicPlatforms[i] != null)
             {
-                nextY = phases[phaseIndex].basicPlatforms[i].posY;
+                if (phases[phaseIndex].basicPlatforms[i].posX == x && phases[phaseIndex].basicPlatforms[i].posY > nextY && phases[phaseIndex].basicPlatforms[i].posY <= y)
+                {
+                    nextY = phases[phaseIndex].basicPlatforms[i].posY;
+                }
             }
         }
         return nextY;
@@ -152,9 +161,12 @@ public class GridManager : MonoBehaviour
     {
         for (int i = 0; i < phases[phaseIndex].basicPlatforms.Count; i++)
         {
-            if (phases[phaseIndex].basicPlatforms[i].posX == x && phases[phaseIndex].basicPlatforms[i].posY == y)
+            if(phases[phaseIndex].basicPlatforms[i] != null)
             {
-                return true;
+                if (phases[phaseIndex].basicPlatforms[i].posX == x && phases[phaseIndex].basicPlatforms[i].posY == y)
+                {
+                    return true;
+                }
             }
         }
         return false;
