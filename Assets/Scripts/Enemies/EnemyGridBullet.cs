@@ -18,6 +18,10 @@ public class EnemyGridBullet : RhythmObject
 
     void Update()
     {
+        if (GameManager.instance.isPaused)
+        {
+            return;
+        }
         if (Vector2.Distance(transform.position, targetPos) > 0.0001f)
         {
             transform.position = Vector3.Lerp(transform.position, targetPos, movementLerpValue * Time.deltaTime);
@@ -26,6 +30,10 @@ public class EnemyGridBullet : RhythmObject
 
     public override void OnBeat(int beatIndex)
     {
+        if (GameManager.instance.isPaused)
+        {
+            return;
+        }
         Move();
     }
 

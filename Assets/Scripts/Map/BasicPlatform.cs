@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class BasicPlatform : MonoBehaviour
 {
-    public int posX;
-    public int posY;
+    public int xPos;
+    public int yPos;
 }

@@ -22,7 +22,7 @@ public class BasicBulletEnemy : BasicEnemy
 
     public override void OnBeat(int beatIndex)
     {
-        if (!isActivated)
+        if (!isActivated || GameManager.instance.isPaused)
         {
             return;
         }

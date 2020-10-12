@@ -156,9 +156,9 @@ public class GridManager : MonoBehaviour
         {
             if (phases[phaseIndex].basicPlatforms[i] != null)
             {
-                if (phases[phaseIndex].basicPlatforms[i].posX == x && phases[phaseIndex].basicPlatforms[i].posY > nextY && phases[phaseIndex].basicPlatforms[i].posY <= y)
+                if (phases[phaseIndex].basicPlatforms[i].xPos == x && phases[phaseIndex].basicPlatforms[i].yPos > nextY && phases[phaseIndex].basicPlatforms[i].yPos <= y)
                 {
-                    nextY = phases[phaseIndex].basicPlatforms[i].posY;
+                    nextY = phases[phaseIndex].basicPlatforms[i].yPos;
                 }
             }
         }
@@ -171,7 +171,22 @@ public class GridManager : MonoBehaviour
         {
             if(phases[phaseIndex].basicPlatforms[i] != null)
             {
-                if (phases[phaseIndex].basicPlatforms[i].posX == x && phases[phaseIndex].basicPlatforms[i].posY == y)
+                if (phases[phaseIndex].basicPlatforms[i].xPos == x && phases[phaseIndex].basicPlatforms[i].yPos == y)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public bool IsEnemyExist(int x, int y)
+    {
+        for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+        {
+            if (phases[phaseIndex].enemies[i] != null)
+            {
+                if (phases[phaseIndex].enemies[i].xPos == x && phases[phaseIndex].enemies[i].yPos == y)
                 {
                     return true;
                 }
