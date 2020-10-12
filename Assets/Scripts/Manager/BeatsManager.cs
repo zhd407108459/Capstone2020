@@ -71,13 +71,13 @@ public class BeatsManager : MonoBehaviour
             beatsTimer -= beatsTime;
             //变化节拍结束点大小
             beatsTips[beatsIndex].transform.localScale = new Vector3(2, 2, 2);
+            //Debug.Log("Beat!");
+            CallOtherMethods();
             beatsIndex++;
-            if(beatsIndex >= beatsTips.Count)
+            if (beatsIndex >= beatsTips.Count)
             {
                 beatsIndex = 0;
             }
-            //Debug.Log("Beat!");
-            CallOtherMethods();
 
         }
 
