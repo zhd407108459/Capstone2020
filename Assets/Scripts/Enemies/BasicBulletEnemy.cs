@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicBulletEnemy : RhythmObject
+public class BasicBulletEnemy : BasicEnemy
 {
     public int shootInterval;
     public GameObject bulletPrefab;
-
-    public int xPos;
-    public int yPos;
 
     private int attackTimer;
 
     void Start()
     {
-        transform.position = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
         attackTimer = 0;
     }
 
@@ -23,8 +19,13 @@ public class BasicBulletEnemy : RhythmObject
 
     }
 
+
     public override void OnBeat(int beatIndex)
     {
+        if (!isActivated)
+        {
+            return;
+        }
         attackTimer++;
         if (attackTimer >= shootInterval)
         {

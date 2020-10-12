@@ -86,6 +86,14 @@ public class GridManager : MonoBehaviour
             {
                 isCameraFollowing = true;
             }
+            else
+            {
+                for(int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+                {
+                    phases[phaseIndex].enemies[i].Activate();
+                    phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
+                }
+            }
             GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos);
         }
     }

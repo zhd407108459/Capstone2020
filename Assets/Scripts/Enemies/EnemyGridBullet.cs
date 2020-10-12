@@ -33,13 +33,13 @@ public class EnemyGridBullet : RhythmObject
     {
         xPos = x;
         yPos = y;
-        targetPos = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
     }
 
     public void Move()
     {
         xPos -= 1;
-        targetPos = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
         if (xPos <= -2)
         {
             Destroy(this.gameObject);
@@ -48,6 +48,13 @@ public class EnemyGridBullet : RhythmObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(this.gameObject);
+        if (collision.tag.Equals("Player"))
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.tag.Equals("PlayerShield"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

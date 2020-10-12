@@ -7,6 +7,7 @@ public class PhaseInfo : MonoBehaviour
     public bool isBattlePhase;
     public int phaseLength;
     public List<BasicPlatform> basicPlatforms = new List<BasicPlatform>();
+    public List<BasicEnemy> enemies = new List<BasicEnemy>();
 
     public void Initialize()
     {
@@ -15,6 +16,13 @@ public class PhaseInfo : MonoBehaviour
         for(int i = 0; i < bps.Length; i++)
         {
             basicPlatforms.Add(bps[i]);
+        }
+
+        enemies.Clear();
+        BasicEnemy[] bes = GetComponentsInChildren<BasicEnemy>();
+        for (int i = 0; i < bes.Length; i++)
+        {
+            enemies.Add(bes[i]);
         }
     }
 }
