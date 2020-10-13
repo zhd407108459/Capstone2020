@@ -6,11 +6,21 @@ public class BasicMeleeAttackEnemy : BasicEnemy
 {
     public float attackLerpValue;
 
+    public bool isRandom;
+
     private Vector2 targetPos;
     private bool isAttacking;
 
+    private int x1;
+    private int x2;
+
+    private int delayTimer;
+
     void Start()
     {
+        x1 = xPos;
+        x2 = xPos - 1;
+        delayTimer = 0;
     }
 
     void Update()
@@ -72,33 +82,55 @@ public class BasicMeleeAttackEnemy : BasicEnemy
 
     void Move()
     {
-        List<int> xList = new List<int>();
-        List<int> yList = new List<int>();
-        xList.Add(xPos);
-        yList.Add(yPos);
-        if (GridManager.instance.IsPlatformExist(xPos + 1, yPos))
+        if (isRandom)
         {
-            xList.Add(xPos + 1);
-            yList.Add(yPos);
-        }
-        if (GridManager.instance.IsPlatformExist(xPos - 1, yPos))
-        {
-            xList.Add(xPos - 1);
-            yList.Add(yPos);
-        }
-        if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
-        {
+            List<int> xList = new List<int>();
+            List<int> yList = new List<int>();
             xList.Add(xPos);
-            yList.Add(yPos + 1);
+            yList.Add(yPos);
+            if (GridManager.instance.IsPlatformExist(xPos + 1, yPos))
+            {
+                xList.Add(xPos + 1);
+                yList.Add(yPos);
+            }
+            if (GridManager.instance.IsPlatformExist(xPos - 1, yPos))
+            {
+                xList.Add(xPos - 1);
+                yList.Add(yPos);
+            }
+            if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
+            {
+                xList.Add(xPos);
+                yList.Add(yPos + 1);
+            }
+            if (GridManager.instance.IsPlatformExist(xPos, yPos - 1))
+            {
+                xList.Add(xPos);
+                yList.Add(yPos - 1);
+            }
+            int seed = Random.Range(0, xList.Count);
+            xPos = xList[seed];
+            yPos = yList[seed];
         }
-        if (GridManager.instance.IsPlatformExist(xPos, yPos - 1))
+        else
         {
-            xList.Add(xPos);
-            yList.Add(yPos - 1);
+            if(delayTimer == 0)
+            {
+                if(xPos == x1)
+                {
+                    xPos = x2;
+                }
+                else
+                {
+                    xPos = x1;
+                }
+                delayTimer++;
+            }
+            else
+            {
+                delayTimer = 0;
+            }
         }
-        int seed = Random.Range(0, xList.Count);
-        xPos = xList[seed];
-        yPos = yList[seed];
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

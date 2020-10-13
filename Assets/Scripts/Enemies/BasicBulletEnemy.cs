@@ -7,6 +7,10 @@ public class BasicBulletEnemy : BasicEnemy
     public int shootInterval;
     public GameObject bulletPrefab;
 
+    public List<bool> shootBeats = new List<bool>();
+
+    public bool isRandom;
+
     private int attackTimer;
 
     void Start()
@@ -26,12 +30,19 @@ public class BasicBulletEnemy : BasicEnemy
         {
             return;
         }
-        attackTimer++;
-        if (attackTimer >= shootInterval)
+        if (isRandom)
+        {
+            attackTimer++;
+            if (attackTimer >= shootInterval)
+            {
+                Shoot();
+                attackTimer = 0;
+                shootInterval = Random.Range(2, 6);
+            }
+        }
+        else if(!isRandom && shootBeats[beatIndex])
         {
             Shoot();
-            attackTimer = 0;
-            shootInterval = Random.Range(2, 6);
         }
     }
 
