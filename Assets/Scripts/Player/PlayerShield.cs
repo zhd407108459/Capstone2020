@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShield : MonoBehaviour
+public class PlayerShield : RhythmObject
 {
     public List<bool> availability = new List<bool>();
     public float existingTime;
     public BoxCollider2D shieldBox;
     public float actionTolerance;
     public KeyCode triggerKey;
+    public bool isAutoUse;
 
     private PlayerAction action;
 
@@ -21,12 +22,24 @@ public class PlayerShield : MonoBehaviour
 
     void Update()
     {
-        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && availability[BeatsManager.instance.GetIndexToNearestBeat()])
+        if (!isAutoUse)
         {
-            if (Input.GetKeyDown(triggerKey))
+            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && availability[BeatsManager.instance.GetIndexToNearestBeat()])
             {
-                UseShield();
+                if (Input.GetKeyDown(triggerKey))
+                {
+                    UseShield();
+                }
             }
+        }
+            
+    }
+
+    public override void OnBeat(int beatIndex)
+    {
+        if (isAutoUse && availability[beatIndex])
+        {
+            UseShield();
         }
     }
 
@@ -52,7 +65,7 @@ public class PlayerShield : MonoBehaviour
                 Destroy(cos[i].gameObject);
             }
         }
-        action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
+        //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
         Invoke("HideShield", existingTime);
     }
 

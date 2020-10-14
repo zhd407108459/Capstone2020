@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMeleeAttack : MonoBehaviour
+public class PlayerMeleeAttack : RhythmObject
 {
     public List<bool> availability = new List<bool>();
     public float existingTime;
     public BoxCollider2D meleeAttackBox;
     public float actionTolerance;
     public KeyCode triggerKey;
+    public bool isAutoUse;
 
     private PlayerAction action;
 
@@ -21,14 +22,26 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     void Update()
     {
-        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && availability[BeatsManager.instance.GetIndexToNearestBeat()])
+        if (!isAutoUse)
         {
-            if (Input.GetKeyDown(triggerKey))
+            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && availability[BeatsManager.instance.GetIndexToNearestBeat()])
             {
-                MeleeAttack();
+                if (Input.GetKeyDown(triggerKey))
+                {
+                    MeleeAttack();
+                }
             }
         }
     }
+
+    public override void OnBeat(int beatIndex)
+    {
+        if(isAutoUse && availability[beatIndex])
+        {
+            MeleeAttack();
+        }
+    }
+
     void ChangeBeatTips()
     {
         for (int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
@@ -50,7 +63,7 @@ public class PlayerMeleeAttack : MonoBehaviour
                 Destroy(cos[i].gameObject);
             }
         }
-        action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
+        //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
         Invoke("HideMeleeAttackBox", existingTime);
     }
 
