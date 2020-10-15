@@ -99,8 +99,11 @@ public class BeatsManager : MonoBehaviour
     public void StartBeats()
     {
         beatsIndex = 0;
+        beatsTips[beatsIndex].transform.localScale = new Vector3(2, 2, 2);
+        beatsIndex++;
         beatsTimer = 0;
         lastBgmTime = AudioSettings.dspTime;
+        bgm.Play();
     }
 
     public float GetTimeToNearestBeat()
