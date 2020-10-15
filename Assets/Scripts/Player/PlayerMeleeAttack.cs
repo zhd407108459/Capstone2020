@@ -24,7 +24,7 @@ public class PlayerMeleeAttack : RhythmObject
     {
         if (!isAutoUse)
         {
-            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()])//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
             {
                 if (Input.GetKeyDown(triggerKey))
                 {
