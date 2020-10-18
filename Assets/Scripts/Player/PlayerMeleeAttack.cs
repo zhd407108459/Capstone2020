@@ -60,7 +60,7 @@ public class PlayerMeleeAttack : RhythmObject
         {
             if (cos[i].tag.Equals("Enemy"))
             {
-                Destroy(cos[i].gameObject);
+                cos[i].GetComponent<BasicEnemy>().Die();
             }
         }
         //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
@@ -70,5 +70,22 @@ public class PlayerMeleeAttack : RhythmObject
     void HideMeleeAttackBox()
     {
         meleeAttackBox.gameObject.SetActive(false);
+    }
+
+    public void SetSingleAvalibility(int n)
+    {
+        for(int i = 0; i < availability.Count; i++)
+        {
+            availability[i] = false;
+        }
+        availability[n] = true;
+    }
+
+    public void ClearAvalibility()
+    {
+        for (int i = 0; i < availability.Count; i++)
+        {
+            availability[i] = false;
+        }
     }
 }

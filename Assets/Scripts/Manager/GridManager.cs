@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GridManager : MonoBehaviour
+public class GridManager : RhythmObject
 {
     public static GridManager instance;
 
@@ -21,9 +22,17 @@ public class GridManager : MonoBehaviour
     public int battleRowGridCount;
     public int battleColumnGridCount;
 
+    public int preActivateTime;
+    public Text timerText;
+
+    public SetAbilities setAbilities;
+
     [HideInInspector] public Vector3 targetCameraPos;
     [HideInInspector] public bool isCameraFollowing;
     [HideInInspector] public bool isInPhase;
+
+    private bool isCounting;
+    private int timer;
 
     void Awake()
     {
@@ -81,20 +90,62 @@ public class GridManager : MonoBehaviour
         if(phaseIndex < phases.Count - 1)
         {
             phaseIndex++;
-            isInPhase = true;
             if (!IsInBattlePhase())
             {
                 isCameraFollowing = true;
+                setAbilities.ClearAbilities();
+                for(int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
+                {
+                    BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();
+                }
+                isInPhase = true;
             }
             else
             {
                 for(int i = 0; i < phases[phaseIndex].enemies.Count; i++)
                 {
-                    phases[phaseIndex].enemies[i].Activate();
                     phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
                 }
+                setAbilities.Show();
             }
             GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos);
+        }
+    }
+
+    public void PreActivateCurrentPhase()
+    {
+        timer = 0;
+        isCounting = true;
+        timerText.gameObject.SetActive(true);
+        timerText.text = (preActivateTime - timer).ToString();
+    }
+
+    public void ActivateCurrentPhase()
+    {
+        isInPhase = true;
+        for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+        {
+            phases[phaseIndex].enemies[i].Activate();
+        }
+        isCounting = false;
+        Invoke("HideTimerText", BeatsManager.instance.beatsTime);
+    }
+
+    void HideTimerText()
+    {
+        timerText.gameObject.SetActive(false);
+    }
+
+    public override void OnBeat(int beatIndex)
+    {
+        if (isCounting)
+        {
+            timer++;
+            timerText.text = (preActivateTime - timer).ToString();
+            if (timer >= preActivateTime)
+            {
+                ActivateCurrentPhase();
+            }
         }
     }
 
@@ -193,5 +244,24 @@ public class GridManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public bool IsEnemyClear()
+    {
+        if (IsInBattlePhase())
+        {
+            for(int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+            {
+                if (phases[phaseIndex].enemies[i].gameObject.activeSelf)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else
+        {
+            return true;
+        }
     }
 }

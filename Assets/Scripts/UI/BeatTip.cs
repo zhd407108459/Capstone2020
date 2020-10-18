@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class BeatTip : MonoBehaviour
 {
-    public List<Transform> abilityPositions = new List<Transform>();
+    public RectTransform imageTransform;
+    public Transform abilityPosition;
     public GameObject shieldIcon;
     public GameObject meleeAttackIcon;
 
-    [HideInInspector] public int abilityCount = 0;
+    private int abilityIndex = 0;
 
     public void ShowShieldIcon()
     {
         shieldIcon.SetActive(true);
-        shieldIcon.transform.position = abilityPositions[abilityCount].position;
-        abilityCount++;
+        meleeAttackIcon.SetActive(false);
+        shieldIcon.transform.position = abilityPosition.position;
+        abilityIndex = 2;
     }
 
     public void ShowMeleeAttackIcon()
     {
+        shieldIcon.SetActive(false);
         meleeAttackIcon.SetActive(true);
-        meleeAttackIcon.transform.position = abilityPositions[abilityCount].position;
-        abilityCount++;
+        meleeAttackIcon.transform.position = abilityPosition.position;
+        abilityIndex = 1;
+    }
+
+    public void HideIcons()
+    {
+        shieldIcon.SetActive(false);
+        meleeAttackIcon.SetActive(false);
+        abilityIndex = 0;
+    }
+
+    public int AbilityIndex()
+    {
+        return abilityIndex;
     }
 }

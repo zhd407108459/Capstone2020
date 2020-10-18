@@ -23,7 +23,7 @@ public class PlayerGridMovement : MonoBehaviour
 
     void Update()
     {
-        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])
+        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase)
         {
             Move();
         }
@@ -70,7 +70,21 @@ public class PlayerGridMovement : MonoBehaviour
             //Temp
             if(GridManager.instance.phaseIndex < GridManager.instance.phases.Count - 1)
             {
-                GridManager.instance.StartNextPhase();
+                if (GridManager.instance.IsInBattlePhase())
+                {
+                    if (GridManager.instance.IsEnemyClear())
+                    {
+                        GridManager.instance.EndCurrentPhase();
+                        GridManager.instance.StartNextPhase();
+                    }
+                }
+                else
+                {
+                    GridManager.instance.EndCurrentPhase();
+                    GridManager.instance.StartNextPhase();
+
+                }
+                
             }
         }
         else

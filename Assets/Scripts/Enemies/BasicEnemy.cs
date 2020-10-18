@@ -13,4 +13,9 @@ public class BasicEnemy : RhythmObject
     {
         isActivated = true;
     }
+
+    public void Die()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
