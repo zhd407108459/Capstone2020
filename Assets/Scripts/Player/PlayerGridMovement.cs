@@ -11,6 +11,8 @@ public class PlayerGridMovement : MonoBehaviour
     public int xPos;
     public int yPos;
 
+    [HideInInspector] public bool isPlayerFacingRight;
+
     private Vector3 targetPos;
     private PlayerAction action;
 
@@ -18,6 +20,7 @@ public class PlayerGridMovement : MonoBehaviour
     {
         transform.position = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
         targetPos = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        isPlayerFacingRight = true;
         action = GetComponent<PlayerAction>();
     }
 
@@ -49,11 +52,13 @@ public class PlayerGridMovement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D))
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
+            isPlayerFacingRight = true;
             SetPos(xPos + 1, yPos);
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             sprite.transform.localScale = new Vector3(-Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
+            isPlayerFacingRight = false;
             SetPos(xPos - 1, yPos);
         }
     }

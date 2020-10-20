@@ -33,6 +33,10 @@ public class GridManager : RhythmObject
 
     private bool isCounting;
     private int timer;
+    private int generateBuffsInterval;
+    private int generateDebuffsInterval;
+    private int generateBuffsTimer;
+    private int generateDebuffsTimer;
 
     void Awake()
     {
@@ -106,9 +110,24 @@ public class GridManager : RhythmObject
                 {
                     phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
                 }
+                for(int i = 0; i < phases[phaseIndex].traps.Count; i++)
+                {
+                    phases[phaseIndex].traps[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].traps[i].xPos * gridSize.x, phases[phaseIndex].traps[i].yPos * gridSize.y);
+                }
                 setAbilities.Show();
             }
             GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos);
+        }
+    }
+
+    public void RestartCurrentPhase()
+    {
+        GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, 0);
+        for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+        {
+            phases[phaseIndex].enemies[i].gameObject.SetActive(true);
+            phases[phaseIndex].enemies[i].Activate();
+            phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
         }
     }
 
@@ -128,7 +147,16 @@ public class GridManager : RhythmObject
             phases[phaseIndex].enemies[i].Activate();
         }
         isCounting = false;
+        ResetGeneratingBuffsAndDebuffs();
         Invoke("HideTimerText", BeatsManager.instance.beatsTime);
+    }
+
+    void ResetGeneratingBuffsAndDebuffs()
+    {
+        generateBuffsInterval = Random.Range(phases[phaseIndex].minGenerateBuffsInterval, phases[phaseIndex].maxGenerateBuffsInterval + 1);
+        generateDebuffsInterval = Random.Range(phases[phaseIndex].minGenerateDebuffsInterval, phases[phaseIndex].maxGenerateDebuffsInterval + 1);
+        generateBuffsTimer = 0;
+        generateDebuffsTimer = 0;
     }
 
     void HideTimerText()
@@ -146,6 +174,39 @@ public class GridManager : RhythmObject
             {
                 ActivateCurrentPhase();
             }
+        }
+        if (isInPhase && !isCounting)
+        {
+            if(generateBuffsTimer >= generateBuffsInterval && phases[phaseIndex].generateBuffs.Count > 0)
+            {
+                GenerateBuff();
+                generateBuffsInterval = Random.Range(phases[phaseIndex].minGenerateBuffsInterval, phases[phaseIndex].maxGenerateBuffsInterval + 1);
+                generateBuffsTimer = 0;
+            }
+            if(generateDebuffsTimer >= generateDebuffsInterval && phases[phaseIndex].generateDebuffs.Count > 0)
+            {
+                GenerateDebuff();
+                generateDebuffsInterval = Random.Range(phases[phaseIndex].minGenerateDebuffsInterval, phases[phaseIndex].maxGenerateDebuffsInterval + 1);
+                generateDebuffsTimer = 0;
+            }
+            generateDebuffsTimer++;
+            generateBuffsTimer++;
+        }
+    }
+
+    void GenerateBuff()
+    {
+        if(phases[phaseIndex].generateBuffs.Count == 0)
+        {
+            return;
+        }
+    }
+
+    void GenerateDebuff()
+    {
+        if (phases[phaseIndex].generateDebuffs.Count == 0)
+        {
+            return;
         }
     }
 

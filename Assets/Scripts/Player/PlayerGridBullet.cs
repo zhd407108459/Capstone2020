@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGridBullet : RhythmObject
+public class PlayerGridBullet : RhythmObject
 {
     public float movementLerpValue;
 
@@ -62,13 +62,9 @@ public class EnemyGridBullet : RhythmObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player"))
+        if (collision.tag.Equals("Enemy"))
         {
-            collision.GetComponent<PlayerHealth>().TakeDamage(damage);
-            Destroy(this.gameObject);
-        }
-        if (collision.tag.Equals("PlayerShield"))
-        {
+            collision.GetComponent<BasicEnemy>().TakeDamage(damage);
             Destroy(this.gameObject);
         }
     }

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShield : RhythmObject
+public class PlayerBulletShooting : RhythmObject
 {
     public List<bool> availability = new List<bool>();
-    public float existingTime;
-    public BoxCollider2D shieldBox;
+    public GameObject bulletPrefab;
+    public int damage;
     public float actionTolerance;
     public KeyCode triggerKey;
     public bool isAutoUse;
@@ -15,7 +15,6 @@ public class PlayerShield : RhythmObject
 
     void Start()
     {
-        HideShield();
         action = GetComponent<PlayerAction>();
         ChangeBeatTips();
     }
@@ -28,24 +27,24 @@ public class PlayerShield : RhythmObject
             {
                 if (Input.GetKeyDown(triggerKey))
                 {
-                    UseShield();
+                    ShootBullet();
                 }
             }
         }
-            
+
     }
 
     public override void OnBeat(int beatIndex)
     {
         if (isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase)
         {
-            UseShield();
+            ShootBullet();
         }
     }
 
     void ChangeBeatTips()
     {
-        for(int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
+        for (int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
         {
             if (availability[i])
             {
@@ -54,24 +53,20 @@ public class PlayerShield : RhythmObject
         }
     }
 
-    void UseShield()
+    void ShootBullet()
     {
-        shieldBox.gameObject.SetActive(true);
-        Collider2D[] cos = Physics2D.OverlapBoxAll(shieldBox.transform.position, new Vector2(shieldBox.size.x * shieldBox.transform.localScale.x, shieldBox.size.y * shieldBox.transform.localScale.y), shieldBox.transform.rotation.eulerAngles.z);
-        for (int i = 0; i < cos.Length; i++)
+        GameObject go = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        if (GetComponent<PlayerGridMovement>().isPlayerFacingRight)
         {
-            if (cos[i].tag.Equals("EnemyBullet"))
-            {
-                Destroy(cos[i].gameObject);
-            }
+            go.GetComponent<PlayerGridBullet>().xDirection = 1;
         }
-        //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
-        Invoke("HideShield", existingTime);
-    }
-
-    void HideShield()
-    {
-        shieldBox.gameObject.SetActive(false);
+        else
+        {
+            go.GetComponent<PlayerGridBullet>().xDirection = -1;
+        }
+        go.GetComponent<PlayerGridBullet>().yDirection = 0;
+        go.GetComponent<PlayerGridBullet>().damage = damage;
+        go.GetComponent<PlayerGridBullet>().SetUp(GetComponent<PlayerGridMovement>().xPos, GetComponent<PlayerGridMovement>().yPos);
     }
 
     public void SetSingleAvalibility(int n)

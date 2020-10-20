@@ -7,6 +7,7 @@ public class PlayerMeleeAttack : RhythmObject
     public List<bool> availability = new List<bool>();
     public float existingTime;
     public BoxCollider2D meleeAttackBox;
+    public int damage;
     public float actionTolerance;
     public KeyCode triggerKey;
     public bool isAutoUse;
@@ -24,7 +25,7 @@ public class PlayerMeleeAttack : RhythmObject
     {
         if (!isAutoUse)
         {
-            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()])//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
+            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase)//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
             {
                 if (Input.GetKeyDown(triggerKey))
                 {
@@ -32,11 +33,15 @@ public class PlayerMeleeAttack : RhythmObject
                 }
             }
         }
+        if (meleeAttackBox.gameObject.activeSelf)
+        {
+            Attack();
+        }
     }
 
     public override void OnBeat(int beatIndex)
     {
-        if(isAutoUse && availability[beatIndex])
+        if(isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase)
         {
             MeleeAttack();
         }
@@ -55,16 +60,24 @@ public class PlayerMeleeAttack : RhythmObject
     void MeleeAttack()
     {
         meleeAttackBox.gameObject.SetActive(true);
+        //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
+        Invoke("HideMeleeAttackBox", existingTime);
+    }
+
+    void Attack()
+    {
         Collider2D[] cos = Physics2D.OverlapBoxAll(meleeAttackBox.transform.position, new Vector2(meleeAttackBox.size.x * meleeAttackBox.transform.localScale.x, meleeAttackBox.size.y * meleeAttackBox.transform.localScale.y), meleeAttackBox.transform.rotation.eulerAngles.z);
         for (int i = 0; i < cos.Length; i++)
         {
             if (cos[i].tag.Equals("Enemy"))
             {
-                cos[i].GetComponent<BasicEnemy>().Die();
+                if (!cos[i].GetComponent<BasicEnemy>().isMeleeAttacked)
+                {
+                    cos[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                    cos[i].GetComponent<BasicEnemy>().MeleeAttacked();
+                }
             }
         }
-        //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
-        Invoke("HideMeleeAttackBox", existingTime);
     }
 
     void HideMeleeAttackBox()

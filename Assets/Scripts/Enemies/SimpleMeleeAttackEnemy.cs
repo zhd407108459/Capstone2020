@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicMeleeAttackEnemy : BasicEnemy
+public class SimpleMeleeAttackEnemy : BasicEnemy
 {
     public float attackLerpValue;
 
-    public bool isRandom;
     public int damage;
     [Range(1, 7)] public int attackInterval;
 
@@ -83,13 +82,13 @@ public class BasicMeleeAttackEnemy : BasicEnemy
             isAttacking = true;
             attackTimer++;
         }
-        else if (xPos + 1 == player.xPos && yPos == player.yPos)
+        else if (xPos + 1 == player.xPos && yPos == player.yPos && xPos == x2)
         {
             isAttacking = true;
             attackTimer++;
 
         }
-        else if (xPos - 1 == player.xPos && yPos == player.yPos)
+        else if (xPos - 1 == player.xPos && yPos == player.yPos && xPos == x1)
         {
             isAttacking = true;
             attackTimer++;
@@ -102,54 +101,21 @@ public class BasicMeleeAttackEnemy : BasicEnemy
 
     void Move()
     {
-        if (isRandom)
+        if (delayTimer == 0)
         {
-            List<int> xList = new List<int>();
-            List<int> yList = new List<int>();
-            xList.Add(xPos);
-            yList.Add(yPos);
-            if (GridManager.instance.IsPlatformExist(xPos + 1, yPos))
+            if (xPos == x1)
             {
-                xList.Add(xPos + 1);
-                yList.Add(yPos);
-            }
-            if (GridManager.instance.IsPlatformExist(xPos - 1, yPos))
-            {
-                xList.Add(xPos - 1);
-                yList.Add(yPos);
-            }
-            if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
-            {
-                xList.Add(xPos);
-                yList.Add(yPos + 1);
-            }
-            if (GridManager.instance.IsPlatformExist(xPos, yPos - 1))
-            {
-                xList.Add(xPos);
-                yList.Add(yPos - 1);
-            }
-            int seed = Random.Range(0, xList.Count);
-            xPos = xList[seed];
-            yPos = yList[seed];
-        }
-        else
-        {
-            if(delayTimer == 0)
-            {
-                if(xPos == x1)
-                {
-                    xPos = x2;
-                }
-                else
-                {
-                    xPos = x1;
-                }
-                delayTimer++;
+                xPos = x2;
             }
             else
             {
-                delayTimer = 0;
+                xPos = x1;
             }
+            delayTimer++;
+        }
+        else
+        {
+            delayTimer = 0;
         }
     }
 

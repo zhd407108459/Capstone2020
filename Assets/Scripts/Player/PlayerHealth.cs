@@ -3,36 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BasicEnemy : RhythmObject
+public class PlayerHealth : MonoBehaviour
 {
-    public bool isActivated;
-
     public int maxHealth;
     public Slider healthSlider;
 
-    public int xPos;
-    public int yPos;
-
     [HideInInspector] public int health;
 
-    [HideInInspector] public bool isMeleeAttacked;
-
-    public void Activate()
+    void Start()
     {
-        isActivated = true;
         health = maxHealth;
         healthSlider.value = (float)health / (float)maxHealth;
     }
 
-    public void MeleeAttacked()
+    void Update()
     {
-        isMeleeAttacked = true;
-        Invoke("TurnOffIsMeleeAttacked", 0.4f);
-    }
-
-    void TurnOffIsMeleeAttacked()
-    {
-        isMeleeAttacked = false;
+        
     }
 
     public void TakeDamage(int damage)
@@ -48,6 +34,15 @@ public class BasicEnemy : RhythmObject
 
     public void Die()
     {
-        this.gameObject.SetActive(false);
+        Debug.Log("You dead!");
+    }
+
+    public void Recover(int value)
+    {
+        health += value;
+        if(health >= maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 }

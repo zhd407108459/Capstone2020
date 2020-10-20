@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicBulletEnemy : BasicEnemy
+public class CrossBulletEnemy : BasicEnemy
 {
-    public int shootInterval;
     public GameObject bulletPrefab;
 
     public List<bool> shootBeats = new List<bool>();
-    public int xShootDirection;
-    public int yShootDirection;
     public int damage;
-
-    public bool isRandom;
 
     private int attackTimer;
 
@@ -33,23 +28,16 @@ public class BasicBulletEnemy : BasicEnemy
         {
             return;
         }
-        if (isRandom)
+        if (shootBeats[beatIndex])
         {
-            attackTimer++;
-            if (attackTimer >= shootInterval)
-            {
-                Shoot();
-                attackTimer = 0;
-                shootInterval = Random.Range(2, 6);
-            }
-        }
-        else if(!isRandom && shootBeats[beatIndex])
-        {
-            Shoot();
+            Shoot(1, 0);
+            Shoot(-1, 0);
+            Shoot(0, 1);
+            Shoot(0, -1);
         }
     }
 
-    public void Shoot()
+    public void Shoot(int xShootDirection, int yShootDirection)
     {
         GameObject go = Instantiate(bulletPrefab, transform.position, transform.rotation);
         go.GetComponent<EnemyGridBullet>().xDirection = xShootDirection;

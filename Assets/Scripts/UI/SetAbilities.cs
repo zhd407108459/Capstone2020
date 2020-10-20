@@ -10,6 +10,7 @@ public class SetAbilities : MonoBehaviour
     public Transform targetBeatsContainerPosition;
     public RectTransform basicMeleeAttackIcon;
     public RectTransform shieldIcon;
+    public RectTransform bulletShootingIcon;
     public Button nextButton;
 
     [HideInInspector] public bool isActivated;
@@ -17,6 +18,7 @@ public class SetAbilities : MonoBehaviour
     private int selection = 0;
     private Vector3 originalBasicMeleeAttackPos;
     private Vector3 originalShieldPos;
+    private Vector3 originalBulletShootingPos;
     private Vector3 originalBeatsContainerPosition;
     private Vector3 originalBeatsContainerScale;
 
@@ -24,6 +26,7 @@ public class SetAbilities : MonoBehaviour
     {
         originalBasicMeleeAttackPos = basicMeleeAttackIcon.position;
         originalShieldPos = shieldIcon.position;
+        originalBulletShootingPos = bulletShootingIcon.position;
         originalBeatsContainerPosition = BeatsManager.instance.beatsContainer.transform.position;
         originalBeatsContainerScale = BeatsManager.instance.beatsContainer.transform.localScale;
         nextButton.onClick.AddListener(FinishSetting);
@@ -45,6 +48,10 @@ public class SetAbilities : MonoBehaviour
                     {
                         selection = 2;
                     }
+                    if (IsPointerOverUI(bulletShootingIcon))
+                    {
+                        selection = 3;
+                    }
                     for (int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
                     {
                         if (IsPointerOverUI(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().imageTransform))//cancel ability setting
@@ -65,6 +72,14 @@ public class SetAbilities : MonoBehaviour
                                 shieldIcon.position = originalShieldPos;
                                 break;
                             }
+                            if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() == 3)
+                            {
+                                BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();
+                                GameManager.instance.player.GetComponent<PlayerBulletShooting>().ClearAvalibility();
+                                bulletShootingIcon.gameObject.SetActive(true);
+                                bulletShootingIcon.position = originalBulletShootingPos;
+                                break;
+                            }
                         }
                     }
                 }
@@ -78,6 +93,10 @@ public class SetAbilities : MonoBehaviour
                 if(selection == 2)
                 {
                     shieldIcon.transform.position = Input.mousePosition;
+                }
+                if(selection == 3)
+                {
+                    bulletShootingIcon.transform.position = Input.mousePosition;
                 }
             }
             if(Input.GetMouseButtonUp(0) && selection != 0)
@@ -113,6 +132,19 @@ public class SetAbilities : MonoBehaviour
                             selection = 0;
                             break;
                         }
+                        if (selection == 3)
+                        {
+                            if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() != 0)
+                            {
+                                ClearAbilities();
+                            }
+                            BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().ShowBulletShootingIcon();
+                            GameManager.instance.player.GetComponent<PlayerBulletShooting>().SetSingleAvalibility(i);
+                            bulletShootingIcon.gameObject.SetActive(false);
+                            isSet = true;
+                            selection = 0;
+                            break;
+                        }
                     }
                 }
                 if (!isSet)//not move ability to a certain beat, replace icons' position
@@ -125,6 +157,11 @@ public class SetAbilities : MonoBehaviour
                     if (selection == 2)
                     {
                         shieldIcon.position = originalShieldPos;
+                        selection = 0;
+                    }
+                    if (selection == 3)
+                    {
+                        bulletShootingIcon.position = originalBulletShootingPos;
                         selection = 0;
                     }
                 }
@@ -165,10 +202,13 @@ public class SetAbilities : MonoBehaviour
     {
         GameManager.instance.player.GetComponent<PlayerMeleeAttack>().ClearAvalibility();
         GameManager.instance.player.GetComponent<PlayerShield>().ClearAvalibility();
+        GameManager.instance.player.GetComponent<PlayerBulletShooting>().ClearAvalibility();
         basicMeleeAttackIcon.gameObject.SetActive(true);
         shieldIcon.gameObject.SetActive(true);
+        bulletShootingIcon.gameObject.SetActive(true);
         basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
         shieldIcon.position = originalShieldPos;
+        bulletShootingIcon.position = originalBulletShootingPos;
     }
 
     public void FinishSetting()
