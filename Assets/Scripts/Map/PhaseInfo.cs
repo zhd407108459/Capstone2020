@@ -10,13 +10,13 @@ public class PhaseInfo : MonoBehaviour
     public List<BasicEnemy> enemies = new List<BasicEnemy>();
     public List<BasicTrap> traps = new List<BasicTrap>();
     [Header("Generating Buff Settings")]
-    public List<BasicBuff> generateBuffs = new List<BasicBuff>();
+    public List<GameObject> generateBuffsPrefabs = new List<GameObject>();
     public List<ItemSpawnPosition> generateBuffsPositions = new List<ItemSpawnPosition>();
     public List<float> generateBuffsWeight = new List<float>();
     public int minGenerateBuffsInterval;
     public int maxGenerateBuffsInterval;
     [Header("Generating Debuff Settings")]
-    public List<BasicDebuff> generateDebuffs = new List<BasicDebuff>();
+    public List<GameObject> generateDebuffsPrefabs = new List<GameObject>();
     public List<ItemSpawnPosition> generateDebuffsPositions = new List<ItemSpawnPosition>();
     public List<float> generateDebuffsWeight = new List<float>();
     public int minGenerateDebuffsInterval;

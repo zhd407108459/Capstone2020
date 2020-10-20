@@ -177,13 +177,13 @@ public class GridManager : RhythmObject
         }
         if (isInPhase && !isCounting)
         {
-            if(generateBuffsTimer >= generateBuffsInterval && phases[phaseIndex].generateBuffs.Count > 0)
+            if(generateBuffsTimer >= generateBuffsInterval && phases[phaseIndex].generateBuffsPrefabs.Count > 0)
             {
                 GenerateBuff();
                 generateBuffsInterval = Random.Range(phases[phaseIndex].minGenerateBuffsInterval, phases[phaseIndex].maxGenerateBuffsInterval + 1);
                 generateBuffsTimer = 0;
             }
-            if(generateDebuffsTimer >= generateDebuffsInterval && phases[phaseIndex].generateDebuffs.Count > 0)
+            if(generateDebuffsTimer >= generateDebuffsInterval && phases[phaseIndex].generateDebuffsPrefabs.Count > 0)
             {
                 GenerateDebuff();
                 generateDebuffsInterval = Random.Range(phases[phaseIndex].minGenerateDebuffsInterval, phases[phaseIndex].maxGenerateDebuffsInterval + 1);
@@ -196,18 +196,64 @@ public class GridManager : RhythmObject
 
     void GenerateBuff()
     {
-        if(phases[phaseIndex].generateBuffs.Count == 0)
+        if(phases[phaseIndex].generateBuffsPrefabs.Count == 0)
         {
             return;
         }
+        float sumWeight = 0;
+        for(int i = 0; i< phases[phaseIndex].generateBuffsWeight.Count; i++)
+        {
+            sumWeight += phases[phaseIndex].generateBuffsWeight[i];
+        }
+        float buffSeed = Random.Range(0, sumWeight);
+        int buffIndex = 0;
+        for(int i = 0; i < phases[phaseIndex].generateBuffsWeight.Count; i++)
+        {
+            buffSeed -= phases[phaseIndex].generateBuffsWeight[i];
+            if(buffSeed <= 0)
+            {
+                buffIndex = i;
+            }
+        }
+        int posSeed = Random.Range(0, phases[phaseIndex].generateBuffsPositions.Count);
+        while(GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos == phases[phaseIndex].generateBuffsPositions[posSeed].xPos 
+            && GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos == phases[phaseIndex].generateBuffsPositions[posSeed].yPos)
+        {
+            posSeed = Random.Range(0, phases[phaseIndex].generateBuffsPositions.Count);
+        }
+        GameObject buff = Instantiate(phases[phaseIndex].generateBuffsPrefabs[buffIndex]);
+        buff.transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].generateBuffsPositions[posSeed].xPos * gridSize.x, phases[phaseIndex].generateBuffsPositions[posSeed].yPos * gridSize.y); 
     }
 
     void GenerateDebuff()
     {
-        if (phases[phaseIndex].generateDebuffs.Count == 0)
+        if (phases[phaseIndex].generateDebuffsPrefabs.Count == 0)
         {
             return;
         }
+        float sumWeight = 0;
+        for (int i = 0; i < phases[phaseIndex].generateDebuffsWeight.Count; i++)
+        {
+            sumWeight += phases[phaseIndex].generateDebuffsWeight[i];
+        }
+        float buffSeed = Random.Range(0, sumWeight);
+        int buffIndex = 0;
+        for (int i = 0; i < phases[phaseIndex].generateDebuffsWeight.Count; i++)
+        {
+            buffSeed -= phases[phaseIndex].generateDebuffsWeight[i];
+            if (buffSeed <= 0)
+            {
+                buffIndex = i;
+            }
+        }
+        int posSeed = Random.Range(0, phases[phaseIndex].generateDebuffsPositions.Count);
+        while (GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos == phases[phaseIndex].generateDebuffsPositions[posSeed].xPos
+            && GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos == phases[phaseIndex].generateDebuffsPositions[posSeed].yPos)
+        {
+            posSeed = Random.Range(0, phases[phaseIndex].generateDebuffsPositions.Count);
+        }
+        GameObject buff = Instantiate(phases[phaseIndex].generateDebuffsPrefabs[buffIndex]);
+        buff.transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].generateDebuffsPositions[posSeed].xPos * gridSize.x, phases[phaseIndex].generateDebuffsPositions[posSeed].yPos * gridSize.y);
     }
 
     public bool IsInBattlePhase()
