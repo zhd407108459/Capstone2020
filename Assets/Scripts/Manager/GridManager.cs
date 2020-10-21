@@ -108,6 +108,7 @@ public class GridManager : RhythmObject
         {
             Destroy(n.gameObject);
         }
+        GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
         isInPhase = false;
     }
 
