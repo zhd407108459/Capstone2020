@@ -110,7 +110,7 @@ public class SetAbilities : MonoBehaviour
                         {
                             if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() != 0)
                             {
-                                ClearAbilities();
+                                ClearAbility(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex());
                             }
                             BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().ShowMeleeAttackIcon();
                             GameManager.instance.player.GetComponent<PlayerMeleeAttack>().SetSingleAvalibility(i);
@@ -123,7 +123,7 @@ public class SetAbilities : MonoBehaviour
                         {
                             if(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() != 0)
                             {
-                                ClearAbilities();
+                                ClearAbility(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex());
                             }
                             BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().ShowShieldIcon();
                             GameManager.instance.player.GetComponent<PlayerShield>().SetSingleAvalibility(i);
@@ -136,7 +136,7 @@ public class SetAbilities : MonoBehaviour
                         {
                             if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() != 0)
                             {
-                                ClearAbilities();
+                                ClearAbility(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex());
                             }
                             BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().ShowBulletShootingIcon();
                             GameManager.instance.player.GetComponent<PlayerBulletShooting>().SetSingleAvalibility(i);
@@ -196,6 +196,29 @@ public class SetAbilities : MonoBehaviour
     {
         isActivated = false;
         preBattlePanel.SetActive(false);
+    }
+
+    public void ClearAbility(int index)
+    {
+        if(index == 1)
+        {
+            GameManager.instance.player.GetComponent<PlayerMeleeAttack>().ClearAvalibility();
+            basicMeleeAttackIcon.gameObject.SetActive(true);
+            basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
+        }
+        else if(index == 2)
+        {
+            GameManager.instance.player.GetComponent<PlayerShield>().ClearAvalibility();
+            shieldIcon.gameObject.SetActive(true);
+            shieldIcon.position = originalShieldPos;
+
+        }
+        else if(index == 3)
+        {
+            GameManager.instance.player.GetComponent<PlayerBulletShooting>().ClearAvalibility();
+            bulletShootingIcon.gameObject.SetActive(true);
+            bulletShootingIcon.position = originalBulletShootingPos;
+        }
     }
 
     public void ClearAbilities()
