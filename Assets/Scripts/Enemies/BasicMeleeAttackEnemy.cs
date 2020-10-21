@@ -85,18 +85,18 @@ public class BasicMeleeAttackEnemy : BasicEnemy
     void DetectPlayer()
     {
         PlayerGridMovement player = GameManager.instance.player.GetComponent<PlayerGridMovement>();
-        if (xPos == player.xPos && yPos == player.yPos)
+        if (xPos == player.xPos && yPos == player.yPos && player.IsPlayerInActualPosition())
         {
             isAttacking = true;
             attackTimer++;
         }
-        else if (xPos + 1 == player.xPos && yPos == player.yPos)
+        else if (xPos + 1 == player.xPos && yPos == player.yPos && player.IsPlayerInActualPosition())
         {
             isAttacking = true;
             attackTimer++;
 
         }
-        else if (xPos - 1 == player.xPos && yPos == player.yPos)
+        else if (xPos - 1 == player.xPos && yPos == player.yPos && player.IsPlayerInActualPosition())
         {
             isAttacking = true;
             attackTimer++;

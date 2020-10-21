@@ -116,4 +116,16 @@ public class PlayerGridMovement : MonoBehaviour
         }
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
     }
+
+    public bool IsPlayerInActualPosition()
+    {
+        if (Vector2.Distance(targetPos, transform.position) < 0.05f) 
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
