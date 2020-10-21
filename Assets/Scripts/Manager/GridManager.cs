@@ -70,7 +70,6 @@ public class GridManager : RhythmObject
 
     private void Initialize()
     {
-        phaseIndex = 0;
         isInPhase = true;
         if (!IsInBattlePhase())
         {
