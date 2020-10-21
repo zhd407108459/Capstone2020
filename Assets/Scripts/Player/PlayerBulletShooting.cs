@@ -66,7 +66,7 @@ public class PlayerBulletShooting : RhythmObject
         }
         go.GetComponent<PlayerGridBullet>().yDirection = 0;
         go.GetComponent<PlayerGridBullet>().damage = damage;
-        go.GetComponent<PlayerGridBullet>().SetUp(GetComponent<PlayerGridMovement>().xPos, GetComponent<PlayerGridMovement>().yPos);
+        go.GetComponent<PlayerGridBullet>().SetUp(GetComponent<PlayerGridMovement>().xPos + go.GetComponent<PlayerGridBullet>().xDirection, GetComponent<PlayerGridMovement>().yPos);
     }
 
     public void SetSingleAvalibility(int n)

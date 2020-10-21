@@ -55,6 +55,6 @@ public class BasicBulletEnemy : BasicEnemy
         go.GetComponent<EnemyGridBullet>().xDirection = xShootDirection;
         go.GetComponent<EnemyGridBullet>().yDirection = yShootDirection;
         go.GetComponent<EnemyGridBullet>().damage = damage;
-        go.GetComponent<EnemyGridBullet>().SetUp(xPos, yPos);
+        go.GetComponent<EnemyGridBullet>().SetUp(xPos + xShootDirection, yPos + yShootDirection);
     }
 }
