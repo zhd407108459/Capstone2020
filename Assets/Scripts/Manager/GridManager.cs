@@ -29,6 +29,10 @@ public class GridManager : RhythmObject
 
     public GameObject nextStageIcon;
 
+    public GameObject recordPanel;
+    public Text recordText;
+    public Button closeRecordPanelButton;
+
     [HideInInspector] public Vector3 targetCameraPos;
     [HideInInspector] public bool isCameraFollowing;
     [HideInInspector] public bool isInPhase;
@@ -39,6 +43,8 @@ public class GridManager : RhythmObject
     private int generateDebuffsInterval;
     private int generateBuffsTimer;
     private int generateDebuffsTimer;
+
+    private float recordTimer;
 
     void Awake()
     {
@@ -55,6 +61,7 @@ public class GridManager : RhythmObject
     void Start()
     {
         targetCameraPos = cameraObject.transform.position;
+        closeRecordPanelButton.onClick.AddListener(HideRecordPanel);
         Initialize();
     }
 
@@ -65,6 +72,10 @@ public class GridManager : RhythmObject
             UpdateTargetCameraPosition();
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetCameraPos, cameraFollowLerpValue * Time.deltaTime);
             fixedBackground.transform.position = new Vector3(cameraObject.transform.position.x, cameraObject.transform.position.y, fixedBackground.transform.position.z);
+        }
+        if (!GameManager.instance.isPaused && IsInBattlePhase() && isInPhase)
+        {
+            recordTimer += Time.deltaTime;
         }
     }
 
@@ -107,6 +118,10 @@ public class GridManager : RhythmObject
         {
             Destroy(n.gameObject);
         }
+        if (IsInBattlePhase())
+        {
+            ShowRecordPanel(recordTimer);
+        }
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
         isInPhase = false;
     }
@@ -139,6 +154,7 @@ public class GridManager : RhythmObject
                     phases[phaseIndex].traps[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].traps[i].xPos * gridSize.x, phases[phaseIndex].traps[i].yPos * gridSize.y);
                 }
                 setAbilities.Show();
+                recordTimer = 0;
             }
             GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos);
         }
@@ -454,5 +470,16 @@ public class GridManager : RhythmObject
     public void HideNextStageIcon()
     {
         nextStageIcon.SetActive(false);
+    }
+
+    public void ShowRecordPanel(float time)
+    {
+        recordPanel.SetActive(true);
+        recordText.text = "Time: " + ((int)time).ToString() + "s";
+    }
+
+    public void HideRecordPanel()
+    {
+        recordPanel.SetActive(false);
     }
 }
