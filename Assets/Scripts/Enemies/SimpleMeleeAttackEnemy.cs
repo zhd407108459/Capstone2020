@@ -40,7 +40,6 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
             transform.position = Vector2.Lerp(transform.position, targetPos, attackLerpValue * Time.deltaTime);
             if (Vector2.Distance(transform.position, targetPos) < 0.1f)
             {
-                CauseDamage();
                 isAttacking = false;
             }
         }
@@ -137,6 +136,10 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
         if (collision.tag.Equals("PlayerShield"))
         {
             isAttacking = false;
+        }
+        if (collision.tag.Equals("Player"))
+        {
+            CauseDamage();
         }
     }
 }
