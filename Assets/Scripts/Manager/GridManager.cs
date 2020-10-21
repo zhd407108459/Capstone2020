@@ -96,9 +96,9 @@ public class GridManager : RhythmObject
         {
             Destroy(n.gameObject);
         }
-        foreach (var n in FindObjectsOfType<BasicTrap>())
+        for (int i = 0; i < phases[phaseIndex].traps.Count; i++)
         {
-            n.gameObject.SetActive(false);
+            phases[phaseIndex].traps[i].gameObject.SetActive(false);
         }
         foreach (var n in FindObjectsOfType<EnemyGridBullet>())
         {
