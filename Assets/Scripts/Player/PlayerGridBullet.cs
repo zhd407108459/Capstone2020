@@ -73,7 +73,6 @@ public class PlayerGridBullet : RhythmObject
             {
                 collision.GetComponent<BasicEnemy>().TakeDamage(damage);
             }
-            collision.GetComponent<BasicEnemy>().TakeDamage(damage);
             Destroy(this.gameObject);
         }
     }
