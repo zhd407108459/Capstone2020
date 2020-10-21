@@ -7,6 +7,10 @@ public class BasicBuff : RhythmObject
     public int xPos;
     public int yPos;
 
+    public int existingTime;
+
+    protected int existingTimer;
+
     void Start()
     {
         
@@ -15,5 +19,9 @@ public class BasicBuff : RhythmObject
     void Update()
     {
         
+    }
+    public void Setup(int x, int y)
+    {
+        existingTimer = existingTime;
     }
 }

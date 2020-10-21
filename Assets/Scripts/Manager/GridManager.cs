@@ -123,12 +123,38 @@ public class GridManager : RhythmObject
     public void RestartCurrentPhase()
     {
         GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, 0);
+        GameManager.instance.player.transform.position = GetPhaseInitialPosition();
+        GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
         for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
         {
             phases[phaseIndex].enemies[i].gameObject.SetActive(true);
-            phases[phaseIndex].enemies[i].Activate();
+            phases[phaseIndex].enemies[i].isActivated = false;
             phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
         }
+        for (int i = 0; i < phases[phaseIndex].traps.Count; i++)
+        {
+            phases[phaseIndex].traps[i].gameObject.SetActive(true);
+            phases[phaseIndex].traps[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].traps[i].xPos * gridSize.x, phases[phaseIndex].traps[i].yPos * gridSize.y);
+        }
+        foreach(var n in FindObjectsOfType<BasicBuff>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<BasicDebuff>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<EnemyGridBullet>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<PlayerGridBullet>())
+        {
+            Destroy(n.gameObject);
+        }
+        ResetGeneratingBuffsAndDebuffs();
+        isInPhase = false;
+        setAbilities.Show();
     }
 
     public void PreActivateCurrentPhase()
@@ -175,7 +201,7 @@ public class GridManager : RhythmObject
                 ActivateCurrentPhase();
             }
         }
-        if (isInPhase && !isCounting)
+        if (isInPhase && !isCounting && IsInBattlePhase())
         {
             if(generateBuffsTimer >= generateBuffsInterval && phases[phaseIndex].generateBuffsPrefabs.Count > 0)
             {
@@ -213,16 +239,28 @@ public class GridManager : RhythmObject
             if(buffSeed <= 0)
             {
                 buffIndex = i;
+                break;
             }
         }
-        int posSeed = Random.Range(0, phases[phaseIndex].generateBuffsPositions.Count);
-        while(GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos == phases[phaseIndex].generateBuffsPositions[posSeed].xPos 
-            && GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos == phases[phaseIndex].generateBuffsPositions[posSeed].yPos)
+        if(phases[phaseIndex].generateBuffsPositions.Count == 0 
+            && GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos == phases[phaseIndex].generateBuffsPositions[0].xPos
+            && GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos == phases[phaseIndex].generateBuffsPositions[0].yPos)
         {
-            posSeed = Random.Range(0, phases[phaseIndex].generateBuffsPositions.Count);
+            return;
         }
+        List<ItemSpawnPosition> tempList = new List<ItemSpawnPosition>();
+        for(int i = 0;i< phases[phaseIndex].generateBuffsPositions.Count; i++)
+        {
+            if(GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos != phases[phaseIndex].generateBuffsPositions[i].xPos
+            || GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos != phases[phaseIndex].generateBuffsPositions[i].yPos)
+            {
+                tempList.Add(phases[phaseIndex].generateBuffsPositions[i]);
+            }
+        }
+        int posSeed = Random.Range(0, tempList.Count);
         GameObject buff = Instantiate(phases[phaseIndex].generateBuffsPrefabs[buffIndex]);
-        buff.transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].generateBuffsPositions[posSeed].xPos * gridSize.x, phases[phaseIndex].generateBuffsPositions[posSeed].yPos * gridSize.y); 
+        buff.transform.position = GetPhaseInitialPosition() + new Vector2(tempList[posSeed].xPos * gridSize.x, tempList[posSeed].yPos * gridSize.y);
+        buff.GetComponent<BasicBuff>().Setup(tempList[posSeed].xPos, tempList[posSeed].yPos);
     }
 
     void GenerateDebuff()
@@ -244,16 +282,28 @@ public class GridManager : RhythmObject
             if (buffSeed <= 0)
             {
                 buffIndex = i;
+                break;
             }
         }
-        int posSeed = Random.Range(0, phases[phaseIndex].generateDebuffsPositions.Count);
-        while (GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos == phases[phaseIndex].generateDebuffsPositions[posSeed].xPos
-            && GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos == phases[phaseIndex].generateDebuffsPositions[posSeed].yPos)
+        if (phases[phaseIndex].generateBuffsPositions.Count == 0
+            && GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos == phases[phaseIndex].generateDebuffsPositions[0].xPos
+            && GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos == phases[phaseIndex].generateDebuffsPositions[0].yPos)
         {
-            posSeed = Random.Range(0, phases[phaseIndex].generateDebuffsPositions.Count);
+            return;
         }
+        List<ItemSpawnPosition> tempList = new List<ItemSpawnPosition>();
+        for (int i = 0; i < phases[phaseIndex].generateDebuffsPositions.Count; i++)
+        {
+            if (GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos != phases[phaseIndex].generateDebuffsPositions[i].xPos
+            || GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos != phases[phaseIndex].generateDebuffsPositions[i].yPos)
+            {
+                tempList.Add(phases[phaseIndex].generateDebuffsPositions[i]);
+            }
+        }
+        int posSeed = Random.Range(0, tempList.Count);
         GameObject buff = Instantiate(phases[phaseIndex].generateDebuffsPrefabs[buffIndex]);
-        buff.transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].generateDebuffsPositions[posSeed].xPos * gridSize.x, phases[phaseIndex].generateDebuffsPositions[posSeed].yPos * gridSize.y);
+        buff.transform.position = GetPhaseInitialPosition() + new Vector2(tempList[posSeed].xPos * gridSize.x, tempList[posSeed].yPos * gridSize.y);
+        buff.GetComponent<BasicDebuff>().Setup(tempList[posSeed].xPos, tempList[posSeed].yPos);
     }
 
     public bool IsInBattlePhase()

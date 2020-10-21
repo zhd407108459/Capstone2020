@@ -25,7 +25,7 @@ public class PlayerMeleeAttack : RhythmObject
     {
         if (!isAutoUse)
         {
-            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase)//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
+            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused)//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
             {
                 if (Input.GetKeyDown(triggerKey))
                 {
@@ -41,7 +41,7 @@ public class PlayerMeleeAttack : RhythmObject
 
     public override void OnBeat(int beatIndex)
     {
-        if(isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase)
+        if(isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase && !action.isDizzy)
         {
             MeleeAttack();
         }
@@ -73,7 +73,15 @@ public class PlayerMeleeAttack : RhythmObject
             {
                 if (!cos[i].GetComponent<BasicEnemy>().isMeleeAttacked)
                 {
-                    cos[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                    if(action.damageIncreasingRatio > 1)
+                    {
+                        cos[i].GetComponent<BasicEnemy>().TakeDamage((int)(damage * action.damageIncreasingRatio));
+                        action.EndIncreasingDamage();
+                    }
+                    else
+                    {
+                        cos[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                    }
                     cos[i].GetComponent<BasicEnemy>().MeleeAttacked();
                 }
             }

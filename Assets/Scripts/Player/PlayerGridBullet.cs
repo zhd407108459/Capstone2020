@@ -64,6 +64,15 @@ public class PlayerGridBullet : RhythmObject
     {
         if (collision.tag.Equals("Enemy"))
         {
+            if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
+            {
+                collision.GetComponent<BasicEnemy>().TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
+                GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
+            }
+            else
+            {
+                collision.GetComponent<BasicEnemy>().TakeDamage(damage);
+            }
             collision.GetComponent<BasicEnemy>().TakeDamage(damage);
             Destroy(this.gameObject);
         }

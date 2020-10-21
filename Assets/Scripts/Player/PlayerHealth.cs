@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("You dead!");
+        GameManager.instance.PlayerDie();
     }
 
     public void Recover(int value)
@@ -44,5 +44,12 @@ public class PlayerHealth : MonoBehaviour
         {
             health = maxHealth;
         }
+        healthSlider.value = (float)health / (float)maxHealth;
+    }
+
+    public void RecoverAll()
+    {
+        health = maxHealth;
+        healthSlider.value = (float)health / (float)maxHealth;
     }
 }

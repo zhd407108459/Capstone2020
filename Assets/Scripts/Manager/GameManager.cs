@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public GameObject pausePanel;
     public Button resumeButton;
 
+    public GameObject deadPanel;
+    public Button deadPanelRestartButton;
+
 
     [HideInInspector] public bool isPaused;
 
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
         HidePausePanel();
 
         resumeButton.onClick.AddListener(PauseGame);
+        deadPanelRestartButton.onClick.AddListener(RestartCurrentBattle);
     }
 
     void Update()
@@ -90,6 +94,21 @@ public class GameManager : MonoBehaviour
     {
         int scene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
+    }
+
+    public void PlayerDie()
+    {
+        isPaused = true;
+        BeatsManager.instance.bgm.Pause();
+        deadPanel.SetActive(true);
+    }
+
+    void RestartCurrentBattle()
+    {
+        isPaused = false;
+        BeatsManager.instance.bgm.UnPause();
+        GridManager.instance.RestartCurrentPhase();
+        deadPanel.SetActive(false);
     }
 
     void ExitGame()

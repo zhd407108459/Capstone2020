@@ -9,6 +9,7 @@ public class BasicMeleeAttackEnemy : BasicEnemy
     public bool isRandom;
     public int damage;
     [Range(1, 7)] public int attackInterval;
+    [Range(0, 7)] public int startDelay;
 
     private Vector2 targetPos;
     private bool isAttacking;
@@ -17,14 +18,16 @@ public class BasicMeleeAttackEnemy : BasicEnemy
     private int x2;
 
     private int delayTimer;
+    private int stayTimer;
     private int attackTimer;
 
     void Start()
     {
         x1 = xPos;
         x2 = xPos - 1;
-        delayTimer = 0;
+        stayTimer = 0;
         attackTimer = 0;
+        delayTimer = startDelay;
     }
 
     void Update()
@@ -52,6 +55,11 @@ public class BasicMeleeAttackEnemy : BasicEnemy
     {
         if (!isActivated || GameManager.instance.isPaused)
         {
+            return;
+        }
+        if(delayTimer > 0)
+        {
+            delayTimer--;
             return;
         }
         if (attackTimer > 0)
@@ -134,7 +142,7 @@ public class BasicMeleeAttackEnemy : BasicEnemy
         }
         else
         {
-            if(delayTimer == 0)
+            if(stayTimer == 0)
             {
                 if(xPos == x1)
                 {
@@ -144,11 +152,11 @@ public class BasicMeleeAttackEnemy : BasicEnemy
                 {
                     xPos = x1;
                 }
-                delayTimer++;
+                stayTimer++;
             }
             else
             {
-                delayTimer = 0;
+                stayTimer = 0;
             }
         }
     }

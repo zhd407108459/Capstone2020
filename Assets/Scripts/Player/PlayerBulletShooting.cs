@@ -23,7 +23,7 @@ public class PlayerBulletShooting : RhythmObject
     {
         if (!isAutoUse)
         {
-            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase)//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
+            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused)//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
             {
                 if (Input.GetKeyDown(triggerKey))
                 {
@@ -36,7 +36,7 @@ public class PlayerBulletShooting : RhythmObject
 
     public override void OnBeat(int beatIndex)
     {
-        if (isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase)
+        if (isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase && !action.isDizzy)
         {
             ShootBullet();
         }
