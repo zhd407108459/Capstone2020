@@ -34,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
+        GetComponent<PlayerAction>().ClearAllBuffs();
         GameManager.instance.PlayerDie();
     }
 
