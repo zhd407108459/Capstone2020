@@ -100,6 +100,14 @@ public class GridManager : RhythmObject
         {
             n.gameObject.SetActive(false);
         }
+        foreach (var n in FindObjectsOfType<EnemyGridBullet>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<PlayerGridBullet>())
+        {
+            Destroy(n.gameObject);
+        }
         isInPhase = false;
     }
 
