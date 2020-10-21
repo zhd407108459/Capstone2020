@@ -27,6 +27,8 @@ public class GridManager : RhythmObject
 
     public SetAbilities setAbilities;
 
+    public GameObject nextStageIcon;
+
     [HideInInspector] public Vector3 targetCameraPos;
     [HideInInspector] public bool isCameraFollowing;
     [HideInInspector] public bool isInPhase;
@@ -86,6 +88,18 @@ public class GridManager : RhythmObject
 
     public void EndCurrentPhase()
     {
+        foreach (var n in FindObjectsOfType<BasicBuff>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<BasicDebuff>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<BasicTrap>())
+        {
+            n.gameObject.SetActive(false);
+        }
         isInPhase = false;
     }
 
@@ -98,6 +112,7 @@ public class GridManager : RhythmObject
             {
                 isCameraFollowing = true;
                 setAbilities.ClearAbilities();
+                HideNextStageIcon();
                 for(int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
                 {
                     BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();
@@ -106,6 +121,7 @@ public class GridManager : RhythmObject
             }
             else
             {
+                HideNextStageIcon();
                 for(int i = 0; i < phases[phaseIndex].enemies.Count; i++)
                 {
                     phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
@@ -203,13 +219,13 @@ public class GridManager : RhythmObject
         }
         if (isInPhase && !isCounting && IsInBattlePhase())
         {
-            if(generateBuffsTimer >= generateBuffsInterval && phases[phaseIndex].generateBuffsPrefabs.Count > 0)
+            if(generateBuffsTimer >= generateBuffsInterval && phases[phaseIndex].generateBuffsPrefabs.Count > 0 && !IsEnemyClear())
             {
                 GenerateBuff();
                 generateBuffsInterval = Random.Range(phases[phaseIndex].minGenerateBuffsInterval, phases[phaseIndex].maxGenerateBuffsInterval + 1);
                 generateBuffsTimer = 0;
             }
-            if(generateDebuffsTimer >= generateDebuffsInterval && phases[phaseIndex].generateDebuffsPrefabs.Count > 0)
+            if(generateDebuffsTimer >= generateDebuffsInterval && phases[phaseIndex].generateDebuffsPrefabs.Count > 0 && !IsEnemyClear())
             {
                 GenerateDebuff();
                 generateDebuffsInterval = Random.Range(phases[phaseIndex].minGenerateDebuffsInterval, phases[phaseIndex].maxGenerateDebuffsInterval + 1);
@@ -420,5 +436,15 @@ public class GridManager : RhythmObject
         {
             return true;
         }
+    }
+
+    public void ShowNextStageIcon()
+    {
+        nextStageIcon.SetActive(true);
+    }
+
+    public void HideNextStageIcon()
+    {
+        nextStageIcon.SetActive(false);
     }
 }

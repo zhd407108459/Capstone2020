@@ -49,5 +49,9 @@ public class BasicEnemy : RhythmObject
     public void Die()
     {
         this.gameObject.SetActive(false);
+        if (GridManager.instance.IsEnemyClear())
+        {
+            GridManager.instance.ShowNextStageIcon();
+        }
     }
 }
