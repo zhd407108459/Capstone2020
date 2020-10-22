@@ -17,6 +17,7 @@ public class BeatsManager : MonoBehaviour
     private double lastBgmTime;
     private double deltaTime;
     private int beatsIndex;
+    private float lastAudioTime;
 
 
     void Awake()
@@ -44,6 +45,7 @@ public class BeatsManager : MonoBehaviour
             UpdateBeats();
         }
         lastBgmTime = AudioSettings.dspTime;
+        lastAudioTime = bgm.time;
     }
 
     private void OnApplicationFocus(bool focus)
@@ -58,9 +60,13 @@ public class BeatsManager : MonoBehaviour
     //Update节拍
     void UpdateBeats()
     {
+        
         beatsTimer += deltaTime;
-
-        for(int i = 0; i < beatsTips.Count; i++)
+        if (bgm.time < lastAudioTime)
+        {
+            beatsTimer = bgm.time;
+        }
+        for (int i = 0; i < beatsTips.Count; i++)
         {
             beatsTips[i].transform.localScale = Vector3.Lerp(beatsTips[i].transform.localScale, new Vector3(1, 1, 1), 15.0f * (float)deltaTime);
         }
@@ -103,6 +109,7 @@ public class BeatsManager : MonoBehaviour
         beatsIndex++;
         beatsTimer = 0;
         lastBgmTime = AudioSettings.dspTime;
+        lastAudioTime = bgm.time;
         bgm.Play();
     }
 
