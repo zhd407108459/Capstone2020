@@ -65,6 +65,7 @@ public class BeatsManager : MonoBehaviour
         if (bgm.time < lastAudioTime)
         {
             beatsTimer = bgm.time;
+            beatsIndex = 0;
         }
         for (int i = 0; i < beatsTips.Count; i++)
         {
