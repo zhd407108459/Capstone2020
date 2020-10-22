@@ -37,6 +37,7 @@ public class PhaseInfo : MonoBehaviour
         for (int i = 0; i < bes.Length; i++)
         {
             enemies.Add(bes[i]);
+            bes[i].gameObject.SetActive(false);
         }
 
         traps.Clear();
@@ -44,6 +45,7 @@ public class PhaseInfo : MonoBehaviour
         for(int i = 0; i < bts.Length; i++)
         {
             traps.Add(bts[i]);
+            bts[i].gameObject.SetActive(false);
         }
 
     }

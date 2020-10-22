@@ -147,10 +147,12 @@ public class GridManager : RhythmObject
                 HideNextStageIcon();
                 for(int i = 0; i < phases[phaseIndex].enemies.Count; i++)
                 {
+                    phases[phaseIndex].enemies[i].gameObject.SetActive(true);
                     phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
                 }
                 for(int i = 0; i < phases[phaseIndex].traps.Count; i++)
                 {
+                    phases[phaseIndex].traps[i].gameObject.SetActive(true);
                     phases[phaseIndex].traps[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].traps[i].xPos * gridSize.x, phases[phaseIndex].traps[i].yPos * gridSize.y);
                 }
                 setAbilities.Show();
