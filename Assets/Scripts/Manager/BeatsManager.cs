@@ -17,6 +17,7 @@ public class BeatsManager : MonoBehaviour
     private double lastBgmTime;
     private double deltaTime;
     private int beatsIndex;
+    private int totalIndex;
     private float lastAudioTime;
 
 
@@ -39,12 +40,16 @@ public class BeatsManager : MonoBehaviour
 
     void Update()
     {
-        deltaTime = AudioSettings.dspTime - lastBgmTime;
+        deltaTime = bgm.time - lastBgmTime;
+        if(lastBgmTime > bgm.time)
+        {
+            deltaTime = bgm.time + (bgm.clip.length - lastBgmTime);
+        }
         if (!GameManager.instance.isPaused)
         {
             UpdateBeats();
         }
-        lastBgmTime = AudioSettings.dspTime;
+        lastBgmTime = bgm.time;
         lastAudioTime = bgm.time;
     }
 
@@ -64,22 +69,24 @@ public class BeatsManager : MonoBehaviour
         beatsTimer += deltaTime;
         if (bgm.time < lastAudioTime)
         {
-            beatsTimer = bgm.time;
+            totalIndex = 0;
             beatsIndex = 0;
+            Debug.Log("Loop");
         }
         for (int i = 0; i < beatsTips.Count; i++)
         {
             beatsTips[i].transform.localScale = Vector3.Lerp(beatsTips[i].transform.localScale, new Vector3(1, 1, 1), 15.0f * (float)deltaTime);
         }
 
-        while (beatsTimer >= beatsTime)
+        while (bgm.time >= beatsTime * totalIndex)
         {
-            //Debug.Log(beatsTimer);
-            beatsTimer -= beatsTime;
+            Debug.Log((int)(bgm.time / beatsTime));
+            //Debug.Log(beatsIndex);
             //变化节拍结束点大小
             beatsTips[beatsIndex].transform.localScale = new Vector3(2, 2, 2);
             //Debug.Log("Beat!");
             CallOtherMethods();
+            totalIndex++;
             beatsIndex++;
             if (beatsIndex >= beatsTips.Count)
             {
@@ -107,9 +114,9 @@ public class BeatsManager : MonoBehaviour
     {
         beatsIndex = 0;
         beatsTips[beatsIndex].transform.localScale = new Vector3(2, 2, 2);
-        beatsIndex++;
         beatsTimer = 0;
-        lastBgmTime = AudioSettings.dspTime;
+        totalIndex = 0;
+        lastBgmTime = bgm.time;
         lastAudioTime = bgm.time;
         bgm.Play();
     }
