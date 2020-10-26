@@ -32,6 +32,10 @@ public class BeatsManager : MonoBehaviour
 
     void Start()
     {
+        if(SettingManager.instance != null)
+        {
+            bgm.volume = SettingManager.instance.overAllVolume;
+        }
         StartBeats();
     }
 

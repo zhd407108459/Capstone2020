@@ -10,12 +10,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
-
+    [Header("Pause Panel")]
     public GameObject pausePanel;
-    public Button resumeButton;
+    public Button pausePanelResumeButton;
+    public Button pausePanelMenuButton;
 
+    [Header("Dead Panel")]
     public GameObject deadPanel;
     public Button deadPanelRestartButton;
+    public Button deadPanelMenuButton;
 
 
     [HideInInspector] public bool isPaused;
@@ -38,24 +41,26 @@ public class GameManager : MonoBehaviour
 
         HidePausePanel();
 
-        resumeButton.onClick.AddListener(PauseGame);
+        pausePanelResumeButton.onClick.AddListener(PauseGame);
+        pausePanelMenuButton.onClick.AddListener(BackToMenu);
         deadPanelRestartButton.onClick.AddListener(RestartCurrentBattle);
+        deadPanelMenuButton.onClick.AddListener(BackToMenu);
     }
 
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    ExitGame();
+        //}
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ExitGame();
-        }
-        if (Input.GetKeyDown(KeyCode.P))
         {
             PauseGame();
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RestartGame();
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    RestartGame();
+        //}
     }
 
     public void PauseGame()
@@ -88,6 +93,11 @@ public class GameManager : MonoBehaviour
             BeatsManager.instance.bgm.Pause();
             ShowPausePanel();
         }
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     void RestartGame()

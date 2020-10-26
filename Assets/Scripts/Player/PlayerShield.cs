@@ -15,6 +15,10 @@ public class PlayerShield : RhythmObject
 
     void Start()
     {
+        if (SettingManager.instance != null)
+        {
+            isAutoUse = SettingManager.instance.isAutoAttack;
+        }
         HideShield();
         action = GetComponent<PlayerAction>();
         ChangeBeatTips();

@@ -8,6 +8,7 @@ public class SetAbilities : MonoBehaviour
 
     public GameObject preBattlePanel;
     public Transform targetBeatsContainerPosition;
+    public Transform originalBeatsContainerPosition;
     public RectTransform basicMeleeAttackIcon;
     public RectTransform shieldIcon;
     //public RectTransform bulletShootingIcon;
@@ -19,16 +20,12 @@ public class SetAbilities : MonoBehaviour
     private Vector3 originalBasicMeleeAttackPos;
     private Vector3 originalShieldPos;
     //private Vector3 originalBulletShootingPos;
-    private Vector3 originalBeatsContainerPosition;
-    private Vector3 originalBeatsContainerScale;
 
     void Start()
     {
         originalBasicMeleeAttackPos = basicMeleeAttackIcon.position;
         originalShieldPos = shieldIcon.position;
         //originalBulletShootingPos = bulletShootingIcon.position;
-        originalBeatsContainerPosition = BeatsManager.instance.beatsContainer.transform.position;
-        originalBeatsContainerScale = BeatsManager.instance.beatsContainer.transform.localScale;
         nextButton.onClick.AddListener(FinishSetting);
     }
 
@@ -237,8 +234,8 @@ public class SetAbilities : MonoBehaviour
     public void FinishSetting()
     {
         GridManager.instance.PreActivateCurrentPhase();
-        BeatsManager.instance.beatsContainer.transform.position = originalBeatsContainerPosition;
-        BeatsManager.instance.beatsContainer.transform.localScale = originalBeatsContainerScale;
+        BeatsManager.instance.beatsContainer.transform.position = originalBeatsContainerPosition.position;
+        BeatsManager.instance.beatsContainer.transform.localScale = originalBeatsContainerPosition.localScale;
         preBattlePanel.SetActive(false);
     }
 }

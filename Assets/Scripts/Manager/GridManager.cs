@@ -65,6 +65,10 @@ public class GridManager : RhythmObject
 
     void Start()
     {
+        if(SettingManager.instance != null)
+        {
+            phaseIndex = SettingManager.instance.targetPhase;
+        }
         targetCameraPos = cameraObject.transform.position;
         closeRecordPanelButton.onClick.AddListener(HideRecordPanel);
         Initialize();
@@ -103,19 +107,47 @@ public class GridManager : RhythmObject
 
     private void Initialize()
     {
-        isInPhase = true;
-        if (!IsInBattlePhase())
-        {
-            isCameraFollowing = true;
-        }
-        else
-        {
-            isCameraFollowing = false;
-        }
         for (int i = 0; i < phases.Count; i++)
         {
             phases[i].Initialize();
         }
+        if (!IsInBattlePhase())
+        {
+            isCameraFollowing = true;
+            HideNextStageIcon();
+            for (int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
+            {
+                BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();
+            }
+            rageTimerSlider.gameObject.SetActive(false);
+            isInPhase = true;
+        }
+        else
+        {
+            HideNextStageIcon();
+            for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+            {
+                phases[phaseIndex].enemies[i].gameObject.SetActive(true);
+                phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
+            }
+            for (int i = 0; i < phases[phaseIndex].traps.Count; i++)
+            {
+                phases[phaseIndex].traps[i].gameObject.SetActive(true);
+                phases[phaseIndex].traps[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].traps[i].xPos * gridSize.x, phases[phaseIndex].traps[i].yPos * gridSize.y);
+            }
+            setAbilities.Show();
+            recordTimer = 0;
+            rageTimerSlider.gameObject.SetActive(true);
+            rageTimer = phases[phaseIndex].rageTime;
+            rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
+            rageTimerSlider.value = 1;
+        }
+        GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, 0);
+        GameManager.instance.player.transform.position = GetPhaseInitialPosition();
+        UpdateTargetCameraPosition();
+        cameraObject.transform.position = targetCameraPos;
+        fixedBackground.transform.position = new Vector3(cameraObject.transform.position.x, cameraObject.transform.position.y, fixedBackground.transform.position.z);
+
     }
 
     public void EndCurrentPhase()
@@ -421,6 +453,17 @@ public class GridManager : RhythmObject
         }
         return pos;
     }
+
+    public Vector2 GetPhaseInitialPosition(int index)
+    {
+        Vector2 pos = initialPos;
+        for (int i = 0; i < index; i++)
+        {
+            pos += new Vector2((phases[i].phaseLength - 1) * gridSize.x, 0);
+        }
+        return pos;
+    }
+
     public Vector2 GetPhaseEndPosition()
     {
         Vector2 pos = initialPos;
@@ -514,5 +557,28 @@ public class GridManager : RhythmObject
     public void HideRecordPanel()
     {
         recordPanel.SetActive(false);
+    }
+
+    public void AlignObjects()
+    {
+        for (int i = 0; i < phases.Count; i++)
+        {
+            phases[i].Initialize();
+            for (int j = 0; j < phases[i].basicPlatforms.Count; j++)
+            {
+                phases[i].basicPlatforms[j].transform.position = GetPhaseInitialPosition(i) + new Vector2(phases[i].basicPlatforms[j].xPos * gridSize.x, phases[i].basicPlatforms[j].yPos * gridSize.y);
+            }
+            for (int j = 0; j < phases[i].enemies.Count; j++)
+            {
+                phases[i].enemies[j].gameObject.SetActive(true);
+                phases[i].enemies[j].transform.position = GetPhaseInitialPosition(i) + new Vector2(phases[i].enemies[j].xPos * gridSize.x, phases[i].enemies[j].yPos * gridSize.y);
+            }
+            for (int j = 0; j < phases[i].traps.Count; j++)
+            {
+                phases[i].traps[j].gameObject.SetActive(true);
+                phases[i].traps[j].transform.position = GetPhaseInitialPosition(i) + new Vector2(phases[i].traps[j].xPos * gridSize.x, phases[i].traps[j].yPos * gridSize.y);
+            }
+        }
+
     }
 }

@@ -16,6 +16,10 @@ public class PlayerMeleeAttack : RhythmObject
 
     void Start()
     {
+        if(SettingManager.instance != null)
+        {
+            isAutoUse = SettingManager.instance.isAutoAttack;
+        }
         HideMeleeAttackBox();
         action = GetComponent<PlayerAction>();
         ChangeBeatTips();
