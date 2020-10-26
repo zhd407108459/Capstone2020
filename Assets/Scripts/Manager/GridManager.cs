@@ -24,7 +24,9 @@ public class GridManager : RhythmObject
 
     public int preActivateTime;
     public Text timerText;
-    public Slider timerSlider;
+    public Slider rageTimerSlider;
+    public Text rageTimerText;
+
 
     public SetAbilities setAbilities;
 
@@ -45,6 +47,8 @@ public class GridManager : RhythmObject
     private int generateBuffsTimer;
     private int generateDebuffsTimer;
 
+    private float rageTimer;
+    private float lastRageTimer;
     private float recordTimer;
 
     void Awake()
@@ -77,6 +81,23 @@ public class GridManager : RhythmObject
         if (!GameManager.instance.isPaused && IsInBattlePhase() && isInPhase)
         {
             recordTimer += Time.deltaTime;
+            if(rageTimer > 0)
+            {
+                rageTimer -= Time.deltaTime;
+                if (rageTimer <= 0 && lastRageTimer > 0)
+                {
+                    rageTimer = 0;
+                    //Rage
+                    for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+                    {
+                        phases[phaseIndex].enemies[i].isRaged = true;
+                    }
+                }
+                rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
+                rageTimerSlider.value = rageTimer / phases[phaseIndex].rageTime;
+                lastRageTimer = rageTimer;
+            }
+            
         }
     }
 
@@ -141,6 +162,7 @@ public class GridManager : RhythmObject
                 {
                     BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();
                 }
+                rageTimerSlider.gameObject.SetActive(false);
                 isInPhase = true;
             }
             else
@@ -158,6 +180,10 @@ public class GridManager : RhythmObject
                 }
                 setAbilities.Show();
                 recordTimer = 0;
+                rageTimerSlider.gameObject.SetActive(true);
+                rageTimer = phases[phaseIndex].rageTime;
+                rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
+                rageTimerSlider.value = 1;
             }
             GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos);
         }
@@ -196,6 +222,9 @@ public class GridManager : RhythmObject
         {
             Destroy(n.gameObject);
         }
+        rageTimer = phases[phaseIndex].rageTime;
+        rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
+        rageTimerSlider.value = 1;
         ResetGeneratingBuffsAndDebuffs();
         isInPhase = false;
         setAbilities.Show();

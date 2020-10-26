@@ -22,6 +22,7 @@ public class BasicEnemy : RhythmObject
     public void Activate()
     {
         isActivated = true;
+        isRaged = false;
         health = maxHealth;
         healthSlider.value = (float)health / (float)maxHealth;
     }

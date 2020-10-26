@@ -6,7 +6,7 @@ public class PhaseInfo : MonoBehaviour
 {
     public bool isBattlePhase;
     public int phaseLength;
-    public int rageTime;
+    public float rageTime;
     public List<BasicPlatform> basicPlatforms = new List<BasicPlatform>();
     public List<BasicEnemy> enemies = new List<BasicEnemy>();
     public List<BasicTrap> traps = new List<BasicTrap>();
