@@ -6,7 +6,7 @@ public class BasicMeleeAttackEnemy : BasicEnemy
 {
     public float attackLerpValue;
 
-    public bool isRandom;
+    //public bool isRandom;
     public int damage;
     [Range(1, 7)] public int attackInterval;
     [Range(0, 7)] public int startDelay;
@@ -109,55 +109,55 @@ public class BasicMeleeAttackEnemy : BasicEnemy
 
     void Move()
     {
-        if (isRandom)
+        //if (isRandom)
+        //{
+        //    List<int> xList = new List<int>();
+        //    List<int> yList = new List<int>();
+        //    xList.Add(xPos);
+        //    yList.Add(yPos);
+        //    if (GridManager.instance.IsPlatformExist(xPos + 1, yPos))
+        //    {
+        //        xList.Add(xPos + 1);
+        //        yList.Add(yPos);
+        //    }
+        //    if (GridManager.instance.IsPlatformExist(xPos - 1, yPos))
+        //    {
+        //        xList.Add(xPos - 1);
+        //        yList.Add(yPos);
+        //    }
+        //    if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
+        //    {
+        //        xList.Add(xPos);
+        //        yList.Add(yPos + 1);
+        //    }
+        //    if (GridManager.instance.IsPlatformExist(xPos, yPos - 1))
+        //    {
+        //        xList.Add(xPos);
+        //        yList.Add(yPos - 1);
+        //    }
+        //    int seed = Random.Range(0, xList.Count);
+        //    xPos = xList[seed];
+        //    yPos = yList[seed];
+        //}
+        //else
+        //{
+        if (stayTimer == 0)
         {
-            List<int> xList = new List<int>();
-            List<int> yList = new List<int>();
-            xList.Add(xPos);
-            yList.Add(yPos);
-            if (GridManager.instance.IsPlatformExist(xPos + 1, yPos))
+            if (xPos == x1)
             {
-                xList.Add(xPos + 1);
-                yList.Add(yPos);
-            }
-            if (GridManager.instance.IsPlatformExist(xPos - 1, yPos))
-            {
-                xList.Add(xPos - 1);
-                yList.Add(yPos);
-            }
-            if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
-            {
-                xList.Add(xPos);
-                yList.Add(yPos + 1);
-            }
-            if (GridManager.instance.IsPlatformExist(xPos, yPos - 1))
-            {
-                xList.Add(xPos);
-                yList.Add(yPos - 1);
-            }
-            int seed = Random.Range(0, xList.Count);
-            xPos = xList[seed];
-            yPos = yList[seed];
-        }
-        else
-        {
-            if(stayTimer == 0)
-            {
-                if(xPos == x1)
-                {
-                    xPos = x2;
-                }
-                else
-                {
-                    xPos = x1;
-                }
-                stayTimer++;
+                xPos = x2;
             }
             else
             {
-                stayTimer = 0;
+                xPos = x1;
             }
+            stayTimer++;
         }
+        else
+        {
+            stayTimer = 0;
+        }
+        //}
     }
 
     void CauseDamage()

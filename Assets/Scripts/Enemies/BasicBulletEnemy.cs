@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicBulletEnemy : BasicEnemy
 {
-    public int shootInterval;
+    //public int shootInterval;
     public GameObject bulletPrefab;
 
     public List<bool> shootBeats = new List<bool>();
@@ -12,13 +12,13 @@ public class BasicBulletEnemy : BasicEnemy
     public int yShootDirection;
     public int damage;
 
-    public bool isRandom;
+    //public bool isRandom;
 
-    private int attackTimer;
+    //private int attackTimer;
 
     void Start()
     {
-        attackTimer = 0;
+        //attackTimer = 0;
     }
 
     void Update()
@@ -33,17 +33,17 @@ public class BasicBulletEnemy : BasicEnemy
         {
             return;
         }
-        if (isRandom)
-        {
-            attackTimer++;
-            if (attackTimer >= shootInterval)
-            {
-                Shoot();
-                attackTimer = 0;
-                shootInterval = Random.Range(2, 6);
-            }
-        }
-        else if(!isRandom && shootBeats[beatIndex])
+        //if (isRandom)
+        //{
+        //    attackTimer++;
+        //    if (attackTimer >= shootInterval)
+        //    {
+        //        Shoot();
+        //        attackTimer = 0;
+        //        shootInterval = Random.Range(2, 6);
+        //    }
+        //}
+        /*else */if(/*!isRandom && */shootBeats[beatIndex])
         {
             Shoot();
         }
