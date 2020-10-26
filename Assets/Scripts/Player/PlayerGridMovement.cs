@@ -61,6 +61,21 @@ public class PlayerGridMovement : MonoBehaviour
             isPlayerFacingRight = false;
             SetPos(xPos - 1, yPos);
         }
+        else if (Input.GetKeyDown(KeyCode.Q)){
+            if(sprite.transform.localScale.x > 0)
+            {
+                sprite.transform.localScale = new Vector3(-Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
+                action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (sprite.transform.localScale.x < 0)
+            {
+                sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
+                action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
+            }
+        }
     }
 
     public void SetPos(int x, int y)
