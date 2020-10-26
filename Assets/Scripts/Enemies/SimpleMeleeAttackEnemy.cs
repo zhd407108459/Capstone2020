@@ -20,9 +20,12 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
     private int stayTimer;
     private int attackTimer;
 
+    private int lastPosX;
+
     void Start()
     {
         x1 = xPos;
+        lastPosX = xPos;
         x2 = xPos - 1;
         stayTimer = 0;
         attackTimer = 0;
@@ -108,7 +111,27 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
 
     void Move()
     {
-        if (stayTimer == 0)
+        lastPosX = xPos;
+        if (!isRaged)
+        {
+            if (stayTimer == 0)
+            {
+                if (xPos == x1)
+                {
+                    xPos = x2;
+                }
+                else
+                {
+                    xPos = x1;
+                }
+                stayTimer++;
+            }
+            else
+            {
+                stayTimer = 0;
+            }
+        }
+        else
         {
             if (xPos == x1)
             {
@@ -118,11 +141,6 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
             {
                 xPos = x1;
             }
-            stayTimer++;
-        }
-        else
-        {
-            stayTimer = 0;
         }
     }
 
@@ -135,7 +153,12 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
     {
         if (collision.tag.Equals("PlayerShield"))
         {
-            isAttacking = false;
+            xPos = lastPosX;
+            if (isAttacking)
+            {
+                this.TakeDamage(damage);
+                isAttacking = false;
+            }
         }
         if (collision.tag.Equals("Player"))
         {

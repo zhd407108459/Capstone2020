@@ -24,6 +24,7 @@ public class GridManager : RhythmObject
 
     public int preActivateTime;
     public Text timerText;
+    public Slider timerSlider;
 
     public SetAbilities setAbilities;
 
@@ -171,6 +172,7 @@ public class GridManager : RhythmObject
         {
             phases[phaseIndex].enemies[i].gameObject.SetActive(true);
             phases[phaseIndex].enemies[i].isActivated = false;
+            phases[phaseIndex].enemies[i].health = phases[phaseIndex].enemies[i].maxHealth;
             phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
         }
         for (int i = 0; i < phases[phaseIndex].traps.Count; i++)

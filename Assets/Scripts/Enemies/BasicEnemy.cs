@@ -17,6 +17,8 @@ public class BasicEnemy : RhythmObject
 
     [HideInInspector] public bool isMeleeAttacked;
 
+    [HideInInspector] public bool isRaged;
+
     public void Activate()
     {
         isActivated = true;

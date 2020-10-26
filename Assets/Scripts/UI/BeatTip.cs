@@ -8,7 +8,7 @@ public class BeatTip : MonoBehaviour
     public Transform abilityPosition;
     public GameObject shieldIcon;
     public GameObject meleeAttackIcon;
-    public GameObject bulletShootingIcon;
+    //public GameObject bulletShootingIcon;
 
     private int abilityIndex = 0;
 
@@ -16,7 +16,7 @@ public class BeatTip : MonoBehaviour
     {
         shieldIcon.SetActive(false);
         meleeAttackIcon.SetActive(true);
-        bulletShootingIcon.SetActive(false);
+        //bulletShootingIcon.SetActive(false);
         meleeAttackIcon.transform.position = abilityPosition.position;
         abilityIndex = 1;
     }
@@ -25,25 +25,25 @@ public class BeatTip : MonoBehaviour
     {
         shieldIcon.SetActive(true);
         meleeAttackIcon.SetActive(false);
-        bulletShootingIcon.SetActive(false);
+        //bulletShootingIcon.SetActive(false);
         shieldIcon.transform.position = abilityPosition.position;
         abilityIndex = 2;
     }
 
-    public void ShowBulletShootingIcon()
-    {
-        shieldIcon.SetActive(false);
-        meleeAttackIcon.SetActive(false);
-        bulletShootingIcon.SetActive(true);
-        bulletShootingIcon.transform.position = abilityPosition.position;
-        abilityIndex = 3;
-    }
+    //public void ShowBulletShootingIcon()
+    //{
+    //    shieldIcon.SetActive(false);
+    //    meleeAttackIcon.SetActive(false);
+    //    bulletShootingIcon.SetActive(true);
+    //    bulletShootingIcon.transform.position = abilityPosition.position;
+    //    abilityIndex = 3;
+    //}
 
     public void HideIcons()
     {
         shieldIcon.SetActive(false);
         meleeAttackIcon.SetActive(false);
-        bulletShootingIcon.SetActive(false);
+        //bulletShootingIcon.SetActive(false);
         abilityIndex = 0;
     }
 

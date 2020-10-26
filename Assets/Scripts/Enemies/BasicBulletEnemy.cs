@@ -8,6 +8,7 @@ public class BasicBulletEnemy : BasicEnemy
     public GameObject bulletPrefab;
 
     public List<bool> shootBeats = new List<bool>();
+    public List<bool> ragedShootBeats = new List<bool>();
     public int xShootDirection;
     public int yShootDirection;
     public int damage;
@@ -43,7 +44,7 @@ public class BasicBulletEnemy : BasicEnemy
         //        shootInterval = Random.Range(2, 6);
         //    }
         //}
-        /*else */if(/*!isRandom && */shootBeats[beatIndex])
+        /*else */if(/*!isRandom && */(shootBeats[beatIndex] && !isRaged) || (ragedShootBeats[beatIndex] && isRaged))
         {
             Shoot();
         }

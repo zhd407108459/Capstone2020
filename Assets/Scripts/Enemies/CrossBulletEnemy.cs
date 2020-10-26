@@ -7,6 +7,7 @@ public class CrossBulletEnemy : BasicEnemy
     public GameObject bulletPrefab;
 
     public List<bool> shootBeats = new List<bool>();
+    public List<bool> ragedShootBeats = new List<bool>();
     public int damage;
 
     private int attackTimer;
@@ -28,7 +29,7 @@ public class CrossBulletEnemy : BasicEnemy
         {
             return;
         }
-        if (shootBeats[beatIndex])
+        if ((shootBeats[beatIndex] && !isRaged) || (ragedShootBeats[beatIndex] && isRaged)) 
         {
             Shoot(1, 0);
             Shoot(-1, 0);

@@ -7,6 +7,7 @@ public class EnemyGridBullet : RhythmObject
     public float movementLerpValue;
 
     public int damage;
+    public GameObject bounceOffBulletPrefab;
 
     public int xDirection;
     public int yDirection;
@@ -69,6 +70,10 @@ public class EnemyGridBullet : RhythmObject
         }
         if (collision.tag.Equals("PlayerShield"))
         {
+            GameObject go = Instantiate(bounceOffBulletPrefab, transform.position, transform.rotation);
+            go.GetComponent<PlayerGridBullet>().xDirection = -xDirection;
+            go.GetComponent<PlayerGridBullet>().SetUp(xPos - xDirection, yPos);
+            go.GetComponent<PlayerGridBullet>().damage = damage;
             Destroy(this.gameObject);
         }
     }
