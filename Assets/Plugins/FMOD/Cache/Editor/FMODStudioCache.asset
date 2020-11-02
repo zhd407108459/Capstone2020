@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8973803220784265507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637399130924895036
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-8940148823366845414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16,7 +34,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-8658000387281637243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +68,7 @@ MonoBehaviour:
   Path: event:/MX/Cutscene/MX_LV1_Cutscene_A_Tranquil_Encounter
   guid: 7d20ea19001c2047855651be1e405d1a
   Banks:
-  - {fileID: -4994998044868531825}
+  - {fileID: -8973803220784265507}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -90,7 +108,7 @@ MonoBehaviour:
   Path: event:/MX/Title/MX_Title_Vigorus
   guid: e369ac615dff414ea99dd2436ab9c4f0
   Banks:
-  - {fileID: -4994998044868531825}
+  - {fileID: -8973803220784265507}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -116,6 +134,40 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-6175319324286883919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Keys
+  m_EditorClassIdentifier: 
+  Name: Keys
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-6059450404569306121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Tension
+  m_EditorClassIdentifier: 
+  Name: Tension
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-5190374349848598709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +202,7 @@ MonoBehaviour:
   lastModified: 637398658866774579
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-4721529308077249028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +220,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-4693606842167162982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Bass&Lead
+  m_EditorClassIdentifier: 
+  Name: Bass&Lead
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-3027131306048476880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,16 +269,16 @@ MonoBehaviour:
   Path: event:/MX/BattleScene/Level1-Battle
   guid: d4dd64cc1ea9604e8f2a2400bd4dba19
   Banks:
-  - {fileID: -4994998044868531825}
+  - {fileID: -8973803220784265507}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -8940148823366845414}
-  - {fileID: 7582967191317008447}
-  - {fileID: -137624167934143382}
-  - {fileID: 4202859357407634374}
-  - {fileID: 5710686895217899647}
+  - {fileID: -6059450404569306121}
+  - {fileID: -6175319324286883919}
+  - {fileID: 5882249802522617783}
+  - {fileID: -447878774132747242}
+  - {fileID: -4693606842167162982}
   MinDistance: 0
   MaxDistance: 0
   Length: 153600
@@ -228,7 +297,7 @@ MonoBehaviour:
   Path: event:/MX/Character/MX_Character_A_Sip_of_Matiny
   guid: 00fca1ca40a616488727588845750b1b
   Banks:
-  - {fileID: -4994998044868531825}
+  - {fileID: -8973803220784265507}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -236,6 +305,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 54857
+--- !u!114 &-447878774132747242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Synth
+  m_EditorClassIdentifier: 
+  Name: Synth
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-137624167934143382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +338,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-4397572943429002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,8 +370,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 2283055639641756449}
-  - {fileID: 4203927390773489441}
-  - {fileID: -4994998044868531825}
+  - {fileID: 9084202153331065200}
+  - {fileID: -8973803220784265507}
   EditorEvents:
   - {fileID: -1574000914294541748}
   - {fileID: -8285161973475372504}
@@ -295,10 +381,10 @@ MonoBehaviour:
   - {fileID: -7885768906320484951}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 4203927390773489441}
+  - {fileID: 9084202153331065200}
   StringsBanks:
   - {fileID: 2283055639641756449}
-  stringsBankWriteTime: 637398658777339497
+  stringsBankWriteTime: 637399038830477834
   cacheVersion: 3
 --- !u!114 &143472933990961310
 MonoBehaviour:
@@ -352,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FmodSoundSystem/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637398658777339497
+  lastModified: 637399038830477834
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -426,7 +512,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &4203927390773489441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,7 +530,7 @@ MonoBehaviour:
   lastModified: 637398658777329523
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &4905332726308111761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,7 +582,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &5738351084886491310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,6 +600,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &5882249802522617783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Drums
+  m_EditorClassIdentifier: 
+  Name: Drums
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &7539433682395612595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,7 +650,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &7962859878480421828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,7 +666,7 @@ MonoBehaviour:
   Path: event:/MX/BossFight/MX_Boss_Strange_Villa
   guid: c9f7fe130fbba746a07f844a8e8a33a1
   Banks:
-  - {fileID: -4994998044868531825}
+  - {fileID: -8973803220784265507}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -586,7 +689,7 @@ MonoBehaviour:
   Path: event:/MX/BossFight/MX_Boss_Negativity_Allergy
   guid: cf82406db85d6f4fbc58d4a7476bc3d0
   Banks:
-  - {fileID: -4994998044868531825}
+  - {fileID: -8973803220784265507}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -594,3 +697,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 108754
+--- !u!114 &9084202153331065200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637399038830098852
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1

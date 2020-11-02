@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class BeatsManager : MonoBehaviour
 {
     public static BeatsManager instance;
 
     public AudioSource bgm;
+
+    public EventInstance normalBGMEvent;
 
     public float beatsTime;//节拍时间间隔
 
@@ -32,9 +36,12 @@ public class BeatsManager : MonoBehaviour
 
     void Start()
     {
-        if(SettingManager.instance != null)
+        normalBGMEvent = RuntimeManager.CreateInstance("event:/MX/BattleScene/Level1-Battle");
+        
+        if (SettingManager.instance != null)
         {
-            bgm.volume = SettingManager.instance.overAllVolume;
+            //bgm.volume = SettingManager.instance.overAllVolume;
+            normalBGMEvent.setVolume(SettingManager.instance.overAllVolume);
         }
         StartBeats();
     }
@@ -45,7 +52,7 @@ public class BeatsManager : MonoBehaviour
         {
             UpdateBeats();
         }
-        lastAudioTime = bgm.time;
+        lastAudioTime = GetBgmTime();
     }
 
     private void OnApplicationFocus(bool focus)
@@ -60,8 +67,8 @@ public class BeatsManager : MonoBehaviour
     //Update节拍
     void UpdateBeats()
     {
-        
-        if (bgm.time < lastAudioTime)
+        float bgmTime = GetBgmTime();
+        if (bgmTime < lastAudioTime)
         {
             totalIndex = 0;
             beatsIndex = 0;
@@ -72,7 +79,7 @@ public class BeatsManager : MonoBehaviour
             beatsTips[i].transform.localScale = Vector3.Lerp(beatsTips[i].transform.localScale, new Vector3(1, 1, 1), 15.0f * Time.deltaTime);
         }
 
-        while (bgm.time >= beatsTime * totalIndex)
+        while (bgmTime >= beatsTime * totalIndex)
         {
             //Debug.Log((int)(bgm.time / beatsTime));
             //Debug.Log(beatsIndex);
@@ -109,18 +116,22 @@ public class BeatsManager : MonoBehaviour
         beatsIndex = 0;
         beatsTips[beatsIndex].transform.localScale = new Vector3(2, 2, 2);
         totalIndex = 0;
-        lastAudioTime = bgm.time;
-        bgm.Play();
+        normalBGMEvent.start();
+        normalBGMEvent.setTimelinePosition(148800);
+        lastAudioTime = GetBgmTime();
+        //bgm.Play();
     }
 
     public float GetTimeToNearestBeat()
     {
-        return (bgm.time - beatsTime * (totalIndex - 1)) > Mathf.Abs(beatsTime * totalIndex - bgm.time) ? Mathf.Abs(beatsTime * totalIndex - bgm.time) : (bgm.time - beatsTime * (totalIndex - 1));
+        float bgmTime = GetBgmTime();
+        return (bgmTime - beatsTime * (totalIndex - 1)) > Mathf.Abs(beatsTime * totalIndex - bgmTime) ? Mathf.Abs(beatsTime * totalIndex - bgmTime) : (bgmTime - beatsTime * (totalIndex - 1));
     }
 
     public int GetIndexToNearestBeat()
     {
-        if((bgm.time - beatsTime * (totalIndex - 1)) > Mathf.Abs(beatsTime * totalIndex - bgm.time))
+        float bgmTime = GetBgmTime();
+        if ((bgmTime - beatsTime * (totalIndex - 1)) > Mathf.Abs(beatsTime * totalIndex - bgmTime))
         {
             return beatsIndex;
         }
@@ -132,11 +143,26 @@ public class BeatsManager : MonoBehaviour
 
     public float GetTimeToLastBeat()
     {
-        return (bgm.time - beatsTime * (totalIndex - 1));
+        float bgmTime = GetBgmTime();
+        return (bgmTime - beatsTime * (totalIndex - 1));
     }
 
     public float GetTimeToNextBeat()
     {
-        return Mathf.Abs(beatsTime * totalIndex - bgm.time);
+        float bgmTime = GetBgmTime();
+        return Mathf.Abs(beatsTime * totalIndex - bgmTime);
+    }
+
+    public float GetBgmTime()
+    {
+        int tempMS;
+        normalBGMEvent.getTimelinePosition(out tempMS);
+        float bgmTime = (float)tempMS / 1000.0f;
+        return bgmTime;
+    }
+    
+    public void SetNormalBGMParameter()
+    {
+
     }
 }
