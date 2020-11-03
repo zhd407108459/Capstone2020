@@ -49,6 +49,8 @@ MonoBehaviour:
   isActivated: 0
   maxHealth: 40
   healthSlider: {fileID: 3395455684961035348}
+  damage: 10
+  damageIncreasement: 0
   xPos: 9
   yPos: 4
   health: 0
@@ -56,11 +58,14 @@ MonoBehaviour:
   isRaged: 0
   bulletPrefab: {fileID: 7495573493685990044, guid: 856d2611a36d59749a20a1adf6528f94,
     type: 3}
+  deathRattlePrefab: {fileID: 2237685306329113308, guid: 47d31f80bdfd0834eaf13d60c1a07804,
+    type: 3}
+  deathRattleBuffIconPrefab: {fileID: 2936009423049095582, guid: 8edf4caaffdf4b44c96349736f29e671,
+    type: 3}
   shootBeats: 00000100
   ragedShootBeats: 01000100
   xShootDirection: -1
   yShootDirection: 0
-  damage: 10
 --- !u!61 &6421224174414860272
 BoxCollider2D:
   m_ObjectHideFlags: 0

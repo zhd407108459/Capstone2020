@@ -538,6 +538,26 @@ public class GridManager : RhythmObject
         }
     }
 
+    public BasicEnemy GetRandomEnemy()
+    {
+        List<BasicEnemy> tempList = new List<BasicEnemy>();
+        for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+        {
+            if (phases[phaseIndex].enemies[i].gameObject.activeSelf)
+            {
+                tempList.Add(phases[phaseIndex].enemies[i]);
+            }
+        }
+        if(tempList.Count > 0)
+        {
+            return tempList[Random.Range(0, tempList.Count)];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public void ShowNextStageIcon()
     {
         nextStageIcon.SetActive(true);

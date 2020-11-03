@@ -9,6 +9,8 @@ public class BasicEnemy : RhythmObject
 
     public int maxHealth;
     public Slider healthSlider;
+    public int damage;
+    public float damageIncreasement;
 
     public int xPos;
     public int yPos;
@@ -24,6 +26,7 @@ public class BasicEnemy : RhythmObject
         isActivated = true;
         isRaged = false;
         health = maxHealth;
+        damageIncreasement = 1.0f;
         healthSlider.value = (float)health / (float)maxHealth;
     }
 
@@ -49,7 +52,7 @@ public class BasicEnemy : RhythmObject
         healthSlider.value = (float)health / (float)maxHealth;
     }
 
-    public void Die()
+    public virtual void Die()
     {
         this.gameObject.SetActive(false);
         if (GridManager.instance.IsEnemyClear())

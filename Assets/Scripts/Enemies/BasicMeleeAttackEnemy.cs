@@ -7,7 +7,6 @@ public class BasicMeleeAttackEnemy : BasicEnemy
     public float attackLerpValue;
 
     //public bool isRandom;
-    public int damage;
     [Range(1, 7)] public int attackInterval;
     [Range(0, 7)] public int startDelay;
 
@@ -180,7 +179,7 @@ public class BasicMeleeAttackEnemy : BasicEnemy
 
     void CauseDamage()
     {
-        GameManager.instance.player.GetComponent<PlayerHealth>().TakeDamage(damage);
+        GameManager.instance.player.GetComponent<PlayerHealth>().TakeDamage((int)(damage * damageIncreasement));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

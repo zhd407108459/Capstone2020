@@ -8,7 +8,6 @@ public class CrossBulletEnemy : BasicEnemy
 
     public List<bool> shootBeats = new List<bool>();
     public List<bool> ragedShootBeats = new List<bool>();
-    public int damage;
 
     private int attackTimer;
 
@@ -43,7 +42,7 @@ public class CrossBulletEnemy : BasicEnemy
         GameObject go = Instantiate(bulletPrefab, transform.position, transform.rotation);
         go.GetComponent<EnemyGridBullet>().xDirection = xShootDirection;
         go.GetComponent<EnemyGridBullet>().yDirection = yShootDirection;
-        go.GetComponent<EnemyGridBullet>().damage = damage;
+        go.GetComponent<EnemyGridBullet>().damage = (int)(damage * damageIncreasement);
         go.GetComponent<EnemyGridBullet>().SetUp(xPos + xShootDirection, yPos + yShootDirection);
     }
 }
