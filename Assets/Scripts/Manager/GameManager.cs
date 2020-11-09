@@ -68,13 +68,15 @@ public class GameManager : MonoBehaviour
         if (isPaused)
         {
             isPaused = false;
-            BeatsManager.instance.bgm.UnPause();
+            //BeatsManager.instance.bgm.UnPause();
+            BeatsManager.instance.ResumeBGM();
             HidePausePanel();
         }
         else
         {
             isPaused = true;
-            BeatsManager.instance.bgm.Pause();
+            //BeatsManager.instance.bgm.Pause();
+            BeatsManager.instance.PauseBGM();
             ShowPausePanel();
         }
     }
@@ -84,19 +86,22 @@ public class GameManager : MonoBehaviour
         if (!pause && isPaused)
         {
             isPaused = false;
-            BeatsManager.instance.bgm.UnPause();
+            //BeatsManager.instance.bgm.UnPause();
+            BeatsManager.instance.ResumeBGM();
             HidePausePanel();
         }
         else if (pause && !isPaused)
         {
             isPaused = true;
-            BeatsManager.instance.bgm.Pause();
+            //BeatsManager.instance.bgm.Pause();
+            BeatsManager.instance.PauseBGM();
             ShowPausePanel();
         }
     }
 
     public void BackToMenu()
     {
+        BeatsManager.instance.StopBGM();
         SceneManager.LoadScene(0);
     }
 

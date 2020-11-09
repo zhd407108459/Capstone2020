@@ -165,4 +165,19 @@ public class BeatsManager : MonoBehaviour
     {
 
     }
+
+    public void PauseBGM()
+    {
+        normalBGMEvent.setPaused(true);
+    }
+
+    public void ResumeBGM()
+    {
+        normalBGMEvent.setPaused(false);
+    }
+
+    public void StopBGM()
+    {
+        normalBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
 }
