@@ -88,10 +88,15 @@ public class GridManager : RhythmObject
             if(rageTimer > 0)
             {
                 rageTimer -= Time.deltaTime;
+                if(rageTimer / phases[phaseIndex].rageTime < 0.25f && lastRageTimer / phases[phaseIndex].rageTime >= 0.25f)
+                {
+                    BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 3);
+                }
                 if (rageTimer <= 0 && lastRageTimer > 0)
                 {
                     rageTimer = 0;
                     //Rage
+                    BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 4);
                     for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
                     {
                         phases[phaseIndex].enemies[i].isRaged = true;
@@ -107,6 +112,7 @@ public class GridManager : RhythmObject
 
     private void Initialize()
     {
+        BeatsManager.instance.StartBeats();
         for (int i = 0; i < phases.Count; i++)
         {
             phases[i].Initialize();
@@ -187,6 +193,8 @@ public class GridManager : RhythmObject
             phaseIndex++;
             if (!IsInBattlePhase())
             {
+                BeatsManager.instance.SetNormalBGMParameter("GamePhase", 2);
+                BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 5);
                 isCameraFollowing = true;
                 setAbilities.ClearAbilities();
                 HideNextStageIcon();
@@ -260,6 +268,7 @@ public class GridManager : RhythmObject
         ResetGeneratingBuffsAndDebuffs();
         isInPhase = false;
         setAbilities.Show();
+        BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 5);
     }
 
     public void PreActivateCurrentPhase()
@@ -268,6 +277,8 @@ public class GridManager : RhythmObject
         isCounting = true;
         timerText.gameObject.SetActive(true);
         timerText.text = (preActivateTime - timer).ToString();
+        BeatsManager.instance.SetNormalBGMParameter("GamePhase", 0);
+        BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 0);
     }
 
     public void ActivateCurrentPhase()

@@ -43,7 +43,6 @@ public class BeatsManager : MonoBehaviour
             //bgm.volume = SettingManager.instance.overAllVolume;
             normalBGMEvent.setVolume(SettingManager.instance.overAllVolume);
         }
-        StartBeats();
     }
 
     void Update()
@@ -118,6 +117,7 @@ public class BeatsManager : MonoBehaviour
         totalIndex = 0;
         normalBGMEvent.start();
         normalBGMEvent.setTimelinePosition(148800);
+        SetNormalBGMDefault();
         lastAudioTime = GetBgmTime();
         //bgm.Play();
     }
@@ -161,11 +161,6 @@ public class BeatsManager : MonoBehaviour
         return bgmTime;
     }
     
-    public void SetNormalBGMParameter()
-    {
-
-    }
-
     public void PauseBGM()
     {
         normalBGMEvent.setPaused(true);
@@ -179,5 +174,18 @@ public class BeatsManager : MonoBehaviour
     public void StopBGM()
     {
         normalBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
+    public void SetNormalBGMDefault()
+    {
+        normalBGMEvent.setParameterByName("GamePhase", 2);
+        normalBGMEvent.setParameterByName("TimeNumReact", 5);
+        normalBGMEvent.setParameterByName("LowHealth", 0);
+        normalBGMEvent.setParameterByName("Combo", 0);
+    }
+
+    public void SetNormalBGMParameter(string name, float value)
+    {
+        normalBGMEvent.setParameterByName(name, value);
     }
 }

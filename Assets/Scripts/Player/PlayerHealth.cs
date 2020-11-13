@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void TakeDamage(int damage)
@@ -30,6 +30,9 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
         healthSlider.value = (float)health / (float)maxHealth;
+        if((float)health / (float)maxHealth < 0.25f){
+            BeatsManager.instance.SetNormalBGMParameter("LowHealth", 1);
+        }
     }
 
     public void Die()
@@ -46,11 +49,16 @@ public class PlayerHealth : MonoBehaviour
             health = maxHealth;
         }
         healthSlider.value = (float)health / (float)maxHealth;
+        if ((float)health / (float)maxHealth >= 0.25f)
+        {
+            BeatsManager.instance.SetNormalBGMParameter("LowHealth", 0);
+        }
     }
 
     public void RecoverAll()
     {
         health = maxHealth;
         healthSlider.value = (float)health / (float)maxHealth;
+        BeatsManager.instance.SetNormalBGMParameter("LowHealth", 0);
     }
 }
