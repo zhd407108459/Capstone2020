@@ -76,7 +76,7 @@ public class GridManager : RhythmObject
 
     void Update()
     {
-        if (isCameraFollowing && !GameManager.instance.isPaused)
+        if (!GameManager.instance.isPaused)
         {
             UpdateTargetCameraPosition();
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetCameraPos, cameraFollowLerpValue * Time.deltaTime);
@@ -422,20 +422,20 @@ public class GridManager : RhythmObject
         {
             if (GameManager.instance.player.transform.position.x < GetPhaseInitialPosition().x + cameraDistanceToBoundary)
             {
-                targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, cameraObject.transform.position.y, cameraObject.transform.position.z);
+                targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
             }
             else if (GameManager.instance.player.transform.position.x > GetPhaseEndPosition().x - cameraDistanceToBoundary)
             {
-                targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, cameraObject.transform.position.y, cameraObject.transform.position.z);
+                targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
             }
             else
             {
-                targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, cameraObject.transform.position.y, cameraObject.transform.position.z);
+                targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, 0, cameraObject.transform.position.z);
             }
         }
         else
         {
-            targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, cameraObject.transform.position.y, cameraObject.transform.position.z);
+            targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
         }
     }
 
@@ -587,6 +587,10 @@ public class GridManager : RhythmObject
             for (int j = 0; j < phases[i].basicPlatforms.Count; j++)
             {
                 phases[i].basicPlatforms[j].transform.position = GetPhaseInitialPosition(i) + new Vector2(phases[i].basicPlatforms[j].xPos * gridSize.x, phases[i].basicPlatforms[j].yPos * gridSize.y);
+                if(phases[i].basicPlatforms[j].sprite != null)
+                {
+                    phases[i].basicPlatforms[j].sprite.sortingOrder = 5 + 10 * (4 - phases[i].basicPlatforms[j].yPos);
+                }
             }
             for (int j = 0; j < phases[i].enemies.Count; j++)
             {

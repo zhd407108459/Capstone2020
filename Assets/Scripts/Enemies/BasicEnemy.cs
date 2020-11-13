@@ -14,6 +14,7 @@ public class BasicEnemy : RhythmObject
 
     public int xPos;
     public int yPos;
+    public SpriteRenderer sprite;
 
     [HideInInspector] public int health;
 
@@ -43,6 +44,7 @@ public class BasicEnemy : RhythmObject
 
     public void TakeDamage(int damage)
     {
+        Camera.main.GetComponent<CameraShake>().Shake();
         health -= damage;
         if(health <= 0)
         {

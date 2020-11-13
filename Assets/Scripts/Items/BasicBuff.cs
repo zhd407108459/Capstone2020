@@ -8,6 +8,7 @@ public class BasicBuff : RhythmObject
     public int yPos;
 
     public int existingTime;
+    public SpriteRenderer sprite;
 
     protected int existingTimer;
 

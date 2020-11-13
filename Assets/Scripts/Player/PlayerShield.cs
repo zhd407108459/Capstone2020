@@ -67,6 +67,7 @@ public class PlayerShield : RhythmObject
             if (cos[i].tag.Equals("EnemyBullet"))
             {
                 Destroy(cos[i].gameObject);
+                Camera.main.GetComponent<CameraShake>().Shake();
             }
         }
         //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;

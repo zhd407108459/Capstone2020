@@ -6,4 +6,6 @@ public class BasicPlatform : MonoBehaviour
 {
     public int xPos;
     public int yPos;
+
+    public SpriteRenderer sprite;
 }
