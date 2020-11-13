@@ -80,13 +80,15 @@ public class PlayerMeleeAttack : RhythmObject
                     if(action.damageIncreasingRatio > 1)
                     {
                         cos[i].GetComponent<BasicEnemy>().TakeDamage((int)(damage * action.damageIncreasingRatio));
+                        cos[i].GetComponent<BasicEnemy>().MeleeAttacked();
                         action.EndIncreasingDamage();
                     }
                     else
                     {
                         cos[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                        cos[i].GetComponent<BasicEnemy>().MeleeAttacked();
                     }
-                    cos[i].GetComponent<BasicEnemy>().MeleeAttacked();
+                    Camera.main.GetComponent<CameraShake>().Shake();
                 }
             }
         }

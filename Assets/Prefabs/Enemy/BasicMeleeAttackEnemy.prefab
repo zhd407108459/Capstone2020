@@ -193,7 +193,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 55
   m_Sprite: {fileID: 21300000, guid: f595dcf75c186204487563160309d347, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -426,13 +426,15 @@ MonoBehaviour:
   isActivated: 0
   maxHealth: 60
   healthSlider: {fileID: 4534291558580733056}
+  damage: 20
+  damageIncreasement: 0
   xPos: 5
   yPos: 1
+  sprite: {fileID: 1566345605455049531}
   health: 0
   isMeleeAttacked: 0
+  isRaged: 0
   attackLerpValue: 10
-  isRandom: 0
-  damage: 20
   attackInterval: 2
   startDelay: 0
 --- !u!1 &6742594493105562676
@@ -493,7 +495,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &6803506206231531611
 MonoBehaviour:
