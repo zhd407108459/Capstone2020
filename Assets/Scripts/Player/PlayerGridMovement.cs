@@ -90,7 +90,7 @@ public class PlayerGridMovement : MonoBehaviour
             //Temp
             if(GridManager.instance.phaseIndex < GridManager.instance.phases.Count - 1)
             {
-                if (GridManager.instance.IsInBattlePhase())
+                if (GridManager.instance.IsInBattlePhase() && !GridManager.instance.isBossFight)
                 {
                     if (GridManager.instance.IsEnemyClear())
                     {
@@ -104,7 +104,17 @@ public class PlayerGridMovement : MonoBehaviour
                     GridManager.instance.StartNextPhase();
 
                 }
-                
+
+            }
+            else
+            {
+                if (!GridManager.instance.isBossFight)
+                {
+                    if (GridManager.instance.IsEnemyClear())
+                    {
+                        GameManager.instance.LoadNextScene();
+                    }
+                }
             }
         }
         else

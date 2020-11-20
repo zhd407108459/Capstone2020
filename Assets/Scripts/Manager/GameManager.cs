@@ -111,17 +111,28 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
+    public void LoadNextScene()
+    {
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene + 1, LoadSceneMode.Single);
+        BeatsManager.instance.StopBGM();
+        if(SettingManager.instance != null)
+        {
+            SettingManager.instance.targetPhase = 0;
+        }
+    }
+
     public void PlayerDie()
     {
         isPaused = true;
-        BeatsManager.instance.bgm.Pause();
+        BeatsManager.instance.PauseBGM();
         deadPanel.SetActive(true);
     }
 
     void RestartCurrentBattle()
     {
         isPaused = false;
-        BeatsManager.instance.bgm.UnPause();
+        BeatsManager.instance.ResumeBGM();
         GridManager.instance.RestartCurrentPhase();
         deadPanel.SetActive(false);
     }

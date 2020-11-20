@@ -42,7 +42,10 @@ public class EnemyDeathBuffParticle : MonoBehaviour
             if (Vector3.Distance(transform.position, targetEnemy.transform.position) < 0.02f)
             {
                 events.Invoke();
-                Instantiate(buffIconPrefab, targetEnemy.transform.position, targetEnemy.transform.rotation);
+                if(buffIconPrefab != null)
+                {
+                    Instantiate(buffIconPrefab, targetEnemy.transform.position, targetEnemy.transform.rotation);
+                }
                 Destroy(this.gameObject);
             }
         }

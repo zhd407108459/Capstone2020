@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GridManager : RhythmObject
 {
     public static GridManager instance;
+
+    public bool isBossFight;
+    public BeatBoss boss;
 
     public Vector2 gridSize;
     public Vector2 initialPos;
@@ -51,6 +55,8 @@ public class GridManager : RhythmObject
     private float lastRageTimer;
     private float recordTimer;
 
+    private bool isBoss2Phase;
+
     void Awake()
     {
         if (instance == null)
@@ -74,7 +80,9 @@ public class GridManager : RhythmObject
         Initialize();
     }
 
-    void Update()
+    
+
+    void LateUpdate()
     {
         if (!GameManager.instance.isPaused)
         {
@@ -82,7 +90,7 @@ public class GridManager : RhythmObject
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetCameraPos, cameraFollowLerpValue * Time.deltaTime);
             fixedBackground.transform.position = new Vector3(cameraObject.transform.position.x, cameraObject.transform.position.y, fixedBackground.transform.position.z);
         }
-        if (!GameManager.instance.isPaused && IsInBattlePhase() && isInPhase)
+        if (!GameManager.instance.isPaused && IsInBattlePhase() && isInPhase && !isBoss2Phase)
         {
             recordTimer += Time.deltaTime;
             if(rageTimer > 0)
@@ -96,10 +104,32 @@ public class GridManager : RhythmObject
                 {
                     rageTimer = 0;
                     //Rage
-                    BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 4);
-                    for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+                    if (!isBossFight)
                     {
-                        phases[phaseIndex].enemies[i].isRaged = true;
+                        BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 4);
+                        for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+                        {
+                            phases[phaseIndex].enemies[i].isRaged = true;
+                        }
+                    }
+                    else
+                    {
+                        BeatsManager.instance.PauseBGM();
+                        //Start the second phase
+                        isBoss2Phase = true;
+                        rageTimerSlider.gameObject.SetActive(false);
+                        rageTimerText.gameObject.SetActive(false);
+                        BeatsManager.instance.SwitchToBoss2BGM();
+                        setAbilities.Show();
+                        isInPhase = false;
+                        foreach (var n in FindObjectsOfType<EnemyGridBullet>())
+                        {
+                            Destroy(n.gameObject);
+                        }
+                        foreach (var n in FindObjectsOfType<PlayerGridBullet>())
+                        {
+                            Destroy(n.gameObject);
+                        }
                     }
                 }
                 rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
@@ -112,7 +142,15 @@ public class GridManager : RhythmObject
 
     private void Initialize()
     {
-        BeatsManager.instance.StartBeats();
+        if (!isBossFight)
+        {
+            BeatsManager.instance.StartBeats();
+        }
+        else
+        {
+            phases[0].rageTime = BeatsManager.instance.GetBoss1BGMLength();
+            Debug.Log(BeatsManager.instance.GetBoss1BGMLength());
+        }
         for (int i = 0; i < phases.Count; i++)
         {
             phases[i].Initialize();
@@ -262,6 +300,10 @@ public class GridManager : RhythmObject
         {
             Destroy(n.gameObject);
         }
+        if (isBossFight)
+        {
+            boss.isActivated = false;
+        }
         rageTimer = phases[phaseIndex].rageTime;
         rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
         rageTimerSlider.value = 1;
@@ -279,6 +321,10 @@ public class GridManager : RhythmObject
         timerText.text = (preActivateTime - timer).ToString();
         BeatsManager.instance.SetNormalBGMParameter("GamePhase", 0);
         BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 0);
+        if (isBossFight)
+        {
+            BeatsManager.instance.StartBeats();
+        }
     }
 
     public void ActivateCurrentPhase()
@@ -287,6 +333,10 @@ public class GridManager : RhythmObject
         for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
         {
             phases[phaseIndex].enemies[i].Activate();
+        }
+        if (isBossFight)
+        {
+            boss.isActivated = true;
         }
         isCounting = false;
         ResetGeneratingBuffsAndDebuffs();
@@ -548,6 +598,27 @@ public class GridManager : RhythmObject
             return true;
         }
     }
+
+    public List<BasicEnemy> GetAllEnemies()
+    {
+        List<BasicEnemy> tempList = new List<BasicEnemy>();
+        for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+        {
+            if (phases[phaseIndex].enemies[i].gameObject.activeSelf)
+            {
+                tempList.Add(phases[phaseIndex].enemies[i]);
+            }
+        }
+        if (tempList.Count > 0)
+        {
+            return tempList;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 
     public BasicEnemy GetRandomEnemy()
     {

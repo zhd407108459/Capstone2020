@@ -8,9 +8,17 @@ public class BeatsManager : MonoBehaviour
 {
     public static BeatsManager instance;
 
-    public AudioSource bgm;
+    //public AudioSource bgm;
 
-    public EventInstance normalBGMEvent;
+    public bool isBossFight;
+
+    public EventInstance bgmEvent;
+    public string normalBGMEventPath = "event:/MX/BattleScene/Level1-Battle";
+    public string boss1BGMEventPath = "event:/MX/BossFight/MX_Boss_Strange_Villa";
+    public string boss2BGMEventPath = "event:/MX/BattleScene/Level1-Battle";
+    public SongInfo bossSongInfo;
+    public string boss1SongInfoPath;
+    public string boss2SongInfoPath;
 
     public float beatsTime;//节拍时间间隔
 
@@ -21,6 +29,12 @@ public class BeatsManager : MonoBehaviour
     private int totalIndex;
     private float lastAudioTime;
 
+    private float[] normalBGMParameters = new float[4];
+    private float bgmVolume;
+
+    private bool isVolumeFading;
+
+    private int isNeedSwitch = 0;//0 = not need, 1 = boss2
 
     void Awake()
     {
@@ -36,12 +50,30 @@ public class BeatsManager : MonoBehaviour
 
     void Start()
     {
-        normalBGMEvent = RuntimeManager.CreateInstance("event:/MX/BattleScene/Level1-Battle");
+        if (!isBossFight)
+        {
+            bgmEvent = RuntimeManager.CreateInstance(normalBGMEventPath);
+        }
+        else
+        {
+            bgmEvent = RuntimeManager.CreateInstance(boss1BGMEventPath);
+            bossSongInfo = new SongInfo();
+            bossSongInfo.LoadFromPath(boss1SongInfoPath);
+            beatsTime = (float)bossSongInfo.interval;
+            Debug.Log(bossSongInfo.length);
+        }
+
         
         if (SettingManager.instance != null)
         {
             //bgm.volume = SettingManager.instance.overAllVolume;
-            normalBGMEvent.setVolume(SettingManager.instance.overAllVolume);
+            bgmEvent.setVolume(SettingManager.instance.overAllVolume);
+            bgmVolume = SettingManager.instance.overAllVolume;
+        }
+        else
+        {
+            bgmEvent.setVolume(1);
+            bgmVolume = 1;
         }
     }
 
@@ -50,6 +82,15 @@ public class BeatsManager : MonoBehaviour
         if (!GameManager.instance.isPaused)
         {
             UpdateBeats();
+            if (!isBossFight)
+            {
+                UpdateNormalBGMParameter();
+            }
+            else
+            {
+
+            }
+            UpdateBGMVolume();
         }
         lastAudioTime = GetBgmTime();
     }
@@ -81,7 +122,7 @@ public class BeatsManager : MonoBehaviour
         while (bgmTime >= beatsTime * totalIndex)
         {
             //Debug.Log((int)(bgm.time / beatsTime));
-            //Debug.Log(beatsIndex);
+            //Debug.Log(totalIndex);
             //变化节拍结束点大小
             beatsTips[beatsIndex].transform.localScale = new Vector3(2, 2, 2);
             //Debug.Log("Beat!");
@@ -108,6 +149,17 @@ public class BeatsManager : MonoBehaviour
                 objects[i].OnBeat(beatsIndex);
             }
         }
+        if (isBossFight)
+        {
+            BeatBoss[] boss = FindObjectsOfType<BeatBoss>();
+            for (int i = 0; i < boss.Length; i++)
+            {
+                if (boss[i].gameObject.activeSelf)
+                {
+                    boss[i].OnBeat(totalIndex);
+                }
+            }
+        }
     }
 
     public void StartBeats()
@@ -115,9 +167,16 @@ public class BeatsManager : MonoBehaviour
         beatsIndex = 0;
         beatsTips[beatsIndex].transform.localScale = new Vector3(2, 2, 2);
         totalIndex = 0;
-        normalBGMEvent.start();
-        normalBGMEvent.setTimelinePosition(148800);
-        SetNormalBGMDefault();
+        bgmEvent.start();
+        if (!isBossFight)
+        {
+            bgmEvent.setTimelinePosition(148800);
+            SetNormalBGMDefault();
+        }
+        else
+        {
+            bgmEvent.setTimelinePosition(0);
+        }
         lastAudioTime = GetBgmTime();
         //bgm.Play();
     }
@@ -156,36 +215,152 @@ public class BeatsManager : MonoBehaviour
     public float GetBgmTime()
     {
         int tempMS;
-        normalBGMEvent.getTimelinePosition(out tempMS);
+        bgmEvent.getTimelinePosition(out tempMS);
         float bgmTime = (float)tempMS / 1000.0f;
         return bgmTime;
     }
     
     public void PauseBGM()
     {
-        normalBGMEvent.setPaused(true);
+        bgmEvent.setPaused(true);
     }
 
     public void ResumeBGM()
     {
-        normalBGMEvent.setPaused(false);
+        bgmEvent.setPaused(false);
     }
 
     public void StopBGM()
     {
-        normalBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        bgmEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     public void SetNormalBGMDefault()
     {
-        normalBGMEvent.setParameterByName("GamePhase", 2);
-        normalBGMEvent.setParameterByName("TimeNumReact", 5);
-        normalBGMEvent.setParameterByName("LowHealth", 0);
-        normalBGMEvent.setParameterByName("Combo", 0);
+        bgmEvent.setParameterByName("GamePhase", 2);
+        bgmEvent.setParameterByName("TimeNumReact", 5);
+        bgmEvent.setParameterByName("LowHealth", 0);
+        bgmEvent.setParameterByName("Combo", 0);
+        normalBGMParameters[0] = 2;
+        normalBGMParameters[1] = 5;
+        normalBGMParameters[2] = 0;
+        normalBGMParameters[3] = 0;
     }
 
     public void SetNormalBGMParameter(string name, float value)
     {
-        normalBGMEvent.setParameterByName(name, value);
+        if (name.Equals("GamePhase"))
+        {
+            //if(Mathf.Abs(normalBGMParameters[0] - value) > 1.1f)
+            //{
+            //    BGMVolumeFade();
+            //}
+            normalBGMParameters[0] = value;
+        }
+        if (name.Equals("TimeNumReact"))
+        {
+            //if (Mathf.Abs(normalBGMParameters[1] - value) > 1.1f)
+            //{
+            //    BGMVolumeFade();
+            //}
+            normalBGMParameters[1] = value;
+        }
+        if (name.Equals("LowHealth"))
+        {
+            //if (Mathf.Abs(normalBGMParameters[2] - value) > 1.1f)
+            //{
+            //    BGMVolumeFade();
+            //}
+            normalBGMParameters[2] = value;
+        }
+        if (name.Equals("Combo"))
+        {
+            //if (Mathf.Abs(normalBGMParameters[3] - value) > 1.1f)
+            //{
+            //    BGMVolumeFade();
+            //}
+            normalBGMParameters[3] = value;
+        }
+    }
+
+    float GetBGMParameter(string name)
+    {
+        float result;
+        bgmEvent.getParameterByName(name, out result);
+        return result;
+    }
+
+    void UpdateNormalBGMParameter()
+    {
+        if(GetBGMParameter("GamePhase") != normalBGMParameters[0])
+        {
+            bgmEvent.setParameterByName("GamePhase", Mathf.Lerp(GetBGMParameter("GamePhase"), normalBGMParameters[0], 3.0f * Time.deltaTime));
+        }
+        if (GetBGMParameter("TimeNumReact") != normalBGMParameters[1])
+        {
+            bgmEvent.setParameterByName("TimeNumReact", Mathf.Lerp(GetBGMParameter("TimeNumReact"), normalBGMParameters[1], 3.0f * Time.deltaTime));
+        }
+        if (GetBGMParameter("LowHealth") != normalBGMParameters[2])
+        {
+            bgmEvent.setParameterByName("LowHealth", Mathf.Lerp(GetBGMParameter("LowHealth"), normalBGMParameters[2], 3.0f * Time.deltaTime));
+        }
+        if (GetBGMParameter("Combo") != normalBGMParameters[3])
+        {
+            bgmEvent.setParameterByName("Combo", Mathf.Lerp(GetBGMParameter("Combo"), normalBGMParameters[3], 3.0f * Time.deltaTime));
+        }
+    }
+
+
+    public void SwitchToBoss1BGM()
+    {
+
+    }
+
+    public void SwitchToBoss2BGM()
+    {
+        bgmEvent = RuntimeManager.CreateInstance(boss2BGMEventPath);
+        bossSongInfo = new SongInfo();
+        bossSongInfo.LoadFromPath(boss2SongInfoPath);
+        beatsTime = (float)bossSongInfo.interval;
+    }
+
+    public void PlayBGM()
+    {
+        bgmEvent.start();
+    }
+
+    public void BGMVolumeFade()
+    {
+        isVolumeFading = true;
+        bgmVolume = 0.2f;
+    }
+
+    void UpdateBGMVolume()
+    {
+        float volume;
+        bgmEvent.getVolume(out volume);
+        if(volume != bgmVolume)
+        {
+            bgmEvent.setVolume(Mathf.Lerp(volume, bgmVolume, 8.0f * Time.deltaTime));
+            if(isVolumeFading && Mathf.Abs(volume - bgmVolume) <= 0.001f)
+            {
+                if (SettingManager.instance != null)
+                {
+                    bgmVolume = SettingManager.instance.overAllVolume;
+                }
+                else
+                {
+                    bgmVolume = 1;
+                }
+                isVolumeFading = false;
+            }
+        }
+    }
+
+    public float GetBoss1BGMLength()
+    {
+        SongInfo temp = new SongInfo();
+        temp.LoadFromPath(boss1SongInfoPath);
+        return (float)temp.interval * temp.length;
     }
 }
