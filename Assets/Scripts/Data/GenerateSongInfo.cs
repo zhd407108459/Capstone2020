@@ -40,6 +40,22 @@ public class GenerateSongInfo : MonoBehaviour
                 if (ap > 9)
                 {
                     at++;
+                    ap = 0;
+                }
+            }
+            if(at == 5 || at == 6)
+            {
+                if (ap > 4)
+                {
+                    at++;
+                    ap = 0;
+                }
+            }
+            if(at == 7 || at == 8)
+            {
+                if (ap > 9)
+                {
+                    at++;
                     if (at > 4)
                     {
                         at = 1;
