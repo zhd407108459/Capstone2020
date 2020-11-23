@@ -75,5 +75,18 @@ public class PlayerGridBullet : RhythmObject
             }
             Destroy(this.gameObject);
         }
+        if (collision.tag.Equals("BossComponent"))
+        {
+            if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
+            {
+                GridManager.instance.boss.TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
+                GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
+            }
+            else
+            {
+                GridManager.instance.boss.TakeDamage(damage);
+            }
+            Destroy(this.gameObject);
+        }
     }
 }

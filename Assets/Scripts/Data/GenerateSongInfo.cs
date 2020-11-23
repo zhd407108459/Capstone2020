@@ -23,47 +23,50 @@ public class GenerateSongInfo : MonoBehaviour
         {
             BeatInfo bi = new BeatInfo();
             bi.index = i;
-            ActionInfo ai = new ActionInfo();
-            ai.actionType = at;
-            ai.actionParameters.Add(ap);
-            ap++;
-            if (at == 1 || at == 2)
+            if(i >= 4 && i < 252)
             {
-                if (ap > 4)
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = at;
+                ai.actionParameters.Add(ap);
+                ap++;
+                if (at == 1 || at == 2)
                 {
-                    at++;
-                    ap = 0;
-                }
-            }
-            if (at == 3 || at == 4)
-            {
-                if (ap > 9)
-                {
-                    at++;
-                    ap = 0;
-                }
-            }
-            if(at == 5 || at == 6)
-            {
-                if (ap > 4)
-                {
-                    at++;
-                    ap = 0;
-                }
-            }
-            if(at == 7 || at == 8)
-            {
-                if (ap > 9)
-                {
-                    at++;
-                    if (at > 4)
+                    if (ap > 4)
                     {
-                        at = 1;
+                        at++;
+                        ap = 0;
                     }
-                    ap = 0;
                 }
+                if (at == 3 || at == 4)
+                {
+                    if (ap > 9)
+                    {
+                        at++;
+                        ap = 0;
+                    }
+                }
+                if (at == 5 || at == 6)
+                {
+                    if (ap > 4)
+                    {
+                        at++;
+                        ap = 0;
+                    }
+                }
+                if (at == 7 || at == 8)
+                {
+                    if (ap > 9)
+                    {
+                        at++;
+                        if (at > 4)
+                        {
+                            at = 1;
+                        }
+                        ap = 0;
+                    }
+                }
+                bi.actions.Add(ai);
             }
-            bi.actions.Add(ai);
             temp.beatsInfo.Add(bi);
         }
         SaveAFile(temp, "./Data/TestBoss1.info");
@@ -80,31 +83,38 @@ public class GenerateSongInfo : MonoBehaviour
         {
             BeatInfo bi = new BeatInfo();
             bi.index = i;
-            ActionInfo ai = new ActionInfo();
-            ai.actionType = at;
-            ai.actionParameters.Add(ap);
-            ap++;
-            if(at == 1 || at == 2)
+            if (i >= 4 && i < 252)
             {
-                if(ap > 4)
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = at;
+                ai.actionParameters.Add(ap);
+                ap++;
+                if (at == 1 || at == 2)
                 {
-                    at++;
-                    ap = 0;
-                }
-            }
-            if(at == 3 || at == 4)
-            {
-                if (ap > 9)
-                {
-                    at++;
-                    if(at > 4)
+                    if (ap > 4)
                     {
-                        at = 1;
+                        at++;
+                        ap = 0;
                     }
+                }
+                if (at == 3 || at == 4)
+                {
+                    if (ap > 9)
+                    {
+                        at++;
+                        ap = 0;
+                    }
+                }
+                if (at == 5)
+                {
+                    ai.actionType = 9;
+                    ai.actionParameters.Clear();
+                    ai.actionParameters.Add(0);
+                    at = 1;
                     ap = 0;
                 }
+                bi.actions.Add(ai);
             }
-            bi.actions.Add(ai);
             temp.beatsInfo.Add(bi);
         }
         SaveAFile(temp, "./Data/TestBoss2.info");

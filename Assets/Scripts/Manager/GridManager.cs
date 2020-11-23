@@ -120,6 +120,7 @@ public class GridManager : RhythmObject
                         rageTimerSlider.gameObject.SetActive(false);
                         rageTimerText.gameObject.SetActive(false);
                         BeatsManager.instance.SwitchToBoss2BGM();
+                        boss.StartStage2();
                         setAbilities.Show();
                         isInPhase = false;
                         foreach (var n in FindObjectsOfType<EnemyGridBullet>())
@@ -149,7 +150,7 @@ public class GridManager : RhythmObject
         else
         {
             phases[0].rageTime = BeatsManager.instance.GetBoss1BGMLength();
-            Debug.Log(BeatsManager.instance.GetBoss1BGMLength());
+            //Debug.Log(BeatsManager.instance.GetBoss1BGMLength());
         }
         for (int i = 0; i < phases.Count; i++)
         {
@@ -302,7 +303,7 @@ public class GridManager : RhythmObject
         }
         if (isBossFight)
         {
-            boss.isActivated = false;
+            boss.Reset();
         }
         rageTimer = phases[phaseIndex].rageTime;
         rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";

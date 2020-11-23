@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BeatBoss : MonoBehaviour
 {
+    public int maxHealth;
+    public Slider healthSlider;
+    public List<GameObject> bossComponents = new List<GameObject>();
 
     public int bulletDamage;
     public GameObject bulletPrefab;
@@ -13,19 +17,74 @@ public class BeatBoss : MonoBehaviour
     public int solidAttackDelay;
     public int solidStayDelay;
 
-    [HideInInspector]public bool isActivated;
-    
+    [HideInInspector] public bool isMeleeAttacked;
+
+    [HideInInspector] public bool isActivated;
+
+    [HideInInspector] public bool canBeAttacked;
+
+    [HideInInspector] public int health;
+
     void Start()
     {
+        health = maxHealth;
         isActivated = false;
+        healthSlider.gameObject.SetActive(false);
     }
 
-    
+    public void Activate()
+    {
+        isActivated = true;
+        canBeAttacked = false;
+        healthSlider.gameObject.SetActive(false);
+
+    }
+
+    public void Reset()
+    {
+        isActivated = false;
+        canBeAttacked = false;
+        healthSlider.gameObject.SetActive(false);
+    }
+
     void Update()
     {
         
     }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            health = 0;
+            Die();
+        }
+        healthSlider.value = (float)health / (float)maxHealth;
+    }
 
+    public void Die()
+    {
+        Debug.Log("BossDie");
+    }
+
+    public void MeleeAttacked()
+    {
+        isMeleeAttacked = true;
+        Invoke("TurnOffIsMeleeAttacked", 0.4f);
+    }
+
+    void TurnOffIsMeleeAttacked()
+    {
+        isMeleeAttacked = false;
+    }
+
+    public void StartStage2()
+    {
+        health = maxHealth;
+        healthSlider.value = (float)health / (float)maxHealth;
+        canBeAttacked = true;
+        healthSlider.gameObject.SetActive(true);
+    }
 
     public void OnBeat(int index)
     {
@@ -98,6 +157,14 @@ public class BeatBoss : MonoBehaviour
                     BossSolidAttack(bi.actions[i].actionParameters[j], 0, bi.actions[i].actionParameters[j], 4, bi.actions[i].actionParameters[j], -1, 90);
                 }
             }
+            //Show Components
+            if (bi.actions[i].actionType == 9)
+            {
+                for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
+                {
+                    ShowComponent(bi.actions[i].actionParameters[j]);
+                }
+            }
         }
     }
 
@@ -114,5 +181,15 @@ public class BeatBoss : MonoBehaviour
     {
         GameObject go = Instantiate(solidPrefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(endX * GridManager.instance.gridSize.x, endY * GridManager.instance.gridSize.y), transform.rotation);
         go.GetComponent<SolidAttack>().SetUp(x, y, midX, midY, endX, endY, solidDamage, solidAttackDelay, solidStayDelay, rotationZ);
+    }
+    
+    void ShowComponent(int index)
+    {
+        if(index >= bossComponents.Count)
+        {
+            Debug.Log("Wrong Boss Component Index: " + index);
+            return;
+        }
+        bossComponents[index].GetComponent<BossComponent>().Show(16);
     }
 }

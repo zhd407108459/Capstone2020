@@ -60,7 +60,7 @@ public class BeatsManager : MonoBehaviour
             bossSongInfo = new SongInfo();
             bossSongInfo.LoadFromPath(boss1SongInfoPath);
             beatsTime = (float)bossSongInfo.interval;
-            Debug.Log(bossSongInfo.length);
+            //Debug.Log(bossSongInfo.length);
         }
 
         

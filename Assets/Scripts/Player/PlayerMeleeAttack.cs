@@ -91,6 +91,24 @@ public class PlayerMeleeAttack : RhythmObject
                     Camera.main.GetComponent<CameraShake>().Shake();
                 }
             }
+            if (cos[i].tag.Equals("BossComponent"))
+            {
+                if (!GridManager.instance.boss.isMeleeAttacked)
+                {
+                    if (action.damageIncreasingRatio > 1)
+                    {
+                        GridManager.instance.boss.TakeDamage((int)(damage * action.damageIncreasingRatio));
+                        GridManager.instance.boss.MeleeAttacked();
+                        action.EndIncreasingDamage();
+                    }
+                    else
+                    {
+                        GridManager.instance.boss.TakeDamage(damage);
+                        GridManager.instance.boss.MeleeAttacked();
+                    }
+                    Camera.main.GetComponent<CameraShake>().Shake();
+                }
+            }
         }
     }
 
