@@ -11,6 +11,7 @@ public class SetAbilities : MonoBehaviour
     public Transform originalBeatsContainerPosition;
     public RectTransform basicMeleeAttackIcon;
     public RectTransform shieldIcon;
+    public RectTransform dashIcon;
     //public RectTransform bulletShootingIcon;
     public Button nextButton;
 
@@ -19,12 +20,14 @@ public class SetAbilities : MonoBehaviour
     private int selection = 0;
     private Vector3 originalBasicMeleeAttackPos;
     private Vector3 originalShieldPos;
+    private Vector3 originalDashPos;
     //private Vector3 originalBulletShootingPos;
 
     void Start()
     {
         originalBasicMeleeAttackPos = basicMeleeAttackIcon.position;
         originalShieldPos = shieldIcon.position;
+        originalDashPos = dashIcon.position;
         //originalBulletShootingPos = bulletShootingIcon.position;
         nextButton.onClick.AddListener(FinishSetting);
     }
@@ -44,6 +47,10 @@ public class SetAbilities : MonoBehaviour
                     if (IsPointerOverUI(shieldIcon))
                     {
                         selection = 2;
+                    }
+                    if (IsPointerOverUI(dashIcon))
+                    {
+                        selection = 3;
                     }
                     //if (IsPointerOverUI(bulletShootingIcon))
                     //{
@@ -69,6 +76,14 @@ public class SetAbilities : MonoBehaviour
                                 shieldIcon.position = originalShieldPos;
                                 break;
                             }
+                            if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() == 3)
+                            {
+                                BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();
+                                GameManager.instance.player.GetComponent<PlayerDash>().ClearAvalibility();
+                                dashIcon.gameObject.SetActive(true);
+                                dashIcon.position = originalDashPos;
+                                break;
+                            }
                             //if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() == 3)
                             //{
                             //    BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();
@@ -91,6 +106,10 @@ public class SetAbilities : MonoBehaviour
                 {
                     shieldIcon.transform.position = Input.mousePosition;
                 }
+                if (selection == 3)
+                {
+                    dashIcon.transform.position = Input.mousePosition;
+                }
                 //if(selection == 3)
                 //{
                 //    bulletShootingIcon.transform.position = Input.mousePosition;
@@ -105,6 +124,12 @@ public class SetAbilities : MonoBehaviour
                     {
                         if(selection == 1)
                         {
+                            if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() == 0 && GetActivatedAbilitiesCount() == 2)
+                            {
+                                basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
+                                selection = 0;
+                                return;
+                            }
                             if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() != 0)
                             {
                                 ClearAbility(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex());
@@ -118,13 +143,38 @@ public class SetAbilities : MonoBehaviour
                         }
                         if(selection == 2)
                         {
-                            if(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() != 0)
+                            if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() == 0 && GetActivatedAbilitiesCount() == 2)
+                            {
+                                shieldIcon.position = originalShieldPos;
+                                selection = 0;
+                                return;
+                            }
+                            if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() != 0)
                             {
                                 ClearAbility(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex());
                             }
                             BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().ShowShieldIcon();
                             GameManager.instance.player.GetComponent<PlayerShield>().SetSingleAvalibility(i);
                             shieldIcon.gameObject.SetActive(false);
+                            isSet = true;
+                            selection = 0;
+                            break;
+                        }
+                        if (selection == 3)
+                        {
+                            if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() == 0 && GetActivatedAbilitiesCount() == 2)
+                            {
+                                dashIcon.position = originalDashPos;
+                                selection = 0;
+                                return;
+                            }
+                            if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() != 0)
+                            {
+                                ClearAbility(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex());
+                            }
+                            BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().ShowDashIcon();
+                            GameManager.instance.player.GetComponent<PlayerDash>().SetSingleAvalibility(i);
+                            dashIcon.gameObject.SetActive(false);
                             isSet = true;
                             selection = 0;
                             break;
@@ -154,6 +204,11 @@ public class SetAbilities : MonoBehaviour
                     if (selection == 2)
                     {
                         shieldIcon.position = originalShieldPos;
+                        selection = 0;
+                    }
+                    if (selection == 3)
+                    {
+                        dashIcon.position = originalDashPos;
                         selection = 0;
                     }
                     //if (selection == 3)
@@ -211,6 +266,13 @@ public class SetAbilities : MonoBehaviour
             shieldIcon.position = originalShieldPos;
 
         }
+        else if (index == 3)
+        {
+            GameManager.instance.player.GetComponent<PlayerDash>().ClearAvalibility();
+            dashIcon.gameObject.SetActive(true);
+            dashIcon.position = originalDashPos;
+
+        }
         //else if(index == 3)
         //{
         //    GameManager.instance.player.GetComponent<PlayerBulletShooting>().ClearAvalibility();
@@ -223,12 +285,15 @@ public class SetAbilities : MonoBehaviour
     {
         GameManager.instance.player.GetComponent<PlayerMeleeAttack>().ClearAvalibility();
         GameManager.instance.player.GetComponent<PlayerShield>().ClearAvalibility();
+        GameManager.instance.player.GetComponent<PlayerDash>().ClearAvalibility();
         //GameManager.instance.player.GetComponent<PlayerBulletShooting>().ClearAvalibility();
         basicMeleeAttackIcon.gameObject.SetActive(true);
         shieldIcon.gameObject.SetActive(true);
+        dashIcon.gameObject.SetActive(true);
         //bulletShootingIcon.gameObject.SetActive(true);
         basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
         shieldIcon.position = originalShieldPos;
+        dashIcon.position = originalDashPos;
         //bulletShootingIcon.position = originalBulletShootingPos;
     }
 
@@ -238,5 +303,18 @@ public class SetAbilities : MonoBehaviour
         BeatsManager.instance.beatsContainer.transform.position = originalBeatsContainerPosition.position;
         BeatsManager.instance.beatsContainer.transform.localScale = originalBeatsContainerPosition.localScale;
         preBattlePanel.SetActive(false);
+    }
+
+    int GetActivatedAbilitiesCount()
+    {
+        int sum = 0;
+        for (int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
+        {
+            if(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() != 0)
+            {
+                sum++;
+            }
+        }
+        return sum;
     }
 }

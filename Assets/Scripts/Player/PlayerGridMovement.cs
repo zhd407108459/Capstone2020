@@ -34,32 +34,75 @@ public class PlayerGridMovement : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, targetPos, movementLerpValue * Time.deltaTime);
         }
+        else if (GetComponent<PlayerDash>().isDashing)
+        {
+            GetComponent<PlayerDash>().EndDash();
+        }
     }
 
     public void Move()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
+            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
             {
-                SetPos(xPos, yPos + 1);
+                if (GridManager.instance.IsPlatformExist(xPos, yPos + 2))
+                {
+                    SetPos(xPos, yPos + 2);
+                }
+                else if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
+                {
+                    SetPos(xPos, yPos + 1);
+                }
+                GetComponent<PlayerDash>().StartDash();
+            }
+            else
+            {
+                if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
+                {
+                    SetPos(xPos, yPos + 1);
+                }
             }
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            SetPos(xPos, yPos - 1);
+            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            {
+                SetPos(xPos, yPos - 2);
+                GetComponent<PlayerDash>().StartDash();
+            }
+            else
+            {
+                SetPos(xPos, yPos - 1);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
             isPlayerFacingRight = true;
-            SetPos(xPos + 1, yPos);
+            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            {
+                SetPos(xPos + 2, yPos);
+                GetComponent<PlayerDash>().StartDash();
+            }
+            else
+            {
+                SetPos(xPos + 1, yPos);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             sprite.transform.localScale = new Vector3(-Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
             isPlayerFacingRight = false;
-            SetPos(xPos - 1, yPos);
+            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            {
+                SetPos(xPos - 2, yPos);
+                GetComponent<PlayerDash>().StartDash();
+            }
+            else
+            {
+                SetPos(xPos - 1, yPos);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Q)){
             if(sprite.transform.localScale.x > 0)

@@ -12759,7 +12759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 521924396979658, guid: 7c71974b315078c4b98772c794bf65f3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c71974b315078c4b98772c794bf65f3, type: 3}
@@ -12781,6 +12781,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &943872709 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 521924396979661, guid: 7c71974b315078c4b98772c794bf65f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 943872706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &943872710 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 521922533605403, guid: 7c71974b315078c4b98772c794bf65f3,
@@ -13585,8 +13591,9 @@ GameObject:
   - component: {fileID: 1003168630}
   - component: {fileID: 1003168636}
   - component: {fileID: 1003168635}
+  - component: {fileID: 1003168639}
   - component: {fileID: 1003168637}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -13757,6 +13764,21 @@ MonoBehaviour:
   maxHealth: 100
   healthSlider: {fileID: 1353449205}
   health: 0
+--- !u!114 &1003168639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003168629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20aebc15020bfc544ad327a42d8376a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availability: 00000000
+  damage: 10
+  isDashing: 0
 --- !u!1001 &1004516181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18671,6 +18693,7 @@ MonoBehaviour:
   originalBeatsContainerPosition: {fileID: 1419562412}
   basicMeleeAttackIcon: {fileID: 943872711}
   shieldIcon: {fileID: 943872710}
+  dashIcon: {fileID: 943872709}
   nextButton: {fileID: 943872708}
   isActivated: 0
 --- !u!1 &1302987928

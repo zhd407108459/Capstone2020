@@ -23,6 +23,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
+        {
+            return;
+        }
         health -= damage;
         if(health <= 0)
         {

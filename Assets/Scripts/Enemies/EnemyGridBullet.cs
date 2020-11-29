@@ -63,7 +63,7 @@ public class EnemyGridBullet : RhythmObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player"))
+        if (collision.tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(damage);
             Destroy(this.gameObject);

@@ -53,7 +53,7 @@ public class PlayerShield : RhythmObject
         {
             if (availability[i])
             {
-                BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().ShowShieldIcon(); ;
+                BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().ShowShieldIcon(); 
             }
         }
     }
