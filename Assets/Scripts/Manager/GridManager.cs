@@ -688,4 +688,16 @@ public class GridManager : RhythmObject
         }
 
     }
+
+    public void ReduceRageTime(float value)
+    {
+        if(rageTimer > 0)
+        {
+            rageTimer -= value;
+            if (rageTimer < 0)
+            {
+                rageTimer = 0;
+            }
+        }
+    }
 }

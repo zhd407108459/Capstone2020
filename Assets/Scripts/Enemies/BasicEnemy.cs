@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class BasicEnemy : RhythmObject
 {
@@ -13,7 +14,12 @@ public class BasicEnemy : RhythmObject
     public Slider extraHealthSlider;
 
     public int damage;
-    public float damageIncreasement;
+    [HideInInspector]public float damageIncreasement;
+
+    public int dealthRattleType;//0 = none, 1 = extra health, 2 = heal, 3 = damage powerup, 4 = rage, 5 = reduce rage time
+    public float dealthRattleValue;
+    public GameObject deathRattlePrefab;
+    public GameObject deathRattleBuffIconPrefab;
 
     public int xPos;
     public int yPos;
@@ -128,5 +134,56 @@ public class BasicEnemy : RhythmObject
         {
             GridManager.instance.ShowNextStageIcon();
         }
+        if(dealthRattleType > 0 && dealthRattleType < 5)
+        {
+            BasicEnemy targetEnemy = GridManager.instance.GetRandomEnemy();
+            if (targetEnemy != null)
+            {
+                GameObject go = Instantiate(deathRattlePrefab, transform.position, transform.rotation);
+                UnityEvent events = new UnityEvent();
+                if(dealthRattleType == 1)
+                {
+                    events.AddListener(delegate { DeathRattleExtraHealth(targetEnemy); });
+                }
+                else if (dealthRattleType == 2)
+                {
+                    events.AddListener(delegate { DeathRattleHealing(targetEnemy); });
+                }
+                else if (dealthRattleType == 3)
+                {
+                    events.AddListener(delegate { DeathRattlePowerUp(targetEnemy); });
+                }
+                else if (dealthRattleType == 4)
+                {
+                    events.AddListener(delegate { DeathRattleRage(targetEnemy); });
+                }
+                go.GetComponent<EnemyDeathBuffParticle>().SetUp(events, targetEnemy, deathRattleBuffIconPrefab);
+            }
+        }
+        if(dealthRattleType == 5)
+        {
+            GridManager.instance.ReduceRageTime(dealthRattleValue);
+        }
+    }
+
+
+    public void DeathRattleExtraHealth(BasicEnemy target)
+    {
+        target.GetExtraHealth((int)dealthRattleValue);
+    }
+
+    public void DeathRattleHealing(BasicEnemy target)
+    {
+        target.Recover((int)dealthRattleValue);
+    }
+
+    public void DeathRattlePowerUp(BasicEnemy target)
+    {
+        target.damageIncreasement += dealthRattleValue;
+    }
+
+    public void DeathRattleRage(BasicEnemy target)
+    {
+        target.isRaged = true;
     }
 }

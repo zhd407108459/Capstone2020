@@ -1,15 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class BasicBulletEnemy : BasicEnemy
 {
     //public int shootInterval;
     public GameObject bulletPrefab;
 
-    public GameObject deathRattlePrefab;
-    public GameObject deathRattleBuffIconPrefab;
 
     public List<bool> shootBeats = new List<bool>();
     public List<bool> ragedShootBeats = new List<bool>();
@@ -62,21 +59,5 @@ public class BasicBulletEnemy : BasicEnemy
         go.GetComponent<EnemyGridBullet>().SetUp(xPos + xShootDirection, yPos + yShootDirection);
     }
 
-    public override void Die()
-    {
-        base.Die();
-        BasicEnemy targetEnemy = GridManager.instance.GetRandomEnemy();
-        if (targetEnemy != null)
-        {
-            GameObject go = Instantiate(deathRattlePrefab, transform.position, transform.rotation);
-            UnityEvent events = new UnityEvent();
-            events.AddListener(delegate { Deathrattle(targetEnemy); });
-            go.GetComponent<EnemyDeathBuffParticle>().SetUp(events, targetEnemy, deathRattleBuffIconPrefab);
-        }
-    }
-
-    public void Deathrattle(BasicEnemy targetEnemy)
-    {
-        targetEnemy.damageIncreasement = 1.5f;
-    }
+    
 }

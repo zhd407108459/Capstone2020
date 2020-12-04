@@ -52,6 +52,24 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-8671342562367520234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637409564602975274
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-8658000387281637243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +120,7 @@ MonoBehaviour:
   Path: event:/MX/Cutscene/MX_LV1_Cutscene_A_Tranquil_Encounter
   guid: 7d20ea19001c2047855651be1e405d1a
   Banks:
-  - {fileID: 5967602234254912980}
+  - {fileID: -8671342562367520234}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -142,7 +160,7 @@ MonoBehaviour:
   Path: event:/MX/Title/MX_Title_Vigorus
   guid: e369ac615dff414ea99dd2436ab9c4f0
   Banks:
-  - {fileID: 5967602234254912980}
+  - {fileID: -8671342562367520234}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -201,6 +219,23 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+  Exists: 1
+--- !u!114 &-5759299294732569561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/GamePhase
+  m_EditorClassIdentifier: 
+  Name: GamePhase
+  Min: 0
+  Max: 2
+  Default: 2
   Exists: 1
 --- !u!114 &-5190374349848598709
 MonoBehaviour:
@@ -354,15 +389,15 @@ MonoBehaviour:
   Path: event:/MX/BattleScene/Level1-Battle
   guid: d4dd64cc1ea9604e8f2a2400bd4dba19
   Banks:
-  - {fileID: 5967602234254912980}
+  - {fileID: -8671342562367520234}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 4248898342773528106}
-  - {fileID: 2170889886955388963}
-  - {fileID: 8925007232776856569}
-  - {fileID: -4053961244446100028}
+  - {fileID: 8755254229562106534}
+  - {fileID: -5759299294732569561}
+  - {fileID: 4569913433031606298}
+  - {fileID: 5391762545559916136}
   MinDistance: 0
   MaxDistance: 0
   Length: 153600
@@ -398,7 +433,7 @@ MonoBehaviour:
   Path: event:/MX/Character/MX_Character_A_Sip_of_Matiny
   guid: 00fca1ca40a616488727588845750b1b
   Banks:
-  - {fileID: 5967602234254912980}
+  - {fileID: -8671342562367520234}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -471,8 +506,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 2283055639641756449}
-  - {fileID: 4327541329271988141}
-  - {fileID: 5967602234254912980}
+  - {fileID: 1736682403027743450}
+  - {fileID: -8671342562367520234}
   EditorEvents:
   - {fileID: -1574000914294541748}
   - {fileID: -8285161973475372504}
@@ -482,10 +517,10 @@ MonoBehaviour:
   - {fileID: -7885768906320484951}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 4327541329271988141}
+  - {fileID: 1736682403027743450}
   StringsBanks:
   - {fileID: 2283055639641756449}
-  stringsBankWriteTime: 637423648875579272
+  stringsBankWriteTime: 637407347238471831
   cacheVersion: 3
 --- !u!114 &143472933990961310
 MonoBehaviour:
@@ -559,6 +594,24 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &1736682403027743450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637399038830098852
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &2170889886955388963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,7 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FmodSoundSystem/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637423648875579272
+  lastModified: 637407347238471831
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -753,6 +806,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &4569913433031606298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Combo
+  m_EditorClassIdentifier: 
+  Name: Combo
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &4905332726308111761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,6 +840,23 @@ MonoBehaviour:
   lastModified: 637398560625103347
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &5391762545559916136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/TimeNumReact
+  m_EditorClassIdentifier: 
+  Name: TimeNumReact
+  Min: 0
+  Max: 5
+  Default: 5
   Exists: 1
 --- !u!114 &5449054283004307612
 MonoBehaviour:
@@ -959,7 +1046,7 @@ MonoBehaviour:
   Path: event:/MX/BossFight/MX_Boss_Strange_Villa
   guid: c9f7fe130fbba746a07f844a8e8a33a1
   Banks:
-  - {fileID: 5967602234254912980}
+  - {fileID: -8671342562367520234}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -982,7 +1069,7 @@ MonoBehaviour:
   Path: event:/MX/BossFight/MX_Boss_Negativity_Allergy
   guid: cf82406db85d6f4fbc58d4a7476bc3d0
   Banks:
-  - {fileID: 5967602234254912980}
+  - {fileID: -8671342562367520234}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -1007,6 +1094,23 @@ MonoBehaviour:
   lastModified: 637399038830098852
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &8755254229562106534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/LowHealth
+  m_EditorClassIdentifier: 
+  Name: LowHealth
+  Min: 0
+  Max: 1
+  Default: 0
   Exists: 1
 --- !u!114 &8925007232776856569
 MonoBehaviour:
