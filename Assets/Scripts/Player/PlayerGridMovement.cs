@@ -155,7 +155,7 @@ public class PlayerGridMovement : MonoBehaviour
                 {
                     if (GridManager.instance.IsEnemyClear())
                     {
-                        GameManager.instance.LoadNextScene();
+                        //GameManager.instance.LoadNextScene();
                     }
                 }
             }
