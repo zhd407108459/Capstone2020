@@ -17,6 +17,8 @@ public class EnemyDeathBuffParticle : MonoBehaviour
     private Vector3 burstPosition;
     private GameObject buffIconPrefab;
 
+    private string content;
+
     void Update()
     {
         if (GameManager.instance.isPaused)
@@ -44,7 +46,8 @@ public class EnemyDeathBuffParticle : MonoBehaviour
                 events.Invoke();
                 if(buffIconPrefab != null)
                 {
-                    Instantiate(buffIconPrefab, targetEnemy.transform.position, targetEnemy.transform.rotation);
+                    GameObject go = Instantiate(buffIconPrefab, targetEnemy.transform.position, targetEnemy.transform.rotation);
+                    go.GetComponent<DeathrattleIcon>().SetUp(content);
                 }
                 Destroy(this.gameObject);
             }
@@ -56,7 +59,7 @@ public class EnemyDeathBuffParticle : MonoBehaviour
         isMoveToEnemy = 2;
     }
 
-    public void SetUp(UnityEvent e, BasicEnemy enemy, GameObject iconPrefab)
+    public void SetUp(UnityEvent e, BasicEnemy enemy, GameObject iconPrefab, string content)
     {
         events = e;
         targetEnemy = enemy;
@@ -64,5 +67,6 @@ public class EnemyDeathBuffParticle : MonoBehaviour
         isMoveToEnemy = 0;
         burstPosition = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
         burstPosition = burstPosition.normalized * burstDistance + transform.position;
+        this.content = content;
     }
 }

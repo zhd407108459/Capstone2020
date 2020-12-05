@@ -7644,6 +7644,11 @@ PrefabInstance:
       propertyPath: buffValue
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4377434874813278932, guid: d96fa29cf63bfab4e93c395cdc5960b4,
+        type: 3}
+      propertyPath: startDelay
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4377434874813278933, guid: d96fa29cf63bfab4e93c395cdc5960b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -42716,7 +42721,7 @@ MonoBehaviour:
   - {fileID: 595914332}
   - {fileID: 230368852}
   - {fileID: 518373202}
-  phaseIndex: 9
+  phaseIndex: 13
   battleRowGridCount: 10
   battleColumnGridCount: 5
   preActivateTime: 3
@@ -45160,19 +45165,25 @@ PrefabInstance:
     - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
       propertyPath: dealthRattleType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
       propertyPath: deathRattlePrefab
       value: 
-      objectReference: {fileID: 2237685306329113308, guid: 47d31f80bdfd0834eaf13d60c1a07804,
+      objectReference: {fileID: 373922928688945912, guid: b3d37671983133241b4b7da22a4b19a9,
         type: 3}
     - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
       propertyPath: dealthRattleValue
-      value: 0.5
+      value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
+        type: 3}
+      propertyPath: deathRattleBuffIconPrefab
+      value: 
+      objectReference: {fileID: 6770966188992914378, guid: 16d80e2753fc2654a947ed0c1a27580e,
+        type: 3}
     - target: {fileID: 6324464694486758540, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -48025,13 +48036,19 @@ PrefabInstance:
     - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
       propertyPath: dealthRattleType
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
       propertyPath: deathRattlePrefab
       value: 
       objectReference: {fileID: 9176187374475424862, guid: 05b437fecad5be7459056ce7f0d4de28,
+        type: 3}
+    - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
+        type: 3}
+      propertyPath: deathRattleBuffIconPrefab
+      value: 
+      objectReference: {fileID: 859415263688805320, guid: 63ca72d94e8ee22468492a726da63c1d,
         type: 3}
     - target: {fileID: 6324464694486758540, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
@@ -70277,30 +70294,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
-      propertyPath: startDelay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
-        type: 3}
-      propertyPath: xPos
+      propertyPath: dealthRattleType
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
-      propertyPath: dealthRattleType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
-        type: 3}
       propertyPath: dealthRattleValue
-      value: 20
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
       propertyPath: deathRattlePrefab
       value: 
-      objectReference: {fileID: 373922928688945912, guid: b3d37671983133241b4b7da22a4b19a9,
+      objectReference: {fileID: 2237685306329113308, guid: 47d31f80bdfd0834eaf13d60c1a07804,
         type: 3}
+    - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
+        type: 3}
+      propertyPath: deathRattleBuffIconPrefab
+      value: 
+      objectReference: {fileID: 2936009423049095582, guid: 8edf4caaffdf4b44c96349736f29e671,
+        type: 3}
+    - target: {fileID: 3484850949145098829, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
+        type: 3}
+      propertyPath: xPos
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6324464694486758540, guid: 10ba8ecaeb2c5eb46807e8c4f561b642,
         type: 3}
       propertyPath: m_AnchorMax.x

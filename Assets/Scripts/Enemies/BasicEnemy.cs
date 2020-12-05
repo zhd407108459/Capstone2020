@@ -141,23 +141,28 @@ public class BasicEnemy : RhythmObject
             {
                 GameObject go = Instantiate(deathRattlePrefab, transform.position, transform.rotation);
                 UnityEvent events = new UnityEvent();
+                string tempContent = "";
                 if(dealthRattleType == 1)
                 {
                     events.AddListener(delegate { DeathRattleExtraHealth(targetEnemy); });
+                    tempContent = ((int)(dealthRattleValue)).ToString();
                 }
                 else if (dealthRattleType == 2)
                 {
                     events.AddListener(delegate { DeathRattleHealing(targetEnemy); });
+                    tempContent = ((int)(dealthRattleValue)).ToString();
                 }
                 else if (dealthRattleType == 3)
                 {
                     events.AddListener(delegate { DeathRattlePowerUp(targetEnemy); });
+                    tempContent = ((int)(dealthRattleValue * 100)).ToString() + "%";
                 }
                 else if (dealthRattleType == 4)
                 {
                     events.AddListener(delegate { DeathRattleRage(targetEnemy); });
+                    tempContent = "Rage!";
                 }
-                go.GetComponent<EnemyDeathBuffParticle>().SetUp(events, targetEnemy, deathRattleBuffIconPrefab);
+                go.GetComponent<EnemyDeathBuffParticle>().SetUp(events, targetEnemy, deathRattleBuffIconPrefab, tempContent);
             }
         }
         if(dealthRattleType == 5)
