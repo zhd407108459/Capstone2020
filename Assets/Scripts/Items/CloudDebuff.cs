@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class CloudDebuff : BasicDebuff
 {
     public int effectTime;
+
+    public string itemEffectFXEventPath = "event:/FX/Item/FX-Blind";
 
     void Start()
     {
@@ -34,6 +38,9 @@ public class CloudDebuff : BasicDebuff
     {
         if (collision.tag.Equals("Player"))
         {
+            EventInstance itemEffectFX;
+            itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
+            itemEffectFX.start();
             GameManager.instance.player.GetComponent<PlayerAction>().StartCloud(effectTime);
             Destroy(this.gameObject);
         }

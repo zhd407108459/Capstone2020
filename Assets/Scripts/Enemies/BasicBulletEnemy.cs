@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class BasicBulletEnemy : BasicEnemy
 {
@@ -13,6 +15,7 @@ public class BasicBulletEnemy : BasicEnemy
     public int xShootDirection;
     public int yShootDirection;
 
+    public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyBullet";
     //public bool isRandom;
 
     //private int attackTimer;
@@ -52,6 +55,10 @@ public class BasicBulletEnemy : BasicEnemy
 
     public void Shoot()
     {
+        EventInstance enemyBulletAttackFX;
+        enemyBulletAttackFX = RuntimeManager.CreateInstance(enemyBulletAttackFXEventPath);
+        enemyBulletAttackFX.start();
+
         GameObject go = Instantiate(bulletPrefab, transform.position, transform.rotation);
         go.GetComponent<EnemyGridBullet>().xDirection = xShootDirection;
         go.GetComponent<EnemyGridBullet>().yDirection = yShootDirection;

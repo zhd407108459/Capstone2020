@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class CrossBulletEnemy : BasicEnemy
 {
@@ -8,6 +10,8 @@ public class CrossBulletEnemy : BasicEnemy
 
     public List<bool> shootBeats = new List<bool>();
     public List<bool> ragedShootBeats = new List<bool>();
+
+    public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyBullet";
 
     private int attackTimer;
 
@@ -28,8 +32,12 @@ public class CrossBulletEnemy : BasicEnemy
         {
             return;
         }
-        if ((shootBeats[beatIndex] && !isRaged) || (ragedShootBeats[beatIndex] && isRaged)) 
+        if ((shootBeats[beatIndex] && !isRaged) || (ragedShootBeats[beatIndex] && isRaged))
         {
+            EventInstance enemyBulletAttackFX;
+            enemyBulletAttackFX = RuntimeManager.CreateInstance(enemyBulletAttackFXEventPath);
+            enemyBulletAttackFX.start();
+
             Shoot(1, 0);
             Shoot(-1, 0);
             Shoot(0, 1);

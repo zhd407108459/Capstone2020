@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class PlayerShield : RhythmObject
 {
@@ -10,6 +12,8 @@ public class PlayerShield : RhythmObject
     public float actionTolerance;
     public KeyCode triggerKey;
     public bool isAutoUse;
+
+    public string shieldFXEventPath = "event:/FX/Player/FX-Shield";
 
     private PlayerAction action;
 
@@ -60,16 +64,20 @@ public class PlayerShield : RhythmObject
 
     void UseShield()
     {
+        EventInstance shieldFX;
+        shieldFX = RuntimeManager.CreateInstance(shieldFXEventPath);
+        shieldFX.start();
+
         shieldBox.gameObject.SetActive(true);
-        Collider2D[] cos = Physics2D.OverlapBoxAll(shieldBox.transform.position, new Vector2(shieldBox.size.x * shieldBox.transform.localScale.x, shieldBox.size.y * shieldBox.transform.localScale.y), shieldBox.transform.rotation.eulerAngles.z);
-        for (int i = 0; i < cos.Length; i++)
-        {
-            if (cos[i].tag.Equals("EnemyBullet"))
-            {
-                Destroy(cos[i].gameObject);
-                Camera.main.GetComponent<CameraShake>().Shake();
-            }
-        }
+        //Collider2D[] cos = Physics2D.OverlapBoxAll(shieldBox.transform.position, new Vector2(shieldBox.size.x * shieldBox.transform.localScale.x, shieldBox.size.y * shieldBox.transform.localScale.y), shieldBox.transform.rotation.eulerAngles.z);
+        //for (int i = 0; i < cos.Length; i++)
+        //{
+        //    if (cos[i].tag.Equals("EnemyBullet"))
+        //    {
+        //        Destroy(cos[i].gameObject);
+        //        Camera.main.GetComponent<CameraShake>().Shake();
+        //    }
+        //}
         //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
         Invoke("HideShield", existingTime);
     }

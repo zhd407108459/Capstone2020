@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using FMOD.Studio;
+using FMODUnity;
 
 public class BasicEnemy : RhythmObject
 {
@@ -34,6 +36,9 @@ public class BasicEnemy : RhythmObject
     [HideInInspector] public int extraHealth;
     [HideInInspector] public int maxExtraHealth;
 
+    public string enemyDamagedFXEventPath = "event:/FX/Enemy/FX-EnemyDamaged";
+    public string enemyDeathFXEventPath = "event:/FX/Enemy/FX-EnemyDeath";
+    public string enemyDeathRattleFXEventPath = "event:/FX/Enemy/FX-EnemyRageBall";
 
     void Start()
     {
@@ -63,6 +68,11 @@ public class BasicEnemy : RhythmObject
 
     public void TakeDamage(int damage)
     {
+
+        EventInstance enemyDamagedFX;
+        enemyDamagedFX = RuntimeManager.CreateInstance(enemyDamagedFXEventPath);
+        enemyDamagedFX.start();
+
         Camera.main.GetComponent<CameraShake>().Shake();
         int tempD = damage;
         if(extraHealth > 0)
@@ -129,10 +139,21 @@ public class BasicEnemy : RhythmObject
 
     public virtual void Die()
     {
+
+        EventInstance enemyDeathFX;
+        enemyDeathFX = RuntimeManager.CreateInstance(enemyDeathFXEventPath);
+        enemyDeathFX.start();
+
         this.gameObject.SetActive(false);
         if (GridManager.instance.IsEnemyClear())
         {
             GridManager.instance.ShowNextStageIcon();
+        }
+        if(dealthRattleType != 0)
+        {
+            EventInstance enemyDeathRattleFX;
+            enemyDeathRattleFX = RuntimeManager.CreateInstance(enemyDeathRattleFXEventPath);
+            enemyDeathRattleFX.start();
         }
         if(dealthRattleType > 0 && dealthRattleType < 5)
         {

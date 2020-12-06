@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMOD.Studio;
+using FMODUnity;
 
 public class SetAbilities : MonoBehaviour
 {
@@ -60,6 +62,7 @@ public class SetAbilities : MonoBehaviour
                     {
                         if (IsPointerOverUI(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().imageTransform))//cancel ability setting
                         {
+                            RuntimeManager.PlayOneShot("event:/FX/UI/UI-Cancel");
                             if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() == 1)
                             {
                                 BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();

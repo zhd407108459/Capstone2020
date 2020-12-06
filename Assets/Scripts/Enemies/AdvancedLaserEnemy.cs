@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class AdvancedLaserEnemy : BasicEnemy
 {
@@ -11,6 +13,8 @@ public class AdvancedLaserEnemy : BasicEnemy
 
     public List<bool> shootBeats = new List<bool>();
     public List<bool> ragedShootBeats = new List<bool>();
+
+    public string enemyLaserAttackFXEventPath = "event:/FX/Enemy/FX-EnemyLaser";
 
     private bool isLaserOne;
 
@@ -46,6 +50,10 @@ public class AdvancedLaserEnemy : BasicEnemy
 
     void Shoot()
     {
+        EventInstance enemyLaserAttackFX;
+        enemyLaserAttackFX = RuntimeManager.CreateInstance(enemyLaserAttackFXEventPath);
+        enemyLaserAttackFX.start();
+
         Collider2D[] cos = new Collider2D[0];
         if (isLaserOne)
         {

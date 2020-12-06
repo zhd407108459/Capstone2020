@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class PlayerDash : MonoBehaviour
 {
     public List<bool> availability = new List<bool>();
     public int damage;
     [HideInInspector] public bool isDashing;
+
+    public string dashFXEventPath = "event:/FX/Player/FX-Dash";
 
     void Start()
     {
@@ -44,6 +48,11 @@ public class PlayerDash : MonoBehaviour
     public void StartDash()
     {
         isDashing = true;
+
+        EventInstance dashFX;
+        dashFX = RuntimeManager.CreateInstance(dashFXEventPath);
+        dashFX.start();
+
     }
 
     public void EndDash()

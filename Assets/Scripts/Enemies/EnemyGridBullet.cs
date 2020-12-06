@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class EnemyGridBullet : RhythmObject
 {
@@ -14,6 +16,8 @@ public class EnemyGridBullet : RhythmObject
 
     [HideInInspector] public int xPos;
     [HideInInspector] public int yPos;
+
+    public string shieldImpactFXEventPath = "event:/FX/Player/FX-ShieldImpact";
 
     private Vector3 targetPos;
 
@@ -70,11 +74,16 @@ public class EnemyGridBullet : RhythmObject
         }
         if (collision.tag.Equals("PlayerShield"))
         {
+            EventInstance shieldImpactFX;
+            shieldImpactFX = RuntimeManager.CreateInstance(shieldImpactFXEventPath);
+            shieldImpactFX.start();
+
             GameObject go = Instantiate(bounceOffBulletPrefab, transform.position, transform.rotation);
             go.GetComponent<PlayerGridBullet>().xDirection = -xDirection;
             go.GetComponent<PlayerGridBullet>().yDirection = -yDirection;
             go.GetComponent<PlayerGridBullet>().SetUp(xPos - xDirection, yPos - yDirection);
             go.GetComponent<PlayerGridBullet>().damage = damage;
+            Camera.main.GetComponent<CameraShake>().Shake();
             Destroy(this.gameObject);
         }
     }

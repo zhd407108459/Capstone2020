@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMOD.Studio;
+using FMODUnity;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
 
     [HideInInspector] public int health;
+
+    public string damagedFXEventPath = "event:/FX/Player/FX-Damaged";
 
     void Start()
     {
@@ -27,6 +31,11 @@ public class PlayerHealth : MonoBehaviour
         {
             return;
         }
+
+        EventInstance damagedFX;
+        damagedFX = RuntimeManager.CreateInstance(damagedFXEventPath);
+        damagedFX.start();
+
         health -= damage;
         if(health <= 0)
         {

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class BasicLaserEnemy : BasicEnemy
 {
@@ -9,6 +11,8 @@ public class BasicLaserEnemy : BasicEnemy
 
     public List<bool> shootBeats = new List<bool>();
     public List<bool> ragedShootBeats = new List<bool>();
+
+    public string enemyLaserAttackFXEventPath = "event:/FX/Enemy/FX-EnemyLaser";
 
     void Start()
     {
@@ -39,6 +43,10 @@ public class BasicLaserEnemy : BasicEnemy
 
     void Shoot()
     {
+        EventInstance enemyLaserAttackFX;
+        enemyLaserAttackFX = RuntimeManager.CreateInstance(enemyLaserAttackFXEventPath);
+        enemyLaserAttackFX.start();
+
         laserObject.SetActive(true);
         Collider2D[] cos = Physics2D.OverlapBoxAll(laserCollider.transform.position, new Vector2(laserCollider.size.x * laserCollider.transform.localScale.x, laserCollider.size.y * laserCollider.transform.localScale.y), laserCollider.transform.rotation.eulerAngles.z);
         for(int i = 0; i < cos.Length; i++)

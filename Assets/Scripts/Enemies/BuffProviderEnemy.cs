@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using FMOD.Studio;
+using FMODUnity;
 
 public class BuffProviderEnemy : BasicEnemy
 {
@@ -17,6 +19,10 @@ public class BuffProviderEnemy : BasicEnemy
     public int startDelay;
     public int actionInterval;
     public int rageActionInterval;
+
+    public string enemyExtraHealthBuffFXEventPath = "event:/FX/Enemy/FX-EnemyShield";
+    public string enemyHealBuffFXEventPath = "event:/FX/Enemy/FX-EnemyShield";
+    public string enemyPowerupBuffFXEventPath = "event:/FX/Enemy/FX-EnemyShield";
 
     private int actionTimer;
 
@@ -52,6 +58,24 @@ public class BuffProviderEnemy : BasicEnemy
 
     void BuffOthers()
     {
+        if(buffType == 0)
+        {
+            EventInstance enemyExtraHealthBuffFX;
+            enemyExtraHealthBuffFX = RuntimeManager.CreateInstance(enemyExtraHealthBuffFXEventPath);
+            enemyExtraHealthBuffFX.start();
+        }
+        else if (buffType == 1)
+        {
+            EventInstance enemyHealBuffFX;
+            enemyHealBuffFX = RuntimeManager.CreateInstance(enemyHealBuffFXEventPath);
+            enemyHealBuffFX.start();
+        }
+        else if (buffType == 2)
+        {
+            EventInstance enemyPowerupBuffFX;
+            enemyPowerupBuffFX = RuntimeManager.CreateInstance(enemyPowerupBuffFXEventPath);
+            enemyPowerupBuffFX.start();
+        }
         List<BasicEnemy> enemies = GridManager.instance.GetAllEnemies();
         for(int i = 0; i < enemies.Count; i++)
         {

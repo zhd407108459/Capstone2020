@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class PlayerMeleeAttack : RhythmObject
 {
@@ -11,6 +13,9 @@ public class PlayerMeleeAttack : RhythmObject
     public float actionTolerance;
     public KeyCode triggerKey;
     public bool isAutoUse;
+
+    public string meleeAttackFXEventPath = "event:/FX/Player/FX-MeleeAttack";
+    public string meleeImpactFXEventPath = "event:/FX/Player/FX-MeleeImpact";
 
     private PlayerAction action;
 
@@ -63,6 +68,10 @@ public class PlayerMeleeAttack : RhythmObject
     }
     void MeleeAttack()
     {
+        EventInstance meleeAttackFX;
+        meleeAttackFX = RuntimeManager.CreateInstance(meleeAttackFXEventPath);
+        meleeAttackFX.start();
+
         meleeAttackBox.gameObject.SetActive(true);
         //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
         Invoke("HideMeleeAttackBox", existingTime);
@@ -89,6 +98,10 @@ public class PlayerMeleeAttack : RhythmObject
                         cos[i].GetComponent<BasicEnemy>().MeleeAttacked();
                     }
                     Camera.main.GetComponent<CameraShake>().Shake();
+
+                    EventInstance meleeImpactFX;
+                    meleeImpactFX = RuntimeManager.CreateInstance(meleeImpactFXEventPath);
+                    meleeImpactFX.start();
                 }
             }
             if (cos[i].tag.Equals("BossComponent"))
@@ -107,6 +120,10 @@ public class PlayerMeleeAttack : RhythmObject
                         GridManager.instance.boss.MeleeAttacked();
                     }
                     Camera.main.GetComponent<CameraShake>().Shake();
+
+                    EventInstance meleeImpactFX;
+                    meleeImpactFX = RuntimeManager.CreateInstance(meleeImpactFXEventPath);
+                    meleeImpactFX.start();
                 }
             }
         }

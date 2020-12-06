@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class DamageIncreasingBuff : BasicBuff
 {
     public float damageIncreasementRatio;
     public int effectTime;
+
+    public string itemEffectFXEventPath = "event:/FX/Item/FX-PowBoost";
 
     void Start()
     {
@@ -33,6 +37,9 @@ public class DamageIncreasingBuff : BasicBuff
     {
         if (collision.tag.Equals("Player"))
         {
+            EventInstance itemEffectFX;
+            itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
+            itemEffectFX.start();
             GameManager.instance.player.GetComponent<PlayerAction>().StartIncreasingDamage(effectTime, damageIncreasementRatio);
             Destroy(this.gameObject);
         }

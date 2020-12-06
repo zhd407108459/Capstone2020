@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using FMOD.Studio;
+using FMODUnity;
 
 public class GridManager : RhythmObject
 {
@@ -43,6 +45,7 @@ public class GridManager : RhythmObject
     [HideInInspector] public Vector3 targetCameraPos;
     [HideInInspector] public bool isCameraFollowing;
     [HideInInspector] public bool isInPhase;
+    [HideInInspector] public string itemEmergenceFXEventPath = "event:/FX/Item/FX-ItemEmergence";
 
     private bool isCounting;
     private int timer;
@@ -219,7 +222,7 @@ public class GridManager : RhythmObject
         }
         if (IsInBattlePhase())
         {
-            ShowRecordPanel(recordTimer);
+            //ShowRecordPanel(recordTimer);
         }
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
         isInPhase = false;
@@ -428,6 +431,10 @@ public class GridManager : RhythmObject
         GameObject buff = Instantiate(phases[phaseIndex].generateBuffsPrefabs[buffIndex]);
         buff.transform.position = GetPhaseInitialPosition() + new Vector2(tempList[posSeed].xPos * gridSize.x, tempList[posSeed].yPos * gridSize.y);
         buff.GetComponent<BasicBuff>().Setup(tempList[posSeed].xPos, tempList[posSeed].yPos);
+
+        EventInstance itemEmergenceFX;
+        itemEmergenceFX = RuntimeManager.CreateInstance(itemEmergenceFXEventPath);
+        itemEmergenceFX.start();
     }
 
     void GenerateDebuff()
@@ -471,6 +478,10 @@ public class GridManager : RhythmObject
         GameObject buff = Instantiate(phases[phaseIndex].generateDebuffsPrefabs[buffIndex]);
         buff.transform.position = GetPhaseInitialPosition() + new Vector2(tempList[posSeed].xPos * gridSize.x, tempList[posSeed].yPos * gridSize.y);
         buff.GetComponent<BasicDebuff>().Setup(tempList[posSeed].xPos, tempList[posSeed].yPos);
+
+        EventInstance itemEmergenceFX;
+        itemEmergenceFX = RuntimeManager.CreateInstance(itemEmergenceFXEventPath);
+        itemEmergenceFX.start();
     }
 
     public bool IsInBattlePhase()

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class SimpleMeleeAttackEnemy : BasicEnemy
 {
@@ -8,6 +10,9 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
 
     [Range(1, 7)] public int attackInterval;
     [Range(0, 7)] public int startDelay;
+
+    public string enemyMeleeAttackFXEventPath = "event:/FX/Enemy/FX-EnemyMeleeAttack";
+    public string shieldImpactFXEventPath = "event:/FX/Player/FX-ShieldImpact";
 
     private Vector2 targetPos;
     private bool isAttacking;
@@ -104,6 +109,10 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
         }
         if (isAttacking)
         {
+            EventInstance enemyMeleeAttackFX;
+            enemyMeleeAttackFX = RuntimeManager.CreateInstance(enemyMeleeAttackFXEventPath);
+            enemyMeleeAttackFX.start();
+
             targetPos = player.transform.position;
         }
     }
@@ -155,6 +164,10 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
             xPos = lastPosX;
             if (isAttacking)
             {
+                EventInstance shieldImpactFX;
+                shieldImpactFX = RuntimeManager.CreateInstance(shieldImpactFXEventPath);
+                shieldImpactFX.start();
+
                 this.TakeDamage(damage);
                 isAttacking = false;
             }
