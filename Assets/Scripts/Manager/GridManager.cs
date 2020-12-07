@@ -96,7 +96,7 @@ public class GridManager : RhythmObject
         if (!GameManager.instance.isPaused && IsInBattlePhase() && isInPhase && !isBoss2Phase)
         {
             recordTimer += Time.deltaTime;
-            if(rageTimer > 0)
+            if(rageTimer > 0 && !nextStageIcon.activeSelf)
             {
                 rageTimer -= Time.deltaTime;
                 if(rageTimer / phases[phaseIndex].rageTime < 0.25f && lastRageTimer / phases[phaseIndex].rageTime >= 0.25f)
