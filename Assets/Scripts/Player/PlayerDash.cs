@@ -52,7 +52,7 @@ public class PlayerDash : MonoBehaviour
         EventInstance dashFX;
         dashFX = RuntimeManager.CreateInstance(dashFXEventPath);
         dashFX.start();
-
+        Invoke("EndDash", 0.4f);
     }
 
     public void EndDash()

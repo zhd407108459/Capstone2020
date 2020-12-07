@@ -34,10 +34,10 @@ public class PlayerGridMovement : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, targetPos, movementLerpValue * Time.deltaTime);
         }
-        else if (GetComponent<PlayerDash>().isDashing)
-        {
-            GetComponent<PlayerDash>().EndDash();
-        }
+        //else if (GetComponent<PlayerDash>().isDashing)
+        //{
+        //    GetComponent<PlayerDash>().EndDash();
+        //}
     }
 
     public void Move()
