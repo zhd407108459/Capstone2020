@@ -30,7 +30,7 @@ public class PlayerGridMovement : MonoBehaviour
         {
             Move();
         }
-        if (Vector2.Distance(transform.position, targetPos) > 0.0001f)
+        if (Vector2.Distance(transform.position, targetPos) > 0.01f)
         {
             transform.position = Vector3.Lerp(transform.position, targetPos, movementLerpValue * Time.deltaTime);
         }
