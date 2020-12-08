@@ -110,7 +110,7 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
---- !u!114 &-8415168981853110468
+--- !u!114 &-8444942463482969748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,6 +127,23 @@ MonoBehaviour:
   Max: 5
   Default: 5
   Exists: 1
+--- !u!114 &-8415168981853110468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/TimeNumReact
+  m_EditorClassIdentifier: 
+  Name: TimeNumReact
+  Min: 0
+  Max: 5
+  Default: 5
+  Exists: 0
 --- !u!114 &-8285161973475372504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +159,11 @@ MonoBehaviour:
   Path: event:/MX/Cutscene/MX_LV1_Cutscene_A_Tranquil_Encounter
   guid: 7d20ea19001c2047855651be1e405d1a
   Banks:
+<<<<<<< Updated upstream
   - {fileID: 5717713528590484945}
+=======
+  - {fileID: 8218327251022650544}
+>>>>>>> Stashed changes
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -182,7 +203,11 @@ MonoBehaviour:
   Path: event:/MX/Title/MX_Title_Vigorus
   guid: e369ac615dff414ea99dd2436ab9c4f0
   Banks:
+<<<<<<< Updated upstream
   - {fileID: 5717713528590484945}
+=======
+  - {fileID: 8218327251022650544}
+>>>>>>> Stashed changes
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -190,7 +215,45 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 189894
+<<<<<<< Updated upstream
 --- !u!114 &-7516928988821418894
+=======
+--- !u!114 &-7782320596388734259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/LowHealth
+  m_EditorClassIdentifier: 
+  Name: LowHealth
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-7229296313844053163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/GamePhase
+  m_EditorClassIdentifier: 
+  Name: GamePhase
+  Min: 0
+  Max: 2
+  Default: 2
+  Exists: 1
+--- !u!114 &-6695944963124074967
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -412,11 +475,23 @@ MonoBehaviour:
   Path: event:/FX/UI/UI-Start
   guid: 2a45c272399f59489a54511531e10627
   Banks:
+<<<<<<< Updated upstream
   - {fileID: -2968239285118849935}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
+=======
+  - {fileID: 8218327251022650544}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -7782320596388734259}
+  - {fileID: -7229296313844053163}
+  - {fileID: 3811053919270891310}
+  - {fileID: -8444942463482969748}
+>>>>>>> Stashed changes
   MinDistance: 0
   MaxDistance: 0
   Length: 179
@@ -437,7 +512,11 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+<<<<<<< Updated upstream
 --- !u!114 &-5008985087681583139
+=======
+--- !u!114 &-1574000914294541748
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,8 +531,13 @@ MonoBehaviour:
   Path: event:/FX/Item/FX-Dizzy
   guid: f9745645694765408b73f697d18d6823
   Banks:
+<<<<<<< Updated upstream
   - {fileID: -2968239285118849935}
   IsStream: 0
+=======
+  - {fileID: 8218327251022650544}
+  IsStream: 1
+>>>>>>> Stashed changes
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -530,12 +614,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Level1-Battle/Bass&Lead
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   Name: Bass&Lead
   Min: 0
   Max: 1
   Default: 0
   Exists: 1
 --- !u!114 &-4498296427157109783
+=======
+  EditorBanks:
+  - {fileID: 2283055639641756449}
+  - {fileID: 863213745047022230}
+  - {fileID: 8218327251022650544}
+  EditorEvents:
+  - {fileID: -1574000914294541748}
+  - {fileID: -8285161973475372504}
+  - {fileID: 7962859878480421828}
+  - {fileID: 8276199674126206740}
+  - {fileID: -2514443992106395948}
+  - {fileID: -7885768906320484951}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 863213745047022230}
+  StringsBanks:
+  - {fileID: 2283055639641756449}
+  stringsBankWriteTime: 637417442175036739
+  cacheVersion: 3
+--- !u!114 &143472933990961310
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1354,7 +1460,11 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+<<<<<<< Updated upstream
 --- !u!114 &4203927390773489441
+=======
+--- !u!114 &863213745047022230
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1368,11 +1478,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FmodSoundSystem/Build/Desktop/Master.bank
   SubDir: 
+<<<<<<< Updated upstream
   lastModified: 637398658777329523
   LoadResult: 0
   FileSizes: []
   Exists: 0
 --- !u!114 &4248898342773528106
+=======
+  lastModified: 637400383619987432
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &1232188064934193647
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1388,6 +1506,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+<<<<<<< Updated upstream
   Exists: 1
 --- !u!114 &4327541329271988141
 MonoBehaviour:
@@ -1465,6 +1584,10 @@ MonoBehaviour:
   Default: 5
   Exists: 0
 --- !u!114 &4905332726308111761
+=======
+  Exists: 0
+--- !u!114 &2283055639641756449
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1478,7 +1601,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FmodSoundSystem/Build/Desktop/Master.bank
   SubDir: 
+<<<<<<< Updated upstream
   lastModified: 637398560625103347
+=======
+  lastModified: 637417442175036739
+>>>>>>> Stashed changes
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1494,6 +1621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: event:/FX/Enemy/FX-EnemyShield
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   Path: event:/FX/Enemy/FX-EnemyShield
   guid: 455bee9405bd9a499ccb0182c2a4ad43
   Banks:
@@ -1506,6 +1634,15 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 497
 --- !u!114 &5087419004619381200
+=======
+  Path: Assets/FmodSoundSystem/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637407347248199151
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &2825175230246599865
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1517,6 +1654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: event:/FX/Player/FX-MeleeAttack
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   Path: event:/FX/Player/FX-MeleeAttack
   guid: a2d439c7b51dc14ba3ccb0493244a44d
   Banks:
@@ -1529,6 +1667,14 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 153
 --- !u!114 &5285237900250007676
+=======
+  Name: GamePhase
+  Min: 0
+  Max: 2
+  Default: 2
+  Exists: 0
+--- !u!114 &2971780790134044242
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1579,7 +1725,28 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+<<<<<<< Updated upstream
 --- !u!114 &5491342024570390210
+=======
+--- !u!114 &3811053919270891310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Combo
+  m_EditorClassIdentifier: 
+  Name: Combo
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &4202859357407634374
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1870,7 +2037,11 @@ MonoBehaviour:
   Path: event:/MX/BossFight/MX_Boss_Strange_Villa
   guid: c9f7fe130fbba746a07f844a8e8a33a1
   Banks:
+<<<<<<< Updated upstream
   - {fileID: 5717713528590484945}
+=======
+  - {fileID: 8218327251022650544}
+>>>>>>> Stashed changes
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -1878,6 +2049,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 134098
+--- !u!114 &8218327251022650544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637417442175897520
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &8276199674126206740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1893,7 +2082,11 @@ MonoBehaviour:
   Path: event:/MX/BossFight/MX_Boss_Negativity_Allergy
   guid: cf82406db85d6f4fbc58d4a7476bc3d0
   Banks:
+<<<<<<< Updated upstream
   - {fileID: 5717713528590484945}
+=======
+  - {fileID: 8218327251022650544}
+>>>>>>> Stashed changes
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -1918,6 +2111,7 @@ MonoBehaviour:
   lastModified: 637399038830098852
   LoadResult: 0
   FileSizes: []
+<<<<<<< Updated upstream
   Exists: 1
 --- !u!114 &8465949538399035910
 MonoBehaviour:
@@ -1970,6 +2164,9 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+=======
+  Exists: 0
+>>>>>>> Stashed changes
 --- !u!114 &9084202153331065200
 MonoBehaviour:
   m_ObjectHideFlags: 0
