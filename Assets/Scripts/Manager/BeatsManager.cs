@@ -292,21 +292,37 @@ public class BeatsManager : MonoBehaviour
 
     void UpdateNormalBGMParameter()
     {
-        if(GetBGMParameter("GamePhase") != normalBGMParameters[0])
+        //if(GetBGMParameter("GamePhase") != normalBGMParameters[0])
+        //{
+        //    bgmEvent.setParameterByName("GamePhase", Mathf.Lerp(GetBGMParameter("GamePhase"), normalBGMParameters[0], 3.0f * Time.deltaTime));
+        //}
+        //if (GetBGMParameter("TimeNumReact") != normalBGMParameters[1])
+        //{
+        //    bgmEvent.setParameterByName("TimeNumReact", Mathf.Lerp(GetBGMParameter("TimeNumReact"), normalBGMParameters[1], 3.0f * Time.deltaTime));
+        //}
+        //if (GetBGMParameter("LowHealth") != normalBGMParameters[2])
+        //{
+        //    bgmEvent.setParameterByName("LowHealth", Mathf.Lerp(GetBGMParameter("LowHealth"), normalBGMParameters[2], 3.0f * Time.deltaTime));
+        //}
+        //if (GetBGMParameter("Combo") != normalBGMParameters[3])
+        //{
+        //    bgmEvent.setParameterByName("Combo", Mathf.Lerp(GetBGMParameter("Combo"), normalBGMParameters[3], 3.0f * Time.deltaTime));
+        //}
+        if (GetBGMParameter("GamePhase") != normalBGMParameters[0])
         {
-            bgmEvent.setParameterByName("GamePhase", Mathf.Lerp(GetBGMParameter("GamePhase"), normalBGMParameters[0], 3.0f * Time.deltaTime));
+            bgmEvent.setParameterByName("GamePhase",normalBGMParameters[0]);
         }
         if (GetBGMParameter("TimeNumReact") != normalBGMParameters[1])
         {
-            bgmEvent.setParameterByName("TimeNumReact", Mathf.Lerp(GetBGMParameter("TimeNumReact"), normalBGMParameters[1], 3.0f * Time.deltaTime));
+            bgmEvent.setParameterByName("TimeNumReact", normalBGMParameters[1]);
         }
         if (GetBGMParameter("LowHealth") != normalBGMParameters[2])
         {
-            bgmEvent.setParameterByName("LowHealth", Mathf.Lerp(GetBGMParameter("LowHealth"), normalBGMParameters[2], 3.0f * Time.deltaTime));
+            bgmEvent.setParameterByName("LowHealth", normalBGMParameters[2]);
         }
         if (GetBGMParameter("Combo") != normalBGMParameters[3])
         {
-            bgmEvent.setParameterByName("Combo", Mathf.Lerp(GetBGMParameter("Combo"), normalBGMParameters[3], 3.0f * Time.deltaTime));
+            bgmEvent.setParameterByName("Combo", normalBGMParameters[3]);
         }
     }
 
