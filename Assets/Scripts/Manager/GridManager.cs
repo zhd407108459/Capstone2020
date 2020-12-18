@@ -60,6 +60,8 @@ public class GridManager : RhythmObject
 
     private bool isBoss2Phase;
 
+    [HideInInspector] public DialogSet currentDialog;
+
     void Awake()
     {
         if (instance == null)
@@ -83,7 +85,20 @@ public class GridManager : RhythmObject
         Initialize();
     }
 
-    
+    private void Update()
+    {
+        if (!GameManager.instance.isPaused)
+        {
+            if(currentDialog != null)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    currentDialog.SkipOrNextDialogUnit();
+                }
+            }
+        }
+    }
+
 
     void LateUpdate()
     {
@@ -708,6 +723,31 @@ public class GridManager : RhythmObject
             if (rageTimer < 0)
             {
                 rageTimer = 0;
+            }
+        }
+    }
+
+    public void DetectDialogTrigger(int x, int y)
+    {
+        for(int i = 0; i < phases[phaseIndex].dialogs.Count; i++)
+        {
+            if (!phases[phaseIndex].dialogs[i].isPlayed)
+            {
+                if(phases[phaseIndex].dialogs[i].triggerX == x)
+                {
+                    if (!phases[phaseIndex].dialogs[i].isLimitTriggerY || phases[phaseIndex].dialogs[i].triggerY == y)
+                    {
+                        if(currentDialog != phases[phaseIndex].dialogs[i])
+                        {
+                            if (currentDialog != null)
+                            {
+                                currentDialog.HideDialogUnits();
+                            }
+                            currentDialog = phases[phaseIndex].dialogs[i];
+                            currentDialog.StartDialogSet();
+                        }
+                    }
+                }
             }
         }
     }

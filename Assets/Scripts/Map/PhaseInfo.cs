@@ -22,6 +22,7 @@ public class PhaseInfo : MonoBehaviour
     public List<float> generateDebuffsWeight = new List<float>();
     public int minGenerateDebuffsInterval;
     public int maxGenerateDebuffsInterval;
+    public List<DialogSet> dialogs = new List<DialogSet>();
 
 
     public void Initialize()

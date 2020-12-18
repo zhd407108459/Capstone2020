@@ -12,6 +12,7 @@ public class PlayerGridMovement : MonoBehaviour
     public int yPos;
 
     [HideInInspector] public bool isPlayerFacingRight;
+    [HideInInspector] public bool isInDialog;
 
     private Vector3 targetPos;
     private PlayerAction action;
@@ -21,12 +22,13 @@ public class PlayerGridMovement : MonoBehaviour
         transform.position = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
         targetPos = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
         isPlayerFacingRight = true;
+        isInDialog = false;
         action = GetComponent<PlayerAction>();
     }
 
     void Update()
     {
-        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused)
+        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !isInDialog)
         {
             Move();
         }
@@ -182,6 +184,7 @@ public class PlayerGridMovement : MonoBehaviour
             }
             yPos = tempY;
         }
+        GridManager.instance.DetectDialogTrigger(xPos, yPos);
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
     }
 
