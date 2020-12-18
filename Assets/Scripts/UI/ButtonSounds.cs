@@ -13,7 +13,7 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log("Enter");
-        if(hoverFX != null || hoverFX != "")
+        if(hoverFX != null && hoverFX != "")
         {
             RuntimeManager.PlayOneShot(hoverFX);
         }
@@ -27,7 +27,7 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerDown(PointerEventData eventData)
     {
         //Debug.Log("Down");
-        if (clickFX != null || clickFX != "")
+        if (clickFX != null && clickFX != "")
         {
             RuntimeManager.PlayOneShot(clickFX);
         }
@@ -35,7 +35,7 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (upFX != null || upFX != "")
+        if (upFX != null && upFX != "")
         {
             RuntimeManager.PlayOneShot(upFX);
         }
