@@ -76,6 +76,10 @@ public class EnemyGridBullet : RhythmObject
         {
             EventInstance shieldImpactFX;
             shieldImpactFX = RuntimeManager.CreateInstance(shieldImpactFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                shieldImpactFX.setVolume(SettingManager.instance.overAllVolume);
+            }
             shieldImpactFX.start();
 
             GameObject go = Instantiate(bounceOffBulletPrefab, transform.position, transform.rotation);

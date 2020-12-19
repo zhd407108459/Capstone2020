@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using FMOD.Studio;
 using FMODUnity;
 
 public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
@@ -15,7 +16,14 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         //Debug.Log("Enter");
         if(hoverFX != null && hoverFX != "")
         {
-            RuntimeManager.PlayOneShot(hoverFX);
+            EventInstance buttonFX;
+            buttonFX = RuntimeManager.CreateInstance(hoverFX);
+            if (SettingManager.instance != null)
+            {
+                buttonFX.setVolume(SettingManager.instance.overAllVolume);
+            }
+            buttonFX.start();
+            //RuntimeManager.PlayOneShot(hoverFX);
         }
     }
 
@@ -29,7 +37,14 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         //Debug.Log("Down");
         if (clickFX != null && clickFX != "")
         {
-            RuntimeManager.PlayOneShot(clickFX);
+            EventInstance buttonFX;
+            buttonFX = RuntimeManager.CreateInstance(clickFX);
+            if (SettingManager.instance != null)
+            {
+                buttonFX.setVolume(SettingManager.instance.overAllVolume);
+            }
+            buttonFX.start();
+            //RuntimeManager.PlayOneShot(clickFX);
         }
     }
 
@@ -37,7 +52,14 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         if (upFX != null && upFX != "")
         {
-            RuntimeManager.PlayOneShot(upFX);
+            EventInstance buttonFX;
+            buttonFX = RuntimeManager.CreateInstance(upFX);
+            if (SettingManager.instance != null)
+            {
+                buttonFX.setVolume(SettingManager.instance.overAllVolume);
+            }
+            buttonFX.start();
+            //RuntimeManager.PlayOneShot(upFX);
         }
     }
 }

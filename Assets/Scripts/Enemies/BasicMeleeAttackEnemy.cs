@@ -112,6 +112,11 @@ public class BasicMeleeAttackEnemy : BasicEnemy
         {
             EventInstance enemyMeleeAttackFX;
             enemyMeleeAttackFX = RuntimeManager.CreateInstance(enemyMeleeAttackFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                enemyMeleeAttackFX.setVolume(SettingManager.instance.overAllVolume * value);
+            }
             enemyMeleeAttackFX.start();
 
             targetPos = player.transform.position;
@@ -200,6 +205,10 @@ public class BasicMeleeAttackEnemy : BasicEnemy
             {
                 EventInstance shieldImpactFX;
                 shieldImpactFX = RuntimeManager.CreateInstance(shieldImpactFXEventPath);
+                if (SettingManager.instance != null)
+                {
+                    shieldImpactFX.setVolume(SettingManager.instance.overAllVolume);
+                }
                 shieldImpactFX.start();
 
                 this.TakeDamage(damage);

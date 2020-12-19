@@ -11,6 +11,7 @@ public class SettingManager : MonoBehaviour
 
     public int targetPhase;
 
+    [HideInInspector] public float hearingRange = 18.0f;
 
     void Awake()
     {

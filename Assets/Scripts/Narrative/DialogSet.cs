@@ -7,11 +7,13 @@ public class DialogSet : MonoBehaviour
     public List<DialogUnit> dialogUnits = new List<DialogUnit>();
 
     public bool isFreezeMovement = true;
+    public bool isRepeatable;
     public int triggerX;
     public bool isLimitTriggerY;
     public int triggerY;
 
     [HideInInspector] public int currentIndex;
+    [HideInInspector] public bool isStarted;
     [HideInInspector] public bool isPlayed;
 
     void Start()
@@ -21,6 +23,7 @@ public class DialogSet : MonoBehaviour
             dialogUnits[i].gameObject.SetActive(false);
         }
         isPlayed = false;
+        isStarted = false;
     }
 
     void Update()
@@ -36,6 +39,7 @@ public class DialogSet : MonoBehaviour
         {
             GameManager.instance.player.GetComponent<PlayerGridMovement>().isInDialog = true;
         }
+        isStarted = true;
     }
 
     public void SkipOrNextDialogUnit()
@@ -44,12 +48,15 @@ public class DialogSet : MonoBehaviour
         {
             if(currentIndex == dialogUnits.Count - 1)
             {
+                if (!isRepeatable)
+                {
+                    isPlayed = true;
+                }
+                isStarted = false;
                 HideDialogUnits();
-                isPlayed = true;
                 if (isFreezeMovement)
                 {
                     GameManager.instance.player.GetComponent<PlayerGridMovement>().isInDialog = false;
-                    GridManager.instance.currentDialog = null;
                 }
             }
             else
@@ -66,11 +73,11 @@ public class DialogSet : MonoBehaviour
 
     public void HideDialogUnits()
     {
-        isPlayed = true;
         for (int i = 0; i < dialogUnits.Count; i++)
         {
             dialogUnits[i].gameObject.SetActive(false);
         }
+        GridManager.instance.currentDialog = null;
     }
 
     public void ShowDialogUnit(int index)

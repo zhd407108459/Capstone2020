@@ -39,6 +39,10 @@ public class DamageIncreasingBuff : BasicBuff
         {
             EventInstance itemEffectFX;
             itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                itemEffectFX.setVolume(SettingManager.instance.overAllVolume);
+            }
             itemEffectFX.start();
             GameManager.instance.player.GetComponent<PlayerAction>().StartIncreasingDamage(effectTime, damageIncreasementRatio);
             Destroy(this.gameObject);

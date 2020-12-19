@@ -70,6 +70,10 @@ public class PlayerMeleeAttack : RhythmObject
     {
         EventInstance meleeAttackFX;
         meleeAttackFX = RuntimeManager.CreateInstance(meleeAttackFXEventPath);
+        if (SettingManager.instance != null)
+        {
+            meleeAttackFX.setVolume(SettingManager.instance.overAllVolume);
+        }
         meleeAttackFX.start();
 
         meleeAttackBox.gameObject.SetActive(true);
@@ -101,6 +105,10 @@ public class PlayerMeleeAttack : RhythmObject
 
                     EventInstance meleeImpactFX;
                     meleeImpactFX = RuntimeManager.CreateInstance(meleeImpactFXEventPath);
+                    if (SettingManager.instance != null)
+                    {
+                        meleeImpactFX.setVolume(SettingManager.instance.overAllVolume);
+                    }
                     meleeImpactFX.start();
                 }
             }
@@ -123,6 +131,10 @@ public class PlayerMeleeAttack : RhythmObject
 
                     EventInstance meleeImpactFX;
                     meleeImpactFX = RuntimeManager.CreateInstance(meleeImpactFXEventPath);
+                    if (SettingManager.instance != null)
+                    {
+                        meleeImpactFX.setVolume(SettingManager.instance.overAllVolume);
+                    }
                     meleeImpactFX.start();
                 }
             }

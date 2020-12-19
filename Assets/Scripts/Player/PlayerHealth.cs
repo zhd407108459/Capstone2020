@@ -34,6 +34,10 @@ public class PlayerHealth : MonoBehaviour
 
         EventInstance damagedFX;
         damagedFX = RuntimeManager.CreateInstance(damagedFXEventPath);
+        if (SettingManager.instance != null)
+        {
+            damagedFX.setVolume(SettingManager.instance.overAllVolume);
+        }
         damagedFX.start();
 
         health -= damage;

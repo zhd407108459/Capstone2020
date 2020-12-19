@@ -62,7 +62,14 @@ public class SetAbilities : MonoBehaviour
                     {
                         if (IsPointerOverUI(BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().imageTransform))//cancel ability setting
                         {
-                            RuntimeManager.PlayOneShot("event:/FX/UI/UI-Cancel");
+                            EventInstance buttonFX;
+                            buttonFX = RuntimeManager.CreateInstance("event:/FX/UI/UI-Cancel");
+                            if (SettingManager.instance != null)
+                            {
+                                buttonFX.setVolume(SettingManager.instance.overAllVolume);
+                            }
+                            buttonFX.start();
+                            //RuntimeManager.PlayOneShot("event:/FX/UI/UI-Cancel");
                             if (BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().AbilityIndex() == 1)
                             {
                                 BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();

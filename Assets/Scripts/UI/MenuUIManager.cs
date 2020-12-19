@@ -20,6 +20,11 @@ public class MenuUIManager : MonoBehaviour
     void Start()
     {
         BackToInitialPanel();
+        if(SettingManager.instance != null)
+        {
+            overAllVolumeSlider.value = SettingManager.instance.overAllVolume;
+            overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
+        }
     }
     public void ChangeAutoAttack()
     {
