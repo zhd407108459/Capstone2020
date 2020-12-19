@@ -12,6 +12,8 @@ public class BeatsManager : MonoBehaviour
 
     public bool isBossFight;
 
+    public float parameterSwitchSpeed;
+
     public EventInstance bgmEvent;
     public string normalBGMEventPath = "event:/MX/BattleScene/Level1-Battle";
     public string boss1BGMEventPath = "event:/MX/BossFight/MX_Boss_Strange_Villa";
@@ -30,6 +32,8 @@ public class BeatsManager : MonoBehaviour
     private float lastAudioTime;
 
     private float[] normalBGMParameters = new float[4];
+    private float[] lastNormalBGMParameters = new float[4];
+    private float[] currentNormalBGMParameters = new float[4];
     private float bgmVolume;
 
     private bool isVolumeFading;
@@ -84,7 +88,7 @@ public class BeatsManager : MonoBehaviour
             UpdateBeats();
             if (!isBossFight)
             {
-                UpdateNormalBGMParameter();
+                UpdateNormalBGMParameters();
             }
             else
             {
@@ -245,6 +249,14 @@ public class BeatsManager : MonoBehaviour
         normalBGMParameters[1] = 5;
         normalBGMParameters[2] = 0;
         normalBGMParameters[3] = 0;
+        lastNormalBGMParameters[0] = 2;
+        lastNormalBGMParameters[1] = 5;
+        lastNormalBGMParameters[2] = 0;
+        lastNormalBGMParameters[3] = 0;
+        currentNormalBGMParameters[0] = 2;
+        currentNormalBGMParameters[1] = 5;
+        currentNormalBGMParameters[2] = 0;
+        currentNormalBGMParameters[3] = 0;
     }
 
     public void SetNormalBGMParameter(string name, float value)
@@ -255,6 +267,7 @@ public class BeatsManager : MonoBehaviour
             //{
             //    BGMVolumeFade();
             //}
+            lastNormalBGMParameters[0] = GetBGMParameter("GamePhase");
             normalBGMParameters[0] = value;
         }
         if (name.Equals("TimeNumReact"))
@@ -263,6 +276,7 @@ public class BeatsManager : MonoBehaviour
             //{
             //    BGMVolumeFade();
             //}
+            lastNormalBGMParameters[1] = GetBGMParameter("TimeNumReact");
             normalBGMParameters[1] = value;
         }
         if (name.Equals("LowHealth"))
@@ -271,6 +285,7 @@ public class BeatsManager : MonoBehaviour
             //{
             //    BGMVolumeFade();
             //}
+            lastNormalBGMParameters[2] = GetBGMParameter("LowHealth");
             normalBGMParameters[2] = value;
         }
         if (name.Equals("Combo"))
@@ -279,6 +294,7 @@ public class BeatsManager : MonoBehaviour
             //{
             //    BGMVolumeFade();
             //}
+            lastNormalBGMParameters[3] = GetBGMParameter("Combo");
             normalBGMParameters[3] = value;
         }
     }
@@ -290,11 +306,32 @@ public class BeatsManager : MonoBehaviour
         return result;
     }
 
-    void UpdateNormalBGMParameter()
+    void UpdateNormalBGMParameters()
     {
-        //if(GetBGMParameter("GamePhase") != normalBGMParameters[0])
+        UpdateNormalBGMParameter("GamePhase", 0);
+        UpdateNormalBGMParameter("TimeNumReact", 1);
+        UpdateNormalBGMParameter("LowHealth", 2);
+        UpdateNormalBGMParameter("Combo", 3);
+        //if (GetBGMParameter("GamePhase") != normalBGMParameters[0])
         //{
-        //    bgmEvent.setParameterByName("GamePhase", Mathf.Lerp(GetBGMParameter("GamePhase"), normalBGMParameters[0], 3.0f * Time.deltaTime));
+        //    if(GetBGMParameter("GamePhase") <= lastNormalBGMParameters[0] + 0.5f && GetBGMParameter("GamePhase") > lastNormalBGMParameters[0])
+        //    {
+        //        bgmEvent.setParameterByName("GamePhase", GetBGMParameter("GamePhase") + parameterSwitchSpeed * Time.deltaTime);
+        //        if(GetBGMParameter("GamePhase") >= lastNormalBGMParameters[0] + 0.5f)
+        //        {
+        //            bgmEvent.setParameterByName("GamePhase", normalBGMParameters[0] + 0.5f);
+        //        }
+        //    }
+        //    if(GetBGMParameter("GamePhase") <= normalBGMParameters[0] + 0.5f && GetBGMParameter("GamePhase") > normalBGMParameters[0])
+        //    {
+        //        bgmEvent.setParameterByName("GamePhase", GetBGMParameter("GamePhase") - parameterSwitchSpeed * Time.deltaTime);
+        //        if (GetBGMParameter("GamePhase") <= normalBGMParameters[0])
+        //        {
+        //            bgmEvent.setParameterByName("GamePhase", normalBGMParameters[0]);
+        //            lastNormalBGMParameters[0] = normalBGMParameters[0];
+        //        }
+        //    }
+        //    //bgmEvent.setParameterByName("GamePhase", Mathf.Lerp(GetBGMParameter("GamePhase"), normalBGMParameters[0], 3.0f * Time.deltaTime));
         //}
         //if (GetBGMParameter("TimeNumReact") != normalBGMParameters[1])
         //{
@@ -308,24 +345,71 @@ public class BeatsManager : MonoBehaviour
         //{
         //    bgmEvent.setParameterByName("Combo", Mathf.Lerp(GetBGMParameter("Combo"), normalBGMParameters[3], 3.0f * Time.deltaTime));
         //}
-        if (GetBGMParameter("GamePhase") != normalBGMParameters[0])
-        {
-            bgmEvent.setParameterByName("GamePhase",normalBGMParameters[0]);
-        }
-        if (GetBGMParameter("TimeNumReact") != normalBGMParameters[1])
-        {
-            bgmEvent.setParameterByName("TimeNumReact", normalBGMParameters[1]);
-        }
-        if (GetBGMParameter("LowHealth") != normalBGMParameters[2])
-        {
-            bgmEvent.setParameterByName("LowHealth", normalBGMParameters[2]);
-        }
-        if (GetBGMParameter("Combo") != normalBGMParameters[3])
-        {
-            bgmEvent.setParameterByName("Combo", normalBGMParameters[3]);
-        }
+        //if (GetBGMParameter("GamePhase") != normalBGMParameters[0])
+        //{
+        //    bgmEvent.setParameterByName("GamePhase",normalBGMParameters[0]);
+        //}
+        //if (GetBGMParameter("TimeNumReact") != normalBGMParameters[1])
+        //{
+        //    bgmEvent.setParameterByName("TimeNumReact", normalBGMParameters[1]);
+        //}
+        //if (GetBGMParameter("LowHealth") != normalBGMParameters[2])
+        //{
+        //    bgmEvent.setParameterByName("LowHealth", normalBGMParameters[2]);
+        //}
+        //if (GetBGMParameter("Combo") != normalBGMParameters[3])
+        //{
+        //    bgmEvent.setParameterByName("Combo", normalBGMParameters[3]);
+        //}
     }
 
+    void UpdateNormalBGMParameter(string name, int index)
+    {
+        if (lastNormalBGMParameters[index] != normalBGMParameters[index])
+        {
+            if (currentNormalBGMParameters[index] <= lastNormalBGMParameters[index] + 0.5f && currentNormalBGMParameters[index] >= lastNormalBGMParameters[index])
+            {
+                currentNormalBGMParameters[index] += parameterSwitchSpeed * Time.deltaTime;
+                if (currentNormalBGMParameters[index] >= lastNormalBGMParameters[index] + 0.5f)
+                {
+                    currentNormalBGMParameters[index] = normalBGMParameters[index] + 0.5f;
+                }
+            }
+            if (GetBGMParameter(name) <= normalBGMParameters[index] + 0.5f && GetBGMParameter(name) >= normalBGMParameters[index])
+            {
+                currentNormalBGMParameters[index] -= parameterSwitchSpeed * Time.deltaTime;
+                if (GetBGMParameter(name) <= normalBGMParameters[index])
+                {
+                    currentNormalBGMParameters[index] = normalBGMParameters[index];
+                    lastNormalBGMParameters[index] = normalBGMParameters[index];
+                }
+            }
+            bgmEvent.setParameterByName(name, currentNormalBGMParameters[index]);
+            //Debug.Log(lastNormalBGMParameters[0] + ", " + normalBGMParameters[0] + ": " + GetBGMParameter(name));
+            //if (GetBGMParameter(name) <= lastNormalBGMParameters[index] + 0.5f && GetBGMParameter(name) >= lastNormalBGMParameters[index])
+            //{
+            //    float temp = GetBGMParameter(name) + parameterSwitchSpeed * Time.deltaTime;
+            //    Debug.Log(temp + ": " + GetBGMParameter(name));
+            //    bgmEvent.setParameterByName(name, temp);
+            //    Debug.Log(temp + ": " + GetBGMParameter(name));
+            //    if (GetBGMParameter(name) >= lastNormalBGMParameters[index] + 0.5f)
+            //    {
+            //        bgmEvent.setParameterByName(name, normalBGMParameters[index] + 0.5f);
+            //    }
+            //}
+            //if (GetBGMParameter(name) <= normalBGMParameters[index] + 0.5f && GetBGMParameter(name) >= normalBGMParameters[index])
+            //{
+            //    float target = GetBGMParameter(name) - parameterSwitchSpeed * Time.deltaTime;
+            //    bgmEvent.setParameterByName(name, target);
+            //    if (GetBGMParameter(name) <= normalBGMParameters[index])
+            //    {
+            //        bgmEvent.setParameterByName(name, normalBGMParameters[index]);
+            //        lastNormalBGMParameters[index] = normalBGMParameters[index];
+            //    }
+            //}
+            //bgmEvent.setParameterByName("GamePhase", Mathf.Lerp(GetBGMParameter("GamePhase"), normalBGMParameters[0], 3.0f * Time.deltaTime));
+        }
+    }
 
     public void SwitchToBoss1BGM()
     {
