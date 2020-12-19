@@ -130,8 +130,16 @@ public class GridManager : RhythmObject
             recordTimer += Time.deltaTime;
             if(rageTimer > 0 && !nextStageIcon.activeSelf)
             {
-                rageTimer -= Time.deltaTime;
-                if(rageTimer / phases[phaseIndex].rageTime < 0.25f && lastRageTimer / phases[phaseIndex].rageTime >= 0.25f)
+                rageTimer -= Time.deltaTime; 
+                if (rageTimer / phases[phaseIndex].rageTime < 0.75f && lastRageTimer / phases[phaseIndex].rageTime >= 0.75f)
+                {
+                    BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 1);
+                }
+                if (rageTimer / phases[phaseIndex].rageTime < 0.5f && lastRageTimer / phases[phaseIndex].rageTime >= 0.5f)
+                {
+                    BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 2);
+                }
+                if (rageTimer / phases[phaseIndex].rageTime < 0.25f && lastRageTimer / phases[phaseIndex].rageTime >= 0.25f)
                 {
                     BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 3);
                 }
