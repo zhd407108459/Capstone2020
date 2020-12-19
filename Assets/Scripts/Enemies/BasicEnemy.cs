@@ -74,7 +74,7 @@ public class BasicEnemy : RhythmObject
         if (SettingManager.instance != null)
         {
             float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-            enemyDamagedFX.setVolume(SettingManager.instance.overAllVolume * value);
+            enemyDamagedFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
         }
         enemyDamagedFX.start();
 
@@ -150,7 +150,7 @@ public class BasicEnemy : RhythmObject
         if (SettingManager.instance != null)
         {
             float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-            enemyDeathFX.setVolume(SettingManager.instance.overAllVolume * value);
+            enemyDeathFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
         }
         enemyDeathFX.start();
 
@@ -166,7 +166,7 @@ public class BasicEnemy : RhythmObject
             if (SettingManager.instance != null)
             {
                 float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-                enemyDeathRattleFX.setVolume(SettingManager.instance.overAllVolume * value);
+                enemyDeathRattleFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
             }
             enemyDeathRattleFX.start();
         }

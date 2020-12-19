@@ -55,7 +55,7 @@ public class AdvancedLaserEnemy : BasicEnemy
         if (SettingManager.instance != null)
         {
             float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-            enemyLaserAttackFX.setVolume(SettingManager.instance.overAllVolume * value);
+            enemyLaserAttackFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
         }
         enemyLaserAttackFX.start();
 
