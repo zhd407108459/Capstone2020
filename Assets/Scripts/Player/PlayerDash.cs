@@ -51,6 +51,10 @@ public class PlayerDash : MonoBehaviour
 
         EventInstance dashFX;
         dashFX = RuntimeManager.CreateInstance(dashFXEventPath);
+        if (SettingManager.instance != null)
+        {
+            dashFX.setVolume(SettingManager.instance.overAllVolume);
+        }
         dashFX.start();
         Invoke("EndDash", 0.4f);
     }

@@ -36,6 +36,11 @@ public class CrossBulletEnemy : BasicEnemy
         {
             EventInstance enemyBulletAttackFX;
             enemyBulletAttackFX = RuntimeManager.CreateInstance(enemyBulletAttackFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                enemyBulletAttackFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+            }
             enemyBulletAttackFX.start();
 
             Shoot(1, 0);

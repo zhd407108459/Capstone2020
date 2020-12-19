@@ -42,6 +42,8 @@ public class GridManager : RhythmObject
     public Text recordText;
     public Button closeRecordPanelButton;
 
+    public GameObject interactionTip;
+
     [HideInInspector] public Vector3 targetCameraPos;
     [HideInInspector] public bool isCameraFollowing;
     [HideInInspector] public bool isInPhase;
@@ -61,6 +63,7 @@ public class GridManager : RhythmObject
     private bool isBoss2Phase;
 
     [HideInInspector] public DialogSet currentDialog;
+    private DialogSet nextDialog;
 
     void Awake()
     {
@@ -95,6 +98,20 @@ public class GridManager : RhythmObject
                 {
                     currentDialog.SkipOrNextDialogUnit();
                 }
+            }
+            if (interactionTip.activeSelf)
+            {
+                interactionTip.transform.position = GameManager.instance.player.transform.position;
+            }
+            if(interactionTip.activeSelf && Input.GetKeyDown(KeyCode.F))
+            {
+                if (currentDialog != null)
+                {
+                    currentDialog.HideDialogUnits();
+                }
+                currentDialog = nextDialog;
+                currentDialog.StartDialogSet();
+                interactionTip.SetActive(false);
             }
         }
     }
@@ -151,7 +168,7 @@ public class GridManager : RhythmObject
                         }
                     }
                 }
-                rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
+                rageTimerText.text = ((int)rageTimer).ToString() + "s";
                 rageTimerSlider.value = rageTimer / phases[phaseIndex].rageTime;
                 lastRageTimer = rageTimer;
             }
@@ -202,7 +219,7 @@ public class GridManager : RhythmObject
             recordTimer = 0;
             rageTimerSlider.gameObject.SetActive(true);
             rageTimer = phases[phaseIndex].rageTime;
-            rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
+            rageTimerText.text = ((int)rageTimer).ToString() + "s";
             rageTimerSlider.value = 1;
         }
         GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, 0);
@@ -215,6 +232,10 @@ public class GridManager : RhythmObject
 
     public void EndCurrentPhase()
     {
+        if(currentDialog != null)
+        {
+            currentDialog.HideDialogUnits();
+        }
         foreach (var n in FindObjectsOfType<BasicBuff>())
         {
             Destroy(n.gameObject);
@@ -279,7 +300,7 @@ public class GridManager : RhythmObject
                 recordTimer = 0;
                 rageTimerSlider.gameObject.SetActive(true);
                 rageTimer = phases[phaseIndex].rageTime;
-                rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
+                rageTimerText.text = ((int)rageTimer).ToString() + "s";
                 rageTimerSlider.value = 1;
             }
             GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos);
@@ -324,7 +345,7 @@ public class GridManager : RhythmObject
             boss.Reset();
         }
         rageTimer = phases[phaseIndex].rageTime;
-        rageTimerText.text = "Time: " + ((int)rageTimer).ToString() + "s";
+        rageTimerText.text = ((int)rageTimer).ToString() + "s";
         rageTimerSlider.value = 1;
         ResetGeneratingBuffsAndDebuffs();
         isInPhase = false;
@@ -449,6 +470,10 @@ public class GridManager : RhythmObject
 
         EventInstance itemEmergenceFX;
         itemEmergenceFX = RuntimeManager.CreateInstance(itemEmergenceFXEventPath);
+        if (SettingManager.instance != null)
+        {
+            itemEmergenceFX.setVolume(SettingManager.instance.overAllVolume);
+        }
         itemEmergenceFX.start();
     }
 
@@ -496,6 +521,10 @@ public class GridManager : RhythmObject
 
         EventInstance itemEmergenceFX;
         itemEmergenceFX = RuntimeManager.CreateInstance(itemEmergenceFXEventPath);
+        if (SettingManager.instance != null)
+        {
+            itemEmergenceFX.setVolume(SettingManager.instance.overAllVolume);
+        }
         itemEmergenceFX.start();
     }
 
@@ -729,6 +758,7 @@ public class GridManager : RhythmObject
 
     public void DetectDialogTrigger(int x, int y)
     {
+        bool isDetected = false;
         for(int i = 0; i < phases[phaseIndex].dialogs.Count; i++)
         {
             if (!phases[phaseIndex].dialogs[i].isPlayed)
@@ -739,15 +769,36 @@ public class GridManager : RhythmObject
                     {
                         if(currentDialog != phases[phaseIndex].dialogs[i])
                         {
-                            if (currentDialog != null)
+                            if (phases[phaseIndex].dialogs[i].isLimitTriggerY)
                             {
-                                currentDialog.HideDialogUnits();
+                                interactionTip.SetActive(true);
+                                nextDialog = phases[phaseIndex].dialogs[i];
                             }
-                            currentDialog = phases[phaseIndex].dialogs[i];
-                            currentDialog.StartDialogSet();
+                            else
+                            {
+                                if (currentDialog != null)
+                                {
+                                    currentDialog.HideDialogUnits();
+                                }
+                                currentDialog = phases[phaseIndex].dialogs[i];
+                                currentDialog.StartDialogSet();
+                            }
+                            isDetected = true;
                         }
                     }
                 }
+            }
+        }
+        if (!isDetected && interactionTip.activeSelf)
+        {
+            interactionTip.SetActive(false);
+        }
+        if(currentDialog != null)
+        {
+            if(x < currentDialog.triggerX - 2 || x > currentDialog.triggerX + 2)
+            {
+                currentDialog.HideDialogUnits();
+                currentDialog = null;
             }
         }
     }

@@ -62,18 +62,33 @@ public class BuffProviderEnemy : BasicEnemy
         {
             EventInstance enemyExtraHealthBuffFX;
             enemyExtraHealthBuffFX = RuntimeManager.CreateInstance(enemyExtraHealthBuffFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                enemyExtraHealthBuffFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+            }
             enemyExtraHealthBuffFX.start();
         }
         else if (buffType == 1)
         {
             EventInstance enemyHealBuffFX;
             enemyHealBuffFX = RuntimeManager.CreateInstance(enemyHealBuffFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                enemyHealBuffFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+            }
             enemyHealBuffFX.start();
         }
         else if (buffType == 2)
         {
             EventInstance enemyPowerupBuffFX;
             enemyPowerupBuffFX = RuntimeManager.CreateInstance(enemyPowerupBuffFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                enemyPowerupBuffFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+            }
             enemyPowerupBuffFX.start();
         }
         List<BasicEnemy> enemies = GridManager.instance.GetAllEnemies();

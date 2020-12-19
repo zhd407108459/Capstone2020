@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
+    public Button pauseButton;
     [Header("Pause Panel")]
     public GameObject pausePanel;
     public Button pausePanelResumeButton;
@@ -41,10 +42,13 @@ public class GameManager : MonoBehaviour
 
         HidePausePanel();
 
+        pauseButton.onClick.AddListener(PauseGame);
+
         pausePanelResumeButton.onClick.AddListener(PauseGame);
         pausePanelMenuButton.onClick.AddListener(BackToMenu);
         deadPanelRestartButton.onClick.AddListener(RestartCurrentBattle);
         deadPanelMenuButton.onClick.AddListener(BackToMenu);
+
     }
 
     void Update()
@@ -71,6 +75,7 @@ public class GameManager : MonoBehaviour
             //BeatsManager.instance.bgm.UnPause();
             BeatsManager.instance.ResumeBGM();
             HidePausePanel();
+            pauseButton.gameObject.SetActive(true);
         }
         else
         {
@@ -78,6 +83,7 @@ public class GameManager : MonoBehaviour
             //BeatsManager.instance.bgm.Pause();
             BeatsManager.instance.PauseBGM();
             ShowPausePanel();
+            pauseButton.gameObject.SetActive(false);
         }
     }
 
@@ -89,6 +95,7 @@ public class GameManager : MonoBehaviour
             //BeatsManager.instance.bgm.UnPause();
             BeatsManager.instance.ResumeBGM();
             HidePausePanel();
+            pauseButton.gameObject.SetActive(true);
         }
         else if (pause && !isPaused)
         {
@@ -96,6 +103,7 @@ public class GameManager : MonoBehaviour
             //BeatsManager.instance.bgm.Pause();
             BeatsManager.instance.PauseBGM();
             ShowPausePanel();
+            pauseButton.gameObject.SetActive(false);
         }
     }
 

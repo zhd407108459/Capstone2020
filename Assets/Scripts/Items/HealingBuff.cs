@@ -39,6 +39,10 @@ public class HealingBuff : BasicBuff
         {
             EventInstance itemEffectFX;
             itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                itemEffectFX.setVolume(SettingManager.instance.overAllVolume);
+            }
             itemEffectFX.start();
             GameManager.instance.player.GetComponent<PlayerHealth>().Recover(healingValue);
             Destroy(this.gameObject);

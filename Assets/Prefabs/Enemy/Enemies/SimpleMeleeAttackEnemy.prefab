@@ -180,9 +180,14 @@ MonoBehaviour:
   isRaged: 0
   extraHealth: 0
   maxExtraHealth: 0
+  enemyDamagedFXEventPath: event:/FX/Enemy/FX-EnemyDamaged
+  enemyDeathFXEventPath: event:/FX/Enemy/FX-EnemyDeath
+  enemyDeathRattleFXEventPath: event:/FX/Enemy/FX-EnemyRageBall
   attackLerpValue: 10
   attackInterval: 2
   startDelay: 0
+  enemyMeleeAttackFXEventPath: event:/FX/Enemy/FX-EnemyMeleeAttack
+  shieldImpactFXEventPath: event:/FX/Player/FX-ShieldImpact
 --- !u!1 &1188133889584683801
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,8 +765,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8386270170885796290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.137, z: 0}
+  m_LocalScale: {x: 0.6305, y: 0.6191, z: 1}
   m_Children: []
   m_Father: {fileID: 8270678544517424868}
   m_RootOrder: 0
@@ -805,7 +810,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 55
-  m_Sprite: {fileID: 21300000, guid: 1a0d7d5431d758348be6fcbd1881ae15, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 160f44fca160f434e867f0d549815faa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

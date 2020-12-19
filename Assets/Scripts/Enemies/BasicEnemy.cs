@@ -71,6 +71,11 @@ public class BasicEnemy : RhythmObject
 
         EventInstance enemyDamagedFX;
         enemyDamagedFX = RuntimeManager.CreateInstance(enemyDamagedFXEventPath);
+        if (SettingManager.instance != null)
+        {
+            float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+            enemyDamagedFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+        }
         enemyDamagedFX.start();
 
         Camera.main.GetComponent<CameraShake>().Shake();
@@ -142,6 +147,11 @@ public class BasicEnemy : RhythmObject
 
         EventInstance enemyDeathFX;
         enemyDeathFX = RuntimeManager.CreateInstance(enemyDeathFXEventPath);
+        if (SettingManager.instance != null)
+        {
+            float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+            enemyDeathFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+        }
         enemyDeathFX.start();
 
         this.gameObject.SetActive(false);
@@ -153,6 +163,11 @@ public class BasicEnemy : RhythmObject
         {
             EventInstance enemyDeathRattleFX;
             enemyDeathRattleFX = RuntimeManager.CreateInstance(enemyDeathRattleFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                enemyDeathRattleFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+            }
             enemyDeathRattleFX.start();
         }
         if(dealthRattleType > 0 && dealthRattleType < 5)

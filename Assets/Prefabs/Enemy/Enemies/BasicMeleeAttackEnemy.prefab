@@ -310,8 +310,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3438296542502501296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.061, z: 0}
+  m_LocalScale: {x: 0.35439134, y: 0.34798363, z: 0.56207985}
   m_Children: []
   m_Father: {fileID: 2959452525350972566}
   m_RootOrder: 0
@@ -355,7 +355,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 55
-  m_Sprite: {fileID: 21300000, guid: f595dcf75c186204487563160309d347, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14a920f35943fdd4ca80ffa520c5cffd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -640,9 +640,14 @@ MonoBehaviour:
   isRaged: 0
   extraHealth: 0
   maxExtraHealth: 0
+  enemyDamagedFXEventPath: event:/FX/Enemy/FX-EnemyDamaged
+  enemyDeathFXEventPath: event:/FX/Enemy/FX-EnemyDeath
+  enemyDeathRattleFXEventPath: event:/FX/Enemy/FX-EnemyRageBall
   attackLerpValue: 10
   attackInterval: 2
   startDelay: 0
+  enemyMeleeAttackFXEventPath: event:/FX/Enemy/FX-EnemyMeleeAttack
+  shieldImpactFXEventPath: event:/FX/Player/FX-ShieldImpact
 --- !u!1 &6513332343729164186
 GameObject:
   m_ObjectHideFlags: 0

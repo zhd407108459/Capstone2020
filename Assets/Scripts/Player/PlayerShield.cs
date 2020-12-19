@@ -66,6 +66,10 @@ public class PlayerShield : RhythmObject
     {
         EventInstance shieldFX;
         shieldFX = RuntimeManager.CreateInstance(shieldFXEventPath);
+        if (SettingManager.instance != null)
+        {
+            shieldFX.setVolume(SettingManager.instance.overAllVolume);
+        }
         shieldFX.start();
 
         shieldBox.gameObject.SetActive(true);

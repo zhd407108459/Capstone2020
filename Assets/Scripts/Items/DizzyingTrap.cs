@@ -26,6 +26,10 @@ public class DizzyingTrap : BasicTrap
         {
             EventInstance itemEffectFX;
             itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                itemEffectFX.setVolume(SettingManager.instance.overAllVolume);
+            }
             itemEffectFX.start();
             GameManager.instance.player.GetComponent<PlayerAction>().StartDizzy(effectTime);
             this.gameObject.SetActive(false);
