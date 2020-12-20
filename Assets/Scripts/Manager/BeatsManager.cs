@@ -310,6 +310,7 @@ public class BeatsManager : MonoBehaviour
             lastNormalBGMParameters[0] = value;
             currentNormalBGMParameters[0] = value;
             normalBGMParameters[0] = value;
+            bgmEvent.setParameterByName("GamePhase", value);
         }
         if (name.Equals("TimeNumReact"))
         {
@@ -320,6 +321,7 @@ public class BeatsManager : MonoBehaviour
             lastNormalBGMParameters[1] = value;
             currentNormalBGMParameters[1] = value;
             normalBGMParameters[1] = value;
+            bgmEvent.setParameterByName("TimeNumReact", value);
         }
         if (name.Equals("LowHealth"))
         {
@@ -330,6 +332,7 @@ public class BeatsManager : MonoBehaviour
             lastNormalBGMParameters[2] = value;
             currentNormalBGMParameters[2] = value;
             normalBGMParameters[2] = value;
+            bgmEvent.setParameterByName("LowHealth", value);
         }
         if (name.Equals("Combo"))
         {
@@ -340,6 +343,7 @@ public class BeatsManager : MonoBehaviour
             lastNormalBGMParameters[3] = value;
             currentNormalBGMParameters[3] = value;
             normalBGMParameters[3] = value;
+            bgmEvent.setParameterByName("Combo", value);
         }
     }
 
@@ -429,10 +433,6 @@ public class BeatsManager : MonoBehaviour
                 }
             }
             bgmEvent.setParameterByName(name, currentNormalBGMParameters[index]);
-            if(index == 1)
-            {
-                Debug.Log(GetBGMParameter(name));
-            }
             //Debug.Log(lastNormalBGMParameters[0] + ", " + normalBGMParameters[0] + ": " + GetBGMParameter(name));
             //if (GetBGMParameter(name) <= lastNormalBGMParameters[index] + 0.5f && GetBGMParameter(name) >= lastNormalBGMParameters[index])
             //{
@@ -456,6 +456,10 @@ public class BeatsManager : MonoBehaviour
             //    }
             //}
             //bgmEvent.setParameterByName("GamePhase", Mathf.Lerp(GetBGMParameter("GamePhase"), normalBGMParameters[0], 3.0f * Time.deltaTime));
+        }
+        if (index == 1)
+        {
+            Debug.Log(GetBGMParameter(name));
         }
     }
 
