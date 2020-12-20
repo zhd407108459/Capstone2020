@@ -385,6 +385,10 @@ public class BeatsManager : MonoBehaviour
                 }
             }
             bgmEvent.setParameterByName(name, currentNormalBGMParameters[index]);
+            if(index == 1)
+            {
+                Debug.Log(GetBGMParameter(name));
+            }
             //Debug.Log(lastNormalBGMParameters[0] + ", " + normalBGMParameters[0] + ": " + GetBGMParameter(name));
             //if (GetBGMParameter(name) <= lastNormalBGMParameters[index] + 0.5f && GetBGMParameter(name) >= lastNormalBGMParameters[index])
             //{
