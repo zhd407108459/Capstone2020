@@ -144,6 +144,7 @@ public class BasicEnemy : RhythmObject
 
     public virtual void Die()
     {
+        GridManager.instance.CheckEnemyCount();
 
         EventInstance enemyDeathFX;
         enemyDeathFX = RuntimeManager.CreateInstance(enemyDeathFXEventPath);

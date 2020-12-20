@@ -648,34 +648,47 @@ public class GridManager : RhythmObject
     {
         if (IsInBattlePhase())
         {
-            int count = 0;
             for(int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+            {
+                if (phases[phaseIndex].enemies[i].gameObject.activeSelf)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public void CheckEnemyCount()
+    {
+        if (IsInBattlePhase() && !isBossFight)
+        {
+            int count = 0;
+            for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
             {
                 if (phases[phaseIndex].enemies[i].gameObject.activeSelf)
                 {
                     count++;
                 }
             }
-            if(count > 0)
+            if (count > 0)
             {
-                if (count == phases[phaseIndex].enemyBGMChange1)
+                count -= 1;
+                if (count == phases[phaseIndex].enemyBGMChangeCount1 && rageTimer / phases[phaseIndex].rageTime > 0.25f)
                 {
+                    Debug.Log("Change1");
                     BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 1);
                 }
-                if (count == phases[phaseIndex].enemyBGMChange2)
+                if (count == phases[phaseIndex].enemyBGMChangeCount2 && rageTimer / phases[phaseIndex].rageTime > 0.25f)
                 {
+                    Debug.Log("Change2");
                     BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 2);
                 }
-                return false;
             }
-            else
-            {
-                return true;
-            }
-        }
-        else
-        {
-            return true;
         }
     }
 
