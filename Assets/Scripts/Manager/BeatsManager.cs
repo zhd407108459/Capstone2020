@@ -423,10 +423,10 @@ public class BeatsManager : MonoBehaviour
                     currentNormalBGMParameters[index] = normalBGMParameters[index] + 0.5f;
                 }
             }
-            if (GetBGMParameter(name) <= normalBGMParameters[index] + 0.5f && GetBGMParameter(name) >= normalBGMParameters[index])
+            if (currentNormalBGMParameters[index] <= normalBGMParameters[index] + 0.5f && currentNormalBGMParameters[index] >= normalBGMParameters[index])
             {
                 currentNormalBGMParameters[index] -= parameterSwitchSpeed * Time.deltaTime;
-                if (GetBGMParameter(name) <= normalBGMParameters[index])
+                if (currentNormalBGMParameters[index] <= normalBGMParameters[index])
                 {
                     currentNormalBGMParameters[index] = normalBGMParameters[index];
                     lastNormalBGMParameters[index] = normalBGMParameters[index];
@@ -457,10 +457,10 @@ public class BeatsManager : MonoBehaviour
             //}
             //bgmEvent.setParameterByName("GamePhase", Mathf.Lerp(GetBGMParameter("GamePhase"), normalBGMParameters[0], 3.0f * Time.deltaTime));
         }
-        if (index == 1)
-        {
-            Debug.Log(GetBGMParameter(name));
-        }
+        //if (index == 1)
+        //{
+        //    Debug.Log(GetBGMParameter(name));
+        //}
     }
 
     public void SwitchToBoss1BGM()
