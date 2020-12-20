@@ -149,7 +149,7 @@ public class GridManager : RhythmObject
                     //Rage
                     if (!isBossFight)
                     {
-                        BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 4);
+                        BeatsManager.instance.SetNormalBGMParameterImmediately("TimeNumReact", 4);
                         for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
                         {
                             phases[phaseIndex].enemies[i].isRaged = true;

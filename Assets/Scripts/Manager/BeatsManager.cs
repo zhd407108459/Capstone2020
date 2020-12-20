@@ -299,6 +299,50 @@ public class BeatsManager : MonoBehaviour
         }
     }
 
+    public void SetNormalBGMParameterImmediately(string name, float value)
+    {
+        if (name.Equals("GamePhase"))
+        {
+            //if(Mathf.Abs(normalBGMParameters[0] - value) > 1.1f)
+            //{
+            //    BGMVolumeFade();
+            //}
+            lastNormalBGMParameters[0] = value;
+            currentNormalBGMParameters[0] = value;
+            normalBGMParameters[0] = value;
+        }
+        if (name.Equals("TimeNumReact"))
+        {
+            //if (Mathf.Abs(normalBGMParameters[1] - value) > 1.1f)
+            //{
+            //    BGMVolumeFade();
+            //}
+            lastNormalBGMParameters[1] = value;
+            currentNormalBGMParameters[1] = value;
+            normalBGMParameters[1] = value;
+        }
+        if (name.Equals("LowHealth"))
+        {
+            //if (Mathf.Abs(normalBGMParameters[2] - value) > 1.1f)
+            //{
+            //    BGMVolumeFade();
+            //}
+            lastNormalBGMParameters[2] = value;
+            currentNormalBGMParameters[2] = value;
+            normalBGMParameters[2] = value;
+        }
+        if (name.Equals("Combo"))
+        {
+            //if (Mathf.Abs(normalBGMParameters[3] - value) > 1.1f)
+            //{
+            //    BGMVolumeFade();
+            //}
+            lastNormalBGMParameters[3] = value;
+            currentNormalBGMParameters[3] = value;
+            normalBGMParameters[3] = value;
+        }
+    }
+
     float GetBGMParameter(string name)
     {
         float result;
