@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerGridMovement : MonoBehaviour
 {
     public GameObject sprite;
+    public Animator animator;
     public float movementLerpValue;
     public float actionTolerance;
 
@@ -57,12 +58,14 @@ public class PlayerGridMovement : MonoBehaviour
                     SetPos(xPos, yPos + 1);
                 }
                 GetComponent<PlayerDash>().StartDash();
+                animator.SetTrigger("Jump");
             }
             else
             {
                 if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
                 {
                     SetPos(xPos, yPos + 1);
+                    animator.SetTrigger("Jump");
                 }
             }
         }
@@ -72,10 +75,12 @@ public class PlayerGridMovement : MonoBehaviour
             {
                 SetPos(xPos, yPos - 2);
                 GetComponent<PlayerDash>().StartDash();
+                animator.SetTrigger("Jump");
             }
             else
             {
                 SetPos(xPos, yPos - 1);
+                animator.SetTrigger("Jump");
             }
         }
         else if (Input.GetKeyDown(KeyCode.D))
@@ -86,10 +91,12 @@ public class PlayerGridMovement : MonoBehaviour
             {
                 SetPos(xPos + 2, yPos);
                 GetComponent<PlayerDash>().StartDash();
+                animator.SetTrigger("Jump");
             }
             else
             {
                 SetPos(xPos + 1, yPos);
+                animator.SetTrigger("Jump");
             }
         }
         else if (Input.GetKeyDown(KeyCode.A))
@@ -100,10 +107,12 @@ public class PlayerGridMovement : MonoBehaviour
             {
                 SetPos(xPos - 2, yPos);
                 GetComponent<PlayerDash>().StartDash();
+                animator.SetTrigger("Jump");
             }
             else
             {
                 SetPos(xPos - 1, yPos);
+                animator.SetTrigger("Jump");
             }
         }
         else if (Input.GetKeyDown(KeyCode.Q)){

@@ -227,6 +227,9 @@ MonoBehaviour:
   isRaged: 0
   extraHealth: 0
   maxExtraHealth: 0
+  enemyDamagedFXEventPath: event:/FX/Enemy/FX-EnemyDamaged
+  enemyDeathFXEventPath: event:/FX/Enemy/FX-EnemyDeath
+  enemyDeathRattleFXEventPath: event:/FX/Enemy/FX-EnemyRageBall
   buffType: 2
   buffValue: 0.5
   buffPrefab: {fileID: 2237685306329113308, guid: 47d31f80bdfd0834eaf13d60c1a07804,
@@ -237,6 +240,9 @@ MonoBehaviour:
   startDelay: 0
   actionInterval: 16
   rageActionInterval: 8
+  enemyExtraHealthBuffFXEventPath: event:/FX/Enemy/FX-EnemyShield
+  enemyHealBuffFXEventPath: event:/FX/Enemy/FX-EnemyShield
+  enemyPowerupBuffFXEventPath: event:/FX/Enemy/FX-EnemyShield
 --- !u!61 &7381626892745865186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -435,7 +441,7 @@ Transform:
   m_GameObject: {fileID: 7381626893213867178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 7381626892745865188}
   m_RootOrder: 0
@@ -479,8 +485,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 55
-  m_Sprite: {fileID: 21300002, guid: 87efaf20c96bd46b2a6e7bf4d4d3fd57, type: 3}
-  m_Color: {r: 0.9716981, g: 0.041251317, b: 0.041251317, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f0aa2de8f63c36f47a6adf5d1d3ee0fd, type: 3}
+  m_Color: {r: 1, g: 0.23113209, b: 0.23113209, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

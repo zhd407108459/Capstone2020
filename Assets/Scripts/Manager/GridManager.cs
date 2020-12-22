@@ -20,6 +20,7 @@ public class GridManager : RhythmObject
     public GameObject cameraObject;
     public float cameraFollowLerpValue;
     public GameObject fixedBackground;
+    public BackgroundMovement backgroundMovement;
 
     public List<PhaseInfo> phases = new List<PhaseInfo>();
 
@@ -48,6 +49,8 @@ public class GridManager : RhythmObject
     [HideInInspector] public bool isCameraFollowing;
     [HideInInspector] public bool isInPhase;
     [HideInInspector] public string itemEmergenceFXEventPath = "event:/FX/Item/FX-ItemEmergence";
+
+    private Vector3 lastCameraPos;
 
     private bool isCounting;
     private int timer;
@@ -124,6 +127,8 @@ public class GridManager : RhythmObject
             UpdateTargetCameraPosition();
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetCameraPos, cameraFollowLerpValue * Time.deltaTime);
             fixedBackground.transform.position = new Vector3(cameraObject.transform.position.x, cameraObject.transform.position.y, fixedBackground.transform.position.z);
+            backgroundMovement.MoveBackgrounds(cameraObject.transform.position.x - lastCameraPos.x);
+            lastCameraPos = cameraObject.transform.position;
         }
         if (!GameManager.instance.isPaused && IsInBattlePhase() && isInPhase && !isBoss2Phase)
         {
@@ -235,6 +240,7 @@ public class GridManager : RhythmObject
         GameManager.instance.player.transform.position = GetPhaseInitialPosition();
         UpdateTargetCameraPosition();
         cameraObject.transform.position = targetCameraPos;
+        lastCameraPos = cameraObject.transform.position;
         fixedBackground.transform.position = new Vector3(cameraObject.transform.position.x, cameraObject.transform.position.y, fixedBackground.transform.position.z);
 
     }
@@ -681,12 +687,12 @@ public class GridManager : RhythmObject
                 count -= 1;
                 if (count == phases[phaseIndex].enemyBGMChangeCount1 && rageTimer / phases[phaseIndex].rageTime > 0.25f)
                 {
-                    Debug.Log("Change1");
+                    //Debug.Log("Change1");
                     BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 1);
                 }
                 if (count == phases[phaseIndex].enemyBGMChangeCount2 && rageTimer / phases[phaseIndex].rageTime > 0.25f)
                 {
-                    Debug.Log("Change2");
+                    //Debug.Log("Change2");
                     BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 2);
                 }
             }
@@ -799,7 +805,7 @@ public class GridManager : RhythmObject
         bool isDetected = false;
         for(int i = 0; i < phases[phaseIndex].dialogs.Count; i++)
         {
-            if(phases[phaseIndex].dialogs[i]!= null)
+            if(phases[phaseIndex].dialogs[i]!= null && phases[phaseIndex].dialogs[i].gameObject.activeSelf)
             {
                 if (!phases[phaseIndex].dialogs[i].isPlayed)
                 {

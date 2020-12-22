@@ -67,10 +67,14 @@ MonoBehaviour:
   isRaged: 0
   extraHealth: 0
   maxExtraHealth: 0
+  enemyDamagedFXEventPath: event:/FX/Enemy/FX-EnemyDamaged
+  enemyDeathFXEventPath: event:/FX/Enemy/FX-EnemyDeath
+  enemyDeathRattleFXEventPath: event:/FX/Enemy/FX-EnemyRageBall
   laserObject: {fileID: 4644265371704559027}
   laserCollider: {fileID: 8369917035551133939}
   shootBeats: 01000000
   ragedShootBeats: 01000100
+  enemyLaserAttackFXEventPath: event:/FX/Enemy/FX-EnemyLaser
 --- !u!61 &-1327845553483631521
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -610,7 +614,7 @@ Transform:
   m_GameObject: {fileID: 6528103055447700992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 8547001420841161540}
   m_RootOrder: 0
@@ -654,7 +658,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 55
-  m_Sprite: {fileID: 21300006, guid: 87efaf20c96bd46b2a6e7bf4d4d3fd57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b86c8554fce6fc48955adb6a30935a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
