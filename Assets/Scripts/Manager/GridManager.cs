@@ -799,29 +799,32 @@ public class GridManager : RhythmObject
         bool isDetected = false;
         for(int i = 0; i < phases[phaseIndex].dialogs.Count; i++)
         {
-            if (!phases[phaseIndex].dialogs[i].isPlayed)
+            if(phases[phaseIndex].dialogs[i]!= null)
             {
-                if(phases[phaseIndex].dialogs[i].triggerX == x)
+                if (!phases[phaseIndex].dialogs[i].isPlayed)
                 {
-                    if (!phases[phaseIndex].dialogs[i].isLimitTriggerY || phases[phaseIndex].dialogs[i].triggerY == y)
+                    if (phases[phaseIndex].dialogs[i].triggerX == x)
                     {
-                        if(currentDialog != phases[phaseIndex].dialogs[i])
+                        if (!phases[phaseIndex].dialogs[i].isLimitTriggerY || phases[phaseIndex].dialogs[i].triggerY == y)
                         {
-                            if (phases[phaseIndex].dialogs[i].isLimitTriggerY)
+                            if (currentDialog != phases[phaseIndex].dialogs[i])
                             {
-                                interactionTip.SetActive(true);
-                                nextDialog = phases[phaseIndex].dialogs[i];
-                            }
-                            else
-                            {
-                                if (currentDialog != null)
+                                if (phases[phaseIndex].dialogs[i].isLimitTriggerY)
                                 {
-                                    currentDialog.HideDialogUnits();
+                                    interactionTip.SetActive(true);
+                                    nextDialog = phases[phaseIndex].dialogs[i];
                                 }
-                                currentDialog = phases[phaseIndex].dialogs[i];
-                                currentDialog.StartDialogSet();
+                                else
+                                {
+                                    if (currentDialog != null)
+                                    {
+                                        currentDialog.HideDialogUnits();
+                                    }
+                                    currentDialog = phases[phaseIndex].dialogs[i];
+                                    currentDialog.StartDialogSet();
+                                }
+                                isDetected = true;
                             }
-                            isDetected = true;
                         }
                     }
                 }
