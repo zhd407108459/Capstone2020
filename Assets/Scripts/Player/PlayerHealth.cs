@@ -39,7 +39,7 @@ public class PlayerHealth : MonoBehaviour
             damagedFX.setVolume(SettingManager.instance.overAllVolume);
         }
         damagedFX.start();
-
+        GetComponent<PlayerGridMovement>().animator.SetTrigger("Hurt");
         health -= damage;
         if(health <= 0)
         {
