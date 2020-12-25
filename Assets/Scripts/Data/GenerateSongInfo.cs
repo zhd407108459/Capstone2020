@@ -8,8 +8,8 @@ public class GenerateSongInfo : MonoBehaviour
 {
     private void Start()
     {
-        GenerateDefaultBoss1SongInfo();
-        GenerateDefaultBoss2SongInfo();
+        //GenerateDefaultBoss1SongInfo();
+        //GenerateDefaultBoss2SongInfo();
     }
 
     void GenerateDefaultBoss1SongInfo()
@@ -118,6 +118,28 @@ public class GenerateSongInfo : MonoBehaviour
             temp.beatsInfo.Add(bi);
         }
         SaveAFile(temp, "./Data/TestBoss2.info");
+    }
+
+    void KnifeBossTemplate()
+    {
+        SongInfo temp = new SongInfo();
+        temp.length = 256;
+        temp.interval = 0.6f;
+        for (int i = 0; i < 256; i++)
+        {
+            BeatInfo bi = new BeatInfo();
+            bi.index = i;
+            //Add ActionInfo
+            if(i == 0)
+            {
+                ActionInfo ai = new ActionInfo();
+
+                bi.actions.Add(ai);
+            }
+            //End Adding ActionInfo
+            temp.beatsInfo.Add(bi);
+        }
+        SaveAFile(temp, "./Data/KnifeBossTemplate.info");
     }
 
     void SaveAFile(SongInfo info, string path)

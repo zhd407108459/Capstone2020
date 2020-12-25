@@ -21,7 +21,7 @@ public class ActionInfo
     public List<int> actionParameters = new List<int>();
     /// <summary>
     /// for action 1 - 8
-    /// position left -> right
-    /// position bottom -> top
+    /// position left -> right 0-9
+    /// position bottom -> top 0-4
     /// </summary>
 }
