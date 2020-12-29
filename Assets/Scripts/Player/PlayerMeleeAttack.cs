@@ -79,6 +79,7 @@ public class PlayerMeleeAttack : RhythmObject
         meleeAttackBox.gameObject.SetActive(true);
         //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
         Invoke("HideMeleeAttackBox", existingTime);
+        GetComponent<PlayerGridMovement>().animator.SetTrigger("MeleeAttack");
     }
 
     void Attack()

@@ -84,6 +84,7 @@ public class PlayerShield : RhythmObject
         //}
         //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
         Invoke("HideShield", existingTime);
+        GetComponent<PlayerGridMovement>().animator.SetTrigger("ShieldDefence");
     }
 
     void HideShield()
