@@ -5365,11 +5365,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1040201644}
+  animator: {fileID: 0}
   movementLerpValue: 10
   actionTolerance: 0.2
   xPos: 0
   yPos: 0
   isPlayerFacingRight: 0
+  isInDialog: 0
 --- !u!50 &1003168631
 Rigidbody2D:
   serializedVersion: 4
@@ -5469,6 +5471,7 @@ MonoBehaviour:
   actionTolerance: 0.3
   triggerKey: 32
   isAutoUse: 1
+  shieldFXEventPath: event:/FX/Player/FX-Shield
 --- !u!114 &1003168636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5488,6 +5491,8 @@ MonoBehaviour:
   actionTolerance: 0.3
   triggerKey: 32
   isAutoUse: 1
+  meleeAttackFXEventPath: event:/FX/Player/FX-MeleeAttack
+  meleeImpactFXEventPath: event:/FX/Player/FX-MeleeImpact
 --- !u!114 &1003168637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5516,6 +5521,7 @@ MonoBehaviour:
   maxHealth: 100
   healthSlider: {fileID: 1353449205}
   health: 0
+  damagedFXEventPath: event:/FX/Player/FX-Damaged
 --- !u!114 &1003168639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5529,6 +5535,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availability: 00000000
+  damage: 0
+  isDashing: 0
+  dashFXEventPath: event:/FX/Player/FX-Dash
 --- !u!1 &1012748355 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 455270032361636863, guid: 1226d46e6cc3ac84abfe3e932863e53c,
@@ -6292,6 +6301,8 @@ MonoBehaviour:
   isBattlePhase: 1
   phaseLength: 10
   rageTime: 180
+  enemyBGMChangeCount1: 0
+  enemyBGMChangeCount2: 0
   basicPlatforms:
   - {fileID: 1243513430}
   - {fileID: 1854991329}
@@ -6349,6 +6360,7 @@ MonoBehaviour:
   generateDebuffsWeight: []
   minGenerateDebuffsInterval: 16
   maxGenerateDebuffsInterval: 16
+  dialogs: []
 --- !u!4 &1185765727
 Transform:
   m_ObjectHideFlags: 0
@@ -7309,10 +7321,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBossFight: 1
+  parameterSwitchSpeed: 0
   normalBGMEventPath: event:/MX/BattleScene/Level1-Battle
   boss1BGMEventPath: event:/MX/BossFight/MX_Boss_Strange_Villa
   boss2BGMEventPath: event:/MX/BattleScene/Level1-Battle
-  boss1SongInfoPath: ./Data/TestBoss1.info
+  boss1SongInfoPath: ./Data/KnifeBossTemplate.info
   boss2SongInfoPath: ./Data/TestBoss2.info
   beatsTime: 0.6
   beatsContainer: {fileID: 552456939}
@@ -7334,6 +7347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1003168629}
+  pauseButton: {fileID: 0}
   pausePanel: {fileID: 985328032}
   pausePanelResumeButton: {fileID: 434567435}
   pausePanelMenuButton: {fileID: 1756251499}
@@ -7375,6 +7389,7 @@ MonoBehaviour:
   cameraObject: {fileID: 1680077836}
   cameraFollowLerpValue: 15
   fixedBackground: {fileID: 457642402}
+  backgroundMovement: {fileID: 0}
   phases:
   - {fileID: 1185765726}
   phaseIndex: 0
@@ -7389,9 +7404,12 @@ MonoBehaviour:
   recordPanel: {fileID: 18197225}
   recordText: {fileID: 1221249204}
   closeRecordPanelButton: {fileID: 1788333723}
+  interactionTip: {fileID: 0}
   targetCameraPos: {x: 0, y: 0, z: 0}
   isCameraFollowing: 0
   isInPhase: 0
+  itemEmergenceFXEventPath: event:/FX/Item/FX-ItemEmergence
+  currentDialog: {fileID: 0}
 --- !u!114 &1297692750
 MonoBehaviour:
   m_ObjectHideFlags: 0

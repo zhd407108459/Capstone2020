@@ -10,6 +10,7 @@ public class GenerateSongInfo : MonoBehaviour
     {
         //GenerateDefaultBoss1SongInfo();
         //GenerateDefaultBoss2SongInfo();
+        KnifeBossTemplate();
     }
 
     void GenerateDefaultBoss1SongInfo()
@@ -122,6 +123,7 @@ public class GenerateSongInfo : MonoBehaviour
 
     void KnifeBossTemplate()
     {
+        int bossSolidDelay = 0;
         SongInfo temp = new SongInfo();
         temp.length = 256;
         temp.interval = 0.6f;
@@ -130,10 +132,109 @@ public class GenerateSongInfo : MonoBehaviour
             BeatInfo bi = new BeatInfo();
             bi.index = i;
             //Add ActionInfo
+            //Section1,Beat0-31
             if(i == 0)
             {
                 ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(9);
+                bi.actions.Add(ai);
 
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 2;
+                ai2.actionParameters.Add(4);
+                bi.actions.Add(ai2);
+            }
+            if (i == 2)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(8);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 2;
+                ai2.actionParameters.Add(3);
+                bi.actions.Add(ai2);
+            }
+            if (i == 4)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(7);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 2;
+                ai2.actionParameters.Add(2);
+                bi.actions.Add(ai2);
+            }
+            if (i == 6)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(6);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 2;
+                ai2.actionParameters.Add(1);
+                bi.actions.Add(ai2);
+            }
+            if (i == 8)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(0);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 1;
+                ai2.actionParameters.Add(4);
+                bi.actions.Add(ai2);
+            }
+            if (i == 10)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(1);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 1;
+                ai2.actionParameters.Add(3);
+                bi.actions.Add(ai2);
+            }
+            if (i == 12)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 1;
+                ai2.actionParameters.Add(2);
+                bi.actions.Add(ai2);
+            }
+            if (i == 14)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(3);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 1;
+                ai2.actionParameters.Add(1);
+                bi.actions.Add(ai2);
+            }
+            //example solid
+            if (i == 255 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 5;
+                ai.actionParameters.Add(4);
                 bi.actions.Add(ai);
             }
             //End Adding ActionInfo
