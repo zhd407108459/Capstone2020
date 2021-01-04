@@ -47,73 +47,73 @@ public class PlayerGridMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            //if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            //{
+            //    if (GridManager.instance.IsPlatformExist(xPos, yPos + 2))
+            //    {
+            //        SetPos(xPos, yPos + 2);
+            //    }
+            //    else if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
+            //    {
+            //        SetPos(xPos, yPos + 1);
+            //    }
+            //    GetComponent<PlayerDash>().StartDash();
+            //    animator.SetTrigger("Jump");
+            //}
+            //else
+            //{
+            if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
             {
-                if (GridManager.instance.IsPlatformExist(xPos, yPos + 2))
-                {
-                    SetPos(xPos, yPos + 2);
-                }
-                else if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
-                {
-                    SetPos(xPos, yPos + 1);
-                }
-                GetComponent<PlayerDash>().StartDash();
+                SetPos(xPos, yPos + 1);
                 animator.SetTrigger("Jump");
             }
-            else
-            {
-                if (GridManager.instance.IsPlatformExist(xPos, yPos + 1))
-                {
-                    SetPos(xPos, yPos + 1);
-                    animator.SetTrigger("Jump");
-                }
-            }
+            //}
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
-            {
-                SetPos(xPos, yPos - 2);
-                GetComponent<PlayerDash>().StartDash();
-                animator.SetTrigger("Jump");
-            }
-            else
-            {
-                SetPos(xPos, yPos - 1);
-                animator.SetTrigger("Jump");
-            }
+            //if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            //{
+            //    SetPos(xPos, yPos - 2);
+            //    GetComponent<PlayerDash>().StartDash();
+            //    animator.SetTrigger("Jump");
+            //}
+            //else
+            //{
+            SetPos(xPos, yPos - 1);
+            animator.SetTrigger("Jump");
+            //}
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
             isPlayerFacingRight = true;
-            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
-            {
-                SetPos(xPos + 2, yPos);
-                GetComponent<PlayerDash>().StartDash();
-                animator.SetTrigger("Jump");
-            }
-            else
-            {
-                SetPos(xPos + 1, yPos);
-                animator.SetTrigger("Jump");
-            }
+            //if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            //{
+            //    SetPos(xPos + 2, yPos);
+            //    GetComponent<PlayerDash>().StartDash();
+            //    animator.SetTrigger("Jump");
+            //}
+            //else
+            //{
+            SetPos(xPos + 1, yPos);
+            animator.SetTrigger("Jump");
+            //}
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             sprite.transform.localScale = new Vector3(-Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
             isPlayerFacingRight = false;
-            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
-            {
-                SetPos(xPos - 2, yPos);
-                GetComponent<PlayerDash>().StartDash();
-                animator.SetTrigger("Jump");
-            }
-            else
-            {
-                SetPos(xPos - 1, yPos);
-                animator.SetTrigger("Jump");
-            }
+            //if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            //{
+            //    SetPos(xPos - 2, yPos);
+            //    GetComponent<PlayerDash>().StartDash();
+            //    animator.SetTrigger("Jump");
+            //}
+            //else
+            //{
+            SetPos(xPos - 1, yPos);
+            animator.SetTrigger("Jump");
+            //}
         }
         else if (Input.GetKeyDown(KeyCode.Q)){
             if(sprite.transform.localScale.x > 0)
@@ -128,6 +128,23 @@ public class PlayerGridMovement : MonoBehaviour
             {
                 sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
+            }
+        }else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            {
+                if(isPlayerFacingRight)
+                {
+                    SetPos(xPos + 2, yPos);
+                    GetComponent<PlayerDash>().StartDash();
+                    animator.SetTrigger("Jump");
+                }
+                else
+                {
+                    SetPos(xPos - 2, yPos);
+                    GetComponent<PlayerDash>().StartDash();
+                    animator.SetTrigger("Jump");
+                }
             }
         }
     }
