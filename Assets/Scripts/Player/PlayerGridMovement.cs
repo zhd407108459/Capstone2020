@@ -118,6 +118,7 @@ public class PlayerGridMovement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q)){
             if(sprite.transform.localScale.x > 0)
             {
+                isPlayerFacingRight = false;
                 sprite.transform.localScale = new Vector3(-Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
             }
@@ -126,6 +127,7 @@ public class PlayerGridMovement : MonoBehaviour
         {
             if (sprite.transform.localScale.x < 0)
             {
+                isPlayerFacingRight = true;
                 sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
             }
