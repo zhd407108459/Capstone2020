@@ -22,7 +22,7 @@ public class DizzyingTrap : BasicTrap
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player"))
+        if (collision.tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing) 
         {
             EventInstance itemEffectFX;
             itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
