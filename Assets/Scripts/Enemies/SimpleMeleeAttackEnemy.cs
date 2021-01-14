@@ -94,17 +94,20 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
         if (xPos == player.xPos && yPos == player.yPos && player.IsPlayerInActualPosition())
         {
             isAttacking = true;
+            animator.SetTrigger("Attack");
             attackTimer++;
         }
         else if (xPos + 1 == player.xPos && yPos == player.yPos && xPos == x2 && player.IsPlayerInActualPosition())
         {
             isAttacking = true;
+            animator.SetTrigger("Attack");
             attackTimer++;
 
         }
         else if (xPos - 1 == player.xPos && yPos == player.yPos && xPos == x1 && player.IsPlayerInActualPosition())
         {
             isAttacking = true;
+            animator.SetTrigger("Attack");
             attackTimer++;
         }
         if (isAttacking)
@@ -137,6 +140,7 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
                 {
                     xPos = x1;
                 }
+                animator.SetTrigger("Walk");
                 stayTimer++;
             }
             else
@@ -154,6 +158,7 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
             {
                 xPos = x1;
             }
+            animator.SetTrigger("Walk");
         }
     }
 

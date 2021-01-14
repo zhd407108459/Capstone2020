@@ -25,7 +25,8 @@ public class BasicEnemy : RhythmObject
 
     public int xPos;
     public int yPos;
-    public SpriteRenderer sprite;
+    public GameObject sprite;
+    public Animator animator;
 
     [HideInInspector] public int health;
 

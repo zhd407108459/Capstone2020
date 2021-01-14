@@ -58,6 +58,7 @@ public class BuffProviderEnemy : BasicEnemy
 
     void BuffOthers()
     {
+        animator.SetTrigger("Attack");
         if(buffType == 0)
         {
             EventInstance enemyExtraHealthBuffFX;
