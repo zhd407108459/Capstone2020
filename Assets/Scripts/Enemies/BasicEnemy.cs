@@ -67,7 +67,7 @@ public class BasicEnemy : RhythmObject
         isMeleeAttacked = false;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
 
         EventInstance enemyDamagedFX;

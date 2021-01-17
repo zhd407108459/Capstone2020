@@ -478,6 +478,10 @@ public class GridManager : RhythmObject
                 tempList.Add(phases[phaseIndex].generateBuffsPositions[i]);
             }
         }
+        if(tempList.Count == 0)
+        {
+            return;
+        }
         int posSeed = Random.Range(0, tempList.Count);
         GameObject buff = Instantiate(phases[phaseIndex].generateBuffsPrefabs[buffIndex]);
         buff.transform.position = GetPhaseInitialPosition() + new Vector2(tempList[posSeed].xPos * gridSize.x, tempList[posSeed].yPos * gridSize.y);
@@ -528,6 +532,10 @@ public class GridManager : RhythmObject
             {
                 tempList.Add(phases[phaseIndex].generateDebuffsPositions[i]);
             }
+        }
+        if (tempList.Count == 0)
+        {
+            return;
         }
         int posSeed = Random.Range(0, tempList.Count);
         GameObject buff = Instantiate(phases[phaseIndex].generateDebuffsPrefabs[buffIndex]);
