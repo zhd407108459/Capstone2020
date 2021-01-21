@@ -10,6 +10,7 @@ public class EnemyReflectionBullet : RhythmObject
 
     public int damage;
     public GameObject bounceOffBulletPrefab;
+    public GameObject bounceOffEffectPrefab;
 
     public int xDirection;
     public int yDirection;
@@ -117,6 +118,35 @@ public class EnemyReflectionBullet : RhythmObject
             go.GetComponent<PlayerGridBullet>().SetUp(xPos - xDirection, yPos - yDirection);
             go.GetComponent<PlayerGridBullet>().damage = damage;
             Camera.main.GetComponent<CameraShake>().Shake();
+
+            if (bounceOffEffectPrefab != null)
+            {
+                GameObject effect = Instantiate(bounceOffEffectPrefab, transform.position, transform.rotation);
+                if (xDirection > 0)
+                {
+                    effect.transform.rotation = Quaternion.Euler(0, 0, 180);
+                    var main = effect.GetComponentInChildren<ParticleSystem>().main;
+                    main.startRotationZ = new ParticleSystem.MinMaxCurve(180.0f);
+                }
+                else if (xDirection < 0)
+                {
+                    effect.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    var main = effect.GetComponentInChildren<ParticleSystem>().main;
+                    main.startRotationZ = new ParticleSystem.MinMaxCurve(0.0f);
+                }
+                else if (yDirection > 0)
+                {
+                    effect.transform.rotation = Quaternion.Euler(0, 0, -90);
+                    var main = effect.GetComponentInChildren<ParticleSystem>().main;
+                    main.startRotationZ = new ParticleSystem.MinMaxCurve(90.0f);
+                }
+                else
+                {
+                    effect.transform.rotation = Quaternion.Euler(0, 0, 90);
+                    var main = effect.GetComponentInChildren<ParticleSystem>().main;
+                    main.startRotationZ = new ParticleSystem.MinMaxCurve(-90.0f);
+                }
+            }
             Destroy(this.gameObject);
         }
     }

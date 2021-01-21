@@ -9,6 +9,8 @@ public class DamageIncreasingBuff : BasicBuff
     public float damageIncreasementRatio;
     public int effectTime;
 
+    public GameObject buffTriggerEffectPrefab;
+
     public string itemEffectFXEventPath = "event:/FX/Item/FX-PowBoost";
 
     void Start()
@@ -45,6 +47,12 @@ public class DamageIncreasingBuff : BasicBuff
             }
             itemEffectFX.start();
             GameManager.instance.player.GetComponent<PlayerAction>().StartIncreasingDamage(effectTime, damageIncreasementRatio);
+
+            if (buffTriggerEffectPrefab != null)
+            {
+                Instantiate(buffTriggerEffectPrefab, GameManager.instance.player.transform.position, Quaternion.identity);
+            }
+
             Destroy(this.gameObject);
         }
     }

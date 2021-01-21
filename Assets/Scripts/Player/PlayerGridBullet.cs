@@ -11,6 +11,8 @@ public class PlayerGridBullet : RhythmObject
     public int xDirection;
     public int yDirection;
 
+    public GameObject hitEffectPrefab;
+
     [HideInInspector] public int xPos;
     [HideInInspector] public int yPos;
 
@@ -72,6 +74,10 @@ public class PlayerGridBullet : RhythmObject
             else
             {
                 collision.GetComponent<BasicEnemy>().TakeDamage(damage);
+            }
+            if (hitEffectPrefab != null)
+            {
+                Instantiate(hitEffectPrefab, collision.transform.position, Quaternion.identity);
             }
             Destroy(this.gameObject);
         }

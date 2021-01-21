@@ -17,6 +17,9 @@ public class PlayerMeleeAttack : RhythmObject
     public string meleeAttackFXEventPath = "event:/FX/Player/FX-MeleeAttack";
     public string meleeImpactFXEventPath = "event:/FX/Player/FX-MeleeImpact";
 
+    public GameObject meleeAttackEffectPrefab;
+    public GameObject hitEffectPrefab;
+
     private PlayerAction action;
 
     void Start()
@@ -80,6 +83,15 @@ public class PlayerMeleeAttack : RhythmObject
         //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
         Invoke("HideMeleeAttackBox", existingTime);
         GetComponent<PlayerGridMovement>().animator.SetTrigger("MeleeAttack");
+
+        if(meleeAttackEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(meleeAttackEffectPrefab, transform.position, transform.rotation);
+            if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+            {
+                effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+            }
+        }
     }
 
     void Attack()
@@ -111,6 +123,11 @@ public class PlayerMeleeAttack : RhythmObject
                         meleeImpactFX.setVolume(SettingManager.instance.overAllVolume);
                     }
                     meleeImpactFX.start();
+
+                    if(hitEffectPrefab != null)
+                    {
+                        Instantiate(hitEffectPrefab, cos[i].transform.position, Quaternion.identity);
+                    }
                 }
             }
             if (cos[i].tag.Equals("BossComponent"))

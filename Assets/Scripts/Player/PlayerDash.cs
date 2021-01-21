@@ -8,6 +8,8 @@ public class PlayerDash : MonoBehaviour
 {
     public List<bool> availability = new List<bool>();
     public int damage;
+    public GameObject dashEffectPrefab;
+    public GameObject hitEffectPrefab;
     [HideInInspector] public bool isDashing;
 
     public string dashFXEventPath = "event:/FX/Player/FX-Dash";
@@ -57,6 +59,14 @@ public class PlayerDash : MonoBehaviour
         }
         dashFX.start();
         Invoke("EndDash", 0.4f);
+        if(dashEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(dashEffectPrefab, transform.position, transform.rotation);
+            if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+            {
+                effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+            }
+        }
     }
 
     public void EndDash()
@@ -80,6 +90,14 @@ public class PlayerDash : MonoBehaviour
             else
             {
                 collision.GetComponent<BasicEnemy>().TakeDamage(damage);
+            }
+            if (hitEffectPrefab != null)
+            {
+                GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                {
+                    effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                }
             }
         }
         if (collision.tag.Equals("BossComponent"))

@@ -8,6 +8,8 @@ public class HealingBuff : BasicBuff
 {
     public int healingValue;
 
+    public GameObject buffTriggerEffectPrefab;
+
     public string itemEffectFXEventPath = "event:/FX/Item/FX-Heal";
 
     void Start()
@@ -45,6 +47,12 @@ public class HealingBuff : BasicBuff
             }
             itemEffectFX.start();
             GameManager.instance.player.GetComponent<PlayerHealth>().Recover(healingValue);
+
+            if (buffTriggerEffectPrefab != null)
+            {
+                Instantiate(buffTriggerEffectPrefab, GameManager.instance.player.transform.position, Quaternion.identity);
+            }
+
             Destroy(this.gameObject);
         }
     }
