@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth;
     public Slider healthSlider;
 
+    public GameObject damageEffectPrefab;
+
     [HideInInspector] public int health;
 
     public string damagedFXEventPath = "event:/FX/Player/FX-Damaged";
@@ -40,6 +42,12 @@ public class PlayerHealth : MonoBehaviour
         }
         damagedFX.start();
         GetComponent<PlayerGridMovement>().animator.SetTrigger("Hurt");
+
+        if(damageEffectPrefab != null)
+        {
+            Instantiate(damageEffectPrefab, transform.position, transform.rotation);
+        }
+
         health -= damage;
         if(health <= 0)
         {
