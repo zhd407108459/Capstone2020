@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.27000022
+  m_Length: 0.27000016
   m_ChildTransform: {fileID: 1781038872}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &102306557
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.15999998
+  m_Length: 0.16000001
   m_ChildTransform: {fileID: 2109179290}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &114998164
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.26000014
+  m_Length: 0.26000023
   m_ChildTransform: {fileID: 851124405}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &230492155
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.1500001
+  m_Length: 0.15000004
   m_ChildTransform: {fileID: 423336559}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &558910822
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.19000027
+  m_Length: 0.19000044
   m_ChildTransform: {fileID: 1849895623}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &901030248
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.28000033
+  m_Length: 0.28000024
   m_ChildTransform: {fileID: 1735893406}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &931738027
@@ -785,7 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.27000007
+  m_Length: 0.27000016
   m_ChildTransform: {fileID: 1882285704}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &1071786293
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.40000004
+  m_Length: 0.4000001
   m_ChildTransform: {fileID: 901030249}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &1224992531
@@ -1449,7 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.3200001
+  m_Length: 0.32000008
   m_ChildTransform: {fileID: 69987899}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &1377646902
@@ -1581,7 +1581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.21000001
+  m_Length: 0.21000004
   m_ChildTransform: {fileID: 114998165}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &1527337856
@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.14000012
+  m_Length: 0.14000006
   m_ChildTransform: {fileID: 533967556}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &1680757223
@@ -1966,6 +1966,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1699627975}
+  - component: {fileID: 1699627976}
+  - component: {fileID: 1699627977}
   m_Layer: 0
   m_Name: Garden Eel
   m_TagString: Untagged
@@ -1997,6 +1999,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1699627976
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699627974}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e5ed699d2bf5874a84e7fadbcc90ec3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1699627977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699627974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533669fe702b5414cbcdd5a5efeb8e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Poses:
+  - {fileID: 11400000, guid: e25087aac0d8089459fc2e2728f2d8ba, type: 2}
 --- !u!1 &1704472473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,7 +2234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.31000027
+  m_Length: 0.3100003
   m_ChildTransform: {fileID: 1710897}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &1781038871
@@ -2247,7 +2282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.2300005
+  m_Length: 0.23000039
   m_ChildTransform: {fileID: 1224992532}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &1815246751
@@ -2484,7 +2519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.13000005
+  m_Length: 0.13000003
   m_ChildTransform: {fileID: 542015340}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &1882285703
@@ -3086,6 +3121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.15999995
+  m_Length: 0.16000009
   m_ChildTransform: {fileID: 1071786294}
   m_AttachedIK: {fileID: 0}
