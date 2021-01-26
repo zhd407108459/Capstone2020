@@ -59,11 +59,11 @@ public class BasicLaserEnemy : BasicEnemy
             if (cos[i].tag.Equals("Player"))
             {
                 cos[i].GetComponent<PlayerHealth>().TakeDamage((int)(damage * damageIncreasement));
-                Invoke("HideLaserObject", 0.3f);
+                Invoke("HideLaserObject", 0.5f);
                 return;
             }
         }
-        Invoke("HideLaserObject", 0.3f);
+        Invoke("HideLaserObject", 0.5f);
     }
 
     void HideLaserObject()
