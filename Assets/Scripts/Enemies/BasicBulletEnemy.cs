@@ -19,6 +19,8 @@ public class BasicBulletEnemy : BasicEnemy
     //public bool isRandom;
 
     //private int attackTimer;
+    private float timer;
+    private float lastTimer;
 
     void Start()
     {
@@ -27,7 +29,7 @@ public class BasicBulletEnemy : BasicEnemy
 
     void Update()
     {
-
+        
     }
 
 
@@ -49,6 +51,7 @@ public class BasicBulletEnemy : BasicEnemy
         //}
         /*else */if(/*!isRandom && */(shootBeats[beatIndex] && !isRaged) || (ragedShootBeats[beatIndex] && isRaged))
         {
+            animator.SetTrigger("Attack");
             Shoot();
         }
     }

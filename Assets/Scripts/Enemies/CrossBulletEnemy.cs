@@ -43,6 +43,7 @@ public class CrossBulletEnemy : BasicEnemy
             }
             enemyBulletAttackFX.start();
 
+            animator.SetTrigger("Attack");
             Shoot(1, 0);
             Shoot(-1, 0);
             Shoot(0, 1);
