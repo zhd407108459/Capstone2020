@@ -65,12 +65,20 @@ public class AdvancedLaserEnemy : BasicEnemy
             laser1Object.SetActive(true);
             cos = Physics2D.OverlapBoxAll(laser1Collider.transform.position, new Vector2(laser1Collider.size.x * laser1Collider.transform.localScale.x, laser1Collider.size.y * laser1Collider.transform.localScale.y), laser1Collider.transform.rotation.eulerAngles.z);
             isLaserOne = false;
+            if(animator != null)
+            {
+                animator.SetTrigger("HorizontalAttack");
+            }
         }
         else
         {
             laser2Object.SetActive(true);
             cos = Physics2D.OverlapBoxAll(laser2Collider.transform.position, new Vector2(laser2Collider.size.x * laser2Collider.transform.localScale.x, laser2Collider.size.y * laser2Collider.transform.localScale.y), laser2Collider.transform.rotation.eulerAngles.z);
             isLaserOne = true;
+            if (animator != null)
+            {
+                animator.SetTrigger("VerticalAttack");
+            }
         }
         for (int i = 0; i < cos.Length; i++)
         {

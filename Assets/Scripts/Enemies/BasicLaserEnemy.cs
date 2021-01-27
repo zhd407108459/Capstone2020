@@ -14,6 +14,8 @@ public class BasicLaserEnemy : BasicEnemy
 
     public string enemyLaserAttackFXEventPath = "event:/FX/Enemy/FX-EnemyLaser";
 
+    public bool isHorizontal;
+
     void Start()
     {
         laserObject.SetActive(false);
@@ -64,6 +66,17 @@ public class BasicLaserEnemy : BasicEnemy
             }
         }
         Invoke("HideLaserObject", 0.5f);
+
+        if (animator != null)
+        {
+            if (isHorizontal) {
+                animator.SetTrigger("HorizontalAttack");
+            }
+            else
+            {
+                animator.SetTrigger("VerticalAttack");
+            }
+        }
     }
 
     void HideLaserObject()
