@@ -3211,6 +3211,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1202942396}
     m_Modifications:
+    - target: {fileID: 4573286810434899382, guid: 0f32691dea9032b4da97938001c3afad,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4573286810434899384, guid: 0f32691dea9032b4da97938001c3afad,
         type: 3}
       propertyPath: m_Name
@@ -9601,13 +9606,13 @@ MonoBehaviour:
   healthSlider: {fileID: 6617781377064992129}
   bossComponents:
   - {fileID: 467036018}
-  bulletDamage: 0
+  bulletDamage: 20
   bulletPrefab: {fileID: 7495573493685990044, guid: f6ad37c36d274c943848acb45ec2833c,
     type: 3}
   shootCenterObject: {fileID: 321221495}
   centerShootPosX: 4
   centerShootPosY: 2
-  solidDamage: 0
+  solidDamage: 20
   solidPrefab: {fileID: 7134749961602971345, guid: 25a6277c272e188488dd239cb69cacb0,
     type: 3}
   solidAttackDelay: 2
@@ -10152,7 +10157,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1613600382}
   m_HandleRect: {fileID: 0}
@@ -16693,7 +16698,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 6617781378720560077}
   m_HandleRect: {fileID: 0}

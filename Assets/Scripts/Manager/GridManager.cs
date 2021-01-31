@@ -355,9 +355,18 @@ public class GridManager : RhythmObject
         {
             Destroy(n.gameObject);
         }
+        foreach (var n in FindObjectsOfType<SolidAttack>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<EnemyBomb>())
+        {
+            Destroy(n.gameObject);
+        }
         if (isBossFight)
         {
             boss.Reset();
+            BeatsManager.instance.bgmEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
         rageTimer = phases[phaseIndex].rageTime;
         rageTimerText.text = ((int)rageTimer).ToString() + "s";
