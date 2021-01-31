@@ -81,18 +81,18 @@ public class SolidAttack : RhythmObject
         transform.rotation = Quaternion.Euler(0, 0, rotationZ);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag.Equals("Player") && (state == 1 || state == 2))
-        {
-            collision.GetComponent<PlayerHealth>().TakeDamage(damage);
-        }
-        if (collision.tag.Equals("PlayerShield"))
-        {
-            targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(endX * GridManager.instance.gridSize.x, endY * GridManager.instance.gridSize.y);
-            state = 2;
-            delayTimer = 0;
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag.Equals("Player") && (state == 1 || state == 2))
+    //    {
+    //        collision.GetComponent<PlayerHealth>().TakeDamage(damage);
+    //    }
+    //    if (collision.tag.Equals("PlayerShield"))
+    //    {
+    //        targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(endX * GridManager.instance.gridSize.x, endY * GridManager.instance.gridSize.y);
+    //        state = 2;
+    //        delayTimer = 0;
+    //    }
+    //}
 
 }
