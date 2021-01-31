@@ -91,6 +91,7 @@ public class PlayerDash : MonoBehaviour
             {
                 collision.GetComponent<BasicEnemy>().TakeDamage(damage);
             }
+            Camera.main.GetComponent<CameraShake>().Shake();
             if (hitEffectPrefab != null)
             {
                 GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
@@ -111,6 +112,45 @@ public class PlayerDash : MonoBehaviour
             {
                 GridManager.instance.boss.TakeDamage(damage);
             }
+            Camera.main.GetComponent<CameraShake>().Shake();
+            if (hitEffectPrefab != null)
+            {
+                GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                {
+                    effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                }
+            }
+        }
+        if (collision.tag.Equals("BossBomb"))
+        {
+            Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+            if ((collision.transform.position.x - centerPos.x >= 0 && !GetComponent<PlayerGridMovement>().isPlayerFacingRight) || (collision.transform.position.x - centerPos.x < 0 && GetComponent<PlayerGridMovement>().isPlayerFacingRight))
+            {
+                collision.GetComponent<EnemyBomb>().AttackedByPlayer(centerPos, true);
+            }
+            else
+            {
+                if (collision.transform.position.x - centerPos.x >= 0)
+                {
+                    collision.GetComponent<EnemyBomb>().AttackedByPlayer(collision.transform.position + new Vector3(5.0f, 0, 0), false);
+                }
+                else
+                {
+                    collision.GetComponent<EnemyBomb>().AttackedByPlayer(collision.transform.position + new Vector3(-5.0f, 0, 0), false);
+                }
+            }
+            Camera.main.GetComponent<CameraShake>().Shake();
+            if (hitEffectPrefab != null)
+            {
+                GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                {
+                    effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                }
+            }
+
         }
     }
 }
+

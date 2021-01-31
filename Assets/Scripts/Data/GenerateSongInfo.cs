@@ -8,9 +8,50 @@ public class GenerateSongInfo : MonoBehaviour
 {
     private void Start()
     {
+        GenerateTestFileFor10And11();
         //GenerateDefaultBoss1SongInfo();
         //GenerateDefaultBoss2SongInfo();
-        KnifeBossTemplate();
+        //KnifeBossTemplate();
+    }
+
+    void GenerateTestFileFor10And11()
+    {
+        SongInfo temp = new SongInfo();
+        temp.length = 256;
+        temp.interval = 0.5f;
+        int at = 10;
+        int ap = 0;
+        for (int i = 0; i < 256; i++)
+        {
+            BeatInfo bi = new BeatInfo();
+            bi.index = i;
+            if (i >= 4 && i < 252)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = at;
+                ai.actionParameters.Add(ap);
+                ap++;
+                if(at == 10)
+                {
+                    if(ap > 3)
+                    {
+                        at++;
+                        ap = 0;
+                    }
+                }
+                if(at == 11)
+                {
+                    if (ap > 7)
+                    {
+                        at = 10;
+                        ap = 0;
+                    }
+                }
+                bi.actions.Add(ai);
+            }
+            temp.beatsInfo.Add(bi);
+        }
+        SaveAFile(temp, "./Data/TestNewFunctions.info");
     }
 
     void GenerateDefaultBoss1SongInfo()

@@ -12,10 +12,21 @@ public class BeatBoss : MonoBehaviour
     public int bulletDamage;
     public GameObject bulletPrefab;
 
+    public GameObject shootCenterObject;
+    public int centerShootPosX;
+    public int centerShootPosY;
+
     public int solidDamage;
     public GameObject solidPrefab;
     public int solidAttackDelay;
     public int solidStayDelay;
+
+    public int bombDamage;
+    public float bombRange;
+    public int bombDelay;
+    public GameObject bombPrefab;
+
+    public List<Transform> bombPositions = new List<Transform>();
 
     [HideInInspector] public bool isMeleeAttacked;
 
@@ -24,6 +35,8 @@ public class BeatBoss : MonoBehaviour
     [HideInInspector] public bool canBeAttacked;
 
     [HideInInspector] public int health;
+
+    private int currentIndex;
 
     void Start()
     {
@@ -53,6 +66,10 @@ public class BeatBoss : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        if (!canBeAttacked)
+        {
+            return;
+        }
         health -= damage;
         if (health <= 0)
         {
@@ -96,6 +113,8 @@ public class BeatBoss : MonoBehaviour
         {
             return;
         }
+        currentIndex = index;
+        shootCenterObject.SetActive(false);
         BeatInfo bi = BeatsManager.instance.bossSongInfo.beatsInfo[index];
         for(int i = 0; i < bi.actions.Count; i++)
         {
@@ -165,6 +184,22 @@ public class BeatBoss : MonoBehaviour
                     ShowComponent(bi.actions[i].actionParameters[j]);
                 }
             }
+            //Throw Bombs
+            if(bi.actions[i].actionType == 10)
+            {
+                for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
+                {
+                    ThrowBomb(bi.actions[i].actionParameters[j]);
+                }
+            }
+            //Shoot Bullet From Center
+            if (bi.actions[i].actionType == 11)
+            {
+                for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
+                {
+                    ShootBulletFromCenter(bi.actions[i].actionParameters[j]);
+                }
+            }
         }
     }
 
@@ -175,6 +210,7 @@ public class BeatBoss : MonoBehaviour
         go.GetComponent<EnemyGridBullet>().yDirection = yDirection;
         go.GetComponent<EnemyGridBullet>().damage = (int)(bulletDamage);
         go.GetComponent<EnemyGridBullet>().SetUp(xPos, yPos);
+        go.GetComponent<EnemyGridBullet>().SetBulletRotation();
     }
 
     void BossSolidAttack(int x, int y, int midX, int midY, int endX, int endY, float rotationZ)
@@ -191,5 +227,54 @@ public class BeatBoss : MonoBehaviour
             return;
         }
         bossComponents[index].GetComponent<BossComponent>().Show(16);
+    }
+
+    void ThrowBomb(int index)
+    {
+        if(index >= bombPositions.Count)
+        {
+            Debug.Log("Wrong Boss Bomb Position Index: " + index);
+            return;
+        }
+        GameObject go = Instantiate(bombPrefab, bombPositions[index].position, bombPositions[index].rotation);
+        go.GetComponent<EnemyBomb>().SetUp(bombDelay, bombDamage, bombRange);
+    }
+
+    void ShootBulletFromCenter(int direction)
+    {
+        if(direction >= 8)
+        {
+            Debug.Log("Wrong Direction: " + direction);
+            return;
+        }
+        shootCenterObject.SetActive(true);
+        GameObject go = Instantiate(bulletPrefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(centerShootPosX * GridManager.instance.gridSize.x, centerShootPosY * GridManager.instance.gridSize.y), transform.rotation);
+        if(direction == 0 || direction == 1 || direction == 7)
+        {
+            go.GetComponent<EnemyGridBullet>().xDirection = 1;
+        }
+        else if(direction == 3 || direction == 4 || direction == 5)
+        {
+            go.GetComponent<EnemyGridBullet>().xDirection = -1;
+        }
+        else
+        {
+            go.GetComponent<EnemyGridBullet>().xDirection = 0;
+        }
+        if (direction == 1 || direction == 2 || direction == 3)
+        {
+            go.GetComponent<EnemyGridBullet>().yDirection = 1;
+        }
+        else if (direction == 5 || direction == 6 || direction == 7)
+        {
+            go.GetComponent<EnemyGridBullet>().yDirection = -1;
+        }
+        else
+        {
+            go.GetComponent<EnemyGridBullet>().yDirection = 0;
+        }
+        go.GetComponent<EnemyGridBullet>().damage = (int)(bulletDamage);
+        go.GetComponent<EnemyGridBullet>().SetUp(centerShootPosX + go.GetComponent<EnemyGridBullet>().xDirection, centerShootPosY + go.GetComponent<EnemyGridBullet>().yDirection);
+        go.GetComponent<EnemyGridBullet>().SetBulletRotation();
     }
 }

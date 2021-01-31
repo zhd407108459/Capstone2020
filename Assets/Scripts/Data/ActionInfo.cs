@@ -16,12 +16,31 @@ public class ActionInfo
     /// 7 solid attack from top to bottom
     /// 8 solid attack from bottom to top
     /// 
+    /// 9 show boss components
     /// 
+    /// 10 throw bomb
+    /// 
+    /// 11 shoot bullet from center
     /// </summary>
     public List<int> actionParameters = new List<int>();
     /// <summary>
     /// for action 1 - 8
     /// position left -> right 0-9
     /// position bottom -> top 0-4
+    /// 
+    /// for action 9
+    /// action parameter = component index
+    /// 
+    /// for action 10
+    /// action parameter = position index
+    /// 
+    /// for action 11
+    /// action parameter 0 - 7 = direction:
+    ///   3  2  1
+    ///    \ | /
+    ///  4 - * - 0
+    ///    / | \
+    ///   5  6  7
+    ///   
     /// </summary>
 }

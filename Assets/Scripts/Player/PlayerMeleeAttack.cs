@@ -154,6 +154,48 @@ public class PlayerMeleeAttack : RhythmObject
                         meleeImpactFX.setVolume(SettingManager.instance.overAllVolume);
                     }
                     meleeImpactFX.start();
+
+                    if (hitEffectPrefab != null)
+                    {
+                        Instantiate(hitEffectPrefab, cos[i].transform.position, Quaternion.identity);
+                    }
+                }
+            }
+            if (cos[i].tag.Equals("BossBomb"))
+            {
+                if (!cos[i].GetComponent<EnemyBomb>().isAttacked)
+                {
+                    Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+                    //Debug.Log(cos[i].transform.position.x - centerPos.x);
+                    if ((cos[i].transform.position.x - centerPos.x >= 0 && !GetComponent<PlayerGridMovement>().isPlayerFacingRight) || (cos[i].transform.position.x - centerPos.x < 0 && GetComponent<PlayerGridMovement>().isPlayerFacingRight))
+                    {
+                        cos[i].GetComponent<EnemyBomb>().AttackedByPlayer(centerPos, true);
+                    }
+                    else
+                    {
+                        if (cos[i].transform.position.x - centerPos.x >= 0)
+                        {
+                            cos[i].GetComponent<EnemyBomb>().AttackedByPlayer(cos[i].transform.position + new Vector3(5.0f, 0, 0), false);
+                        }
+                        else
+                        {
+                            cos[i].GetComponent<EnemyBomb>().AttackedByPlayer(cos[i].transform.position + new Vector3(-5.0f, 0, 0), false);
+                        }
+                    }
+                    Camera.main.GetComponent<CameraShake>().Shake();
+
+                    EventInstance meleeImpactFX;
+                    meleeImpactFX = RuntimeManager.CreateInstance(meleeImpactFXEventPath);
+                    if (SettingManager.instance != null)
+                    {
+                        meleeImpactFX.setVolume(SettingManager.instance.overAllVolume);
+                    }
+                    meleeImpactFX.start();
+
+                    if (hitEffectPrefab != null)
+                    {
+                        Instantiate(hitEffectPrefab, cos[i].transform.position, Quaternion.identity);
+                    }
                 }
             }
         }

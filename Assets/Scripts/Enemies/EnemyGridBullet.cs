@@ -12,6 +12,8 @@ public class EnemyGridBullet : RhythmObject
     public GameObject bounceOffBulletPrefab;
     public GameObject bounceOffEffectPrefab;
 
+    public GameObject sprite;
+
     public int xDirection;
     public int yDirection;
 
@@ -24,7 +26,6 @@ public class EnemyGridBullet : RhythmObject
 
     void Start()
     {
-
     }
 
     void Update()
@@ -46,6 +47,11 @@ public class EnemyGridBullet : RhythmObject
             return;
         }
         Move();
+        if (sprite.GetComponent<Animator>() != null) 
+        {
+            sprite.GetComponent<Animator>().SetTrigger("Change");
+            
+        }
     }
 
     public void SetUp(int x, int y)
@@ -53,6 +59,50 @@ public class EnemyGridBullet : RhythmObject
         xPos = x;
         yPos = y;
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+    }
+
+    public void SetBulletRotation()
+    {
+        if(xDirection > 0 && yDirection == 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            return;
+        }
+        if (xDirection < 0 && yDirection == 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            return;
+        }
+        if (xDirection == 0 && yDirection > 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+            return;
+        }
+        if (xDirection == 0 && yDirection < 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 270.0f);
+            return;
+        }
+        if (xDirection > 0 && yDirection > 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 45.0f);
+            return;
+        }
+        if (xDirection < 0 && yDirection > 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 135.0f);
+            return;
+        }
+        if (xDirection < 0 && yDirection < 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 225.0f);
+            return;
+        }
+        if (xDirection > 0 && yDirection < 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 315.0f);
+            return;
+        }
     }
 
     public void Move()
@@ -88,6 +138,7 @@ public class EnemyGridBullet : RhythmObject
             go.GetComponent<PlayerGridBullet>().yDirection = -yDirection;
             go.GetComponent<PlayerGridBullet>().SetUp(xPos - xDirection, yPos - yDirection);
             go.GetComponent<PlayerGridBullet>().damage = damage;
+            go.GetComponent<PlayerGridBullet>().SetBulletRotation();
             Camera.main.GetComponent<CameraShake>().Shake();
 
             if(bounceOffEffectPrefab != null)

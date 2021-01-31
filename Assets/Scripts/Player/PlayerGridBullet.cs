@@ -11,6 +11,8 @@ public class PlayerGridBullet : RhythmObject
     public int xDirection;
     public int yDirection;
 
+    public GameObject sprite;
+
     public GameObject hitEffectPrefab;
 
     [HideInInspector] public int xPos;
@@ -49,6 +51,49 @@ public class PlayerGridBullet : RhythmObject
         xPos = x;
         yPos = y;
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+    }
+    public void SetBulletRotation()
+    {
+        if (xDirection > 0 && yDirection == 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            return;
+        }
+        if (xDirection < 0 && yDirection == 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            return;
+        }
+        if (xDirection == 0 && yDirection > 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+            return;
+        }
+        if (xDirection == 0 && yDirection < 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 270.0f);
+            return;
+        }
+        if (xDirection > 0 && yDirection > 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 45.0f);
+            return;
+        }
+        if (xDirection < 0 && yDirection > 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 135.0f);
+            return;
+        }
+        if (xDirection < 0 && yDirection < 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 225.0f);
+            return;
+        }
+        if (xDirection > 0 && yDirection < 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 315.0f);
+            return;
+        }
     }
 
     public void Move()
@@ -92,7 +137,36 @@ public class PlayerGridBullet : RhythmObject
             {
                 GridManager.instance.boss.TakeDamage(damage);
             }
+            if (hitEffectPrefab != null)
+            {
+                Instantiate(hitEffectPrefab, collision.transform.position, Quaternion.identity);
+            }
             Destroy(this.gameObject);
+        }
+        if (collision.tag.Equals("BossBomb"))
+        {
+            Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+            if ((collision.transform.position.x - centerPos.x >= 0 && xDirection <= 0) || (collision.transform.position.x - centerPos.x < 0 && xDirection >= 0))
+            {
+                collision.GetComponent<EnemyBomb>().AttackedByPlayer(centerPos, true);
+            }
+            else
+            {
+                if (collision.transform.position.x - centerPos.x >= 0)
+                {
+                    collision.GetComponent<EnemyBomb>().AttackedByPlayer(collision.transform.position + new Vector3(5.0f, 0, 0), false);
+                }
+                else
+                {
+                    collision.GetComponent<EnemyBomb>().AttackedByPlayer(collision.transform.position + new Vector3(-5.0f, 0, 0), false);
+                }
+            }
+            if (hitEffectPrefab != null)
+            {
+                Instantiate(hitEffectPrefab, collision.transform.position, Quaternion.identity);
+            }
+            Destroy(this.gameObject);
+
         }
     }
 }

@@ -19,12 +19,12 @@ public class SolidAttack : RhythmObject
     private int midX;
     private int midY;
 
-    private int endX;
-    private int endY;
+    [HideInInspector] public int endX;
+    [HideInInspector] public int endY;
 
-    private Vector3 targetPos;
-    private int delayTimer;
-    private int state;
+    [HideInInspector] public Vector3 targetPos;
+    [HideInInspector] public int delayTimer;
+    [HideInInspector] public int state;
 
     void Start()
     {
@@ -83,7 +83,7 @@ public class SolidAttack : RhythmObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player"))
+        if (collision.tag.Equals("Player") && (state == 1 || state == 2))
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
