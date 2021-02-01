@@ -17,6 +17,18 @@ public class MenuUIManager : MonoBehaviour
     public GameObject settingPanel;
     public Slider overAllVolumeSlider;
     public Text overAllVolumeText;
+    [Header("CreditsPanel")]
+    public GameObject creditsPanel;
+    public GameObject[] credits;
+    public Button creditsPreviousButton;
+    public Button creditsNextButton;
+    public Text creditsPageIndex;
+    [Header("HelpPanel")]
+    public GameObject helpPanel;
+    public GameObject[] helps;
+    public Button helpPreviousButton;
+    public Button helpNextButton;
+    public Text helpPageIndex;
     [Header("LoadingPanel")]
     public GameObject loadingPanel;
     public Slider loadingSlider;
@@ -27,10 +39,17 @@ public class MenuUIManager : MonoBehaviour
     private AsyncOperation operation;
     private bool isLoading;
 
+    private int creditsIndex = 0;
+    private int helpIndex = 0;
+
     void Start()
     {
         BackToInitialPanel();
-        if(SettingManager.instance != null)
+        creditsNextButton.onClick.AddListener(NextCredits);
+        creditsPreviousButton.onClick.AddListener(PreviousCredits);
+        helpNextButton.onClick.AddListener(NextHelp);
+        helpPreviousButton.onClick.AddListener(PreviousHelp);
+        if (SettingManager.instance != null)
         {
             overAllVolumeSlider.value = SettingManager.instance.overAllVolume;
             overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
@@ -113,6 +132,140 @@ public class MenuUIManager : MonoBehaviour
         initialPanel.SetActive(false);
         playPanel.SetActive(false);
         settingPanel.SetActive(true);
+        creditsPanel.SetActive(false);
+        helpPanel.SetActive(false);
+    }
+
+    public void ShowCreditsPanel()
+    {
+        initialPanel.SetActive(false);
+        playPanel.SetActive(false);
+        settingPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+        helpPanel.SetActive(false);
+        creditsIndex = 0;
+        creditsPreviousButton.gameObject.SetActive(false);
+        creditsNextButton.gameObject.SetActive(true);
+        if (credits.Length == 1)
+        {
+            creditsNextButton.gameObject.SetActive(false);
+        }
+        for (int i = 1; i < credits.Length; i++)
+        {
+            credits[i].SetActive(false);
+        }
+        credits[0].SetActive(true);
+        creditsPageIndex.text = (creditsIndex + 1).ToString() + "/" + credits.Length.ToString();
+    }
+
+    void PreviousCredits()
+    {
+        if (creditsIndex > 0)
+        {
+            creditsIndex--;
+            if (creditsIndex == 0)
+            {
+                creditsPreviousButton.gameObject.SetActive(false);
+            }
+            if (creditsIndex + 1 == credits.Length - 1)
+            {
+                creditsNextButton.gameObject.SetActive(true);
+            }
+            for (int i = 0; i < credits.Length; i++)
+            {
+                credits[i].SetActive(false);
+            }
+            credits[creditsIndex].SetActive(true);
+            creditsPageIndex.text = (creditsIndex + 1).ToString() + "/" + credits.Length.ToString();
+        }
+    }
+
+    void NextCredits()
+    {
+        if (creditsIndex < credits.Length - 1)
+        {
+            creditsIndex++;
+            if (creditsIndex == credits.Length - 1)
+            {
+                creditsNextButton.gameObject.SetActive(false);
+            }
+            if (creditsIndex - 1 == 0)
+            {
+                creditsPreviousButton.gameObject.SetActive(true);
+            }
+            for (int i = 0; i < credits.Length; i++)
+            {
+                credits[i].SetActive(false);
+            }
+            credits[creditsIndex].SetActive(true);
+            creditsPageIndex.text = (creditsIndex + 1).ToString() + "/" + credits.Length.ToString();
+        }
+    }
+
+    public void ShowHelpPanel()
+    {
+        initialPanel.SetActive(false);
+        playPanel.SetActive(false);
+        settingPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+        helpPanel.SetActive(true);
+        helpIndex = 0;
+        helpPreviousButton.gameObject.SetActive(false);
+        helpNextButton.gameObject.SetActive(true);
+        if (helps.Length == 1)
+        {
+            helpNextButton.gameObject.SetActive(false);
+        }
+        for (int i = 1; i < helps.Length; i++)
+        {
+            helps[i].SetActive(false);
+        }
+        helps[0].SetActive(true);
+        helpPageIndex.text = (helpIndex + 1).ToString() + "/" + helps.Length.ToString();
+    }
+
+    void PreviousHelp()
+    {
+        if (helpIndex > 0)
+        {
+            helpIndex--;
+            if (helpIndex == 0)
+            {
+                helpPreviousButton.gameObject.SetActive(false);
+            }
+            if (helpIndex + 1 == helps.Length - 1)
+            {
+                helpNextButton.gameObject.SetActive(true);
+            }
+            for (int i = 0; i < helps.Length; i++)
+            {
+                helps[i].SetActive(false);
+            }
+            helps[helpIndex].SetActive(true);
+            helpPageIndex.text = (helpIndex + 1).ToString() + "/" + helps.Length.ToString();
+        }
+    }
+
+    void NextHelp()
+    {
+        if (helpIndex < helps.Length - 1)
+        {
+            helpIndex++;
+            if (helpIndex == helps.Length - 1)
+            {
+                helpNextButton.gameObject.SetActive(false);
+            }
+            if (helpIndex - 1 == 0)
+            {
+                helpPreviousButton.gameObject.SetActive(true);
+            }
+            for (int i = 0; i < helps.Length; i++)
+            {
+                helps[i].SetActive(false);
+            }
+            helps[helpIndex].SetActive(true);
+            helpPageIndex.text = (helpIndex + 1).ToString() + "/" + helps.Length.ToString();
+        }
     }
 
     public void BackToInitialPanel()
@@ -120,6 +273,8 @@ public class MenuUIManager : MonoBehaviour
         initialPanel.SetActive(true);
         playPanel.SetActive(false);
         settingPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+        helpPanel.SetActive(false);
         levelSelectionState = 0;
     }
 
@@ -129,6 +284,8 @@ public class MenuUIManager : MonoBehaviour
         playPanel.SetActive(false);
         settingPanel.SetActive(false);
         loadingPanel.SetActive(true);
+        creditsPanel.SetActive(false);
+        helpPanel.SetActive(false);
         levelSelectionState = 0;
     }
 
