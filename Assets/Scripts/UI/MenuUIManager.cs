@@ -17,8 +17,15 @@ public class MenuUIManager : MonoBehaviour
     public GameObject settingPanel;
     public Slider overAllVolumeSlider;
     public Text overAllVolumeText;
+    [Header("LoadingPanel")]
+    public GameObject loadingPanel;
+    public Slider loadingSlider;
+    public Text loadingText;
+    public float loadingSpeed;
 
     private int levelSelectionState;
+    private AsyncOperation operation;
+    private bool isLoading;
 
     void Start()
     {
@@ -29,6 +36,36 @@ public class MenuUIManager : MonoBehaviour
             overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
         }
     }
+
+    private void Update()
+    {
+        if (isLoading)
+        {
+            float targetValue = operation.progress;
+
+            if (operation.progress >= 0.9f)
+            {
+                targetValue = 1.0f;
+            }
+
+            if (targetValue != loadingSlider.value)
+            {
+                loadingSlider.value = Mathf.Lerp(loadingSlider.value, targetValue, Time.deltaTime * loadingSpeed);
+                if (Mathf.Abs(loadingSlider.value - targetValue) < 0.01f)
+                {
+                    loadingSlider.value = targetValue;
+                }
+            }
+
+            loadingText.text = ((int)(loadingSlider.value * 100)).ToString() + "%";
+
+            if ((int)(loadingSlider.value * 100) == 100)
+            {
+                operation.allowSceneActivation = true;
+            }
+        }
+    }
+
     public void ChangeAutoAttack()
     {
         SettingManager.instance.SwitchAutoAttack(isAutoAttackToggle.isOn);
@@ -37,7 +74,11 @@ public class MenuUIManager : MonoBehaviour
     public void LoadLevel1Phase(int phaseIndex)
     {
         SettingManager.instance.targetPhase = phaseIndex;
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+        ShowLoadingPanel();
+        operation = SceneManager.LoadSceneAsync(1);
+        operation.allowSceneActivation = false;
+        isLoading = true;
     }
     public void ChangeOverAllVolume()
     {
@@ -79,6 +120,15 @@ public class MenuUIManager : MonoBehaviour
         initialPanel.SetActive(true);
         playPanel.SetActive(false);
         settingPanel.SetActive(false);
+        levelSelectionState = 0;
+    }
+
+    public void ShowLoadingPanel()
+    {
+        initialPanel.SetActive(false);
+        playPanel.SetActive(false);
+        settingPanel.SetActive(false);
+        loadingPanel.SetActive(true);
         levelSelectionState = 0;
     }
 
