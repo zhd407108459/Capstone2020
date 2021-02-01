@@ -11,7 +11,8 @@ public class GenerateSongInfo : MonoBehaviour
         //GenerateTestFileFor10And11();
         //GenerateDefaultBoss1SongInfo();
         //GenerateDefaultBoss2SongInfo();
-        KnifeBossPhase1Easy();
+        //KnifeBoss1Phase1Easy();
+        KnifeBoss1Phase2Easy();
     }
 
     void GenerateTestFileFor10And11()
@@ -162,7 +163,7 @@ public class GenerateSongInfo : MonoBehaviour
         SaveAFile(temp, "./Data/TestBoss2.info");
     }
 
-    void KnifeBossPhase1Hard()
+    void KnifeBoss1Phase1Hard()
     {
         int bossSolidDelay = 0;
         SongInfo temp = new SongInfo();
@@ -1230,10 +1231,10 @@ public class GenerateSongInfo : MonoBehaviour
             //End Adding ActionInfo
             temp.beatsInfo.Add(bi);
         }
-        SaveAFile(temp, "./Data/KnifeBossPhase1Hard.info");
+        SaveAFile(temp, "./Data/KnifeBoss1Phase1Hard.info");
     }
 
-    void KnifeBossPhase1Easy()
+    void KnifeBoss1Phase1Easy()
     {
         int bossSolidDelay = 0;
         SongInfo temp = new SongInfo();
@@ -1369,13 +1370,6 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionParameters.Add(7);
                 bi.actions.Add(ai);
             }
-            if (i == 35)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 3;
-                ai.actionParameters.Add(5);
-                bi.actions.Add(ai);
-            }
             if (i == 36 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
@@ -1395,13 +1389,6 @@ public class GenerateSongInfo : MonoBehaviour
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 3;
                 ai.actionParameters.Add(2);
-                bi.actions.Add(ai);
-            }
-            if (i == 39)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 3;
-                ai.actionParameters.Add(4);
                 bi.actions.Add(ai);
             }
             if (i == 40 - bossSolidDelay)
@@ -2283,7 +2270,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(3);
                 bi.actions.Add(ai4);
             }
-            if (i == 222 || i == 224 || i == 226 || i == 228 || i == 230)
+            if (i == 222 || i == 224 || i == 226)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
@@ -2490,7 +2477,565 @@ public class GenerateSongInfo : MonoBehaviour
             //End Adding ActionInfo
             temp.beatsInfo.Add(bi);
         }
-        SaveAFile(temp, "./Data/KnifeBossPhase1Easy.info");
+        SaveAFile(temp, "./Data/KnifeBoss1Phase1Easy.info");
+    }
+
+    void KnifeBoss1Phase2Easy()
+    {
+        int bossSolidDelay = 0;
+        SongInfo temp = new SongInfo();
+        temp.length = 256;
+        temp.interval = 0.5f;
+        for (int i = 0; i < 128; i++)
+        {
+            BeatInfo bi = new BeatInfo();
+            bi.index = i;
+            //Add ActionInfo
+            //Section1,Beat0-31
+            if (i == 2)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(7);
+                bi.actions.Add(ai);
+            }
+            if (i == 4 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 7;
+                ai.actionParameters.Add(7);
+                bi.actions.Add(ai);
+            }
+            if (i == 6)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+            }
+            if (i == 8 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 7;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+            }
+            if (i == 10)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 3;
+                ai2.actionParameters.Add(8);
+                bi.actions.Add(ai2);
+            }
+            if (i == 12 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 7;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(8);
+                bi.actions.Add(ai2);
+            }
+            if (i == 14)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(4);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 3;
+                ai2.actionParameters.Add(5);
+                bi.actions.Add(ai2);
+            }
+            if (i == 16 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 7;
+                ai.actionParameters.Add(4);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(5);
+                bi.actions.Add(ai2);
+            }
+            if (i == 16)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 10;
+                ai.actionParameters.Add(0);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 10;
+                ai2.actionParameters.Add(2);
+                bi.actions.Add(ai2);
+            }
+            if (i == 24)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 10;
+                ai.actionParameters.Add(1);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 10;
+                ai2.actionParameters.Add(3);
+                bi.actions.Add(ai2);
+            }
+            //Section2,Beat32-63
+            if (i == 32)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(0);
+                bi.actions.Add(ai);
+            }
+            if (i == 33)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+            }
+            if (i == 34)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(4);
+                bi.actions.Add(ai);
+            }
+            if (i == 35 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(0);
+                bi.actions.Add(ai);
+            }
+            if (i == 36 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+            }
+            if (i == 37 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(4);
+                bi.actions.Add(ai);
+            }
+            if (i == 40)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(9);
+                bi.actions.Add(ai);
+            }
+            if (i == 41)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(7);
+                bi.actions.Add(ai);
+            }
+            if (i == 42)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(5);
+                bi.actions.Add(ai);
+            }
+            if (i == 43 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(9);
+                bi.actions.Add(ai);
+            }
+            if (i == 44 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(7);
+                bi.actions.Add(ai);
+            }
+            if (i == 45 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(5);
+                bi.actions.Add(ai);
+            }
+            if (i == 48 || i == 56)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(0);
+                bi.actions.Add(ai);
+            }
+            if (i == 49 || i == 57)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(1);
+                bi.actions.Add(ai);
+            }
+            if (i == 50 || i == 58)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+            }
+            if (i == 51 || i == 59)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(3);
+                bi.actions.Add(ai);
+            }
+            if (i == 52)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(4);
+                bi.actions.Add(ai);
+            }
+            if (i == 53)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(5);
+                bi.actions.Add(ai);
+            }
+            if (i == 54)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(6);
+                bi.actions.Add(ai);
+            }
+            if (i == 55)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(7);
+                bi.actions.Add(ai);
+            }
+
+            //Section3,Beat64-95
+            if (i >= 63 && i <= 76)
+            {
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 1;
+                ai2.actionParameters.Add(2);
+                bi.actions.Add(ai2);
+            }
+            if (i == 64 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 7;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(6);
+                bi.actions.Add(ai2);
+            }
+            if (i == 68 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 7;
+                ai.actionParameters.Add(4);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(9);
+                bi.actions.Add(ai2);
+            }
+            if (i == 72 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 7;
+                ai.actionParameters.Add(0);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(5);
+                bi.actions.Add(ai2);
+            }
+            if (i == 76 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 7;
+                ai.actionParameters.Add(3);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(8);
+                bi.actions.Add(ai2);
+            }
+            if (i >= 77 && i <= 92)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 2;
+                ai.actionParameters.Add(4);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 2;
+                ai2.actionParameters.Add(0);
+                bi.actions.Add(ai2);
+            }
+            if (i == 78 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(7);
+                bi.actions.Add(ai);
+            }
+            if (i == 80 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(1);
+                bi.actions.Add(ai);
+            }
+            if (i == 82 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(6);
+                bi.actions.Add(ai);
+            }
+            if (i == 84 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(3);
+                bi.actions.Add(ai);
+            }
+            if (i == 86 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(9);
+                bi.actions.Add(ai);
+            }
+            if (i == 88 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+            }
+            if (i == 90 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(8);
+                bi.actions.Add(ai);
+            }
+            if (i == 92 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(0);
+                bi.actions.Add(ai);
+            }
+            if (i == 94 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 8;
+                ai.actionParameters.Add(6);
+                bi.actions.Add(ai);
+            }
+            //Section3,Beat96-127
+            if (i == 96 || i == 104)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(0);
+                bi.actions.Add(ai);
+            }
+            if (i == 97 || i == 105)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(1);
+                bi.actions.Add(ai);
+            }
+            if (i == 98 || i == 106)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+            }
+            if (i == 99 || i == 107)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(3);
+                bi.actions.Add(ai);
+            }
+            if (i == 100 || i == 108)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(4);
+                bi.actions.Add(ai);
+            }
+            if (i == 101 || i == 109)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(5);
+                bi.actions.Add(ai);
+            }
+            if (i == 102 || i == 110)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(6);
+                bi.actions.Add(ai);
+            }
+            if (i == 103 || i == 111)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 11;
+                ai.actionParameters.Add(7);
+                bi.actions.Add(ai);
+            }
+            if (i == 112 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 5;
+                ai.actionParameters.Add(4);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 6;
+                ai2.actionParameters.Add(0);
+                bi.actions.Add(ai2);
+
+                ActionInfo ai3 = new ActionInfo();
+                ai3.actionType = 7;
+                ai3.actionParameters.Add(9);
+                bi.actions.Add(ai3);
+
+                ActionInfo ai4 = new ActionInfo();
+                ai4.actionType = 8;
+                ai4.actionParameters.Add(0);
+                bi.actions.Add(ai4);
+            }
+            if (i == 112)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 1;
+                ai.actionParameters.Add(3);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 2;
+                ai2.actionParameters.Add(1);
+                bi.actions.Add(ai2);
+
+                ActionInfo ai3 = new ActionInfo();
+                ai3.actionType = 3;
+                ai3.actionParameters.Add(8);
+                bi.actions.Add(ai3);
+
+                ActionInfo ai4 = new ActionInfo();
+                ai4.actionType = 4;
+                ai4.actionParameters.Add(1);
+                bi.actions.Add(ai4);
+            }
+            if (i == 120 - bossSolidDelay)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 5;
+                ai.actionParameters.Add(0);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 6;
+                ai2.actionParameters.Add(4);
+                bi.actions.Add(ai2);
+
+                ActionInfo ai3 = new ActionInfo();
+                ai3.actionType = 7;
+                ai3.actionParameters.Add(0);
+                bi.actions.Add(ai3);
+
+                ActionInfo ai4 = new ActionInfo();
+                ai4.actionType = 8;
+                ai4.actionParameters.Add(9);
+                bi.actions.Add(ai4);
+            }
+            if (i == 120)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(2);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 3;
+                ai2.actionParameters.Add(6);
+                bi.actions.Add(ai2);
+
+                ActionInfo ai3 = new ActionInfo();
+                ai3.actionType = 4;
+                ai3.actionParameters.Add(3);
+                bi.actions.Add(ai3);
+
+                ActionInfo ai4 = new ActionInfo();
+                ai4.actionType = 4;
+                ai4.actionParameters.Add(7);
+                bi.actions.Add(ai4);
+            }
+            if (i == 124)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(1);
+                bi.actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 3;
+                ai2.actionParameters.Add(8);
+                bi.actions.Add(ai2);
+
+                ActionInfo ai3 = new ActionInfo();
+                ai3.actionType = 4;
+                ai3.actionParameters.Add(2);
+                bi.actions.Add(ai3);
+
+                ActionInfo ai4 = new ActionInfo();
+                ai4.actionType = 4;
+                ai4.actionParameters.Add(7);
+                bi.actions.Add(ai4);
+            }
+            //End Adding ActionInfo
+            temp.beatsInfo.Add(bi);
+        }
+        SaveAFile(temp, "./Data/KnifeBoss1Phase2Easy.info");
     }
     void SaveAFile(SongInfo info, string path)
     {
