@@ -226,7 +226,7 @@ public class BeatBoss : MonoBehaviour
             Debug.Log("Wrong Boss Component Index: " + index);
             return;
         }
-        bossComponents[index].GetComponent<BossComponent>().Show(16);
+        bossComponents[index].GetComponent<BossComponent>().Show(1);
     }
 
     void ThrowBomb(int index)
