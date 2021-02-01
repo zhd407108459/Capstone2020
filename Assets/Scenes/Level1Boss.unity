@@ -2077,6 +2077,7 @@ GameObject:
   - component: {fileID: 321221496}
   - component: {fileID: 321221497}
   - component: {fileID: 321221498}
+  - component: {fileID: 321221499}
   m_Layer: 0
   m_Name: CenterEye
   m_TagString: BossComponent
@@ -2164,6 +2165,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.04}
   serializedVersion: 2
   m_Radius: 0.54
+--- !u!114 &321221499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321221495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c23e01e5b254448ba16d70bea638d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &322553586
 GameObject:
   m_ObjectHideFlags: 0
@@ -4372,7 +4385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a8fbbe824ada242ba8999818ccd8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   healthSlider: {fileID: 1327692250}
   damageEffectPrefab: {fileID: 6393592123713180641, guid: 6dbc6be8996be2241820f344a2a3e409,
     type: 3}
@@ -9602,7 +9615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832b27572684f3c498bc85cdf20600f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 400
   healthSlider: {fileID: 6617781377064992129}
   bossComponents:
   - {fileID: 321221495}
@@ -9890,7 +9903,7 @@ MonoBehaviour:
   normalBGMEventPath: event:/MX/BattleScene/Level1-Battle
   boss1BGMEventPath: event:/MX/BossFight/MX_LV1_Boss1_Pain_of_Grief
   boss2BGMEventPath: event:/MX/BossFight/MX_LV1_Boss2_Relief_of_Anger
-  boss1SongInfoPath: ./Data/KnifeBoss1Phase2Easy.info
+  boss1SongInfoPath: ./Data/KnifeBoss1Phase1Easy.info
   boss2SongInfoPath: ./Data/KnifeBoss1Phase2Easy.info
   beatsTime: 0.5
   beatsContainer: {fileID: 552456939}
