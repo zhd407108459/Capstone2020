@@ -149,11 +149,13 @@ public class PlayerGridMovement : MonoBehaviour
                     animator.SetTrigger("Jump");
                 }
                 GridManager.instance.AddCombo();
+                GetComponent<PlayerAction>().comboBreakTimer = 0;
             }
         }
         if (action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.IsInBattlePhase())
         {
             GridManager.instance.AddCombo();
+            GetComponent<PlayerAction>().comboBreakTimer = 0;
         }
     }
 

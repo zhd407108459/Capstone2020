@@ -17,7 +17,7 @@ public class PlayerAction : RhythmObject
     private int dizzyTimer;
     private int damageIncreasingTimer;
 
-    private bool lastAction;
+    [HideInInspector] public int comboBreakTimer = 0;
 
 
     void Start()
@@ -38,20 +38,36 @@ public class PlayerAction : RhythmObject
     {
         if(beatIndex == 0)
         {
-            if(!isActionUsed[BeatsManager.instance.beatsTips.Count - 1] && lastAction)
+            if(!isActionUsed[BeatsManager.instance.beatsTips.Count - 1])
             {
-                GridManager.instance.EndCombo();
+                comboBreakTimer++;
+                if(comboBreakTimer >= 4)
+                {
+                    GridManager.instance.EndCombo();
+                    comboBreakTimer = 0;
+                }
             }
-            lastAction = isActionUsed[BeatsManager.instance.beatsTips.Count - 1];
+            else
+            {
+                comboBreakTimer = 0;
+            }
             isActionUsed[BeatsManager.instance.beatsTips.Count - 1] = false;
         }
         else
         {
-            if(!isActionUsed[beatIndex - 1] && lastAction)
+            if(!isActionUsed[beatIndex - 1])
             {
-                GridManager.instance.EndCombo();
+                comboBreakTimer++;
+                if (comboBreakTimer >= 4)
+                {
+                    GridManager.instance.EndCombo();
+                    comboBreakTimer = 0;
+                }
             }
-            lastAction = isActionUsed[beatIndex - 1];
+            else
+            {
+                comboBreakTimer = 0;
+            }
             isActionUsed[beatIndex - 1] = false;
         }
         if(cloudTimer > 0)
@@ -93,6 +109,7 @@ public class PlayerAction : RhythmObject
         dizzyTipObject.SetActive(true);
         dizzyTimer = time;
         isDizzy = true;
+        GridManager.instance.EndCombo();
     }
 
     public void StartIncreasingDamage(int time, float ratio)

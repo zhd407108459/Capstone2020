@@ -47,7 +47,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Instantiate(damageEffectPrefab, transform.position, transform.rotation);
         }
-
+        if(damage > 0)
+        {
+            GridManager.instance.EndCombo();
+        }
         health -= damage;
         if(health <= 0)
         {

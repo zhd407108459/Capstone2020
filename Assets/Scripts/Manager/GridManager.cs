@@ -71,7 +71,7 @@ public class GridManager : RhythmObject
     [HideInInspector] public DialogSet currentDialog;
     private DialogSet nextDialog;
     private int combo;
-    private int comboTimer;
+    //private int comboTimer;
 
     void Awake()
     {
@@ -417,7 +417,7 @@ public class GridManager : RhythmObject
         ResetGeneratingBuffsAndDebuffs();
         Invoke("HideTimerText", BeatsManager.instance.beatsTime);
         combo = 0;
-        comboTimer = 0;
+        //comboTimer = 0;
         comboTipObject.SetActive(false);
     }
 
@@ -462,12 +462,12 @@ public class GridManager : RhythmObject
             generateDebuffsTimer++;
             generateBuffsTimer++;
         }
-        comboTimer++;
-        if (comboTimer > 2 && comboTipObject.activeSelf)
-        {
-            comboTipObject.SetActive(false);
-            combo = 0;
-        }
+        //comboTimer++;
+        //if (comboTimer > 2 && comboTipObject.activeSelf)
+        //{
+        //    comboTipObject.SetActive(false);
+        //    combo = 0;
+        //}
     }
 
     void GenerateBuff()
@@ -892,14 +892,14 @@ public class GridManager : RhythmObject
         combo++;
         comboTipObject.SetActive(true);
         comboTipText.text = combo.ToString();
-        comboTimer = 0;
+        //comboTimer = 0;
         comboTipText.transform.localScale = new Vector3(2, 2, 2);
     }
 
     public void EndCombo()
     {
         combo = 0;
-        comboTimer = 0;
+        //comboTimer = 0;
         comboTipObject.SetActive(false);
     }
 }
