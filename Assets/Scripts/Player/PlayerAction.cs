@@ -17,6 +17,8 @@ public class PlayerAction : RhythmObject
     private int dizzyTimer;
     private int damageIncreasingTimer;
 
+    private bool lastAction;
+
 
     void Start()
     {
@@ -36,10 +38,20 @@ public class PlayerAction : RhythmObject
     {
         if(beatIndex == 0)
         {
+            if(!isActionUsed[BeatsManager.instance.beatsTips.Count - 1] && lastAction)
+            {
+                GridManager.instance.EndCombo();
+            }
+            lastAction = isActionUsed[BeatsManager.instance.beatsTips.Count - 1];
             isActionUsed[BeatsManager.instance.beatsTips.Count - 1] = false;
         }
         else
         {
+            if(!isActionUsed[beatIndex - 1] && lastAction)
+            {
+                GridManager.instance.EndCombo();
+            }
+            lastAction = isActionUsed[beatIndex - 1];
             isActionUsed[beatIndex - 1] = false;
         }
         if(cloudTimer > 0)

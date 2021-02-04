@@ -131,7 +131,8 @@ public class PlayerGridMovement : MonoBehaviour
                 sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
             }
-        }else if (Input.GetKeyDown(KeyCode.Space))
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
             {
@@ -147,7 +148,12 @@ public class PlayerGridMovement : MonoBehaviour
                     GetComponent<PlayerDash>().StartDash();
                     animator.SetTrigger("Jump");
                 }
+                GridManager.instance.AddCombo();
             }
+        }
+        if (action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.IsInBattlePhase())
+        {
+            GridManager.instance.AddCombo();
         }
     }
 
@@ -185,7 +191,7 @@ public class PlayerGridMovement : MonoBehaviour
                 {
                     if (GridManager.instance.IsEnemyClear())
                     {
-                        //GameManager.instance.LoadNextScene();
+                        GameManager.instance.LoadNextScene();
                     }
                 }
             }

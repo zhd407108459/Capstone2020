@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
 
 
     [HideInInspector] public bool isPaused;
+    [HideInInspector] public bool isGameEnd;
+
+
 
     void Awake()
     {
@@ -69,6 +72,10 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        if (isGameEnd)
+        {
+            return;
+        }
         if (isPaused)
         {
             isPaused = false;
@@ -89,6 +96,10 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame(bool pause)
     {
+        if (isGameEnd)
+        {
+            return;
+        }
         if (!pause && isPaused)
         {
             isPaused = false;

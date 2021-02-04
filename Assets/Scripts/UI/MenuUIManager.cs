@@ -99,6 +99,17 @@ public class MenuUIManager : MonoBehaviour
         operation.allowSceneActivation = false;
         isLoading = true;
     }
+
+    public void LoadLevel1BossPhase()
+    {
+        SettingManager.instance.targetPhase = 0;
+        //SceneManager.LoadScene(1);
+        ShowLoadingPanel();
+        operation = SceneManager.LoadSceneAsync(2);
+        operation.allowSceneActivation = false;
+        isLoading = true;
+    }
+
     public void ChangeOverAllVolume()
     {
         SettingManager.instance.ChangeOverAllVolume(overAllVolumeSlider.value);

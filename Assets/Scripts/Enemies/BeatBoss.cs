@@ -28,6 +28,8 @@ public class BeatBoss : MonoBehaviour
 
     public List<Transform> bombPositions = new List<Transform>();
 
+    public GameObject endUIPanel;
+
     [HideInInspector] public bool isMeleeAttacked;
 
     [HideInInspector] public bool isActivated;
@@ -56,8 +58,15 @@ public class BeatBoss : MonoBehaviour
     public void Reset()
     {
         isActivated = false;
-        canBeAttacked = false;
-        healthSlider.gameObject.SetActive(false);
+        if (canBeAttacked)
+        {
+            health = maxHealth;
+            healthSlider.value = (float)health / (float)maxHealth;
+        }
+        else
+        {
+            healthSlider.gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -81,7 +90,10 @@ public class BeatBoss : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("BossDie");
+        //Debug.Log("BossDie");
+        endUIPanel.SetActive(true);
+        GameManager.instance.isGameEnd = true;
+        GameManager.instance.isPaused = true;
     }
 
     public void MeleeAttacked()

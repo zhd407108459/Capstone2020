@@ -157,7 +157,30 @@ public class PlayerMeleeAttack : RhythmObject
 
                     if (hitEffectPrefab != null)
                     {
-                        Instantiate(hitEffectPrefab, cos[i].transform.position, Quaternion.identity);
+                        if (cos[i].GetComponent<SolidAttack>() == null)
+                        {
+                            Instantiate(hitEffectPrefab, cos[i].transform.position, Quaternion.identity);
+                        }
+                        else
+                        {
+                            if (cos[i].GetComponent<SolidAttack>().xPos == GetComponent<PlayerGridMovement>().xPos)
+                            {
+                                Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+                            }
+                            else if (cos[i].GetComponent<SolidAttack>().xPos < GetComponent<PlayerGridMovement>().xPos && GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                            {
+                                Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+                            }
+                            else if (cos[i].GetComponent<SolidAttack>().xPos > GetComponent<PlayerGridMovement>().xPos && !GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                            {
+                                Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+                            }
+                            else
+                            {
+                                Instantiate(hitEffectPrefab, transform.position + new Vector3(GridManager.instance.gridSize.x * (GetComponent<PlayerGridMovement>().isPlayerFacingRight ? 1 : -1), 0, 0), Quaternion.identity);
+                            }
+                        }
+                        
                     }
                 }
             }

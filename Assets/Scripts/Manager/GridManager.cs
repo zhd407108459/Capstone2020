@@ -43,6 +43,9 @@ public class GridManager : RhythmObject
     public Text recordText;
     public Button closeRecordPanelButton;
 
+    public GameObject comboTipObject;
+    public Text comboTipText;
+
     public GameObject interactionTip;
 
     [HideInInspector] public Vector3 targetCameraPos;
@@ -67,6 +70,8 @@ public class GridManager : RhythmObject
 
     [HideInInspector] public DialogSet currentDialog;
     private DialogSet nextDialog;
+    private int combo;
+    private int comboTimer;
 
     void Awake()
     {
@@ -129,6 +134,10 @@ public class GridManager : RhythmObject
             fixedBackground.transform.position = new Vector3(cameraObject.transform.position.x, cameraObject.transform.position.y, fixedBackground.transform.position.z);
             backgroundMovement.MoveBackgrounds(cameraObject.transform.position.x - lastCameraPos.x);
             lastCameraPos = cameraObject.transform.position;
+            if (comboTipObject.activeSelf)
+            {
+                comboTipText.transform.localScale = Vector3.Lerp(comboTipText.transform.localScale, new Vector3(1, 1, 1), 15.0f * Time.deltaTime);
+            }
         }
         if (!GameManager.instance.isPaused && IsInBattlePhase() && isInPhase && !isBoss2Phase)
         {
@@ -172,6 +181,7 @@ public class GridManager : RhythmObject
                         boss.StartStage2();
                         setAbilities.Show();
                         isInPhase = false;
+                        GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
                         foreach (var n in FindObjectsOfType<EnemyGridBullet>())
                         {
                             Destroy(n.gameObject);
@@ -277,6 +287,7 @@ public class GridManager : RhythmObject
         }
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
         isInPhase = false;
+        EndCombo();
     }
 
     public void StartNextPhase()
@@ -405,6 +416,9 @@ public class GridManager : RhythmObject
         isCounting = false;
         ResetGeneratingBuffsAndDebuffs();
         Invoke("HideTimerText", BeatsManager.instance.beatsTime);
+        combo = 0;
+        comboTimer = 0;
+        comboTipObject.SetActive(false);
     }
 
     void ResetGeneratingBuffsAndDebuffs()
@@ -447,6 +461,12 @@ public class GridManager : RhythmObject
             }
             generateDebuffsTimer++;
             generateBuffsTimer++;
+        }
+        comboTimer++;
+        if (comboTimer > 2 && comboTipObject.activeSelf)
+        {
+            comboTipObject.SetActive(false);
+            combo = 0;
         }
     }
 
@@ -865,5 +885,21 @@ public class GridManager : RhythmObject
                 currentDialog = null;
             }
         }
+    }
+
+    public void AddCombo()
+    {
+        combo++;
+        comboTipObject.SetActive(true);
+        comboTipText.text = combo.ToString();
+        comboTimer = 0;
+        comboTipText.transform.localScale = new Vector3(2, 2, 2);
+    }
+
+    public void EndCombo()
+    {
+        combo = 0;
+        comboTimer = 0;
+        comboTipObject.SetActive(false);
     }
 }

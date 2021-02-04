@@ -139,7 +139,7 @@ public class PlayerGridBullet : RhythmObject
             }
             if (hitEffectPrefab != null)
             {
-                Instantiate(hitEffectPrefab, collision.transform.position, Quaternion.identity);
+                Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
             }
             Destroy(this.gameObject);
         }

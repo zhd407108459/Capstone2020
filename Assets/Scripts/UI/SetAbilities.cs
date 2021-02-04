@@ -14,6 +14,10 @@ public class SetAbilities : MonoBehaviour
     public RectTransform basicMeleeAttackIcon;
     public RectTransform shieldIcon;
     public RectTransform dashIcon;
+    public GameObject basicMeleeAttackTips;
+    public GameObject shieldTips;
+    public GameObject dashTips;
+    public float hoverTipTime = 0.8f;
     //public RectTransform bulletShootingIcon;
     public Button nextButton;
 
@@ -24,6 +28,9 @@ public class SetAbilities : MonoBehaviour
     private Vector3 originalShieldPos;
     private Vector3 originalDashPos;
     //private Vector3 originalBulletShootingPos;
+
+    private Vector3 lastMousePosition;
+    private float hoverTimer;
 
     void Start()
     {
@@ -38,6 +45,47 @@ public class SetAbilities : MonoBehaviour
     {
         if (isActivated)
         {
+            //ShowTips
+            if(Input.mousePosition == lastMousePosition && !Input.GetMouseButton(0))
+            {
+                if(hoverTimer <= hoverTipTime)
+                {
+                    hoverTimer += Time.deltaTime;
+                }
+                else
+                {
+                    if (selection == 0)
+                    {
+                        if (IsPointerOverUI(basicMeleeAttackIcon))
+                        {
+                            basicMeleeAttackTips.SetActive(true);
+                            basicMeleeAttackTips.transform.position = basicMeleeAttackIcon.transform.position;
+                        }
+                        if (IsPointerOverUI(shieldIcon))
+                        {
+                            shieldTips.SetActive(true);
+                            shieldTips.transform.position = shieldIcon.transform.position;
+                        }
+                        if (IsPointerOverUI(dashIcon))
+                        {
+                            dashTips.SetActive(true);
+                            dashTips.transform.position = dashIcon.transform.position;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if(hoverTimer > hoverTipTime)
+                {
+                    basicMeleeAttackTips.SetActive(false); 
+                    shieldTips.SetActive(false);
+                    dashTips.SetActive(false);
+                }
+                hoverTimer = 0;
+            }
+            lastMousePosition = Input.mousePosition;
+
             if (Input.GetMouseButtonDown(0))
             {
                 if(selection == 0)//selet an ability
