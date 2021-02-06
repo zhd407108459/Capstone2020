@@ -50,14 +50,17 @@ public class DialogUnit : MonoBehaviour
         {
             StopCoroutine(typingCoroutine);
         }
-        typingIndex = originText.Length - 1;
+        typingIndex = originText.Length;
         textContent.text = originText;
     }
 
     IEnumerator Type()
     {
         yield return new WaitForSeconds(typingInterval);
-        textContent.text += originText.Substring(typingIndex, 1);
+        if(typingIndex < originText.Length)
+        {
+            textContent.text += originText.Substring(typingIndex, 1);
+        }
         if (typingIndex < originText.Length - 1)
         {
             typingIndex++;
@@ -67,6 +70,6 @@ public class DialogUnit : MonoBehaviour
 
     public bool IsPlayFinished()
     {
-        return typingIndex == originText.Length - 1;
+        return typingIndex >= originText.Length - 1;
     }
 }
