@@ -154,6 +154,7 @@ RectTransform:
   - {fileID: 1339067089}
   - {fileID: 1786786501}
   - {fileID: 735382810}
+  - {fileID: 1970142774}
   m_Father: {fileID: 1222357443}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3438,6 +3439,7 @@ MonoBehaviour:
   - {fileID: 1339067088}
   - {fileID: 1786786500}
   - {fileID: 735382809}
+  - {fileID: 1970142773}
   helpPreviousButton: {fileID: 1775517247}
   helpNextButton: {fileID: 879162608}
   helpPageIndex: {fileID: 1239568600}
@@ -3707,6 +3709,92 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824629653}
+  m_CullTransparentMesh: 0
+--- !u!1 &843028407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 843028408}
+  - component: {fileID: 843028410}
+  - component: {fileID: 843028409}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &843028408
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843028407}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1970142774}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -32.1}
+  m_SizeDelta: {x: 1324.9, y: 644}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &843028409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843028407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 88a1ce6523f23124bacee98b7704ec68, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 48
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1.5
+  m_Text: 'Boss fight:
+
+    There are two phases for the boss fight. During phase
+    1, the player has to dodge attacks for a certain amount of time (time left is
+    shown on the timer bar at the top). During phase 2, the player has to attack
+    the boss while dodging attacks. To cause damage to the boss, hit parts of his
+    body that are exposed while he attacks, or throw bombs toward the boss through
+    attack before they explode.
+
+'
+--- !u!222 &843028410
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843028407}
   m_CullTransparentMesh: 0
 --- !u!1 &850066948
 GameObject:
@@ -9871,14 +9959,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: "Phase: \r\nThere are 7 battle phases in the current demo, each non-battle
-    phase is followed by a battle phase. For non-battle phases, simply move to the
-    end of the phase on the right. They are for the narrative parts in the future.
-    For battle phases, defeat all the enemies in the scene then move to the right.
-    \r\n\nAbilities: \r\nBefore the start of a battle phase, drag ability icons onto
-    available beats according to your preference. Click Start when you are ready
-    to start the battle. The abilities will be triggered automatically on the chosen
-    beat.\n"
+  m_Text: "Phase: \r\nThere are 7 battle phases and a boss fight in the current demo,
+    each non-battle phase is followed by a battle phase. For non-battle phases, simply
+    move to the end of the phase on the right. They are for the narrative parts in
+    the future. For battle phases, defeat all the enemies in the scene then move
+    to the right.  \r\n\nAbilities: \r\nBefore the start of a battle phase, drag
+    ability icons onto available beats according to your preference. Click Start
+    when you are ready to start the battle. The abilities will be triggered automatically
+    on the chosen beat.\n"
 --- !u!222 &1889822584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10395,12 +10483,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: "Melee attack(Damage: 20):\r\nShow a white rectangle in front of the player.
-    Deal damage to enemy in front of the player on a certain beat\r\n\r\n\nShield:\r\nShow
-    a white rectangle in front of the player. The shield can bounce off the projectiles
+  m_Text: "Melee attack(Damage: 20):\r\nDeal damage to enemy in front of the player
+    on a certain beat\n\r\n\n\nShield:\r\nThe shield can bounce off the projectiles
     from enemies, and the bullet will turn blue, which means this is the player\u2019s
     bullet. It could also block the melee attack and the movement of enemies. Blocking
-    melee attacks of enemies can cause damage to them while blocking movements can\u2019t.\r\n"
+    melee attacks of enemies can cause damage to them while blocking movements can\u2019t.\n"
 --- !u!222 &1961234705
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10486,6 +10573,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965022389}
   m_CullTransparentMesh: 0
+--- !u!1 &1970142773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1970142774}
+  m_Layer: 5
+  m_Name: HelpPage7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1970142774
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970142773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 843028408}
+  m_Father: {fileID: 48559542}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1976116318
 GameObject:
   m_ObjectHideFlags: 0
