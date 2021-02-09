@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using FMOD.Studio;
+using FMODUnity;
 
 public class MenuUIManager : MonoBehaviour
 {
+    public string BGMEventPath = "event:/MX/Title/MX_Title_Vigorus";
     [Header("InitialPanel")]
     public GameObject initialPanel;
     [Header("PlayPanel")]
@@ -35,6 +38,8 @@ public class MenuUIManager : MonoBehaviour
     public Text loadingText;
     public float loadingSpeed;
 
+    public EventInstance bgmEvent;
+
     private int levelSelectionState;
     private AsyncOperation operation;
     private bool isLoading;
@@ -53,6 +58,12 @@ public class MenuUIManager : MonoBehaviour
         {
             overAllVolumeSlider.value = SettingManager.instance.overAllVolume;
             overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
+        }
+        bgmEvent = RuntimeManager.CreateInstance(BGMEventPath);
+        if (SettingManager.instance != null)
+        {
+            bgmEvent.setVolume(SettingManager.instance.overAllVolume);
+            bgmEvent.start();
         }
     }
 
@@ -81,6 +92,7 @@ public class MenuUIManager : MonoBehaviour
             if ((int)(loadingSlider.value * 100) == 100)
             {
                 operation.allowSceneActivation = true;
+                bgmEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
         }
     }
@@ -114,6 +126,7 @@ public class MenuUIManager : MonoBehaviour
     {
         SettingManager.instance.ChangeOverAllVolume(overAllVolumeSlider.value);
         overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
+        bgmEvent.setVolume(SettingManager.instance.overAllVolume);
     }
 
     public void ExitGame()
