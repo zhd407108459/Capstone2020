@@ -9,6 +9,7 @@ using FMODUnity;
 public class MenuUIManager : MonoBehaviour
 {
     public string BGMEventPath = "event:/MX/Title/MX_Title_Vigorus";
+    public GameObject backgrounds;
     [Header("InitialPanel")]
     public GameObject initialPanel;
     [Header("PlayPanel")]
@@ -110,6 +111,7 @@ public class MenuUIManager : MonoBehaviour
         operation = SceneManager.LoadSceneAsync(1);
         operation.allowSceneActivation = false;
         isLoading = true;
+        backgrounds.SetActive(false);
     }
 
     public void LoadLevel1BossPhase()
@@ -120,6 +122,7 @@ public class MenuUIManager : MonoBehaviour
         operation = SceneManager.LoadSceneAsync(2);
         operation.allowSceneActivation = false;
         isLoading = true;
+        backgrounds.SetActive(false);
     }
 
     public void ChangeOverAllVolume()
