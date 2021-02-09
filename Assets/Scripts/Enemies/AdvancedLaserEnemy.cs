@@ -35,6 +35,10 @@ public class AdvancedLaserEnemy : BasicEnemy
         laser1Object.SetActive(false);
         laser2Object.SetActive(false);
         isLaserOne = true;
+        if(animator != null)
+        {
+            animator.Play("Idle");
+        }
     }
     public override void OnBeat(int beatIndex)
     {
