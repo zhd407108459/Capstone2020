@@ -806,9 +806,9 @@ public class GridManager : RhythmObject
             for (int j = 0; j < phases[i].basicPlatforms.Count; j++)
             {
                 phases[i].basicPlatforms[j].transform.position = GetPhaseInitialPosition(i) + new Vector2(phases[i].basicPlatforms[j].xPos * gridSize.x, phases[i].basicPlatforms[j].yPos * gridSize.y);
-                if(phases[i].basicPlatforms[j].sprite != null)
+                if(phases[i].basicPlatforms[j].sprites.Count > 0)
                 {
-                    phases[i].basicPlatforms[j].sprite.sortingOrder = 5 + 10 * (4 - phases[i].basicPlatforms[j].yPos);
+                    phases[i].basicPlatforms[j].SetSortingOrder(5 + 10 * (4 - phases[i].basicPlatforms[j].yPos));
                 }
             }
             for (int j = 0; j < phases[i].enemies.Count; j++)
