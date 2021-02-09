@@ -6,6 +6,7 @@ public class BossComponent : RhythmObject
 {
     private int timer;
     private int hideTime;
+    [HideInInspector] public bool isDashed;
 
     public override void OnBeat(int beatIndex)
     {
@@ -24,5 +25,16 @@ public class BossComponent : RhythmObject
         this.hideTime = hideTime;
         timer = 0;
         this.gameObject.SetActive(true);
+    }
+
+    public void Dashed()
+    {
+        isDashed = true;
+        Invoke("TurnOffIsDashed", 0.4f);
+    }
+
+    void TurnOffIsDashed()
+    {
+        isDashed = false;
     }
 }

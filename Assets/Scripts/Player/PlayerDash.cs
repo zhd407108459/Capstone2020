@@ -82,14 +82,71 @@ public class PlayerDash : MonoBehaviour
         }
         if (collision.tag.Equals("Enemy"))
         {
-            if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
+            if (!collision.GetComponent<BasicEnemy>().isDashed)
             {
-                collision.GetComponent<BasicEnemy>().TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
-                GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
+                if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
+                {
+                    collision.GetComponent<BasicEnemy>().TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
+                    GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
+                }
+                else
+                {
+                    collision.GetComponent<BasicEnemy>().TakeDamage(damage);
+                }
+                Camera.main.GetComponent<CameraShake>().Shake();
+                collision.GetComponent<BasicEnemy>().Dashed();
+                if (hitEffectPrefab != null)
+                {
+                    GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                    if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                    {
+                        effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                    }
+                }
+            }
+        }
+        if (collision.tag.Equals("BossComponent"))
+        {
+            if (!collision.GetComponent<BossComponent>().isDashed)
+            {
+                if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
+                {
+                    GridManager.instance.boss.TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
+                    GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
+                }
+                else
+                {
+                    GridManager.instance.boss.TakeDamage(damage);
+                }
+                Camera.main.GetComponent<CameraShake>().Shake();
+                collision.GetComponent<BossComponent>().Dashed();
+                if (hitEffectPrefab != null)
+                {
+                    GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                    if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                    {
+                        effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                    }
+                }
+            }
+        }
+        if (collision.tag.Equals("BossBomb"))
+        {
+            Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+            if ((collision.transform.position.x - centerPos.x >= 0 && !GetComponent<PlayerGridMovement>().isPlayerFacingRight) || (collision.transform.position.x - centerPos.x < 0 && GetComponent<PlayerGridMovement>().isPlayerFacingRight))
+            {
+                collision.GetComponent<EnemyBomb>().AttackedByPlayer(centerPos, true);
             }
             else
             {
-                collision.GetComponent<BasicEnemy>().TakeDamage(damage);
+                if (collision.transform.position.x - centerPos.x >= 0)
+                {
+                    collision.GetComponent<EnemyBomb>().AttackedByPlayer(collision.transform.position + new Vector3(5.0f, 0, 0), false);
+                }
+                else
+                {
+                    collision.GetComponent<EnemyBomb>().AttackedByPlayer(collision.transform.position + new Vector3(-5.0f, 0, 0), false);
+                }
             }
             Camera.main.GetComponent<CameraShake>().Shake();
             if (hitEffectPrefab != null)
@@ -100,25 +157,63 @@ public class PlayerDash : MonoBehaviour
                     effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
                 }
             }
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!isDashing)
+        {
+            return;
+        }
+        if (collision.tag.Equals("Enemy"))
+        {
+            if (!collision.GetComponent<BasicEnemy>().isDashed)
+            {
+                if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
+                {
+                    collision.GetComponent<BasicEnemy>().TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
+                    GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
+                }
+                else
+                {
+                    collision.GetComponent<BasicEnemy>().TakeDamage(damage);
+                }
+                Camera.main.GetComponent<CameraShake>().Shake();
+                collision.GetComponent<BasicEnemy>().Dashed();
+                if (hitEffectPrefab != null)
+                {
+                    GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                    if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                    {
+                        effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                    }
+                }
+            }
         }
         if (collision.tag.Equals("BossComponent"))
         {
-            if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
+            if (!collision.GetComponent<BossComponent>().isDashed)
             {
-                GridManager.instance.boss.TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
-                GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
-            }
-            else
-            {
-                GridManager.instance.boss.TakeDamage(damage);
-            }
-            Camera.main.GetComponent<CameraShake>().Shake();
-            if (hitEffectPrefab != null)
-            {
-                GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
-                if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
                 {
-                    effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                    GridManager.instance.boss.TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
+                    GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
+                }
+                else
+                {
+                    GridManager.instance.boss.TakeDamage(damage);
+                }
+                Camera.main.GetComponent<CameraShake>().Shake();
+                collision.GetComponent<BossComponent>().Dashed();
+                if (hitEffectPrefab != null)
+                {
+                    GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                    if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                    {
+                        effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                    }
                 }
             }
         }

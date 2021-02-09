@@ -31,6 +31,7 @@ public class BasicEnemy : RhythmObject
     [HideInInspector] public int health;
 
     [HideInInspector] public bool isMeleeAttacked;
+    [HideInInspector] public bool isDashed;
 
     [HideInInspector] public bool isRaged;
 
@@ -65,6 +66,17 @@ public class BasicEnemy : RhythmObject
     void TurnOffIsMeleeAttacked()
     {
         isMeleeAttacked = false;
+    }
+
+    public void Dashed()
+    {
+        isDashed = true;
+        Invoke("TurnOffIsDashed", 0.4f);
+    }
+
+    void TurnOffIsDashed()
+    {
+        isDashed = false;
     }
 
     public virtual void TakeDamage(int damage)
