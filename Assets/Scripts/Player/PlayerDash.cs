@@ -67,6 +67,89 @@ public class PlayerDash : MonoBehaviour
                 effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
             }
         }
+        Collider2D[] cos = Physics2D.OverlapBoxAll(transform.position, new Vector2(GetComponent<BoxCollider2D>().size.x * transform.localScale.x, GetComponent<BoxCollider2D>().size.y * transform.localScale.y), transform.rotation.eulerAngles.z);
+        for (int i = 0; i < cos.Length; i++)
+        {
+            if (cos[i].tag.Equals("Enemy"))
+            {
+                if (!cos[i].GetComponent<BasicEnemy>().isDashed)
+                {
+                    if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
+                    {
+                        cos[i].GetComponent<BasicEnemy>().TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
+                        GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
+                    }
+                    else
+                    {
+                        cos[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                    }
+                    Camera.main.GetComponent<CameraShake>().Shake();
+                    cos[i].GetComponent<BasicEnemy>().Dashed();
+                    if (hitEffectPrefab != null)
+                    {
+                        GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                        if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                        {
+                            effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                        }
+                    }
+                }
+            }
+            if (cos[i].tag.Equals("BossComponent"))
+            {
+                if (!cos[i].GetComponent<BossComponent>().isDashed)
+                {
+                    if (GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio > 1)
+                    {
+                        GridManager.instance.boss.TakeDamage((int)(damage * GameManager.instance.player.GetComponent<PlayerAction>().damageIncreasingRatio));
+                        GameManager.instance.player.GetComponent<PlayerAction>().EndIncreasingDamage();
+                    }
+                    else
+                    {
+                        GridManager.instance.boss.TakeDamage(damage);
+                    }
+                    Camera.main.GetComponent<CameraShake>().Shake();
+                    cos[i].GetComponent<BossComponent>().Dashed();
+                    if (hitEffectPrefab != null)
+                    {
+                        GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                        if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                        {
+                            effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                        }
+                    }
+                }
+            }
+            if (cos[i].tag.Equals("BossBomb"))
+            {
+                Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+                if ((cos[i].transform.position.x - centerPos.x >= 0 && !GetComponent<PlayerGridMovement>().isPlayerFacingRight) || (cos[i].transform.position.x - centerPos.x < 0 && GetComponent<PlayerGridMovement>().isPlayerFacingRight))
+                {
+                    cos[i].GetComponent<EnemyBomb>().AttackedByPlayer(centerPos, true);
+                }
+                else
+                {
+                    if (cos[i].transform.position.x - centerPos.x >= 0)
+                    {
+                        cos[i].GetComponent<EnemyBomb>().AttackedByPlayer(cos[i].transform.position + new Vector3(5.0f, 0, 0), false);
+                    }
+                    else
+                    {
+                        cos[i].GetComponent<EnemyBomb>().AttackedByPlayer(cos[i].transform.position + new Vector3(-5.0f, 0, 0), false);
+                    }
+                }
+                Camera.main.GetComponent<CameraShake>().Shake();
+                if (hitEffectPrefab != null)
+                {
+                    GameObject effect = Instantiate(hitEffectPrefab, transform.position, transform.rotation);
+                    if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
+                    {
+                        effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                    }
+                }
+
+            }
+        }
     }
 
     public void EndDash()
