@@ -43,6 +43,10 @@ public class SetAbilities : MonoBehaviour
 
     void Update()
     {
+        if (!preBattlePanel.activeSelf)
+        {
+            return;
+        }
         if (isActivated)
         {
             //ShowTips
