@@ -11,11 +11,13 @@ public class PlayerShield : RhythmObject
     public BoxCollider2D shieldBox;
     public float actionTolerance;
     public KeyCode triggerKey;
+    public AbilityIcon abilityIcon;
     public bool isAutoUse;
 
     public string shieldFXEventPath = "event:/FX/Player/FX-Shield";
 
     private PlayerAction action;
+    private int usedBeat;
 
     void Start()
     {
@@ -25,29 +27,61 @@ public class PlayerShield : RhythmObject
         }
         HideShield();
         action = GetComponent<PlayerAction>();
-        ChangeBeatTips();
+        usedBeat = -1;
+        //ChangeBeatTips();
     }
 
     void Update()
     {
-        if (!isAutoUse)
+        //if (!isAutoUse)
+        //{
+        //    if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused)//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
+        //    {
+        //        if (Input.GetKeyDown(triggerKey))
+        //        {
+        //            UseShield();
+        //        }
+        //    }
+        //}
+        if (abilityIcon != null && Input.GetKeyDown(triggerKey))
         {
-            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused)//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
+            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && abilityIcon.isCoolDown)
             {
-                if (Input.GetKeyDown(triggerKey))
-                {
-                    UseShield();
-                }
+                UseShield();
             }
         }
-            
     }
 
     public override void OnBeat(int beatIndex)
     {
-        if (isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase && !action.isDizzy)
+        //if (isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase && !action.isDizzy)
+        //{
+        //    UseShield();
+        //}
+        if (GridManager.instance.isInPhase && abilityIcon != null)
         {
-            UseShield();
+            if (beatIndex == usedBeat)
+            {
+                usedBeat = -1;
+            }
+            else
+            {
+                if (abilityIcon.coolDownTimer < abilityIcon.abilityCoolDown.Count)
+                {
+                    abilityIcon.ChargeAbility();
+                }
+            }
+        }
+    }
+
+    public override void OnSemiBeat(int lastBeatIndex)
+    {
+        if (GridManager.instance.isInPhase && abilityIcon != null)
+        {
+            if (abilityIcon.coolDownTimer == abilityIcon.abilityCoolDown.Count && !abilityIcon.isCoolDown)
+            {
+                abilityIcon.Charged();
+            }
         }
     }
 
@@ -64,6 +98,11 @@ public class PlayerShield : RhythmObject
 
     void UseShield()
     {
+        abilityIcon.StartCoolDown();
+        if (BeatsManager.instance.GetTimeToNextBeat() < BeatsManager.instance.GetTimeToLastBeat())
+        {
+            usedBeat = BeatsManager.instance.GetIndexToNearestBeat();
+        }
         EventInstance shieldFX;
         shieldFX = RuntimeManager.CreateInstance(shieldFXEventPath);
         if (SettingManager.instance != null)
@@ -82,9 +121,10 @@ public class PlayerShield : RhythmObject
         //        Camera.main.GetComponent<CameraShake>().Shake();
         //    }
         //}
-        //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
+        action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
         Invoke("HideShield", existingTime);
         GetComponent<PlayerGridMovement>().animator.SetTrigger("ShieldDefence");
+        GridManager.instance.AddCombo();
     }
 
     void HideShield()
@@ -100,11 +140,22 @@ public class PlayerShield : RhythmObject
         }
         availability[n] = true;
     }
+    public void SetAbilityIcon(AbilityIcon icon)
+    {
+        abilityIcon = icon;
+        triggerKey = icon.triggerKey;
+        abilityIcon.coolDownTimer = 3;
+    }
     public void ClearAvalibility()
     {
         for (int i = 0; i < availability.Count; i++)
         {
             availability[i] = false;
         }
+        if(abilityIcon != null)
+        {
+            abilityIcon.HideIcons();
+        }
+        abilityIcon = null;
     }
 }

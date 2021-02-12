@@ -288,6 +288,7 @@ public class GridManager : RhythmObject
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
         isInPhase = false;
         EndCombo();
+        setAbilities.RecoverCoolDown();
     }
 
     public void StartNextPhase()
@@ -295,6 +296,7 @@ public class GridManager : RhythmObject
         if(phaseIndex < phases.Count - 1)
         {
             phaseIndex++;
+            setAbilities.RecoverCoolDown();
             if (!IsInBattlePhase())
             {
                 BeatsManager.instance.SetNormalBGMParameter("GamePhase", 2);

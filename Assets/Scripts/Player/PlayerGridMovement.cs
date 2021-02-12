@@ -132,9 +132,9 @@ public class PlayerGridMovement : MonoBehaviour
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(GetComponent<PlayerDash>().triggerKey) && GetComponent<PlayerDash>().abilityIcon != null)
         {
-            if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
+            if (GetComponent<PlayerDash>().abilityIcon.isCoolDown)
             {
                 if(isPlayerFacingRight)
                 {
@@ -148,8 +148,9 @@ public class PlayerGridMovement : MonoBehaviour
                     GetComponent<PlayerDash>().StartDash();
                     animator.SetTrigger("Jump");
                 }
-                GridManager.instance.AddCombo();
+                //GridManager.instance.AddCombo();
                 GetComponent<PlayerAction>().comboBreakTimer = 0;
+                action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
             }
         }
         if (action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.IsInBattlePhase())

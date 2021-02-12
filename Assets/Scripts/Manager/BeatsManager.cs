@@ -122,7 +122,11 @@ public class BeatsManager : MonoBehaviour
         {
             beatsTips[i].transform.localScale = Vector3.Lerp(beatsTips[i].transform.localScale, new Vector3(1, 1, 1), 15.0f * Time.deltaTime);
         }
-
+        //Debug.Log(bgmTime + "," + (beatsTime * (totalIndex + 0.5f)).ToString());
+        if (bgmTime >= beatsTime * (totalIndex - 0.5f))
+        {
+            CallOtherSemiBeatMethods();
+        }
         while (bgmTime >= beatsTime * totalIndex)
         {
             //Debug.Log((int)(bgm.time / beatsTime));
@@ -141,6 +145,18 @@ public class BeatsManager : MonoBehaviour
         }
 
 
+    }
+
+    void CallOtherSemiBeatMethods()
+    {
+        RhythmObject[] objects = FindObjectsOfType<RhythmObject>();
+        for (int i = 0; i < objects.Length; i++)
+        {
+            if (objects[i].gameObject.activeSelf)
+            {
+                objects[i].OnSemiBeat(beatsIndex);
+            }
+        }
     }
 
     void CallOtherMethods()

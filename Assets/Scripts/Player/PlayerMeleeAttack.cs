@@ -12,6 +12,7 @@ public class PlayerMeleeAttack : RhythmObject
     public int damage;
     public float actionTolerance;
     public KeyCode triggerKey;
+    public AbilityIcon abilityIcon;
     public bool isAutoUse;
 
     public string meleeAttackFXEventPath = "event:/FX/Player/FX-MeleeAttack";
@@ -21,6 +22,7 @@ public class PlayerMeleeAttack : RhythmObject
     public GameObject hitEffectPrefab;
 
     private PlayerAction action;
+    private int usedBeat;
 
     void Start()
     {
@@ -30,19 +32,27 @@ public class PlayerMeleeAttack : RhythmObject
         }
         HideMeleeAttackBox();
         action = GetComponent<PlayerAction>();
-        ChangeBeatTips();
+        usedBeat = -1;
+        //ChangeBeatTips();
     }
 
     void Update()
     {
-        if (!isAutoUse)
+        //if (!isAutoUse)
+        //{
+        //    if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused)//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
+        //    {
+        //        if (Input.GetKeyDown(triggerKey))
+        //        {
+        //            MeleeAttack();
+        //        }
+        //    }
+        //}
+        if(abilityIcon != null && Input.GetKeyDown(triggerKey))
         {
-            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && availability[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused)//!action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()])// 
+            if(BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && abilityIcon.isCoolDown)
             {
-                if (Input.GetKeyDown(triggerKey))
-                {
-                    MeleeAttack();
-                }
+                MeleeAttack();
             }
         }
         if (meleeAttackBox.gameObject.activeSelf)
@@ -53,9 +63,34 @@ public class PlayerMeleeAttack : RhythmObject
 
     public override void OnBeat(int beatIndex)
     {
-        if(isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase && !action.isDizzy)
+        //if(isAutoUse && availability[beatIndex] && GridManager.instance.isInPhase && !action.isDizzy)
+        //{
+        //    MeleeAttack();
+        //}
+        if (GridManager.instance.isInPhase && abilityIcon != null)
         {
-            MeleeAttack();
+            if (beatIndex == usedBeat)
+            {
+                usedBeat = -1;
+            }
+            else
+            {
+                if (abilityIcon.coolDownTimer < abilityIcon.abilityCoolDown.Count)
+                {
+                    abilityIcon.ChargeAbility();
+                }
+            }
+        }
+    }
+
+    public override void OnSemiBeat(int lastBeatIndex)
+    {
+        if (GridManager.instance.isInPhase && abilityIcon != null)
+        {
+            if (abilityIcon.coolDownTimer == abilityIcon.abilityCoolDown.Count && !abilityIcon.isCoolDown)
+            {
+                abilityIcon.Charged();
+            }
         }
     }
 
@@ -71,6 +106,11 @@ public class PlayerMeleeAttack : RhythmObject
     }
     void MeleeAttack()
     {
+        abilityIcon.StartCoolDown();
+        if (BeatsManager.instance.GetTimeToNextBeat() < BeatsManager.instance.GetTimeToLastBeat())
+        {
+            usedBeat = BeatsManager.instance.GetIndexToNearestBeat();
+        }
         EventInstance meleeAttackFX;
         meleeAttackFX = RuntimeManager.CreateInstance(meleeAttackFXEventPath);
         if (SettingManager.instance != null)
@@ -80,11 +120,12 @@ public class PlayerMeleeAttack : RhythmObject
         meleeAttackFX.start();
 
         meleeAttackBox.gameObject.SetActive(true);
-        //action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
+        action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;
         Invoke("HideMeleeAttackBox", existingTime);
         GetComponent<PlayerGridMovement>().animator.SetTrigger("MeleeAttack");
+        GridManager.instance.AddCombo();
 
-        if(meleeAttackEffectPrefab != null)
+        if (meleeAttackEffectPrefab != null)
         {
             GameObject effect = Instantiate(meleeAttackEffectPrefab, transform.position, transform.rotation);
             if (!GetComponent<PlayerGridMovement>().isPlayerFacingRight)
@@ -238,11 +279,23 @@ public class PlayerMeleeAttack : RhythmObject
         availability[n] = true;
     }
 
+    public void SetAbilityIcon(AbilityIcon icon)
+    {
+        abilityIcon = icon;
+        triggerKey = icon.triggerKey;
+        abilityIcon.coolDownTimer = 3;
+    }
+
     public void ClearAvalibility()
     {
         for (int i = 0; i < availability.Count; i++)
         {
             availability[i] = false;
         }
+        if (abilityIcon != null)
+        {
+            abilityIcon.HideIcons();
+        }
+        abilityIcon = null;
     }
 }

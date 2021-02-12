@@ -4,20 +4,25 @@ using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
 
-public class PlayerDash : MonoBehaviour
+public class PlayerDash : RhythmObject
 {
     public List<bool> availability = new List<bool>();
     public int damage;
     public GameObject dashEffectPrefab;
     public GameObject hitEffectPrefab;
+    public KeyCode triggerKey;
+    public AbilityIcon abilityIcon;
     [HideInInspector] public bool isDashing;
 
     public string dashFXEventPath = "event:/FX/Player/FX-Dash";
 
+    private int usedBeat;
+
     void Start()
     {
         isDashing = false;
-        ChangeBeatTips();
+        //ChangeBeatTips();
+        usedBeat = -1;
     }
 
     void ChangeBeatTips()
@@ -39,18 +44,63 @@ public class PlayerDash : MonoBehaviour
         availability[n] = true;
     }
 
+    public void SetAbilityIcon(AbilityIcon icon)
+    {
+        abilityIcon = icon;
+        triggerKey = icon.triggerKey;
+        abilityIcon.coolDownTimer = 3;
+    }
+
     public void ClearAvalibility()
     {
         for (int i = 0; i < availability.Count; i++)
         {
             availability[i] = false;
         }
+        if (abilityIcon != null)
+        {
+            abilityIcon.HideIcons();
+        }
+        abilityIcon = null;
+    }
+
+    public override void OnBeat(int beatIndex)
+    {
+        if (GridManager.instance.isInPhase && abilityIcon != null)
+        {
+            if(beatIndex == usedBeat)
+            {
+                usedBeat = -1;
+            }
+            else
+            {
+                if (abilityIcon.coolDownTimer < abilityIcon.abilityCoolDown.Count)
+                {
+                    abilityIcon.ChargeAbility();
+                }
+            }
+        }
+    }
+
+    public override void OnSemiBeat(int lastBeatIndex)
+    {
+        if (GridManager.instance.isInPhase && abilityIcon != null)
+        {
+            if (abilityIcon.coolDownTimer == abilityIcon.abilityCoolDown.Count && !abilityIcon.isCoolDown)
+            {
+                abilityIcon.Charged();
+            }
+        }
     }
 
     public void StartDash()
     {
         isDashing = true;
-
+        abilityIcon.StartCoolDown();
+        if(BeatsManager.instance.GetTimeToNextBeat() < BeatsManager.instance.GetTimeToLastBeat())
+        {
+            usedBeat = BeatsManager.instance.GetIndexToNearestBeat();
+        }
         EventInstance dashFX;
         dashFX = RuntimeManager.CreateInstance(dashFXEventPath);
         if (SettingManager.instance != null)
