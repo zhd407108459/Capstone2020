@@ -96,17 +96,29 @@ public class BasicMeleeAttackEnemy : BasicEnemy
         {
             isAttacking = true;
             attackTimer++;
+            if(animator != null)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
         else if (xPos + 1 == player.xPos && yPos == player.yPos && player.IsPlayerInActualPosition())
         {
             isAttacking = true;
             attackTimer++;
+            if (animator != null)
+            {
+                animator.SetTrigger("Attack");
+            }
 
         }
         else if (xPos - 1 == player.xPos && yPos == player.yPos && player.IsPlayerInActualPosition())
         {
             isAttacking = true;
             attackTimer++;
+            if (animator != null)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
         if (isAttacking)
         {
