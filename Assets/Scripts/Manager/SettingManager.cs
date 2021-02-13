@@ -9,6 +9,9 @@ public class SettingManager : MonoBehaviour
     public bool isAutoAttack;
     public float overAllVolume;
 
+    public KeyCode ability1Keycode;
+    public KeyCode ability2Keycode;
+
     public int targetPhase;
 
     [HideInInspector] public float hearingRange = 18.0f;
