@@ -407,6 +407,7 @@ public class SetAbilities : MonoBehaviour
         BeatsManager.instance.beatsContainer.transform.position = targetBeatsContainerPosition.position;
         BeatsManager.instance.beatsContainer.transform.localScale = targetBeatsContainerPosition.localScale;
         BeatsManager.instance.SetNormalBGMParameter("GamePhase", 1);
+        RecoverCoolDown();
     }
 
     public void Hide()
