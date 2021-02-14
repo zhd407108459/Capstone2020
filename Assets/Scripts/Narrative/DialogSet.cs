@@ -40,6 +40,7 @@ public class DialogSet : MonoBehaviour
             GameManager.instance.player.GetComponent<PlayerGridMovement>().isInDialog = true;
         }
         isStarted = true;
+        GridManager.instance.StartDialogEvents();
     }
 
     public void SkipOrNextDialogUnit()
@@ -71,6 +72,20 @@ public class DialogSet : MonoBehaviour
         }
     }
 
+    public void EndCurrentDialogSet()
+    {
+        if (!isRepeatable)
+        {
+            isPlayed = true;
+        }
+        isStarted = false;
+        HideDialogUnits();
+        if (isFreezeMovement)
+        {
+            GameManager.instance.player.GetComponent<PlayerGridMovement>().isInDialog = false;
+        }
+    }
+
     public void HideDialogUnits()
     {
         for (int i = 0; i < dialogUnits.Count; i++)
@@ -78,6 +93,7 @@ public class DialogSet : MonoBehaviour
             dialogUnits[i].gameObject.SetActive(false);
         }
         GridManager.instance.currentDialog = null;
+        GridManager.instance.EndDialogEvents();
     }
 
     public void ShowDialogUnit(int index)

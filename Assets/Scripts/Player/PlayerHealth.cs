@@ -41,9 +41,10 @@ public class PlayerHealth : MonoBehaviour
             damagedFX.setVolume(SettingManager.instance.overAllVolume);
         }
         damagedFX.start();
-        GetComponent<PlayerGridMovement>().animator.SetTrigger("Hurt");
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", true);
+        Invoke("EndHurtAnimation", 0.6f);
 
-        if(damageEffectPrefab != null)
+        if (damageEffectPrefab != null)
         {
             Instantiate(damageEffectPrefab, transform.position, transform.rotation);
         }
@@ -60,6 +61,14 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.value = (float)health / (float)maxHealth;
         if((float)health / (float)maxHealth < 0.25f){
             BeatsManager.instance.SetNormalBGMParameter("LowHealth", 1);
+        }
+    }
+
+    void EndHurtAnimation()
+    {
+        if(!GetComponent<PlayerAction>().isDizzy && !GetComponent<PlayerAction>().IsCloud())
+        {
+            GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", false);
         }
     }
 

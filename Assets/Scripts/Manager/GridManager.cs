@@ -47,6 +47,7 @@ public class GridManager : RhythmObject
     public Text comboTipText;
 
     public GameObject interactionTip;
+    public GameObject narrativeTip;
 
     [HideInInspector] public Vector3 targetCameraPos;
     [HideInInspector] public bool isCameraFollowing;
@@ -106,6 +107,10 @@ public class GridManager : RhythmObject
                 if (Input.GetMouseButtonDown(0))
                 {
                     currentDialog.SkipOrNextDialogUnit();
+                }
+                if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
+                {
+                    currentDialog.EndCurrentDialogSet();
                 }
             }
             if (interactionTip.activeSelf)
@@ -892,6 +897,18 @@ public class GridManager : RhythmObject
                 currentDialog = null;
             }
         }
+    }
+
+    public void StartDialogEvents()
+    {
+        narrativeTip.SetActive(true);
+        BeatsManager.instance.beatsContainer.transform.position = new Vector3(0, -450.0f, 0);
+    }
+
+    public void EndDialogEvents()
+    {
+        narrativeTip.SetActive(false);
+        BeatsManager.instance.beatsContainer.transform.position = new Vector3(0, -55.0f, 0);
     }
 
     public void AddCombo()

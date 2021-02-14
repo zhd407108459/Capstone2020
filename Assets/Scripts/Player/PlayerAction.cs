@@ -76,6 +76,7 @@ public class PlayerAction : RhythmObject
             if(cloudTimer == 0)
             {
                 cloudObject.SetActive(false);
+                GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", false);
             }
         }
         if(dizzyTimer > 0)
@@ -85,6 +86,7 @@ public class PlayerAction : RhythmObject
             {
                 dizzyTipObject.SetActive(false);
                 isDizzy = false;
+                GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", false);
             }
         }
         if(damageIncreasingRatio > 0)
@@ -102,6 +104,7 @@ public class PlayerAction : RhythmObject
     {
         cloudObject.SetActive(true);
         cloudTimer = time;
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", true);
     }
 
     public void StartDizzy(int time)
@@ -110,6 +113,7 @@ public class PlayerAction : RhythmObject
         dizzyTimer = time;
         isDizzy = true;
         GridManager.instance.EndCombo();
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", true);
     }
 
     public void StartIncreasingDamage(int time, float ratio)
@@ -137,5 +141,10 @@ public class PlayerAction : RhythmObject
         damageIncreasingTipObject.SetActive(false);
         damageIncreasingTimer = 0;
         damageIncreasingRatio = 1.0f;
+    }
+
+    public bool IsCloud()
+    {
+        return cloudTimer > 0;
     }
 }

@@ -127,6 +127,7 @@ public class BeatsManager : MonoBehaviour
         {
             CallOtherSemiBeatMethods();
         }
+        Debug.Log("Time: " + bgmTime + ", Index: " + totalIndex + ", bIndex: " + beatsIndex);
         while (bgmTime >= beatsTime * totalIndex)
         {
             //Debug.Log((int)(bgm.time / beatsTime));
