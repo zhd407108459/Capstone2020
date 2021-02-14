@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogSet : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class DialogSet : MonoBehaviour
     public int triggerX;
     public bool isLimitTriggerY;
     public int triggerY;
+    public UnityEvent endEvents;
 
     [HideInInspector] public int currentIndex;
     [HideInInspector] public bool isStarted;
@@ -94,6 +96,7 @@ public class DialogSet : MonoBehaviour
         }
         GridManager.instance.currentDialog = null;
         GridManager.instance.EndDialogEvents();
+        endEvents.Invoke();
     }
 
     public void ShowDialogUnit(int index)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogUnit : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class DialogUnit : MonoBehaviour
     public float typingInterval = 0.01f;
     public Transform targetPosition;
     public bool isFollowTarget;
+    public UnityEvent startEvents;
 
     private string originText;
     private int typingIndex;
@@ -42,6 +44,7 @@ public class DialogUnit : MonoBehaviour
             StopCoroutine(typingCoroutine);
         }
         typingCoroutine = StartCoroutine(Type());
+        startEvents.Invoke();
     }
 
     public void ImmediateShow()

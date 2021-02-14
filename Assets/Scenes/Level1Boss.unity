@@ -4324,6 +4324,7 @@ GameObject:
   - component: {fileID: 547722057}
   - component: {fileID: 547722056}
   - component: {fileID: 547722055}
+  - component: {fileID: 547722064}
   - component: {fileID: 547722054}
   m_Layer: 8
   m_Name: Player
@@ -4534,6 +4535,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &547722064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547722053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb68d5967dbc1484597c9f7f60d1dedd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &548574931
 GameObject:
   m_ObjectHideFlags: 0
@@ -4798,6 +4811,12 @@ GameObject:
 --- !u!1 &624339688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1628286497292300749, guid: 7382d7c857b2b0e409b039af9c60d082,
+    type: 3}
+  m_PrefabInstance: {fileID: 624339684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &624339689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2869619438738942508, guid: 7382d7c857b2b0e409b039af9c60d082,
     type: 3}
   m_PrefabInstance: {fileID: 624339684}
   m_PrefabAsset: {fileID: 0}
@@ -9942,6 +9961,7 @@ MonoBehaviour:
   comboTipObject: {fileID: 1513692461}
   comboTipText: {fileID: 1513692460}
   interactionTip: {fileID: 363935114}
+  narrativeTip: {fileID: 624339689}
   targetCameraPos: {x: 0, y: 0, z: 0}
   isCameraFollowing: 0
   isInPhase: 0
