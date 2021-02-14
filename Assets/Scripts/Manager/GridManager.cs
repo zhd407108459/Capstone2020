@@ -908,7 +908,7 @@ public class GridManager : RhythmObject
     public void EndDialogEvents()
     {
         narrativeTip.SetActive(false);
-        BeatsManager.instance.beatsContainer.transform.position = new Vector3(0, -55.0f, 0);
+        BeatsManager.instance.beatsContainer.transform.position = setAbilities.originalBeatsContainerPosition.position;
     }
 
     public void AddCombo()
