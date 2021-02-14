@@ -408,6 +408,18 @@ public class SetAbilities : MonoBehaviour
         BeatsManager.instance.beatsContainer.transform.localScale = targetBeatsContainerPosition.localScale;
         BeatsManager.instance.SetNormalBGMParameter("GamePhase", 1);
         RecoverCoolDown();
+        SetSkillKeys();
+    }
+
+    public void SetSkillKeys()
+    {
+        if (SettingManager.instance != null)
+        {
+            abilityPositions[0].GetComponent<AbilityIcon>().SetKeyTip(SettingManager.instance.skill1Keycode);
+            abilityPositions[0].GetComponent<AbilityIcon>().triggerKey = SettingManager.instance.skill1Keycode;
+            abilityPositions[1].GetComponent<AbilityIcon>().SetKeyTip(SettingManager.instance.skill2Keycode);
+            abilityPositions[1].GetComponent<AbilityIcon>().triggerKey = SettingManager.instance.skill2Keycode;
+        }
     }
 
     public void Hide()

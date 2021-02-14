@@ -21,6 +21,9 @@ public class MenuUIManager : MonoBehaviour
     public GameObject settingPanel;
     public Slider overAllVolumeSlider;
     public Text overAllVolumeText;
+    public Dropdown resolutionDropdown;
+    public Dropdown skill1Dropdown;
+    public Dropdown skill2Dropdown;
     [Header("CreditsPanel")]
     public GameObject creditsPanel;
     public GameObject[] credits;
@@ -59,6 +62,9 @@ public class MenuUIManager : MonoBehaviour
         {
             overAllVolumeSlider.value = SettingManager.instance.overAllVolume;
             overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
+            resolutionDropdown.value = SettingManager.instance.resolutionIndex;
+            skill1Dropdown.value = SettingManager.instance.skill1Index;
+            skill2Dropdown.value = SettingManager.instance.skill2Index;
         }
         bgmEvent = RuntimeManager.CreateInstance(BGMEventPath);
         if (SettingManager.instance != null)
@@ -130,6 +136,92 @@ public class MenuUIManager : MonoBehaviour
         SettingManager.instance.ChangeOverAllVolume(overAllVolumeSlider.value);
         overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
         bgmEvent.setVolume(SettingManager.instance.overAllVolume);
+    }
+
+    public void SetOverAllVolume(float value)
+    {
+        if (SettingManager.instance != null)
+        {
+            float v = Mathf.Clamp01(value);
+            overAllVolumeSlider.value = v;
+            SettingManager.instance.ChangeOverAllVolume(overAllVolumeSlider.value);
+            overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
+            if (bgmEvent.isValid())
+            {
+                bgmEvent.setVolume(SettingManager.instance.overAllVolume);
+            }
+        }
+    }
+
+    public void SetResolution()
+    {
+        if (SettingManager.instance != null)
+        {
+            SettingManager.instance.ChangeResolution(resolutionDropdown.value);
+        }
+    }
+
+    public void SetResolution(int index)
+    {
+        if(SettingManager.instance != null)
+        {
+            SettingManager.instance.ChangeResolution(index);
+        }
+    }
+
+    public void SetSkill1TriggerKey()
+    {
+        if (SettingManager.instance != null)
+        {
+            SettingManager.instance.ChangeSkill1TriggerKey(skill1Dropdown.value);
+            if (SettingManager.instance.skill1Keycode == SettingManager.instance.skill2Keycode)
+            {
+                skill2Dropdown.value = 21;
+                SettingManager.instance.ChangeSkill2TriggerKey(21);
+            }
+        }
+    }
+
+    public void SetSkill1TriggerKey(int index)
+    {
+        int i = Mathf.Clamp(index, 0, 21);
+        if (SettingManager.instance != null)
+        {
+            skill1Dropdown.value = i;
+            SettingManager.instance.ChangeSkill1TriggerKey(i);
+            if(SettingManager.instance.skill1Keycode == SettingManager.instance.skill2Keycode)
+            {
+                skill2Dropdown.value = 21;
+                SettingManager.instance.ChangeSkill2TriggerKey(21);
+            }
+        }
+    }
+    public void SetSkill2TriggerKey()
+    {
+        if (SettingManager.instance != null)
+        {
+            SettingManager.instance.ChangeSkill2TriggerKey(skill2Dropdown.value);
+            if (SettingManager.instance.skill1Keycode == SettingManager.instance.skill2Keycode)
+            {
+                skill1Dropdown.value = 21;
+                SettingManager.instance.ChangeSkill1TriggerKey(21);
+            }
+        }
+    }
+
+    public void SetSkill2TriggerKey(int index)
+    {
+        int i = Mathf.Clamp(index, 0, 21);
+        if (SettingManager.instance != null)
+        {
+            skill2Dropdown.value = i;
+            SettingManager.instance.ChangeSkill2TriggerKey(i);
+            if (SettingManager.instance.skill1Keycode == SettingManager.instance.skill2Keycode)
+            {
+                skill1Dropdown.value = 21;
+                SettingManager.instance.ChangeSkill1TriggerKey(21);
+            }
+        }
     }
 
     public void ExitGame()

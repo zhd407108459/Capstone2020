@@ -90,6 +90,7 @@ public class GridManager : RhythmObject
         if(SettingManager.instance != null)
         {
             phaseIndex = SettingManager.instance.targetPhase;
+            setAbilities.SetSkillKeys();
         }
         targetCameraPos = cameraObject.transform.position;
         closeRecordPanelButton.onClick.AddListener(HideRecordPanel);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilityIcon : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class AbilityIcon : MonoBehaviour
     public GameObject meleeAttackIcon;
     public GameObject dashIcon;
     public KeyCode triggerKey;
+    public Text keyText;
+    public GameObject leftMouseButtonIcon;
+    public GameObject rightMouseButtonIcon;
 
     public List<GameObject> abilityCoolDown = new List<GameObject>();
     public GameObject abilityCharged;
@@ -104,5 +108,29 @@ public class AbilityIcon : MonoBehaviour
         abilityCharged.SetActive(true);
         coolDownTimer = abilityCoolDown.Count;
         isCoolDown = true;
+    }
+
+    public void SetKeyTip(KeyCode key)
+    {
+        leftMouseButtonIcon.SetActive(false);
+        rightMouseButtonIcon.SetActive(false);
+        if(key == KeyCode.None)
+        {
+            keyText.text = "";
+        }
+        else if(key == KeyCode.Mouse0)
+        {
+            keyText.text = "";
+            leftMouseButtonIcon.SetActive(true);
+        }
+        else if (key == KeyCode.Mouse1)
+        {
+            keyText.text = "";
+            rightMouseButtonIcon.SetActive(true);
+        }
+        else
+        {
+            keyText.text = key.ToString();
+        }
     }
 }
