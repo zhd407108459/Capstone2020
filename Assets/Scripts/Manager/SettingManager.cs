@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using LitJson;
 
 public class SettingManager : MonoBehaviour
 {
     public static SettingManager instance;
+
+    public string infoPath = "./Data/Settings.setting";
 
     public bool isAutoAttack;
     public float overAllVolume;
@@ -24,6 +28,7 @@ public class SettingManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            LoadFromPath();
             DontDestroyOnLoad(this.gameObject);
         }
         else
@@ -40,6 +45,7 @@ public class SettingManager : MonoBehaviour
     public void ChangeOverAllVolume(float volume)
     {
         overAllVolume = volume;
+        SaveToPath();
     }
 
     public void ChangeResolution(int index)
@@ -61,6 +67,7 @@ public class SettingManager : MonoBehaviour
             Screen.SetResolution(1920, 1080, true);
         }
         resolutionIndex = index;
+        SaveToPath();
     }
 
     public void ChangeSkill1TriggerKey(int index)
@@ -154,6 +161,7 @@ public class SettingManager : MonoBehaviour
             skill1Keycode = KeyCode.None;
         }
         skill1Index = index;
+        SaveToPath();
     }
 
     public void ChangeSkill2TriggerKey(int index)
@@ -247,5 +255,49 @@ public class SettingManager : MonoBehaviour
             skill2Keycode = KeyCode.None;
         }
         skill2Index = index;
+        SaveToPath();
+    }
+
+    public void LoadFromPath()
+    {
+        SettingInfo temp = JsonMapper.ToObject<SettingInfo>(File.ReadAllText(infoPath));
+        if(temp != null)
+        {
+            ChangeOverAllVolume((float)temp.volume);
+            ChangeResolution(temp.resolution);
+            ChangeSkill1TriggerKey(temp.skill1key);
+            ChangeSkill2TriggerKey(temp.skill2key);
+            if (temp.skill1key == temp.skill2key)
+            {
+                ChangeSkill1TriggerKey(21);
+            }
+        }
+        else
+        {
+            GenerateDefaultSetting();
+        }
+        targetPhase = 0;
+    }
+
+    public void SaveToPath()
+    {
+        SettingInfo temp = new SettingInfo();
+        temp.volume = overAllVolume;
+        temp.resolution = resolutionIndex;
+        temp.skill1key = skill1Index;
+        temp.skill2key = skill2Index;
+        string jsonstr = JsonMapper.ToJson(temp);
+        File.WriteAllText(infoPath, jsonstr);
+    }
+
+    public void GenerateDefaultSetting()
+    {
+        SettingInfo temp = new SettingInfo();
+        temp.volume = 0.5f;
+        temp.resolution = 0;
+        temp.skill1key = 5;
+        temp.skill2key = 6;
+        string jsonstr = JsonMapper.ToJson(temp);
+        File.WriteAllText(infoPath, jsonstr);
     }
 }
