@@ -96,6 +96,7 @@ public class DialogSet : MonoBehaviour
         }
         GridManager.instance.currentDialog = null;
         GridManager.instance.EndDialogEvents();
+        GameManager.instance.player.GetComponent<PlayerFaceExpressionController>().Neutral();
         endEvents.Invoke();
     }
 
