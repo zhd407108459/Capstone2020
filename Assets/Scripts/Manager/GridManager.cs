@@ -226,6 +226,7 @@ public class GridManager : RhythmObject
             }
             rageTimerSlider.gameObject.SetActive(false);
             isInPhase = true;
+            GameManager.instance.pausePanelRestartButton.gameObject.SetActive(false);
         }
         else
         {
@@ -246,6 +247,7 @@ public class GridManager : RhythmObject
             rageTimer = phases[phaseIndex].rageTime;
             rageTimerText.text = ((int)rageTimer).ToString() + "s";
             rageTimerSlider.value = 1;
+            GameManager.instance.pausePanelRestartButton.gameObject.SetActive(true);
         }
         GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, 0);
         GameManager.instance.player.transform.position = GetPhaseInitialPosition();
@@ -311,6 +313,7 @@ public class GridManager : RhythmObject
                 }
                 rageTimerSlider.gameObject.SetActive(false);
                 isInPhase = true;
+                GameManager.instance.pausePanelRestartButton.gameObject.SetActive(false);
             }
             else
             {
@@ -331,6 +334,7 @@ public class GridManager : RhythmObject
                 rageTimer = phases[phaseIndex].rageTime;
                 rageTimerText.text = ((int)rageTimer).ToString() + "s";
                 rageTimerSlider.value = 1;
+                GameManager.instance.pausePanelRestartButton.gameObject.SetActive(true);
             }
             GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos);
         }

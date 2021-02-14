@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject pausePanel;
     public Button pausePanelResumeButton;
     public Button pausePanelMenuButton;
+    public Button pausePanelRestartButton;
 
     [Header("Dead Panel")]
     public GameObject deadPanel;
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
 
         pausePanelResumeButton.onClick.AddListener(PauseGame);
         pausePanelMenuButton.onClick.AddListener(BackToMenu);
+        pausePanelRestartButton.onClick.AddListener(RestartCurrentBattle);
+        pausePanelRestartButton.onClick.AddListener(HidePausePanel);
         deadPanelRestartButton.onClick.AddListener(RestartCurrentBattle);
         deadPanelMenuButton.onClick.AddListener(BackToMenu);
 
