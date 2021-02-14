@@ -118,6 +118,11 @@ public class BeatsManager : MonoBehaviour
             beatsIndex = 0;
             //Debug.Log("Loop");
         }
+        if(bgmTime < beatsTime)
+        {
+            totalIndex = 0;
+            beatsIndex = 0;
+        }
         for (int i = 0; i < beatsTips.Count; i++)
         {
             beatsTips[i].transform.localScale = Vector3.Lerp(beatsTips[i].transform.localScale, new Vector3(1, 1, 1), 15.0f * Time.deltaTime);
@@ -127,7 +132,7 @@ public class BeatsManager : MonoBehaviour
         {
             CallOtherSemiBeatMethods();
         }
-        Debug.Log("Time: " + bgmTime + ", Index: " + totalIndex + ", bIndex: " + beatsIndex);
+        Debug.Log("Time: " + bgmTime + " Last Time: " + lastAudioTime + ", Index: " + totalIndex + ", bIndex: " + beatsIndex);
         while (bgmTime >= beatsTime * totalIndex)
         {
             //Debug.Log((int)(bgm.time / beatsTime));
