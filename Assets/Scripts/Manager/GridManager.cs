@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using FMOD.Studio;
 using FMODUnity;
 
-public class GridManager : RhythmObject
+public class GridManager : MonoBehaviour
 {
     public static GridManager instance;
 
@@ -285,6 +285,10 @@ public class GridManager : RhythmObject
         {
             Destroy(n.gameObject);
         }
+        foreach (var n in FindObjectsOfType<EnemyReflectionBullet>())
+        {
+            Destroy(n.gameObject);
+        }
         foreach (var n in FindObjectsOfType<PlayerGridBullet>())
         {
             Destroy(n.gameObject);
@@ -374,6 +378,10 @@ public class GridManager : RhythmObject
         {
             Destroy(n.gameObject);
         }
+        foreach (var n in FindObjectsOfType<EnemyReflectionBullet>())
+        {
+            Destroy(n.gameObject);
+        }
         foreach (var n in FindObjectsOfType<PlayerGridBullet>())
         {
             Destroy(n.gameObject);
@@ -446,7 +454,7 @@ public class GridManager : RhythmObject
         timerText.gameObject.SetActive(false);
     }
 
-    public override void OnBeat(int beatIndex)
+    public void OnBeat(int beatIndex)
     {
         if (isCounting)
         {

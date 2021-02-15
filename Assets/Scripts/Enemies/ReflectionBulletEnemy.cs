@@ -35,7 +35,7 @@ public class ReflectionBulletEnemy : BasicEnemy
     public override void Activate()
     {
         base.Activate();
-        shootTimer = -startDelay;
+        shootTimer = shootInterval - startDelay - 1;
     }
 
     public override void OnBeat(int beatIndex)

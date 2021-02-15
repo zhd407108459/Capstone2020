@@ -118,7 +118,7 @@ public class BeatsManager : MonoBehaviour
             beatsIndex = 0;
             //Debug.Log("Loop");
         }
-        if(bgmTime < beatsTime)
+        if(bgmTime < beatsTime && totalIndex >= 2)
         {
             totalIndex = 0;
             beatsIndex = 0;
@@ -167,6 +167,7 @@ public class BeatsManager : MonoBehaviour
 
     void CallOtherMethods()
     {
+        GridManager.instance.OnBeat(beatsIndex);
         RhythmObject[] objects = FindObjectsOfType<RhythmObject>();
         for (int i = 0; i < objects.Length; i++)
         {
@@ -197,6 +198,7 @@ public class BeatsManager : MonoBehaviour
         if (!isBossFight)
         {
             bgmEvent.setTimelinePosition(148800);
+            totalIndex = 254;
             SetNormalBGMDefault();
         }
         else
