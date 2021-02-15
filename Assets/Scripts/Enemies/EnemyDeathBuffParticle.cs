@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using FMOD.Studio;
+using FMODUnity;
 
 public class EnemyDeathBuffParticle : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class EnemyDeathBuffParticle : MonoBehaviour
 
     public float burstDistance;
     public float burstDelay;
+
+    public string triggerFXPath = "event:/FX/Enemy/FX-EnemyShield";
 
     private int isMoveToEnemy;
 
@@ -44,7 +48,18 @@ public class EnemyDeathBuffParticle : MonoBehaviour
             if (Vector3.Distance(transform.position, targetEnemy.transform.position) < 0.02f)
             {
                 events.Invoke();
-                if(buffIconPrefab != null)
+                if(triggerFXPath != null && triggerFXPath != "")
+                {
+                    EventInstance buffFX;
+                    buffFX = RuntimeManager.CreateInstance(triggerFXPath);
+                    if (SettingManager.instance != null)
+                    {
+                        float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                        buffFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+                    }
+                    buffFX.start();
+                }
+                if (buffIconPrefab != null)
                 {
                     GameObject go = Instantiate(buffIconPrefab, targetEnemy.transform.position, targetEnemy.transform.rotation);
                     go.GetComponent<DeathrattleIcon>().SetUp(content);

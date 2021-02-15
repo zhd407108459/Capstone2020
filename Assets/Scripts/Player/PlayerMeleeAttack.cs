@@ -17,6 +17,7 @@ public class PlayerMeleeAttack : RhythmObject
 
     public string meleeAttackFXEventPath = "event:/FX/Player/FX-MeleeAttack";
     public string meleeImpactFXEventPath = "event:/FX/Player/FX-MeleeImpact";
+    public string meleeHitNoDamageFXEventPath = "event:/FX/Player/FX-HitNoDamage";
 
     public GameObject meleeAttackEffectPrefab;
     public GameObject hitEffectPrefab;
@@ -189,7 +190,14 @@ public class PlayerMeleeAttack : RhythmObject
                     Camera.main.GetComponent<CameraShake>().Shake();
 
                     EventInstance meleeImpactFX;
-                    meleeImpactFX = RuntimeManager.CreateInstance(meleeImpactFXEventPath);
+                    if (GridManager.instance.boss.canBeAttacked)
+                    {
+                        meleeImpactFX = RuntimeManager.CreateInstance(meleeImpactFXEventPath);
+                    }
+                    else
+                    {
+                        meleeImpactFX = RuntimeManager.CreateInstance(meleeHitNoDamageFXEventPath);
+                    }
                     if (SettingManager.instance != null)
                     {
                         meleeImpactFX.setVolume(SettingManager.instance.overAllVolume);

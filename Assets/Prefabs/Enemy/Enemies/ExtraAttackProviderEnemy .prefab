@@ -3076,6 +3076,7 @@ MonoBehaviour:
   animator: {fileID: 638697006785229966}
   health: 0
   isMeleeAttacked: 0
+  isDashed: 0
   isRaged: 0
   extraHealth: 0
   maxExtraHealth: 0
@@ -3092,9 +3093,9 @@ MonoBehaviour:
   startDelay: 0
   actionInterval: 16
   rageActionInterval: 8
-  enemyExtraHealthBuffFXEventPath: event:/FX/Enemy/FX-EnemyShield
-  enemyHealBuffFXEventPath: event:/FX/Enemy/FX-EnemyShield
-  enemyPowerupBuffFXEventPath: event:/FX/Enemy/FX-EnemyShield
+  enemyExtraHealthBuffFXEventPath: event:/FX/Enemy/FX-EnemyBuff
+  enemyHealBuffFXEventPath: event:/FX/Enemy/FX-EnemyBuff
+  enemyPowerupBuffFXEventPath: event:/FX/Enemy/FX-EnemyBuff
 --- !u!61 &7381626892745865186
 BoxCollider2D:
   m_ObjectHideFlags: 0

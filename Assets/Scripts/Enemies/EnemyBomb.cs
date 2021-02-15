@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class EnemyBomb : RhythmObject
 {
@@ -12,6 +14,8 @@ public class EnemyBomb : RhythmObject
     public float movementTime;
 
     public GameObject bombParticlePrefab;
+
+    public string explosionFXPath = "event:/FX/Enemy/FX-EnemyBomb";
 
     private int timer;
     [HideInInspector] public bool isAttacked;
@@ -42,6 +46,17 @@ public class EnemyBomb : RhythmObject
                 {
                     GridManager.instance.boss.TakeDamage(damage);
                 }
+                if(explosionFXPath != null && explosionFXPath != "")
+                {
+                    EventInstance explosionFX;
+                    explosionFX = RuntimeManager.CreateInstance(explosionFXPath);
+                    if (SettingManager.instance != null)
+                    {
+                        float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                        explosionFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+                    }
+                    explosionFX.start();
+                }
                 Destroy(this.gameObject);
             }
         }
@@ -66,6 +81,17 @@ public class EnemyBomb : RhythmObject
                 GameManager.instance.player.GetComponent<PlayerHealth>().TakeDamage(damage);
             }
             Instantiate(bombParticlePrefab, transform.position, transform.rotation);
+            if (explosionFXPath != null && explosionFXPath != "")
+            {
+                EventInstance explosionFX;
+                explosionFX = RuntimeManager.CreateInstance(explosionFXPath);
+                if (SettingManager.instance != null)
+                {
+                    float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                    explosionFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+                }
+                explosionFX.start();
+            }
             Destroy(this.gameObject);
         }
     }

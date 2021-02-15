@@ -20,9 +20,9 @@ public class BuffProviderEnemy : BasicEnemy
     public int actionInterval;
     public int rageActionInterval;
 
-    public string enemyExtraHealthBuffFXEventPath = "event:/FX/Enemy/FX-EnemyShield";
-    public string enemyHealBuffFXEventPath = "event:/FX/Enemy/FX-EnemyShield";
-    public string enemyPowerupBuffFXEventPath = "event:/FX/Enemy/FX-EnemyShield";
+    public string enemyExtraHealthBuffFXEventPath = "event:/FX/Enemy/FX-EnemyBuff";
+    public string enemyHealBuffFXEventPath = "event:/FX/Enemy/FX-EnemyBuff";
+    public string enemyPowerupBuffFXEventPath = "event:/FX/Enemy/FX-EnemyBuff";
 
     private int actionTimer;
 
