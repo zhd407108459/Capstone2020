@@ -12,7 +12,8 @@ public class PlayerFaceExpressionController : MonoBehaviour
         Shock,
         Happy,
         Confused,
-        Annoyed
+        Annoyed,
+        Blink
     }
 
     public void Neutral()
@@ -50,6 +51,11 @@ public class PlayerFaceExpressionController : MonoBehaviour
         SetFace(FaceExpressionEventType.Annoyed);
     }
 
+    public void Blink()
+    {
+        SetFace(FaceExpressionEventType.Blink);
+    }
+
     public void SetFace(FaceExpressionEventType type)
     {
         Animator animator = GetComponent<PlayerGridMovement>().animator;
@@ -61,6 +67,7 @@ public class PlayerFaceExpressionController : MonoBehaviour
             animator.SetBool("Happy", false);
             animator.SetBool("Confused", false);
             animator.SetBool("Annoyed", false);
+            animator.SetBool("Blink", false);
         }
         if (type == FaceExpressionEventType.Hurt)
         {
@@ -69,6 +76,7 @@ public class PlayerFaceExpressionController : MonoBehaviour
             animator.SetBool("Happy", false);
             animator.SetBool("Confused", false);
             animator.SetBool("Annoyed", false);
+            animator.SetBool("Blink", false);
             animator.SetBool("Hurt", true);
         }
         if (type == FaceExpressionEventType.Speachless)
@@ -78,6 +86,7 @@ public class PlayerFaceExpressionController : MonoBehaviour
             animator.SetBool("Happy", false);
             animator.SetBool("Confused", false);
             animator.SetBool("Annoyed", false);
+            animator.SetBool("Blink", false);
             animator.SetBool("Speachless", true);
         }
         if (type == FaceExpressionEventType.Shock)
@@ -87,6 +96,7 @@ public class PlayerFaceExpressionController : MonoBehaviour
             animator.SetBool("Happy", false);
             animator.SetBool("Confused", false);
             animator.SetBool("Annoyed", false);
+            animator.SetBool("Blink", false);
             animator.SetBool("Shock", true);
         }
         if (type == FaceExpressionEventType.Happy)
@@ -96,6 +106,7 @@ public class PlayerFaceExpressionController : MonoBehaviour
             animator.SetBool("Shock", false);
             animator.SetBool("Confused", false);
             animator.SetBool("Annoyed", false);
+            animator.SetBool("Blink", false);
             animator.SetBool("Happy", true);
         }
         if (type == FaceExpressionEventType.Confused)
@@ -105,6 +116,7 @@ public class PlayerFaceExpressionController : MonoBehaviour
             animator.SetBool("Shock", false);
             animator.SetBool("Happy", false);
             animator.SetBool("Annoyed", false);
+            animator.SetBool("Blink", false);
             animator.SetBool("Confused", true);
         }
         if (type == FaceExpressionEventType.Annoyed)
@@ -114,7 +126,18 @@ public class PlayerFaceExpressionController : MonoBehaviour
             animator.SetBool("Shock", false);
             animator.SetBool("Happy", false);
             animator.SetBool("Confused", false);
+            animator.SetBool("Blink", false);
             animator.SetBool("Annoyed", true);
+        }
+        if (type == FaceExpressionEventType.Blink)
+        {
+            animator.SetBool("Hurt", false);
+            animator.SetBool("Speachless", false);
+            animator.SetBool("Shock", false);
+            animator.SetBool("Happy", false);
+            animator.SetBool("Confused", false);
+            animator.SetBool("Annoyed", false);
+            animator.SetBool("Blink", true);
         }
     }
 }
