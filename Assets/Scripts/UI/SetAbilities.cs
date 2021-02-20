@@ -407,6 +407,10 @@ public class SetAbilities : MonoBehaviour
         BeatsManager.instance.beatsContainer.transform.position = targetBeatsContainerPosition.position;
         BeatsManager.instance.beatsContainer.transform.localScale = targetBeatsContainerPosition.localScale;
         BeatsManager.instance.SetNormalBGMParameter("GamePhase", 1);
+        for(int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
+        {
+            BeatsManager.instance.beatsTips[i].SetActive(false);
+        }
         RecoverCoolDown();
         SetSkillKeys();
     }
@@ -425,6 +429,10 @@ public class SetAbilities : MonoBehaviour
     public void Hide()
     {
         isActivated = false;
+        for (int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
+        {
+            BeatsManager.instance.beatsTips[i].SetActive(true);
+        }
         preBattlePanel.SetActive(false);
     }
 
@@ -487,6 +495,10 @@ public class SetAbilities : MonoBehaviour
         GridManager.instance.PreActivateCurrentPhase();
         BeatsManager.instance.beatsContainer.transform.position = originalBeatsContainerPosition.position;
         BeatsManager.instance.beatsContainer.transform.localScale = originalBeatsContainerPosition.localScale;
+        for (int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
+        {
+            BeatsManager.instance.beatsTips[i].SetActive(true);
+        }
         preBattlePanel.SetActive(false);
     }
 
