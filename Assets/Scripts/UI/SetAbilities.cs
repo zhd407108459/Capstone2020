@@ -14,9 +14,11 @@ public class SetAbilities : MonoBehaviour
     public RectTransform basicMeleeAttackIcon;
     public RectTransform shieldIcon;
     public RectTransform dashIcon;
+    public RectTransform throwBombIcon;
     public GameObject basicMeleeAttackTips;
     public GameObject shieldTips;
     public GameObject dashTips;
+    public GameObject throwBombTips;
     public List<RectTransform> abilityPositions = new List<RectTransform>();
     public float hoverTipTime = 0.8f;
     //public RectTransform bulletShootingIcon;
@@ -28,6 +30,7 @@ public class SetAbilities : MonoBehaviour
     private Vector3 originalBasicMeleeAttackPos;
     private Vector3 originalShieldPos;
     private Vector3 originalDashPos;
+    private Vector3 originalThrowBombPos;
     //private Vector3 originalBulletShootingPos;
 
     private Vector3 lastMousePosition;
@@ -38,6 +41,7 @@ public class SetAbilities : MonoBehaviour
         originalBasicMeleeAttackPos = basicMeleeAttackIcon.position;
         originalShieldPos = shieldIcon.position;
         originalDashPos = dashIcon.position;
+        originalThrowBombPos = throwBombIcon.position;
         //originalBulletShootingPos = bulletShootingIcon.position;
         nextButton.onClick.AddListener(FinishSetting);
     }
@@ -76,6 +80,11 @@ public class SetAbilities : MonoBehaviour
                             dashTips.SetActive(true);
                             dashTips.transform.position = dashIcon.transform.position;
                         }
+                        if (IsPointerOverUI(throwBombIcon))
+                        {
+                            throwBombTips.SetActive(true);
+                            throwBombTips.transform.position = throwBombIcon.transform.position;
+                        }
                     }
                 }
             }
@@ -86,6 +95,7 @@ public class SetAbilities : MonoBehaviour
                     basicMeleeAttackTips.SetActive(false); 
                     shieldTips.SetActive(false);
                     dashTips.SetActive(false);
+                    throwBombTips.SetActive(false);
                 }
                 hoverTimer = 0;
             }
@@ -106,6 +116,10 @@ public class SetAbilities : MonoBehaviour
                     if (IsPointerOverUI(dashIcon))
                     {
                         selection = 3;
+                    }
+                    if (IsPointerOverUI(throwBombIcon))
+                    {
+                        selection = 4;
                     }
                     //if (IsPointerOverUI(bulletShootingIcon))
                     //{
@@ -145,6 +159,14 @@ public class SetAbilities : MonoBehaviour
                                 GameManager.instance.player.GetComponent<PlayerDash>().ClearAvalibility();
                                 dashIcon.gameObject.SetActive(true);
                                 dashIcon.position = originalDashPos;
+                                break;
+                            }
+                            if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 4)
+                            {
+                                abilityPositions[i].GetComponent<AbilityIcon>().HideIcons();
+                                GameManager.instance.player.GetComponent<PlayerThrowBomb>().ClearAvalibility();
+                                throwBombIcon.gameObject.SetActive(true);
+                                throwBombIcon.position = originalThrowBombPos;
                                 break;
                             }
                         }
@@ -211,6 +233,10 @@ public class SetAbilities : MonoBehaviour
                 {
                     dashIcon.transform.position = Input.mousePosition;
                 }
+                if (selection == 4)
+                {
+                    throwBombIcon.transform.position = Input.mousePosition;
+                }
                 //if(selection == 3)
                 //{
                 //    bulletShootingIcon.transform.position = Input.mousePosition;
@@ -276,6 +302,26 @@ public class SetAbilities : MonoBehaviour
                             abilityPositions[i].GetComponent<AbilityIcon>().ShowDashIcon();
                             GameManager.instance.player.GetComponent<PlayerDash>().SetAbilityIcon(abilityPositions[i].GetComponent<AbilityIcon>());
                             dashIcon.gameObject.SetActive(false);
+                            isSet = true;
+                            selection = 0;
+                            break;
+                        }
+
+                        if (selection == 4)
+                        {
+                            if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 0 && GetActivatedAbilitiesCount() == 2)
+                            {
+                                throwBombIcon.position = originalThrowBombPos;
+                                selection = 0;
+                                return;
+                            }
+                            if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() != 0)
+                            {
+                                ClearAbility(abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex());
+                            }
+                            abilityPositions[i].GetComponent<AbilityIcon>().ShowThrowBombIcon();
+                            GameManager.instance.player.GetComponent<PlayerThrowBomb>().SetAbilityIcon(abilityPositions[i].GetComponent<AbilityIcon>());
+                            throwBombIcon.gameObject.SetActive(false);
                             isSet = true;
                             selection = 0;
                             break;
@@ -375,6 +421,11 @@ public class SetAbilities : MonoBehaviour
                         dashIcon.position = originalDashPos;
                         selection = 0;
                     }
+                    if (selection == 4)
+                    {
+                        throwBombIcon.position = originalThrowBombPos;
+                        selection = 0;
+                    }
                     //if (selection == 3)
                     //{
                     //    bulletShootingIcon.position = originalBulletShootingPos;
@@ -458,6 +509,13 @@ public class SetAbilities : MonoBehaviour
             dashIcon.position = originalDashPos;
 
         }
+        else if (index == 4)
+        {
+            GameManager.instance.player.GetComponent<PlayerThrowBomb>().ClearAvalibility();
+            throwBombIcon.gameObject.SetActive(true);
+            throwBombIcon.position = originalThrowBombPos;
+
+        }
         //else if(index == 3)
         //{
         //    GameManager.instance.player.GetComponent<PlayerBulletShooting>().ClearAvalibility();
@@ -471,14 +529,17 @@ public class SetAbilities : MonoBehaviour
         GameManager.instance.player.GetComponent<PlayerMeleeAttack>().ClearAvalibility();
         GameManager.instance.player.GetComponent<PlayerShield>().ClearAvalibility();
         GameManager.instance.player.GetComponent<PlayerDash>().ClearAvalibility();
+        GameManager.instance.player.GetComponent<PlayerThrowBomb>().ClearAvalibility();
         //GameManager.instance.player.GetComponent<PlayerBulletShooting>().ClearAvalibility();
         basicMeleeAttackIcon.gameObject.SetActive(true);
         shieldIcon.gameObject.SetActive(true);
         dashIcon.gameObject.SetActive(true);
+        throwBombIcon.gameObject.SetActive(true);
         //bulletShootingIcon.gameObject.SetActive(true);
         basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
         shieldIcon.position = originalShieldPos;
         dashIcon.position = originalDashPos;
+        throwBombIcon.position = originalThrowBombPos;
         //bulletShootingIcon.position = originalBulletShootingPos;
     }
 

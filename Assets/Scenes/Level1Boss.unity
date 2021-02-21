@@ -3318,6 +3318,7 @@ GameObject:
   - component: {fileID: 547722057}
   - component: {fileID: 547722056}
   - component: {fileID: 547722055}
+  - component: {fileID: 547722065}
   - component: {fileID: 547722064}
   - component: {fileID: 547722054}
   m_Layer: 8
@@ -3542,6 +3543,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb68d5967dbc1484597c9f7f60d1dedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &547722065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547722053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5be31534a57db42a964bbf4404afae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
+  delay: 4
+  actionTolerance: 0.3
+  triggerKey: 0
+  abilityIcon: {fileID: 0}
+  bombPrefab: {fileID: 8421126610341466843, guid: 4c35cc8a975d1fd44acd3f864cfec59b,
+    type: 3}
+  throwBombFXEventPath: event:/FX/Player/FX-Shield
 --- !u!1 &548574931
 GameObject:
   m_ObjectHideFlags: 0
@@ -3812,6 +3833,12 @@ GameObject:
 --- !u!1 &624339689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2869619438738942508, guid: 7382d7c857b2b0e409b039af9c60d082,
+    type: 3}
+  m_PrefabInstance: {fileID: 624339684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &624339690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6785387172263798429, guid: 7382d7c857b2b0e409b039af9c60d082,
     type: 3}
   m_PrefabInstance: {fileID: 624339684}
   m_PrefabAsset: {fileID: 0}
@@ -5813,6 +5840,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 943872706}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &943872714 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7925147893431384403, guid: 7c71974b315078c4b98772c794bf65f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 943872706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &965565818
 GameObject:
   m_ObjectHideFlags: 0
@@ -7671,9 +7704,11 @@ MonoBehaviour:
   basicMeleeAttackIcon: {fileID: 943872711}
   shieldIcon: {fileID: 943872710}
   dashIcon: {fileID: 943872709}
+  throwBombIcon: {fileID: 943872714}
   basicMeleeAttackTips: {fileID: 624339688}
   shieldTips: {fileID: 624339687}
   dashTips: {fileID: 624339686}
+  throwBombTips: {fileID: 624339690}
   abilityPositions:
   - {fileID: 1721074708}
   - {fileID: 1721074707}

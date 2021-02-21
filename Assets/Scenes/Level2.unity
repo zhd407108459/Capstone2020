@@ -9494,6 +9494,12 @@ MonoBehaviour:
   hoverFX: event:/FX/UI/UI-Select
   clickFX: event:/FX/UI/UI-Start
   upFX: 
+--- !u!224 &943872716 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7925147893431384403, guid: 7c71974b315078c4b98772c794bf65f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 943872706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &950089307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7949021483263314533, guid: d44499290a1352a4b8fdaf43801a098e,
@@ -9972,6 +9978,7 @@ GameObject:
   - component: {fileID: 1003168636}
   - component: {fileID: 1003168635}
   - component: {fileID: 1003168639}
+  - component: {fileID: 1003168641}
   - component: {fileID: 1003168640}
   - component: {fileID: 1003168637}
   m_Layer: 8
@@ -10196,6 +10203,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb68d5967dbc1484597c9f7f60d1dedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1003168641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003168629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5be31534a57db42a964bbf4404afae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
+  delay: 4
+  actionTolerance: 0.3
+  triggerKey: 0
+  abilityIcon: {fileID: 0}
+  bombPrefab: {fileID: 8421126610341466843, guid: 4c35cc8a975d1fd44acd3f864cfec59b,
+    type: 3}
+  throwBombFXEventPath: event:/FX/Player/FX-Shield
 --- !u!1 &1004277672
 GameObject:
   m_ObjectHideFlags: 0
@@ -14144,9 +14171,11 @@ MonoBehaviour:
   basicMeleeAttackIcon: {fileID: 943872711}
   shieldIcon: {fileID: 943872710}
   dashIcon: {fileID: 943872709}
+  throwBombIcon: {fileID: 943872716}
   basicMeleeAttackTips: {fileID: 2130781000}
   shieldTips: {fileID: 2009413526}
   dashTips: {fileID: 321921805}
+  throwBombTips: {fileID: 1628286497577570950}
   abilityPositions:
   - {fileID: 854729251}
   - {fileID: 1854127035}
@@ -23394,6 +23423,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7382d7c857b2b0e409b039af9c60d082, type: 3}
+--- !u!1 &1628286497577570950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6785387172263798429, guid: 7382d7c857b2b0e409b039af9c60d082,
+    type: 3}
+  m_PrefabInstance: {fileID: 1628286497577570949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1659124545622938661
 PrefabInstance:
   m_ObjectHideFlags: 0
