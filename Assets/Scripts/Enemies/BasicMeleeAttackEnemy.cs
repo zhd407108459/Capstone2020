@@ -15,8 +15,11 @@ public class BasicMeleeAttackEnemy : BasicEnemy
     public string enemyMeleeAttackFXEventPath = "event:/FX/Enemy/FX-EnemyMeleeAttack";
     public string shieldImpactFXEventPath = "event:/FX/Player/FX-ShieldImpact";
 
+    public GameObject attackTip;
+
     private Vector2 targetPos;
     private bool isAttacking;
+    private bool isReadyAttack;
 
     private int x1;
     private int x2;
@@ -35,6 +38,19 @@ public class BasicMeleeAttackEnemy : BasicEnemy
         stayTimer = 0;
         attackTimer = 0;
         delayTimer = startDelay;
+        attackTip.SetActive(false);
+    }
+
+    public override void Activate()
+    {
+        base.Activate();
+        x1 = xPos;
+        lastPosX = xPos;
+        x2 = xPos - 1;
+        stayTimer = 0;
+        attackTimer = 0;
+        delayTimer = startDelay;
+        attackTip.SetActive(false);
     }
 
     void Update()
@@ -48,6 +64,16 @@ public class BasicMeleeAttackEnemy : BasicEnemy
             transform.position = Vector2.Lerp(transform.position, targetPos, attackLerpValue * Time.deltaTime);
             if (Vector2.Distance(transform.position, targetPos) < 0.1f)
             {
+                EventInstance enemyMeleeAttackFX;
+                enemyMeleeAttackFX = RuntimeManager.CreateInstance(enemyMeleeAttackFXEventPath);
+                if (SettingManager.instance != null)
+                {
+                    float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                    enemyMeleeAttackFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+                }
+                enemyMeleeAttackFX.start();
+
+                attackTip.SetActive(false);
                 isAttacking = false;
             }
         }
@@ -63,6 +89,15 @@ public class BasicMeleeAttackEnemy : BasicEnemy
         {
             return;
         }
+        if (isReadyAttack)
+        {
+            isAttacking = true;
+            if (animator != null)
+            {
+                animator.SetTrigger("Attack");
+            }
+            isReadyAttack = false;
+        }
         if(delayTimer > 0)
         {
             delayTimer--;
@@ -76,13 +111,13 @@ public class BasicMeleeAttackEnemy : BasicEnemy
                 attackTimer = 0;
             }
         }
-        if (!isAttacking)
+        if (!isAttacking && !isReadyAttack)
         {
             if (attackTimer == 0)
             {
                 DetectPlayer();
             }
-            if (!isAttacking)
+            if (!isAttacking && !isReadyAttack)
             {
                 Move();
             }
@@ -94,43 +129,26 @@ public class BasicMeleeAttackEnemy : BasicEnemy
         PlayerGridMovement player = GameManager.instance.player.GetComponent<PlayerGridMovement>();
         if (xPos == player.xPos && yPos == player.yPos && player.IsPlayerInActualPosition())
         {
-            isAttacking = true;
+            //isAttacking = true;
+            isReadyAttack = true;
             attackTimer++;
-            if(animator != null)
-            {
-                animator.SetTrigger("Attack");
-            }
         }
         else if (xPos + 1 == player.xPos && yPos == player.yPos && player.IsPlayerInActualPosition())
         {
-            isAttacking = true;
+            //isAttacking = true;
+            isReadyAttack = true;
             attackTimer++;
-            if (animator != null)
-            {
-                animator.SetTrigger("Attack");
-            }
 
         }
         else if (xPos - 1 == player.xPos && yPos == player.yPos && player.IsPlayerInActualPosition())
         {
-            isAttacking = true;
+            //isAttacking = true;
+            isReadyAttack = true;
             attackTimer++;
-            if (animator != null)
-            {
-                animator.SetTrigger("Attack");
-            }
         }
-        if (isAttacking)
+        if (isReadyAttack)
         {
-            EventInstance enemyMeleeAttackFX;
-            enemyMeleeAttackFX = RuntimeManager.CreateInstance(enemyMeleeAttackFXEventPath);
-            if (SettingManager.instance != null)
-            {
-                float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-                enemyMeleeAttackFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
-            }
-            enemyMeleeAttackFX.start();
-
+            attackTip.SetActive(true);
             targetPos = player.transform.position;
         }
     }
