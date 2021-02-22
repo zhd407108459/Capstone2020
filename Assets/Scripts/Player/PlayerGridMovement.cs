@@ -45,7 +45,7 @@ public class PlayerGridMovement : MonoBehaviour
 
     public void Move()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if ((Input.GetKeyDown(KeyCode.W) && !action.IsChaos()) || (Input.GetKeyDown(KeyCode.S) && action.IsChaos())) 
         {
             //if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
             //{
@@ -69,7 +69,7 @@ public class PlayerGridMovement : MonoBehaviour
             }
             //}
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if ((Input.GetKeyDown(KeyCode.S) && !action.IsChaos()) || (Input.GetKeyDown(KeyCode.W) && action.IsChaos()))
         {
             //if (GetComponent<PlayerDash>().availability[BeatsManager.instance.GetIndexToNearestBeat()])
             //{
@@ -83,7 +83,7 @@ public class PlayerGridMovement : MonoBehaviour
             animator.SetTrigger("Jump");
             //}
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if ((Input.GetKeyDown(KeyCode.D) && !action.IsChaos()) || (Input.GetKeyDown(KeyCode.A) && action.IsChaos()))
         {
             sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
             isPlayerFacingRight = true;
@@ -99,7 +99,7 @@ public class PlayerGridMovement : MonoBehaviour
             animator.SetTrigger("Jump");
             //}
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if ((Input.GetKeyDown(KeyCode.A) && !action.IsChaos()) || (Input.GetKeyDown(KeyCode.D) && action.IsChaos()))
         {
             sprite.transform.localScale = new Vector3(-Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
             isPlayerFacingRight = false;
@@ -115,7 +115,8 @@ public class PlayerGridMovement : MonoBehaviour
             animator.SetTrigger("Jump");
             //}
         }
-        else if (Input.GetKeyDown(KeyCode.Q)){
+        else if ((Input.GetKeyDown(KeyCode.Q) && !action.IsChaos()) || (Input.GetKeyDown(KeyCode.E) && action.IsChaos()))
+        {
             if(sprite.transform.localScale.x > 0)
             {
                 isPlayerFacingRight = false;
@@ -123,7 +124,7 @@ public class PlayerGridMovement : MonoBehaviour
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
             }
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if ((Input.GetKeyDown(KeyCode.E) && !action.IsChaos()) || (Input.GetKeyDown(KeyCode.Q) && action.IsChaos()))
         {
             if (sprite.transform.localScale.x < 0)
             {
@@ -132,7 +133,7 @@ public class PlayerGridMovement : MonoBehaviour
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
             }
         }
-        else if (Input.GetKeyDown(GetComponent<PlayerDash>().triggerKey) && GetComponent<PlayerDash>().abilityIcon != null)
+        else if (Input.GetKeyDown(GetComponent<PlayerDash>().triggerKey) && GetComponent<PlayerDash>().abilityIcon != null && !action.IsOffTune())
         {
             if (GetComponent<PlayerDash>().abilityIcon.isCoolDown)
             {

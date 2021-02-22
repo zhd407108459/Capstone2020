@@ -24,13 +24,16 @@ public class DizzyingTrap : BasicTrap
     {
         if (collision.tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing) 
         {
-            EventInstance itemEffectFX;
-            itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
-            if (SettingManager.instance != null)
+            if (itemEffectFXEventPath != null && itemEffectFXEventPath != "")
             {
-                itemEffectFX.setVolume(SettingManager.instance.overAllVolume);
+                EventInstance itemEffectFX;
+                itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
+                if (SettingManager.instance != null)
+                {
+                    itemEffectFX.setVolume(SettingManager.instance.overAllVolume);
+                }
+                itemEffectFX.start();
             }
-            itemEffectFX.start();
             GameManager.instance.player.GetComponent<PlayerAction>().StartDizzy(effectTime);
             this.gameObject.SetActive(false);
         }

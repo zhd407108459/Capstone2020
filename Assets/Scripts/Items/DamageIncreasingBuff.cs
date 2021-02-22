@@ -39,13 +39,16 @@ public class DamageIncreasingBuff : BasicBuff
     {
         if (collision.tag.Equals("Player"))
         {
-            EventInstance itemEffectFX;
-            itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
-            if (SettingManager.instance != null)
+            if (itemEffectFXEventPath != null && itemEffectFXEventPath != "")
             {
-                itemEffectFX.setVolume(SettingManager.instance.overAllVolume);
+                EventInstance itemEffectFX;
+                itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
+                if (SettingManager.instance != null)
+                {
+                    itemEffectFX.setVolume(SettingManager.instance.overAllVolume);
+                }
+                itemEffectFX.start();
             }
-            itemEffectFX.start();
             GameManager.instance.player.GetComponent<PlayerAction>().StartIncreasingDamage(effectTime, damageIncreasementRatio);
 
             if (buffTriggerEffectPrefab != null)

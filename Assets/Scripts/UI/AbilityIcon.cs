@@ -8,6 +8,7 @@ public class AbilityIcon : MonoBehaviour
     public GameObject shieldIcon;
     public GameObject meleeAttackIcon;
     public GameObject dashIcon;
+    public GameObject throwBombIcon;
     public KeyCode triggerKey;
     public Text keyText;
     public GameObject leftMouseButtonIcon;
@@ -25,6 +26,7 @@ public class AbilityIcon : MonoBehaviour
         shieldIcon.SetActive(false);
         meleeAttackIcon.SetActive(true);
         dashIcon.SetActive(false);
+        throwBombIcon.SetActive(false);
         //bulletShootingIcon.SetActive(false);
         abilityIndex = 1;
     }
@@ -34,6 +36,7 @@ public class AbilityIcon : MonoBehaviour
         shieldIcon.SetActive(true);
         meleeAttackIcon.SetActive(false);
         dashIcon.SetActive(false);
+        throwBombIcon.SetActive(false);
         //bulletShootingIcon.SetActive(false);
         abilityIndex = 2;
     }
@@ -43,8 +46,18 @@ public class AbilityIcon : MonoBehaviour
         shieldIcon.SetActive(false);
         meleeAttackIcon.SetActive(false);
         dashIcon.SetActive(true);
+        throwBombIcon.SetActive(false);
         //bulletShootingIcon.SetActive(false);
         abilityIndex = 3;
+    }
+
+    public void ShowThrowBombIcon()
+    {
+        shieldIcon.SetActive(false);
+        meleeAttackIcon.SetActive(false);
+        dashIcon.SetActive(false);
+        throwBombIcon.SetActive(true);
+        abilityIndex = 4;
     }
 
     //public void ShowBulletShootingIcon()
@@ -61,6 +74,7 @@ public class AbilityIcon : MonoBehaviour
         shieldIcon.SetActive(false);
         meleeAttackIcon.SetActive(false);
         dashIcon.SetActive(false);
+        throwBombIcon.SetActive(false);
         //bulletShootingIcon.SetActive(false);
         abilityIndex = 0;
     }
@@ -85,7 +99,18 @@ public class AbilityIcon : MonoBehaviour
     {
         if(coolDownTimer < abilityCoolDown.Count)
         {
-            coolDownTimer++;
+            if (GameManager.instance.player.GetComponent<PlayerAction>().IsQuickCharge())
+            {
+                coolDownTimer += 2;
+                if(coolDownTimer > abilityCoolDown.Count)
+                {
+                    coolDownTimer = abilityCoolDown.Count;
+                }
+            }
+            else
+            {
+                coolDownTimer++;
+            }
             for (int i = 0; i < coolDownTimer; i++)
             {
                 abilityCoolDown[i].SetActive(true);
