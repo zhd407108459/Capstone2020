@@ -99,7 +99,18 @@ public class AbilityIcon : MonoBehaviour
     {
         if(coolDownTimer < abilityCoolDown.Count)
         {
-            coolDownTimer++;
+            if (GameManager.instance.player.GetComponent<PlayerAction>().IsQuickCharge())
+            {
+                coolDownTimer += 2;
+                if(coolDownTimer > abilityCoolDown.Count)
+                {
+                    coolDownTimer = abilityCoolDown.Count;
+                }
+            }
+            else
+            {
+                coolDownTimer++;
+            }
             for (int i = 0; i < coolDownTimer; i++)
             {
                 abilityCoolDown[i].SetActive(true);

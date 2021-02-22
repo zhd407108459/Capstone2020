@@ -33,6 +33,11 @@ public class PlayerHealth : MonoBehaviour
         {
             return;
         }
+        if(damage > 0 && GetComponent<PlayerAction>().IsShield())
+        {
+            GetComponent<PlayerAction>().EndShield();
+            return;
+        }
 
         EventInstance damagedFX;
         damagedFX = RuntimeManager.CreateInstance(damagedFXEventPath);

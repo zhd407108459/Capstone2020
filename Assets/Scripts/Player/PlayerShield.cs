@@ -43,7 +43,7 @@ public class PlayerShield : RhythmObject
         //        }
         //    }
         //}
-        if (abilityIcon != null && Input.GetKeyDown(triggerKey))
+        if (abilityIcon != null && Input.GetKeyDown(triggerKey) && !action.IsOffTune())
         {
             if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && abilityIcon.isCoolDown)
             {
