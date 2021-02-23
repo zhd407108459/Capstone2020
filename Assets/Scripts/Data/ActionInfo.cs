@@ -42,5 +42,8 @@ public class ActionInfo
     ///    / | \
     ///   5  6  7
     ///   
+    /// for action 12
+    /// action paramter x = event[x]
+    /// 
     /// </summary>
 }

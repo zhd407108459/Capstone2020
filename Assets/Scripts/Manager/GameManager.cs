@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using FMOD.Studio;
+using FMODUnity;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class GameManager : MonoBehaviour
     public Button deadPanelRestartButton;
     public Button deadPanelMenuButton;
 
+    public string deadBGMEventPath = "event:/MX/Character/MX_Character_Battle_Lost";
+    public EventInstance deadBGMEvent;
 
     [HideInInspector] public bool isPaused;
     [HideInInspector] public bool isGameEnd;
@@ -125,6 +129,10 @@ public class GameManager : MonoBehaviour
     {
         BeatsManager.instance.StopBGM();
         SceneManager.LoadScene(0);
+        if (deadBGMEvent.isValid())
+        {
+            deadBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     void RestartGame()
@@ -142,6 +150,10 @@ public class GameManager : MonoBehaviour
         {
             SettingManager.instance.targetPhase = 0;
         }
+        if (deadBGMEvent.isValid())
+        {
+            deadBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     public void PlayerDie()
@@ -149,6 +161,15 @@ public class GameManager : MonoBehaviour
         isPaused = true;
         BeatsManager.instance.PauseBGM();
         deadPanel.SetActive(true);
+        if (deadBGMEventPath != null && deadBGMEventPath != "")
+        {
+            deadBGMEvent = RuntimeManager.CreateInstance(deadBGMEventPath);
+            if (SettingManager.instance != null)
+            {
+                deadBGMEvent.setVolume(SettingManager.instance.overAllVolume);
+            }
+            deadBGMEvent.start();
+        }
     }
 
     void RestartCurrentBattle()
@@ -157,11 +178,19 @@ public class GameManager : MonoBehaviour
         BeatsManager.instance.ResumeBGM();
         GridManager.instance.RestartCurrentPhase();
         deadPanel.SetActive(false);
+        if(deadBGMEvent.isValid())
+        {
+            deadBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     void ExitGame()
     {
         Application.Quit();
+        if (deadBGMEvent.isValid())
+        {
+            deadBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     public void ShowPausePanel()

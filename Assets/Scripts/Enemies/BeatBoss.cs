@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class BeatBoss : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class BeatBoss : MonoBehaviour
     public GameObject bombPrefab;
 
     public List<Transform> bombPositions = new List<Transform>();
+
+    public UnityEvent bossHurtEvent;
+    public List<UnityEvent> bossEvents = new List<UnityEvent>();
 
     public GameObject endUIPanel;
 
@@ -80,6 +84,7 @@ public class BeatBoss : MonoBehaviour
             return;
         }
         health -= damage;
+        bossHurtEvent.Invoke();
         if (health <= 0)
         {
             health = 0;
@@ -212,6 +217,14 @@ public class BeatBoss : MonoBehaviour
                     ShootBulletFromCenter(bi.actions[i].actionParameters[j]);
                 }
             }
+            //BossEvent
+            if (bi.actions[i].actionType == 12)
+            {
+                for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
+                {
+                    InvokeBossEvent(bi.actions[i].actionParameters[j]);
+                }
+            }
         }
     }
 
@@ -288,5 +301,15 @@ public class BeatBoss : MonoBehaviour
         go.GetComponent<EnemyGridBullet>().damage = (int)(bulletDamage);
         go.GetComponent<EnemyGridBullet>().SetUp(centerShootPosX + go.GetComponent<EnemyGridBullet>().xDirection, centerShootPosY + go.GetComponent<EnemyGridBullet>().yDirection);
         go.GetComponent<EnemyGridBullet>().SetBulletRotation();
+    }
+
+    void InvokeBossEvent(int index)
+    {
+        if(index >= bossEvents.Count)
+        {
+            Debug.Log("Wrong Index: " + index);
+            return;
+        }
+        bossEvents[index].Invoke();
     }
 }

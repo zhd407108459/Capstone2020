@@ -30,27 +30,35 @@ public class BasicMeleeAttackEnemy : BasicEnemy
 
     private int lastPosX;
 
+    private int initialPosX;
+
     void Start()
     {
         x1 = xPos;
         lastPosX = xPos;
         x2 = xPos - 1;
+        initialPosX = x1;
         stayTimer = 0;
         attackTimer = 0;
         delayTimer = startDelay;
         attackTip.SetActive(false);
+        isAttacking = false;
+        isReadyAttack = false;
     }
 
     public override void Activate()
     {
         base.Activate();
-        x1 = xPos;
-        lastPosX = xPos;
-        x2 = xPos - 1;
+        xPos = initialPosX;
+        x1 = initialPosX;
+        lastPosX = initialPosX;
+        x2 = initialPosX - 1;
         stayTimer = 0;
         attackTimer = 0;
         delayTimer = startDelay;
         attackTip.SetActive(false);
+        isAttacking = false;
+        isReadyAttack = false;
     }
 
     void Update()
@@ -75,6 +83,10 @@ public class BasicMeleeAttackEnemy : BasicEnemy
 
                 attackTip.SetActive(false);
                 isAttacking = false;
+                if (IsTouchingPlayer())
+                {
+                    CauseDamage();
+                }
             }
         }
         else
@@ -221,6 +233,19 @@ public class BasicMeleeAttackEnemy : BasicEnemy
         //}
     }
 
+    bool IsTouchingPlayer()
+    {
+        Collider2D[] cos = Physics2D.OverlapBoxAll(transform.position, new Vector2(GetComponent<BoxCollider2D>().size.x, GetComponent<BoxCollider2D>().size.y), 0);
+        for (int i = 0; i < cos.Length; i++)
+        {
+            if (cos[i].tag.Equals("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     void CauseDamage()
     {
         GameManager.instance.player.GetComponent<PlayerHealth>().TakeDamage((int)(damage * damageIncreasement));
@@ -245,9 +270,9 @@ public class BasicMeleeAttackEnemy : BasicEnemy
                 isAttacking = false;
             }
         }
-        if (collision.tag.Equals("Player"))
-        {
-            CauseDamage();
-        }
+        //if (collision.tag.Equals("Player"))
+        //{
+        //    CauseDamage();
+        //}
     }
 }
