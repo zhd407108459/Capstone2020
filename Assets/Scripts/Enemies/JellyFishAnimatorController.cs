@@ -1,0 +1,59 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class JellyFishAnimatorController : MonoBehaviour
+{
+    public Animator animator;
+    private bool isReleasingSkill;
+
+    public void Attack1()
+    {
+        animator.SetTrigger("Attack1");
+    }
+
+    public void Attack2()
+    {
+        animator.SetTrigger("Attack2");
+    }
+
+    public void Attack3()
+    {
+        animator.SetTrigger("Attack3");
+    }
+
+    public void Attack4()
+    {
+        animator.SetTrigger("Attack4");
+    }
+
+    public void Hurt()
+    {
+        if (!isReleasingSkill)
+        {
+            animator.SetTrigger("Hurt");
+        }
+    }
+
+    public void StartSkill()
+    {
+        animator.SetTrigger("StartSkill");
+        isReleasingSkill = true;
+    }
+
+    public void EndSkill()
+    {
+        animator.SetTrigger("EndSkill");
+        isReleasingSkill = false;
+    }
+
+    public void StartFrawn()
+    {
+        animator.SetBool("IsFrawn", true);
+    }
+
+    public void EndFrawn()
+    {
+        animator.SetBool("IsFrawn", false);
+    }
+}
