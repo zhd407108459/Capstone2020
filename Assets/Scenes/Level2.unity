@@ -829,7 +829,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738660153
-  m_SortingLayer: 3
+  m_SortingLayer: 6
   m_SortingOrder: 2
   serializedVersion: 2
   m_Quality: 0
@@ -5416,7 +5416,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738660153
-  m_SortingLayer: 3
+  m_SortingLayer: 6
   m_SortingOrder: 1
   serializedVersion: 2
   m_Quality: 0
@@ -7615,7 +7615,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738660153
-  m_SortingLayer: 3
+  m_SortingLayer: 6
   m_SortingOrder: 3
   serializedVersion: 2
   m_Quality: 0
@@ -9257,7 +9257,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738660153
-  m_SortingLayer: 3
+  m_SortingLayer: 6
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
@@ -10977,6 +10977,7 @@ MonoBehaviour:
   deadPanel: {fileID: 1302987928}
   deadPanelRestartButton: {fileID: 352734744}
   deadPanelMenuButton: {fileID: 1113074451}
+  deadBGMEventPath: event:/MX/Character/MX_Character_Battle_Lost
   isPaused: 0
   isGameEnd: 0
 --- !u!4 &1297692748
@@ -13518,6 +13519,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1527667951}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1527667953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 34261435573026639, guid: 7b7f42c2f5c81464ab02d24d2e7a1fb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527667951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1533319650 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2629215041938909992, guid: 58e94a469e12fe841bec7aeb816af6e5,
@@ -13831,7 +13838,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738660153
-  m_SortingLayer: 3
+  m_SortingLayer: 6
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
@@ -16796,7 +16803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e150c24f308c3448efc5a83d5b9513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogPos: {fileID: 0}
+  dialogPos: {fileID: 1527667953}
   followRange: 1
   movementLerpValue: 3
 --- !u!1001 &1941541575
