@@ -18,6 +18,7 @@ public class ReflectionBulletEnemy : BasicEnemy
     public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyBullet";
 
     private int shootTimer;
+    private bool isLoaded;
     //public bool isRandom;
 
     //private int attackTimer;
@@ -35,6 +36,7 @@ public class ReflectionBulletEnemy : BasicEnemy
     public override void Activate()
     {
         base.Activate();
+        isLoaded = true;
         shootTimer = shootInterval - startDelay - 1;
     }
 
@@ -44,13 +46,22 @@ public class ReflectionBulletEnemy : BasicEnemy
         {
             return;
         }
-        shootTimer++;
-        if ((shootTimer >= shootInterval && !isRaged) || (shootTimer >= ragedShootInterval && isRaged))
+        if (isLoaded)
         {
-            shootTimer = 0;
-            Shoot();
+            shootTimer++;
+            if ((shootTimer >= shootInterval && !isRaged) || (shootTimer >= ragedShootInterval && isRaged))
+            {
+                shootTimer = 0;
+                Shoot();
+            }
         }
 
+    }
+
+    public void Reload()
+    {
+        isLoaded = true;
+        shootTimer = 0;
     }
 
     public void Shoot()
@@ -72,6 +83,8 @@ public class ReflectionBulletEnemy : BasicEnemy
         go.GetComponent<EnemyReflectionBullet>().owner = this;
         go.GetComponent<EnemyReflectionBullet>().damage = (int)(damage * damageIncreasement);
         go.GetComponent<EnemyReflectionBullet>().SetUp(xPos + xShootDirection, yPos + yShootDirection);
+
+        isLoaded = false;
     }
 
 

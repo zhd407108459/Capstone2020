@@ -20,7 +20,7 @@ public class EnemyReflectionBullet : RhythmObject
     [HideInInspector] public int originalXPos;
     [HideInInspector] public int originalYPos;
 
-    [HideInInspector] public BasicEnemy owner;
+    [HideInInspector] public ReflectionBulletEnemy owner;
 
     public string shieldImpactFXEventPath = "event:/FX/Player/FX-ShieldImpact";
 
@@ -62,6 +62,7 @@ public class EnemyReflectionBullet : RhythmObject
             {
                 if (owner.isActivated)
                 {
+                    owner.Reload();
                     Destroy(this.gameObject);
                 }
             }
@@ -100,6 +101,7 @@ public class EnemyReflectionBullet : RhythmObject
         if (collision.tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(damage);
+            owner.Reload();
             Destroy(this.gameObject);
         }
         if (collision.tag.Equals("PlayerShield"))
@@ -147,6 +149,7 @@ public class EnemyReflectionBullet : RhythmObject
                     main.startRotationZ = new ParticleSystem.MinMaxCurve(-90.0f);
                 }
             }
+            owner.Reload();
             Destroy(this.gameObject);
         }
     }
