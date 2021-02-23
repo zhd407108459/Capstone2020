@@ -33,6 +33,10 @@ public class JellyFishAnimatorController : MonoBehaviour
         {
             animator.SetTrigger("Hurt");
         }
+        else
+        {
+            Frawn();
+        }
     }
 
     public void StartSkill()
@@ -47,13 +51,9 @@ public class JellyFishAnimatorController : MonoBehaviour
         isReleasingSkill = false;
     }
 
-    public void StartFrawn()
+    public void Frawn()
     {
-        animator.SetBool("IsFrawn", true);
+        animator.SetTrigger("Frawn");
     }
 
-    public void EndFrawn()
-    {
-        animator.SetBool("IsFrawn", false);
-    }
 }
