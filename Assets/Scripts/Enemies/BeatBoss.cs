@@ -51,6 +51,7 @@ public class BeatBoss : MonoBehaviour
         isActivated = false;
         healthSlider.gameObject.SetActive(false);
         resetAnimationEvent.Invoke();
+        HideBossComponents();
     }
 
     public void Activate()
@@ -59,7 +60,7 @@ public class BeatBoss : MonoBehaviour
         canBeAttacked = false;
         healthSlider.gameObject.SetActive(false);
         resetAnimationEvent.Invoke();
-
+        HideBossComponents();
     }
 
     public void Reset()
@@ -75,6 +76,7 @@ public class BeatBoss : MonoBehaviour
             healthSlider.gameObject.SetActive(false);
         }
         resetAnimationEvent.Invoke();
+        HideBossComponents();
     }
 
     void Update()
@@ -256,6 +258,14 @@ public class BeatBoss : MonoBehaviour
             return;
         }
         bossComponents[index].GetComponent<BossComponent>().Show(1);
+    }
+
+    void HideBossComponents()
+    {
+        for(int i = 0; i < bossComponents.Count; i++)
+        {
+            bossComponents[i].SetActive(false);
+        }
     }
 
     void ThrowBomb(int index)
