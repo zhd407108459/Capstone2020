@@ -41,19 +41,24 @@ public class JellyFishAnimatorController : MonoBehaviour
 
     public void StartSkill()
     {
-        animator.SetTrigger("StartSkill");
+        animator.SetBool("IsReleasingSkill", true);
         isReleasingSkill = true;
     }
 
     public void EndSkill()
     {
-        animator.SetTrigger("EndSkill");
+        animator.SetBool("IsReleasingSkill", false);
         isReleasingSkill = false;
     }
 
     public void Frawn()
     {
         animator.SetTrigger("Frawn");
+    }
+
+    public void Reset()
+    {
+        EndSkill();
     }
 
 }

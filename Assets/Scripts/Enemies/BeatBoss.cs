@@ -29,6 +29,7 @@ public class BeatBoss : MonoBehaviour
 
     public List<Transform> bombPositions = new List<Transform>();
 
+    public UnityEvent resetAnimationEvent;
     public UnityEvent bossHurtEvent;
     public List<UnityEvent> bossEvents = new List<UnityEvent>();
 
@@ -49,6 +50,7 @@ public class BeatBoss : MonoBehaviour
         health = maxHealth;
         isActivated = false;
         healthSlider.gameObject.SetActive(false);
+        resetAnimationEvent.Invoke();
     }
 
     public void Activate()
@@ -56,6 +58,7 @@ public class BeatBoss : MonoBehaviour
         isActivated = true;
         canBeAttacked = false;
         healthSlider.gameObject.SetActive(false);
+        resetAnimationEvent.Invoke();
 
     }
 
@@ -71,6 +74,7 @@ public class BeatBoss : MonoBehaviour
         {
             healthSlider.gameObject.SetActive(false);
         }
+        resetAnimationEvent.Invoke();
     }
 
     void Update()
