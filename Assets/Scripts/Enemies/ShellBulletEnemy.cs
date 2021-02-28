@@ -36,6 +36,7 @@ public class ShellBulletEnemy : BasicEnemy
     {
         base.Activate();
         shootTimer = shootInterval - shootDelay;
+        animator.SetBool("IsOut", false);
     }
 
     public override void OnBeat(int beatIndex)
@@ -50,7 +51,12 @@ public class ShellBulletEnemy : BasicEnemy
             if(GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos == yPos && Mathf.Abs(GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos - xPos) <= detectionRange)
             {
                 state = 1;
-                sprite.GetComponent<SpriteRenderer>().color = Color.red;
+                //sprite.GetComponent<SpriteRenderer>().color = Color.red;
+                animator.SetBool("IsOut", true);
+                if ((shootTimer >= shootInterval && !isRaged) || (shootTimer >= ragedShootInterval && isRaged))
+                {
+                    shootTimer = isRaged ? ragedShootInterval - 2 : shootInterval - 2;
+                }
             }
         }
         if(state == 1)
@@ -58,7 +64,16 @@ public class ShellBulletEnemy : BasicEnemy
             if(GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos != yPos || Mathf.Abs(GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos - xPos) > detectionRange)
             {
                 state = 0;
-                sprite.GetComponent<SpriteRenderer>().color = Color.white;
+                //sprite.GetComponent<SpriteRenderer>().color = Color.white;
+                animator.SetBool("IsOut", false);
+            }
+            if(GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos - xPos > 0)
+            {
+                sprite.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                sprite.transform.localScale = new Vector3(1, 1, 1);
             }
             if ((shootTimer >= shootInterval && !isRaged) || (shootTimer >= ragedShootInterval && isRaged))
             {
@@ -85,6 +100,8 @@ public class ShellBulletEnemy : BasicEnemy
         go.GetComponent<EnemyGridBullet>().yDirection = 0;
         go.GetComponent<EnemyGridBullet>().damage = (int)(damage * damageIncreasement);
         go.GetComponent<EnemyGridBullet>().SetUp(xPos + (GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos - xPos > 0 ? 1 : -1), yPos);
+
+        animator.SetTrigger("Attack");
     }
 
     public override void TakeDamage(int damage)
