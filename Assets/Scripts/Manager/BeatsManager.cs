@@ -15,6 +15,7 @@ public class BeatsManager : MonoBehaviour
     public float parameterSwitchSpeed;
 
     public EventInstance bgmEvent;
+    public int normalBGMStartOffset = 148800;
     public string normalBGMEventPath = "event:/MX/BattleScene/Level1-Battle";
     public string boss1BGMEventPath = "event:/MX/BossFight/MX_Boss_Strange_Villa";
     public string boss2BGMEventPath = "event:/MX/BattleScene/Level1-Battle";
@@ -197,7 +198,7 @@ public class BeatsManager : MonoBehaviour
         bgmEvent.start();
         if (!isBossFight)
         {
-            bgmEvent.setTimelinePosition(148800);
+            bgmEvent.setTimelinePosition(normalBGMStartOffset);
             totalIndex = 254;
             SetNormalBGMDefault();
         }
