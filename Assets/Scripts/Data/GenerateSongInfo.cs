@@ -14,7 +14,7 @@ public class GenerateSongInfo : MonoBehaviour
         //KnifeBoss1Phase1Easy();
         //KnifeBoss1Phase2Easy();
         //KnifeBoss1Phase1Normal();
-        KnifeBoss1Phase2Normal();
+        //KnifeBoss1Phase2Normal();
         //KnifeBoss1Phase1Hard();
         KnifeBoss1Phase2Hard();
     }
@@ -2269,35 +2269,6 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionParameters.Add(0);
                 bi.actions.Add(ai);
             }
-            //Additional Blade
-            if (i == 18 - animationSolidDelay || i == 20 - animationSolidDelay || i == 22 - animationSolidDelay)
-            {
-                ActionInfo ai12 = new ActionInfo();
-                ai12.actionType = 12;
-                ai12.actionParameters.Add(2);
-                bi.actions.Add(ai12);
-            }
-            if (i == 18 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 6;
-                ai.actionParameters.Add(3);
-                bi.actions.Add(ai);
-            }
-            if (i == 20 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 6;
-                ai.actionParameters.Add(2);
-                bi.actions.Add(ai);
-            }
-            if (i == 22 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 6;
-                ai.actionParameters.Add(1);
-                bi.actions.Add(ai);
-            }
             //Converted
             if (i == 24 - animationSolidDelay)
             {
@@ -2339,35 +2310,6 @@ public class GenerateSongInfo : MonoBehaviour
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
                 ai.actionParameters.Add(0);
-                bi.actions.Add(ai);
-            }
-            //Additional Blade again
-            if (i == 26 - animationSolidDelay || i == 28 - animationSolidDelay || i == 30 - animationSolidDelay)
-            {
-                ActionInfo ai12 = new ActionInfo();
-                ai12.actionType = 12;
-                ai12.actionParameters.Add(1);
-                bi.actions.Add(ai12);
-            }
-            if (i == 26 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 5;
-                ai.actionParameters.Add(1);
-                bi.actions.Add(ai);
-            }
-            if (i == 28 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 5;
-                ai.actionParameters.Add(2);
-                bi.actions.Add(ai);
-            }
-            if (i == 30 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 5;
-                ai.actionParameters.Add(3);
                 bi.actions.Add(ai);
             }
             //Section2,Beat32-63
@@ -2890,35 +2832,6 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionParameters.Add(4);
                 bi.actions.Add(ai);
             }
-            //Additional Blade
-            if (i == 82 - animationSolidDelay || i == 84 - animationSolidDelay || i == 86 - animationSolidDelay)
-            {
-                ActionInfo ai12 = new ActionInfo();
-                ai12.actionType = 12;
-                ai12.actionParameters.Add(2);
-                bi.actions.Add(ai12);
-            }
-            if (i == 82 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 6;
-                ai.actionParameters.Add(3);
-                bi.actions.Add(ai);
-            }
-            if (i == 84 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 6;
-                ai.actionParameters.Add(2);
-                bi.actions.Add(ai);
-            }
-            if (i == 86 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 6;
-                ai.actionParameters.Add(1);
-                bi.actions.Add(ai);
-            }
             //Converted
             if (i == 88 - animationSolidDelay)
             {
@@ -2960,35 +2873,6 @@ public class GenerateSongInfo : MonoBehaviour
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
                 ai.actionParameters.Add(4);
-                bi.actions.Add(ai);
-            }
-            //Additional Blade again
-            if (i == 90 - animationSolidDelay || i == 92 - animationSolidDelay || i == 94 - animationSolidDelay)
-            {
-                ActionInfo ai12 = new ActionInfo();
-                ai12.actionType = 12;
-                ai12.actionParameters.Add(1);
-                bi.actions.Add(ai12);
-            }
-            if (i == 90 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 5;
-                ai.actionParameters.Add(1);
-                bi.actions.Add(ai);
-            }
-            if (i == 92 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 5;
-                ai.actionParameters.Add(2);
-                bi.actions.Add(ai);
-            }
-            if (i == 94 - bossSolidDelay)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 5;
-                ai.actionParameters.Add(3);
                 bi.actions.Add(ai);
             }
             //Section3,Beat96-127
