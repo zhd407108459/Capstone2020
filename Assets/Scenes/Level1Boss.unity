@@ -3434,7 +3434,7 @@ PrefabInstance:
     - target: {fileID: 34261436988945337, guid: 7b7f42c2f5c81464ab02d24d2e7a1fb5,
         type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 34261436988945341, guid: 7b7f42c2f5c81464ab02d24d2e7a1fb5,
         type: 3}
@@ -9305,12 +9305,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBossFight: 1
   parameterSwitchSpeed: 0
-  normalBGMStartOffset: 148800
+  normalBGMStartOffset: 153600
   normalBGMEventPath: event:/MX/BattleScene/Level1-Battle
   boss1BGMEventPath: event:/MX/BossFight/MX_LV1_Boss1_Pain_of_Grief
   boss2BGMEventPath: event:/MX/BossFight/MX_LV1_Boss2_Relief_of_Anger
-  boss1SongInfoPath: ./Data/KnifeBoss1Phase1Hard.info
-  boss2SongInfoPath: ./Data/KnifeBoss1Phase2Hard.info
+  boss1EasySongInfoPath: ./Data/KnifeBoss1Phase1Easy.info
+  boss1NormalSongInfoPath: ./Data/KnifeBoss1Phase1Normal.info
+  boss1HardSongInfoPath: ./Data/KnifeBoss1Phase1Hard.info
+  boss2EasySongInfoPath: ./Data/KnifeBoss2Phase1Easy.info
+  boss2NormalSongInfoPath: ./Data/KnifeBoss2Phase1Normal.info
+  boss2HardSongInfoPath: ./Data/KnifeBoss2Phase1Hard.info
   beatsTime: 0.5
   beatsContainer: {fileID: 1721074713}
   beatsTips:
@@ -9368,6 +9372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b805dbdb5737140a03953296b0273a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelIndex: 1
   isBossFight: 1
   boss: {fileID: 1273687129}
   gridSize: {x: 1.8, y: 1.85}

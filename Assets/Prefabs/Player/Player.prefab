@@ -4359,10 +4359,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a8fbbe824ada242ba8999818ccd8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  basicHealth: 50
+  easyDifficultyHealthOffset: 250
+  normalDifficultyHealthOffset: 50
   healthSlider: {fileID: 34261435263004210}
   damageEffectPrefab: {fileID: 6393592123713180641, guid: 6dbc6be8996be2241820f344a2a3e409,
     type: 3}
+  maxHealth: 100
   health: 0
   damagedFXEventPath: event:/FX/Player/FX-Damaged
 --- !u!114 &34261436988945341
@@ -4424,7 +4427,9 @@ MonoBehaviour:
   availability: 00000000
   existingTime: 0.3
   meleeAttackBox: {fileID: 34261436805812878}
-  damage: 20
+  basicDamage: 40
+  easyDifficultyDamageOffset: 40
+  normalDifficultyDamageOffset: 20
   actionTolerance: 0.3
   triggerKey: 32
   abilityIcon: {fileID: 0}
@@ -4436,6 +4441,7 @@ MonoBehaviour:
     type: 3}
   hitEffectPrefab: {fileID: 3981266284934584834, guid: 8a517890d89753d4286137671e0d81b8,
     type: 3}
+  damage: 20
 --- !u!114 &34261436988945340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4469,7 +4475,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availability: 00000000
-  damage: 10
+  basicDamage: 10
+  easyDifficultyDamageOffset: 30
+  normalDifficultyDamageOffset: 10
   dashEffectPrefab: {fileID: 4457121293808044937, guid: ea1289da205257242806d7befbc47aab,
     type: 3}
   hitEffectPrefab: {fileID: 4565744449202358124, guid: d293095e4df59e4449d666fdc691e59c,
@@ -4477,6 +4485,7 @@ MonoBehaviour:
   triggerKey: 0
   abilityIcon: {fileID: 0}
   isDashing: 0
+  damage: 10
   dashFXEventPath: event:/FX/Player/FX-Dash
 --- !u!114 &34261436988945222
 MonoBehaviour:
@@ -4490,7 +4499,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5be31534a57db42a964bbf4404afae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  basicDamage: 30
+  easyDifficultyDamageOffset: 40
+  normalDifficultyDamageOffset: 20
   delay: 4
   actionTolerance: 0.3
   triggerKey: 0
@@ -4498,6 +4509,7 @@ MonoBehaviour:
   bombPrefab: {fileID: 8421126610341466843, guid: 4c35cc8a975d1fd44acd3f864cfec59b,
     type: 3}
   throwBombFXEventPath: event:/FX/Player/FX-Shield
+  damage: 30
 --- !u!114 &34261436988945223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5657,7 +5669,7 @@ PrefabInstance:
     - target: {fileID: 7266867321039263996, guid: 197837610ab09804594be3ad30794045,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7266867321039263997, guid: 197837610ab09804594be3ad30794045,
         type: 3}
@@ -5767,7 +5779,7 @@ PrefabInstance:
     - target: {fileID: 9066269943565510324, guid: 7ff797e8f5205eb46a95ee7d50ee9088,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 9066269943565510325, guid: 7ff797e8f5205eb46a95ee7d50ee9088,
         type: 3}

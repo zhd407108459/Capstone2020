@@ -7,6 +7,8 @@ public class PlayerGridBullet : RhythmObject
     public float movementLerpValue;
 
     public int damage;
+    public float easyDifficultyDamageOffset;
+    public float normalDifficultyDamageOffset;
 
     public int xDirection;
     public int yDirection;
@@ -51,7 +53,19 @@ public class PlayerGridBullet : RhythmObject
         xPos = x;
         yPos = y;
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        if (SettingManager.instance != null)
+        {
+            if (SettingManager.instance.difficulty == 1)
+            {
+                damage = (int)(damage * normalDifficultyDamageOffset);
+            }
+            if (SettingManager.instance.difficulty == 0)
+            {
+                damage = (int)(damage * easyDifficultyDamageOffset);
+            }
+        }
     }
+
     public void SetBulletRotation()
     {
         if (xDirection > 0 && yDirection == 0)

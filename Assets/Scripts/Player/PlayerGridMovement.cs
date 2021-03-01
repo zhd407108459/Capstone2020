@@ -177,6 +177,13 @@ public class PlayerGridMovement : MonoBehaviour
                 {
                     if (GridManager.instance.IsEnemyClear())
                     {
+                        if (SettingManager.instance != null)
+                        {
+                            if (GridManager.instance.levelIndex == SettingManager.instance.levelProcess && GridManager.instance.phaseIndex > (SettingManager.instance.phaseProcess - 1) * 2)
+                            {
+                                SettingManager.instance.phaseProcess += 1;
+                            }
+                        }
                         GridManager.instance.EndCurrentPhase();
                         GridManager.instance.StartNextPhase();
                     }
@@ -195,6 +202,13 @@ public class PlayerGridMovement : MonoBehaviour
                 {
                     if (GridManager.instance.IsEnemyClear())
                     {
+                        if (SettingManager.instance != null)
+                        {
+                            if (GridManager.instance.levelIndex == SettingManager.instance.levelProcess && GridManager.instance.phaseIndex > (SettingManager.instance.phaseProcess - 1) * 2)
+                            {
+                                SettingManager.instance.phaseProcess += 1;
+                            }
+                        }
                         GameManager.instance.LoadNextScene();
                     }
                 }

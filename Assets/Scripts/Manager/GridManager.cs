@@ -10,6 +10,8 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager instance;
 
+    public int levelIndex;
+
     public bool isBossFight;
     public BeatBoss boss;
 
@@ -354,6 +356,7 @@ public class GridManager : MonoBehaviour
         GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, 0);
         GameManager.instance.player.transform.position = GetPhaseInitialPosition();
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
+        HideNextStageIcon();
         for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
         {
             phases[phaseIndex].enemies[i].gameObject.SetActive(true);

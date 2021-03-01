@@ -135,8 +135,8 @@ public class EnemyReflectionBullet : RhythmObject
             GameObject go = Instantiate(bounceOffBulletPrefab, transform.position, transform.rotation);
             go.GetComponent<PlayerGridBullet>().xDirection = -xDirection;
             go.GetComponent<PlayerGridBullet>().yDirection = -yDirection;
-            go.GetComponent<PlayerGridBullet>().SetUp(xPos - xDirection, yPos - yDirection);
             go.GetComponent<PlayerGridBullet>().damage = damage;
+            go.GetComponent<PlayerGridBullet>().SetUp(xPos - xDirection, yPos - yDirection);
             Camera.main.GetComponent<CameraShake>().Shake();
 
             if (bounceOffEffectPrefab != null)

@@ -9,7 +9,9 @@ public class PlayerMeleeAttack : RhythmObject
     public List<bool> availability = new List<bool>();
     public float existingTime;
     public BoxCollider2D meleeAttackBox;
-    public int damage;
+    public int basicDamage;
+    public int easyDifficultyDamageOffset;
+    public int normalDifficultyDamageOffset;
     public float actionTolerance;
     public KeyCode triggerKey;
     public AbilityIcon abilityIcon;
@@ -22,14 +24,25 @@ public class PlayerMeleeAttack : RhythmObject
     public GameObject meleeAttackEffectPrefab;
     public GameObject hitEffectPrefab;
 
+    [HideInInspector] public int damage;
+
     private PlayerAction action;
     private int usedBeat;
 
     void Start()
     {
+        damage = basicDamage;
         if(SettingManager.instance != null)
         {
-            isAutoUse = SettingManager.instance.isAutoAttack;
+            //isAutoUse = SettingManager.instance.isAutoAttack;
+            if (SettingManager.instance.difficulty == 1)
+            {
+                damage += normalDifficultyDamageOffset;
+            }
+            if (SettingManager.instance.difficulty == 0)
+            {
+                damage += easyDifficultyDamageOffset;
+            }
         }
         HideMeleeAttackBox();
         action = GetComponent<PlayerAction>();
