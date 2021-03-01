@@ -109,6 +109,7 @@ public class BeatBoss : MonoBehaviour
             {
                 SettingManager.instance.levelProcess += 1;
                 SettingManager.instance.phaseProcess = 1;
+                SettingManager.instance.SaveToPath();
             }
         }
         GameManager.instance.isGameEnd = true;

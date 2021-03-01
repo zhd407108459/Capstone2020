@@ -182,6 +182,7 @@ public class PlayerGridMovement : MonoBehaviour
                             if (GridManager.instance.levelIndex == SettingManager.instance.levelProcess && GridManager.instance.phaseIndex > (SettingManager.instance.phaseProcess - 1) * 2)
                             {
                                 SettingManager.instance.phaseProcess += 1;
+                                SettingManager.instance.SaveToPath();
                             }
                         }
                         GridManager.instance.EndCurrentPhase();
@@ -207,6 +208,7 @@ public class PlayerGridMovement : MonoBehaviour
                             if (GridManager.instance.levelIndex == SettingManager.instance.levelProcess && GridManager.instance.phaseIndex > (SettingManager.instance.phaseProcess - 1) * 2)
                             {
                                 SettingManager.instance.phaseProcess += 1;
+                                SettingManager.instance.SaveToPath();
                             }
                         }
                         GameManager.instance.LoadNextScene();

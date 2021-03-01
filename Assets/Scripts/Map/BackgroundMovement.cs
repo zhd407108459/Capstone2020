@@ -26,7 +26,7 @@ public class BackgroundMovement : MonoBehaviour
             backgrounds[i].transform.localPosition -= new Vector3(delta * movingSpeed[i], 0, 0);
             if(backgrounds[i].transform.localPosition.x <= -width/2)
             {
-                backgrounds[i].transform.localPosition = new Vector3(backgrounds[i].transform.localPosition.x + width, 0, 0);
+                backgrounds[i].transform.localPosition = new Vector3(backgrounds[i].transform.localPosition.x + width, backgrounds[i].transform.localPosition.y, backgrounds[i].transform.localPosition.z);
             }
         }
         for (int i = 0; i < backgrounds2.Count; i++)
@@ -34,7 +34,7 @@ public class BackgroundMovement : MonoBehaviour
             backgrounds2[i].transform.localPosition -= new Vector3(delta * movingSpeed[i], 0, 0);
             if (backgrounds2[i].transform.localPosition.x <= -width / 2)
             {
-                backgrounds2[i].transform.localPosition = new Vector3(backgrounds2[i].transform.localPosition.x + width, 0, 0);
+                backgrounds2[i].transform.localPosition = new Vector3(backgrounds2[i].transform.localPosition.x + width, backgrounds[i].transform.localPosition.y, backgrounds[i].transform.localPosition.z);
             }
         }
     }
