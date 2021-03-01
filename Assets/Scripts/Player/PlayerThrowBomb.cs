@@ -6,7 +6,9 @@ using FMODUnity;
 
 public class PlayerThrowBomb : RhythmObject
 {
-    public int damage;
+    public int basicDamage;
+    public int easyDifficultyDamageOffset;
+    public int normalDifficultyDamageOffset;
     public int delay;
     public float actionTolerance;
     public KeyCode triggerKey;
@@ -15,11 +17,25 @@ public class PlayerThrowBomb : RhythmObject
     
     public string throwBombFXEventPath = "event:/FX/Player/FX-Shield";
 
+    [HideInInspector] public int damage;
+
     private PlayerAction action;
     private int usedBeat;
 
     void Start()
     {
+        damage = basicDamage;
+        if (SettingManager.instance != null)
+        {
+            if (SettingManager.instance.difficulty == 1)
+            {
+                damage += normalDifficultyDamageOffset;
+            }
+            if (SettingManager.instance.difficulty == 0)
+            {
+                damage += easyDifficultyDamageOffset;
+            }
+        }
         action = GetComponent<PlayerAction>();
         usedBeat = -1;
     }

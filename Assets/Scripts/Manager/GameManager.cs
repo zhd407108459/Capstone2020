@@ -144,6 +144,10 @@ public class GameManager : MonoBehaviour
     public void LoadNextScene()
     {
         int scene = SceneManager.GetActiveScene().buildIndex;
+        if(SceneManager.sceneCount <= scene)
+        {
+            return;
+        }
         SceneManager.LoadScene(scene + 1, LoadSceneMode.Single);
         BeatsManager.instance.StopBGM();
         if(SettingManager.instance != null)

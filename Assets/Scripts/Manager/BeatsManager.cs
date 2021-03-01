@@ -20,8 +20,12 @@ public class BeatsManager : MonoBehaviour
     public string boss1BGMEventPath = "event:/MX/BossFight/MX_Boss_Strange_Villa";
     public string boss2BGMEventPath = "event:/MX/BattleScene/Level1-Battle";
     public SongInfo bossSongInfo;
-    public string boss1SongInfoPath;
-    public string boss2SongInfoPath;
+    public string boss1EasySongInfoPath;
+    public string boss1NormalSongInfoPath;
+    public string boss1HardSongInfoPath;
+    public string boss2EasySongInfoPath;
+    public string boss2NormalSongInfoPath;
+    public string boss2HardSongInfoPath;
 
     public float beatsTime;//节拍时间间隔
 
@@ -63,7 +67,25 @@ public class BeatsManager : MonoBehaviour
         {
             bgmEvent = RuntimeManager.CreateInstance(boss1BGMEventPath);
             bossSongInfo = new SongInfo();
-            bossSongInfo.LoadFromPath(boss1SongInfoPath);
+            if (SettingManager.instance != null)
+            {
+                if (SettingManager.instance.difficulty == 0)
+                {
+                    bossSongInfo.LoadFromPath(boss1EasySongInfoPath);
+                }
+                if (SettingManager.instance.difficulty == 1)
+                {
+                    bossSongInfo.LoadFromPath(boss1NormalSongInfoPath);
+                }
+                if (SettingManager.instance.difficulty == 2)
+                {
+                    bossSongInfo.LoadFromPath(boss1HardSongInfoPath);
+                }
+            }
+            else
+            {
+                bossSongInfo.LoadFromPath(boss1NormalSongInfoPath);
+            }
             beatsTime = (float)bossSongInfo.interval;
             //Debug.Log(bossSongInfo.length);
         }
@@ -133,7 +155,7 @@ public class BeatsManager : MonoBehaviour
         {
             CallOtherSemiBeatMethods();
         }
-        //Debug.Log("Time: " + bgmTime + " Last Time: " + lastAudioTime + ", Index: " + totalIndex + ", bIndex: " + beatsIndex);
+        Debug.Log("Time: " + bgmTime + " Last Time: " + lastAudioTime + ", Index: " + totalIndex + ", bIndex: " + beatsIndex);
         while (bgmTime >= beatsTime * totalIndex)
         {
             //Debug.Log((int)(bgm.time / beatsTime));
@@ -497,7 +519,25 @@ public class BeatsManager : MonoBehaviour
     {
         bgmEvent = RuntimeManager.CreateInstance(boss2BGMEventPath);
         bossSongInfo = new SongInfo();
-        bossSongInfo.LoadFromPath(boss2SongInfoPath);
+        if (SettingManager.instance != null)
+        {
+            if (SettingManager.instance.difficulty == 0)
+            {
+                bossSongInfo.LoadFromPath(boss2EasySongInfoPath);
+            }
+            if (SettingManager.instance.difficulty == 1)
+            {
+                bossSongInfo.LoadFromPath(boss2NormalSongInfoPath);
+            }
+            if (SettingManager.instance.difficulty == 2)
+            {
+                bossSongInfo.LoadFromPath(boss2HardSongInfoPath);
+            }
+        }
+        else
+        {
+            bossSongInfo.LoadFromPath(boss2NormalSongInfoPath);
+        }
         beatsTime = (float)bossSongInfo.interval;
     }
 
@@ -537,7 +577,25 @@ public class BeatsManager : MonoBehaviour
     public float GetBoss1BGMLength()
     {
         SongInfo temp = new SongInfo();
-        temp.LoadFromPath(boss1SongInfoPath);
+        if (SettingManager.instance != null)
+        {
+            if (SettingManager.instance.difficulty == 0)
+            {
+                temp.LoadFromPath(boss1EasySongInfoPath);
+            }
+            if (SettingManager.instance.difficulty == 1)
+            {
+                temp.LoadFromPath(boss1NormalSongInfoPath);
+            }
+            if (SettingManager.instance.difficulty == 2)
+            {
+                temp.LoadFromPath(boss1HardSongInfoPath);
+            }
+        }
+        else
+        {
+            temp.LoadFromPath(boss1NormalSongInfoPath);
+        }
         return (float)temp.interval * temp.length;
     }
 }

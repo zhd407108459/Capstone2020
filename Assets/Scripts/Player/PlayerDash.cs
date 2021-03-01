@@ -7,12 +7,15 @@ using FMODUnity;
 public class PlayerDash : RhythmObject
 {
     public List<bool> availability = new List<bool>();
-    public int damage;
+    public int basicDamage;
+    public int easyDifficultyDamageOffset;
+    public int normalDifficultyDamageOffset;
     public GameObject dashEffectPrefab;
     public GameObject hitEffectPrefab;
     public KeyCode triggerKey;
     public AbilityIcon abilityIcon;
     [HideInInspector] public bool isDashing;
+    [HideInInspector] public int damage;
 
     public string dashFXEventPath = "event:/FX/Player/FX-Dash";
 
@@ -20,6 +23,18 @@ public class PlayerDash : RhythmObject
 
     void Start()
     {
+        damage = basicDamage;
+        if (SettingManager.instance != null)
+        {
+            if (SettingManager.instance.difficulty == 1)
+            {
+                damage += normalDifficultyDamageOffset;
+            }
+            if (SettingManager.instance.difficulty == 0)
+            {
+                damage += easyDifficultyDamageOffset;
+            }
+        }
         isDashing = false;
         //ChangeBeatTips();
         usedBeat = -1;

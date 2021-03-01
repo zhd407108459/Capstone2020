@@ -44,6 +44,10 @@ public class SetAbilities : MonoBehaviour
         originalThrowBombPos = throwBombIcon.position;
         //originalBulletShootingPos = bulletShootingIcon.position;
         nextButton.onClick.AddListener(FinishSetting);
+        if (GridManager.instance.levelIndex < 2)
+        {
+            throwBombIcon.gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -80,7 +84,7 @@ public class SetAbilities : MonoBehaviour
                             dashTips.SetActive(true);
                             dashTips.transform.position = dashIcon.transform.position;
                         }
-                        if (IsPointerOverUI(throwBombIcon))
+                        if (IsPointerOverUI(throwBombIcon) && GridManager.instance.levelIndex >= 2)
                         {
                             throwBombTips.SetActive(true);
                             throwBombTips.transform.position = throwBombIcon.transform.position;
@@ -117,7 +121,7 @@ public class SetAbilities : MonoBehaviour
                     {
                         selection = 3;
                     }
-                    if (IsPointerOverUI(throwBombIcon))
+                    if (IsPointerOverUI(throwBombIcon) && GridManager.instance.levelIndex >= 2)
                     {
                         selection = 4;
                     }
@@ -129,13 +133,16 @@ public class SetAbilities : MonoBehaviour
                     {
                         if (IsPointerOverUI(abilityPositions[i]))//cancel ability setting
                         {
-                            EventInstance buttonFX;
-                            buttonFX = RuntimeManager.CreateInstance("event:/FX/UI/UI-Cancel");
-                            if (SettingManager.instance != null)
+                            if(abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() != 0)
                             {
-                                buttonFX.setVolume(SettingManager.instance.overAllVolume);
+                                EventInstance buttonFX;
+                                buttonFX = RuntimeManager.CreateInstance("event:/FX/UI/UI-Cancel");
+                                if (SettingManager.instance != null)
+                                {
+                                    buttonFX.setVolume(SettingManager.instance.overAllVolume);
+                                }
+                                buttonFX.start();
                             }
-                            buttonFX.start();
                             //RuntimeManager.PlayOneShot("event:/FX/UI/UI-Cancel");
                             if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 1)
                             {
@@ -464,6 +471,10 @@ public class SetAbilities : MonoBehaviour
         }
         RecoverCoolDown();
         SetSkillKeys();
+        if (GridManager.instance.levelIndex < 2)
+        {
+            throwBombIcon.gameObject.SetActive(false);
+        }
     }
 
     public void SetSkillKeys()
@@ -516,6 +527,10 @@ public class SetAbilities : MonoBehaviour
             throwBombIcon.position = originalThrowBombPos;
 
         }
+        if (GridManager.instance.levelIndex < 2)
+        {
+            throwBombIcon.gameObject.SetActive(false);
+        }
         //else if(index == 3)
         //{
         //    GameManager.instance.player.GetComponent<PlayerBulletShooting>().ClearAvalibility();
@@ -541,6 +556,11 @@ public class SetAbilities : MonoBehaviour
         dashIcon.position = originalDashPos;
         throwBombIcon.position = originalThrowBombPos;
         //bulletShootingIcon.position = originalBulletShootingPos;
+
+        if (GridManager.instance.levelIndex < 2)
+        {
+            throwBombIcon.gameObject.SetActive(false);
+        }
     }
 
     public void RecoverCoolDown()

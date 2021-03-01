@@ -14,8 +14,13 @@ public class MenuUIManager : MonoBehaviour
     public GameObject initialPanel;
     [Header("PlayPanel")]
     public GameObject playPanel;
+    public GameObject difficultyButtons;
     public GameObject levelButtons;
+    public List<GameObject> levelButtonsList = new List<GameObject>();
     public GameObject level1Panel;
+    public List<GameObject> level1ButtonsList = new List<GameObject>();
+    public GameObject level2Panel;
+    public List<GameObject> level2ButtonsList = new List<GameObject>();
     public Toggle isAutoAttackToggle;
     [Header("SettingPanel")]
     public GameObject settingPanel;
@@ -112,7 +117,6 @@ public class MenuUIManager : MonoBehaviour
     public void LoadLevel1Phase(int phaseIndex)
     {
         SettingManager.instance.targetPhase = phaseIndex;
-        //SceneManager.LoadScene(1);
         ShowLoadingPanel();
         operation = SceneManager.LoadSceneAsync(1);
         operation.allowSceneActivation = false;
@@ -123,9 +127,18 @@ public class MenuUIManager : MonoBehaviour
     public void LoadLevel1BossPhase()
     {
         SettingManager.instance.targetPhase = 0;
-        //SceneManager.LoadScene(1);
         ShowLoadingPanel();
         operation = SceneManager.LoadSceneAsync(2);
+        operation.allowSceneActivation = false;
+        isLoading = true;
+        backgrounds.SetActive(false);
+    }
+
+    public void LoadLevel2Phase(int phaseIndex)
+    {
+        SettingManager.instance.targetPhase = phaseIndex;
+        ShowLoadingPanel();
+        operation = SceneManager.LoadSceneAsync(3);
         operation.allowSceneActivation = false;
         isLoading = true;
         backgrounds.SetActive(false);
@@ -233,17 +246,109 @@ public class MenuUIManager : MonoBehaviour
     {
         initialPanel.SetActive(false);
         playPanel.SetActive(true);
-        levelButtons.SetActive(true);
+        difficultyButtons.SetActive(true);
+        levelButtons.SetActive(false);
         level1Panel.SetActive(false);
+        level2Panel.SetActive(false);
         settingPanel.SetActive(false);
         levelSelectionState = 1;
     }
 
+    public void ShowLevelSelectionPanel()
+    {
+        difficultyButtons.SetActive(false);
+        levelButtons.SetActive(true);
+        if (SettingManager.instance != null)
+        {
+            for(int i = 0; i < levelButtonsList.Count; i++)
+            {
+                if(i < SettingManager.instance.levelProcess)
+                {
+                    levelButtonsList[i].SetActive(true);
+                }
+                else
+                {
+                    levelButtonsList[i].SetActive(false);
+                }
+            }
+        }
+        level1Panel.SetActive(false);
+        level2Panel.SetActive(false);
+        levelSelectionState = 2;
+    }
+
+    public void ChangeDifficulty(int difficulty)
+    {
+        if (SettingManager.instance != null)
+        {
+            SettingManager.instance.difficulty = difficulty;
+        }
+    }
+
     public void ShowLevel1Panel()
     {
+        difficultyButtons.SetActive(false);
         levelButtons.SetActive(false);
         level1Panel.SetActive(true);
-        levelSelectionState = 2;
+        level2Panel.SetActive(false);
+        if (SettingManager.instance != null)
+        {
+            if(SettingManager.instance.levelProcess > 1)
+            {
+                for (int i = 0; i < level1ButtonsList.Count; i++)
+                {
+                    level1ButtonsList[i].SetActive(true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < level1ButtonsList.Count; i++)
+                {
+                    if (i < SettingManager.instance.phaseProcess)
+                    {
+                        level1ButtonsList[i].SetActive(true);
+                    }
+                    else
+                    {
+                        level1ButtonsList[i].SetActive(false);
+                    }
+                }
+            }
+        }
+        levelSelectionState = 3;
+    }
+
+    public void ShowLevel2Panel()
+    {
+        difficultyButtons.SetActive(false);
+        levelButtons.SetActive(false);
+        level1Panel.SetActive(false);
+        level2Panel.SetActive(true);
+        if (SettingManager.instance != null)
+        {
+            if (SettingManager.instance.levelProcess > 2)
+            {
+                for (int i = 0; i < level2ButtonsList.Count; i++)
+                {
+                    level2ButtonsList[i].SetActive(true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < level2ButtonsList.Count; i++)
+                {
+                    if (i < SettingManager.instance.phaseProcess)
+                    {
+                        level2ButtonsList[i].SetActive(true);
+                    }
+                    else
+                    {
+                        level2ButtonsList[i].SetActive(false);
+                    }
+                }
+            }
+        }
+        levelSelectionState = 3;
     }
 
     public void ShowSettingPanel()
@@ -417,6 +522,10 @@ public class MenuUIManager : MonoBehaviour
         if(levelSelectionState == 2)
         {
             ShowPlayPanel();
+        }
+        if(levelSelectionState == 3)
+        {
+            ShowLevelSelectionPanel();
         }
     }
 }

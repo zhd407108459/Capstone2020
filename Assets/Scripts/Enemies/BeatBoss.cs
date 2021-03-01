@@ -103,6 +103,14 @@ public class BeatBoss : MonoBehaviour
     {
         //Debug.Log("BossDie");
         endUIPanel.SetActive(true);
+        if(SettingManager.instance != null)
+        {
+            if(SettingManager.instance.levelProcess == GridManager.instance.levelIndex)
+            {
+                SettingManager.instance.levelProcess += 1;
+                SettingManager.instance.phaseProcess = 1;
+            }
+        }
         GameManager.instance.isGameEnd = true;
         GameManager.instance.isPaused = true;
     }

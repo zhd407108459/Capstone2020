@@ -136,8 +136,8 @@ public class EnemyGridBullet : RhythmObject
             GameObject go = Instantiate(bounceOffBulletPrefab, transform.position, transform.rotation);
             go.GetComponent<PlayerGridBullet>().xDirection = (GameManager.instance.player.GetComponent<PlayerGridMovement>().isPlayerFacingRight ? Mathf.Abs(xDirection) : -Mathf.Abs(xDirection));
             go.GetComponent<PlayerGridBullet>().yDirection = -yDirection;
-            go.GetComponent<PlayerGridBullet>().SetUp(xPos - ((go.GetComponent<PlayerGridBullet>().xDirection == xDirection) ? 0 : xDirection), yPos - yDirection);
             go.GetComponent<PlayerGridBullet>().damage = damage;
+            go.GetComponent<PlayerGridBullet>().SetUp(xPos - ((go.GetComponent<PlayerGridBullet>().xDirection == xDirection) ? 0 : xDirection), yPos - yDirection);
             go.GetComponent<PlayerGridBullet>().SetBulletRotation();
             Camera.main.GetComponent<CameraShake>().Shake();
 

@@ -19,6 +19,11 @@ public class SettingManager : MonoBehaviour
     public KeyCode skill2Keycode;
     public int skill2Index;
 
+    public int difficulty;
+
+    public int levelProcess;
+    public int phaseProcess;
+
     public int targetPhase;
 
     [HideInInspector] public float hearingRange = 18.0f;
@@ -29,6 +34,7 @@ public class SettingManager : MonoBehaviour
         {
             instance = this;
             LoadFromPath();
+            //GenerateDefaultSetting();
             DontDestroyOnLoad(this.gameObject);
         }
         else
@@ -267,6 +273,8 @@ public class SettingManager : MonoBehaviour
             ChangeResolution(temp.resolution);
             ChangeSkill1TriggerKey(temp.skill1key);
             ChangeSkill2TriggerKey(temp.skill2key);
+            levelProcess = temp.levelProcess > 0 ? temp.levelProcess : 1;
+            phaseProcess = temp.phaseProcess > 0 ? temp.phaseProcess : 1;
             if (temp.skill1key == temp.skill2key)
             {
                 ChangeSkill1TriggerKey(21);
@@ -277,6 +285,7 @@ public class SettingManager : MonoBehaviour
             GenerateDefaultSetting();
         }
         targetPhase = 0;
+        difficulty = 0;
     }
 
     public void SaveToPath()
@@ -286,6 +295,8 @@ public class SettingManager : MonoBehaviour
         temp.resolution = resolutionIndex;
         temp.skill1key = skill1Index;
         temp.skill2key = skill2Index;
+        temp.levelProcess = levelProcess;
+        temp.phaseProcess = phaseProcess;
         string jsonstr = JsonMapper.ToJson(temp);
         File.WriteAllText(infoPath, jsonstr);
     }
@@ -297,6 +308,8 @@ public class SettingManager : MonoBehaviour
         temp.resolution = 0;
         temp.skill1key = 5;
         temp.skill2key = 6;
+        temp.levelProcess = 1;
+        temp.phaseProcess = 1;
         string jsonstr = JsonMapper.ToJson(temp);
         File.WriteAllText(infoPath, jsonstr);
     }

@@ -7,17 +7,32 @@ using FMODUnity;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth;
+    public int basicHealth;
+    public int easyDifficultyHealthOffset;
+    public int normalDifficultyHealthOffset;
     public Slider healthSlider;
 
     public GameObject damageEffectPrefab;
 
+    [HideInInspector] public int maxHealth;
     [HideInInspector] public int health;
 
     public string damagedFXEventPath = "event:/FX/Player/FX-Damaged";
 
     void Start()
     {
+        maxHealth = basicHealth;
+        if(SettingManager.instance != null)
+        {
+            if(SettingManager.instance.difficulty == 1)
+            {
+                maxHealth += normalDifficultyHealthOffset;
+            }
+            if(SettingManager.instance.difficulty == 0)
+            {
+                maxHealth += easyDifficultyHealthOffset;
+            }
+        }
         health = maxHealth;
         healthSlider.value = (float)health / (float)maxHealth;
     }
