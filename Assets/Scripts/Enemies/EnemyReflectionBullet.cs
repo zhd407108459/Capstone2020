@@ -6,6 +6,8 @@ using FMODUnity;
 
 public class EnemyReflectionBullet : RhythmObject
 {
+    public GameObject sprite;
+
     public float movementLerpValue;
 
     public int damage;
@@ -54,9 +56,17 @@ public class EnemyReflectionBullet : RhythmObject
                 xPos += xDirection;
                 yPos += yDirection;
                 targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+                if (xDirection > 0)
+                {
+                    sprite.transform.localScale = new Vector3(-1, 1, 1);
+                }
+                else
+                {
+                    sprite.transform.localScale = new Vector3(1, 1, 1);
+                }
             }
         }
-        if (Vector2.Distance(transform.position, targetPos) < 0.005f && xPos == originalXPos && yPos == originalYPos)
+        if (Vector2.Distance(transform.position, targetPos) < 0.05f && xPos == originalXPos && yPos == originalYPos)
         {
             if (owner.gameObject.activeSelf)
             {
@@ -83,6 +93,14 @@ public class EnemyReflectionBullet : RhythmObject
         xPos = x;
         yPos = y;
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        if(xDirection > 0)
+        {
+            sprite.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            sprite.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     public void Move()

@@ -35,7 +35,11 @@ public class ShellBulletEnemy : BasicEnemy
     public override void Activate()
     {
         base.Activate();
-        shootTimer = shootInterval - shootDelay;
+        shootTimer = -shootDelay;
+    }
+
+    public override void OnRestart()
+    {
         animator.SetBool("IsOut", false);
     }
 

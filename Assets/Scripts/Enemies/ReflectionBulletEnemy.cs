@@ -38,6 +38,20 @@ public class ReflectionBulletEnemy : BasicEnemy
         base.Activate();
         isLoaded = true;
         shootTimer = shootInterval - startDelay - 1;
+        animator.SetBool("IsAttacked", false);
+        if (xShootDirection > 0)
+        {
+            sprite.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            sprite.transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
+
+    public override void OnRestart()
+    {
+        animator.SetBool("IsAttacked", false);
     }
 
     public override void OnBeat(int beatIndex)
@@ -62,6 +76,7 @@ public class ReflectionBulletEnemy : BasicEnemy
     {
         isLoaded = true;
         shootTimer = 0;
+        animator.SetBool("IsAttacked", false);
     }
 
     public void Shoot()
@@ -84,6 +99,7 @@ public class ReflectionBulletEnemy : BasicEnemy
         go.GetComponent<EnemyReflectionBullet>().damage = (int)(damage * damageIncreasement);
         go.GetComponent<EnemyReflectionBullet>().SetUp(xPos + xShootDirection, yPos + yShootDirection);
 
+        animator.SetBool("IsAttacked", true);
         isLoaded = false;
     }
 

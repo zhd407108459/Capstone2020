@@ -57,6 +57,16 @@ public class BasicEnemy : RhythmObject
         extraHealthSlider.gameObject.SetActive(false);
     }
 
+    public virtual void OnRestart()
+    {
+        isActivated = false;
+        isRaged = false;
+        health = maxHealth;
+        damageIncreasement = 1.0f;
+        healthSlider.value = (float)health / (float)maxHealth;
+        extraHealthSlider.gameObject.SetActive(false);
+    }
+
     public void MeleeAttacked()
     {
         isMeleeAttacked = true;

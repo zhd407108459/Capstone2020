@@ -357,6 +357,7 @@ public class GridManager : MonoBehaviour
         for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
         {
             phases[phaseIndex].enemies[i].gameObject.SetActive(true);
+            phases[phaseIndex].enemies[i].OnRestart();
             phases[phaseIndex].enemies[i].isActivated = false;
             phases[phaseIndex].enemies[i].health = phases[phaseIndex].enemies[i].maxHealth;
             phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
