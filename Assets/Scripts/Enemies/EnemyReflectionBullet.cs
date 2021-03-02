@@ -8,7 +8,9 @@ public class EnemyReflectionBullet : RhythmObject
 {
     public GameObject sprite;
 
+
     public float movementLerpValue;
+
 
     public int damage;
     public GameObject bounceOffBulletPrefab;
@@ -72,7 +74,7 @@ public class EnemyReflectionBullet : RhythmObject
             {
                 if (owner.isActivated)
                 {
-                    owner.Reload();
+                    owner.Reload(false);
                     Destroy(this.gameObject);
                 }
             }
@@ -119,7 +121,7 @@ public class EnemyReflectionBullet : RhythmObject
         if (collision.tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(damage);
-            owner.Reload();
+            owner.Reload(true);
             Destroy(this.gameObject);
         }
         if (collision.tag.Equals("PlayerShield"))
@@ -167,7 +169,7 @@ public class EnemyReflectionBullet : RhythmObject
                     main.startRotationZ = new ParticleSystem.MinMaxCurve(-90.0f);
                 }
             }
-            owner.Reload();
+            owner.Reload(true);
             Destroy(this.gameObject);
         }
     }

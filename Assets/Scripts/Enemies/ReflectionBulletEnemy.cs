@@ -19,6 +19,7 @@ public class ReflectionBulletEnemy : BasicEnemy
 
     private int shootTimer;
     private bool isLoaded;
+    private bool isSpawn;
     //public bool isRandom;
 
     //private int attackTimer;
@@ -72,11 +73,17 @@ public class ReflectionBulletEnemy : BasicEnemy
 
     }
 
-    public void Reload()
+    public void Reload(bool isSpawn)
     {
         isLoaded = true;
         shootTimer = 0;
+        if (isSpawn)
+        {
+            animator.SetBool("IsSpawnBullet", true);
+            isSpawn = false;
+        }
         animator.SetBool("IsAttacked", false);
+        this.isSpawn = isSpawn;
     }
 
     public void Shoot()
@@ -98,8 +105,8 @@ public class ReflectionBulletEnemy : BasicEnemy
         go.GetComponent<EnemyReflectionBullet>().owner = this;
         go.GetComponent<EnemyReflectionBullet>().damage = (int)(damage * damageIncreasement);
         go.GetComponent<EnemyReflectionBullet>().SetUp(xPos + xShootDirection, yPos + yShootDirection);
-
         animator.SetBool("IsAttacked", true);
+        animator.SetBool("IsSpawnBullet", false);
         isLoaded = false;
     }
 
