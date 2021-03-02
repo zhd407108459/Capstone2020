@@ -193,7 +193,6 @@ public class PlayerGridMovement : MonoBehaviour
                 {
                     GridManager.instance.EndCurrentPhase();
                     GridManager.instance.StartNextPhase();
-
                 }
 
             }

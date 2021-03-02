@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
     public void LoadNextScene()
     {
         int scene = SceneManager.GetActiveScene().buildIndex;
-        if(SceneManager.sceneCount <= scene)
+        if(SceneManager.sceneCountInBuildSettings - 1 <= scene)
         {
             return;
         }
