@@ -43,6 +43,9 @@ public class BeatsManager : MonoBehaviour
 
     private bool isVolumeFading;
 
+    private EventDescription description;
+    private int songLength;
+
     private int isNeedSwitch = 0;//0 = not need, 1 = boss2
 
     void Awake()
@@ -135,10 +138,21 @@ public class BeatsManager : MonoBehaviour
     void UpdateBeats()
     {
         float bgmTime = GetBgmTime();
+
+        int pos;
+        bgmEvent.getTimelinePosition(out pos);
+        //Debug.Log(pos + "," + songLength);
         if (bgmTime < lastAudioTime)
         {
-            totalIndex = 0;
-            beatsIndex = 0;
+            if (pos >= songLength - 400)
+            {
+                totalIndex = 0;
+                beatsIndex = 0;
+            }
+            else
+            {
+                bgmTime = lastAudioTime;
+            }
             //Debug.Log("Loop");
         }
         if(bgmTime < beatsTime && totalIndex >= 2)
@@ -155,7 +169,7 @@ public class BeatsManager : MonoBehaviour
         {
             CallOtherSemiBeatMethods();
         }
-        Debug.Log("Time: " + bgmTime + " Last Time: " + lastAudioTime + ", Index: " + totalIndex + ", bIndex: " + beatsIndex);
+        Debug.Log("Time: " + bgmTime + " Last Time: " + lastAudioTime + ", Index: " + totalIndex + ", bIndex: " + beatsIndex + ", SongLength: " + songLength + ", Position: " + pos);
         while (bgmTime >= beatsTime * totalIndex)
         {
             //Debug.Log((int)(bgm.time / beatsTime));
@@ -229,6 +243,8 @@ public class BeatsManager : MonoBehaviour
             bgmEvent.setTimelinePosition(0);
         }
         lastAudioTime = GetBgmTime();
+        bgmEvent.getDescription(out description);
+        description.getLength(out songLength);
         //bgm.Play();
     }
 
