@@ -29,6 +29,11 @@ public class PlayerMeleeAttack : RhythmObject
     private PlayerAction action;
     private int usedBeat;
 
+    private void Awake()
+    {
+        action = GetComponent<PlayerAction>();
+    }
+
     void Start()
     {
         damage = basicDamage;
@@ -45,7 +50,6 @@ public class PlayerMeleeAttack : RhythmObject
             }
         }
         HideMeleeAttackBox();
-        action = GetComponent<PlayerAction>();
         usedBeat = -1;
         //ChangeBeatTips();
     }

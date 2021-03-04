@@ -256,8 +256,7 @@ public class GridManager : MonoBehaviour
             rageTimerSlider.value = 1;
             GameManager.instance.pausePanelRestartButton.gameObject.SetActive(true);
         }
-        GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, 0);
-        GameManager.instance.player.transform.position = GetPhaseInitialPosition();
+        GameManager.instance.player.GetComponent<PlayerGridMovement>().ResetPos();
         UpdateTargetCameraPosition();
         cameraObject.transform.position = targetCameraPos;
         lastCameraPos = cameraObject.transform.position;
@@ -353,8 +352,7 @@ public class GridManager : MonoBehaviour
 
     public void RestartCurrentPhase()
     {
-        GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(0, 0);
-        GameManager.instance.player.transform.position = GetPhaseInitialPosition();
+        GameManager.instance.player.GetComponent<PlayerGridMovement>().ResetPos();
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
         HideNextStageIcon();
         for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)

@@ -22,6 +22,11 @@ public class PlayerThrowBomb : RhythmObject
     private PlayerAction action;
     private int usedBeat;
 
+    private void Awake()
+    {
+        action = GetComponent<PlayerAction>();
+    }
+
     void Start()
     {
         damage = basicDamage;
@@ -36,7 +41,6 @@ public class PlayerThrowBomb : RhythmObject
                 damage += easyDifficultyDamageOffset;
             }
         }
-        action = GetComponent<PlayerAction>();
         usedBeat = -1;
     }
 

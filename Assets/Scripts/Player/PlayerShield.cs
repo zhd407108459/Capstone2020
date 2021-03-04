@@ -19,6 +19,11 @@ public class PlayerShield : RhythmObject
     private PlayerAction action;
     private int usedBeat;
 
+    private void Awake()
+    {
+        action = GetComponent<PlayerAction>();
+    }
+
     void Start()
     {
         if (SettingManager.instance != null)
@@ -26,7 +31,6 @@ public class PlayerShield : RhythmObject
             isAutoUse = SettingManager.instance.isAutoAttack;
         }
         HideShield();
-        action = GetComponent<PlayerAction>();
         usedBeat = -1;
         //ChangeBeatTips();
     }

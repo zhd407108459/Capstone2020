@@ -18,13 +18,17 @@ public class PlayerGridMovement : MonoBehaviour
     private Vector3 targetPos;
     private PlayerAction action;
 
+    private void Awake()
+    {
+        action = GetComponent<PlayerAction>();
+    }
+
     void Start()
     {
-        transform.position = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
-        targetPos = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        //transform.position = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        //targetPos = GridManager.instance.initialPos + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
         isPlayerFacingRight = true;
         isInDialog = false;
-        action = GetComponent<PlayerAction>();
     }
 
     void Update()
@@ -161,6 +165,14 @@ public class PlayerGridMovement : MonoBehaviour
         }
     }
 
+    public void ResetPos()
+    {
+        xPos = 0;
+        yPos = 0;
+        targetPos = GridManager.instance.GetPhaseInitialPosition();
+        transform.position = targetPos;
+    }
+
     public void SetPos(int x, int y)
     {
         if (x < 0)
@@ -239,6 +251,7 @@ public class PlayerGridMovement : MonoBehaviour
         }
         GridManager.instance.DetectDialogTrigger(xPos, yPos);
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        Debug.LogError(targetPos + ", " + transform.position);
     }
 
     public bool IsPlayerInActualPosition()
