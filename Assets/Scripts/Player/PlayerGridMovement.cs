@@ -251,7 +251,6 @@ public class PlayerGridMovement : MonoBehaviour
         }
         GridManager.instance.DetectDialogTrigger(xPos, yPos);
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
-        Debug.LogError(targetPos + ", " + transform.position);
     }
 
     public bool IsPlayerInActualPosition()
