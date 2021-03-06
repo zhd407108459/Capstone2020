@@ -15,7 +15,7 @@ public class ReflectionBulletEnemy : BasicEnemy
     public int xShootDirection;
     public int yShootDirection;
 
-    public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyBullet";
+    public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyBoomerang";
 
     private int shootTimer;
     private bool isLoaded;

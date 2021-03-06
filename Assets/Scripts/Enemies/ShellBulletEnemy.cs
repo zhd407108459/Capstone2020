@@ -14,7 +14,7 @@ public class ShellBulletEnemy : BasicEnemy
     public int ragedShootInterval;
     public int detectionRange;
 
-    public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyBullet";
+    public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyLaughter";
 
     private int state; //0=idle,1=ready to atttack
     private int shootTimer;
