@@ -241,6 +241,7 @@ public class PlayerGridMovement : MonoBehaviour
             if (SettingManager.instance != null)
             {
                 moveFX.setVolume(SettingManager.instance.overAllVolume);
+                moveFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
             }
             moveFX.start();
         }
@@ -264,6 +265,7 @@ public class PlayerGridMovement : MonoBehaviour
                 if (SettingManager.instance != null)
                 {
                     moveFX.setVolume(SettingManager.instance.overAllVolume);
+                    moveFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
                 }
                 moveFX.start();
             }

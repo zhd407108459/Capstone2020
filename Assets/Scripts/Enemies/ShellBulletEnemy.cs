@@ -14,7 +14,8 @@ public class ShellBulletEnemy : BasicEnemy
     public int ragedShootInterval;
     public int detectionRange;
 
-    public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyLaughter";
+    public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyBullet";
+    public string enemyAppearFXEventPath = "event:/FX/Enemy/FX-EnemyLaughter";
 
     private int state; //0=idle,1=ready to atttack
     private int shootTimer;
@@ -57,6 +58,16 @@ public class ShellBulletEnemy : BasicEnemy
                 state = 1;
                 //sprite.GetComponent<SpriteRenderer>().color = Color.red;
                 animator.SetBool("IsOut", true);
+
+                EventInstance enemyAppearFX;
+                enemyAppearFX = RuntimeManager.CreateInstance(enemyAppearFXEventPath);
+                if (SettingManager.instance != null)
+                {
+                    float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                    enemyAppearFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+                }
+                enemyAppearFX.start();
+
                 if ((shootTimer >= shootInterval && !isRaged) || (shootTimer >= ragedShootInterval && isRaged))
                 {
                     shootTimer = isRaged ? ragedShootInterval - 2 : shootInterval - 2;
