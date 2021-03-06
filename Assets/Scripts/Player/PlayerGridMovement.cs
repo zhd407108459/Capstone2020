@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class PlayerGridMovement : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class PlayerGridMovement : MonoBehaviour
 
     public int xPos;
     public int yPos;
+
+    public string moveFXEventPath = "event:/FX/Player/FX-Footsteps";
 
     [HideInInspector] public bool isPlayerFacingRight;
     [HideInInspector] public bool isInDialog;
@@ -231,6 +235,14 @@ public class PlayerGridMovement : MonoBehaviour
         {
             xPos = x;
             action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
+
+            EventInstance moveFX;
+            moveFX = RuntimeManager.CreateInstance(moveFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                moveFX.setVolume(SettingManager.instance.overAllVolume);
+            }
+            moveFX.start();
         }
         if (y < 0)
         {
@@ -246,6 +258,14 @@ public class PlayerGridMovement : MonoBehaviour
             if(yPos != tempY)
             {
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
+
+                EventInstance moveFX;
+                moveFX = RuntimeManager.CreateInstance(moveFXEventPath);
+                if (SettingManager.instance != null)
+                {
+                    moveFX.setVolume(SettingManager.instance.overAllVolume);
+                }
+                moveFX.start();
             }
             yPos = tempY;
         }
