@@ -11,6 +11,9 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
     [Range(1, 7)] public int attackInterval;
     [Range(0, 7)] public int startDelay;
 
+    public float easyDifficultyBounceOffDamageOffset = 3.0f;
+    public float normalDifficultyBounceOffDamageOffset = 2.0f;
+
     public string enemyMeleeAttackFXEventPath = "event:/FX/Enemy/FX-EnemyMeleeAttack";
     public string shieldImpactFXEventPath = "event:/FX/Player/FX-ShieldImpact";
 
@@ -233,7 +236,25 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
                 }
                 shieldImpactFX.start();
 
-                this.TakeDamage(damage);
+                if (SettingManager.instance != null)
+                {
+                    if (SettingManager.instance.difficulty == 1)
+                    {
+                        this.TakeDamage((int)(damage * normalDifficultyBounceOffDamageOffset));
+                    }
+                    else if (SettingManager.instance.difficulty == 0)
+                    {
+                        this.TakeDamage((int)(damage * easyDifficultyBounceOffDamageOffset));
+                    }
+                    else
+                    {
+                        this.TakeDamage(damage);
+                    }
+                }
+                else
+                {
+                    this.TakeDamage(damage);
+                }
                 isAttacking = false;
             }
         }
