@@ -301,6 +301,7 @@ public class GridManager : MonoBehaviour
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
         isInPhase = false;
         EndCombo();
+        BeatsManager.instance.SetNormalBGMParameter("Debuff", 0);
         setAbilities.RecoverCoolDown();
     }
 
