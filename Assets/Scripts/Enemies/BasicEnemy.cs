@@ -167,6 +167,10 @@ public class BasicEnemy : RhythmObject
 
     public virtual void Die()
     {
+        if (!this.gameObject.activeSelf || !isActivated)
+        {
+            return;
+        }
         GridManager.instance.CheckEnemyCount();
 
         EventInstance enemyDeathFX;
