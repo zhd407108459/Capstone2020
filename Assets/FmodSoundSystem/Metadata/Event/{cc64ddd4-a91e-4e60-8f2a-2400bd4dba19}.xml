@@ -38,9 +38,6 @@
 			<destination>{7299751b-034a-49f3-9334-93a4144c100b}</destination>
 			<destination>{73cf3850-9d80-4002-8d74-e71aac476234}</destination>
 		</relationship>
-		<relationship name="returnTracks">
-			<destination>{fb533222-2491-4e38-8e94-86e2d370d60f}</destination>
-		</relationship>
 		<relationship name="timeline">
 			<destination>{4f5cb59b-c046-4a80-b46b-28a6190416dd}</destination>
 		</relationship>
@@ -209,11 +206,6 @@
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{f0039082-7a1e-462f-abe2-52b5aef45a97}</destination>
-		</relationship>
-	</object>
-	<object class="ReturnTrack" id="{fb533222-2491-4e38-8e94-86e2d370d60f}">
-		<relationship name="mixerReturn">
-			<destination>{dd46903f-0a2d-45cb-838a-b67b43436691}</destination>
 		</relationship>
 	</object>
 	<object class="Timeline" id="{4f5cb59b-c046-4a80-b46b-28a6190416dd}">
@@ -896,20 +888,6 @@
 			<destination>{3c592f29-1949-44c7-8055-76195b81787f}</destination>
 		</relationship>
 	</object>
-	<object class="EventMixerReturn" id="{dd46903f-0a2d-45cb-838a-b67b43436691}">
-		<property name="name">
-			<value>A</value>
-		</property>
-		<relationship name="effectChain">
-			<destination>{c359f8f2-3f09-46ac-9f61-253a7170c90e}</destination>
-		</relationship>
-		<relationship name="panner">
-			<destination>{815fabd9-4947-4c9f-92ff-072034b33c1b}</destination>
-		</relationship>
-		<relationship name="output">
-			<destination>{3c592f29-1949-44c7-8055-76195b81787f}</destination>
-		</relationship>
-	</object>
 	<object class="LoopRegion" id="{0142bd1e-b613-4ca0-9f7d-65565fa07671}">
 		<property name="position">
 			<value>0</value>
@@ -1194,12 +1172,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{116f9f45-94b6-472a-ad6f-ae88627a4542}" />
-	<object class="MixerBusEffectChain" id="{c359f8f2-3f09-46ac-9f61-253a7170c90e}">
-		<relationship name="effects">
-			<destination>{22d58ebd-4674-4d83-a909-7fdf68681092}</destination>
-		</relationship>
-	</object>
-	<object class="MixerBusPanner" id="{815fabd9-4947-4c9f-92ff-072034b33c1b}" />
 	<object class="LowpassEffect" id="{7c88596a-e78d-44d5-80fa-1da2902629bd}">
 		<property name="cutoff">
 			<value>22000</value>
@@ -1710,7 +1682,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{269392ca-c09c-4cd4-8b09-8177dd489f7d}" />
-	<object class="MixerBusFader" id="{22d58ebd-4674-4d83-a909-7fdf68681092}" />
 	<object class="Automator" id="{8b16b0c9-83e5-4927-a812-f14cbbdbff59}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>cutoff</value>
