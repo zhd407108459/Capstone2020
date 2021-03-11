@@ -261,6 +261,10 @@ public class PlayerAction : RhythmObject
 
     public void StartOffTune(int time)
     {
+        if (silenceTimer > 0)
+        {
+            EndSilence();
+        }
         offTuneTipObject.SetActive(true);
         offTuneTimer = time;
         BeatsManager.instance.SetNormalBGMParameter("Debuff", 1);
@@ -275,6 +279,10 @@ public class PlayerAction : RhythmObject
 
     public void StartSilence(int time)
     {
+        if (offTuneTimer > 0)
+        {
+            EndOffTune();
+        }
         silenceTipObject.SetActive(true);
         silenceTimer = time;
         BeatsManager.instance.SetNormalBGMParameter("Debuff", 2);
@@ -282,7 +290,7 @@ public class PlayerAction : RhythmObject
 
     public void EndSilence()
     {
-        shieldTipObject.SetActive(false);
+        silenceTipObject.SetActive(false);
         silenceTimer = 0;
         BeatsManager.instance.SetNormalBGMParameter("Debuff", 0);
     }

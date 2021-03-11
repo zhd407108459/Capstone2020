@@ -235,7 +235,7 @@ public class BeatsManager : MonoBehaviour
         if (!isBossFight)
         {
             bgmEvent.setTimelinePosition(normalBGMStartOffset);
-            totalIndex = 254;
+            totalIndex = (int)(((float)normalBGMStartOffset) / (1000 * beatsTime));
             SetNormalBGMDefault();
         }
         else
@@ -497,7 +497,7 @@ public class BeatsManager : MonoBehaviour
         {
             if (currentNormalBGMParameters[index] <= lastNormalBGMParameters[index] + 0.5f && currentNormalBGMParameters[index] >= lastNormalBGMParameters[index])
             {
-                currentNormalBGMParameters[index] += parameterSwitchSpeed * Time.deltaTime;
+                currentNormalBGMParameters[index] += parameterSwitchSpeed * Time.deltaTime * (index == 4 ? 8 : 1);
                 if (currentNormalBGMParameters[index] >= lastNormalBGMParameters[index] + 0.5f)
                 {
                     currentNormalBGMParameters[index] = normalBGMParameters[index] + 0.5f;
@@ -505,7 +505,7 @@ public class BeatsManager : MonoBehaviour
             }
             if (currentNormalBGMParameters[index] <= normalBGMParameters[index] + 0.5f && currentNormalBGMParameters[index] >= normalBGMParameters[index])
             {
-                currentNormalBGMParameters[index] -= parameterSwitchSpeed * Time.deltaTime;
+                currentNormalBGMParameters[index] -= parameterSwitchSpeed * Time.deltaTime * (index == 4 ? 8 : 1);
                 if (currentNormalBGMParameters[index] <= normalBGMParameters[index])
                 {
                     currentNormalBGMParameters[index] = normalBGMParameters[index];
