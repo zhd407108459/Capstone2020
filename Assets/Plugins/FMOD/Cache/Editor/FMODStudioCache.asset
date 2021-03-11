@@ -155,6 +155,23 @@ MonoBehaviour:
   Max: 1.5
   Default: 0
   Exists: 0
+--- !u!114 &-8612323818464334547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Combo
+  m_EditorClassIdentifier: 
+  Name: Combo
+  Min: 0
+  Max: 1.5
+  Default: 0
+  Exists: 1
 --- !u!114 &-8551392172210538305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +205,7 @@ MonoBehaviour:
   guid: 7d20ea19001c2047855651be1e405d1a
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -212,7 +229,7 @@ MonoBehaviour:
   guid: 1f5208a3e8548b41b640bf26234b0cd8
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -358,7 +375,7 @@ MonoBehaviour:
   guid: a659d9394ddb45458d4bb95f7979eb4b
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -471,6 +488,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-7506308626768051252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level2-Battle/Combo
+  m_EditorClassIdentifier: 
+  Name: Combo
+  Min: 0
+  Max: 1.5
+  Default: 0
+  Exists: 1
 --- !u!114 &-7411212742857762805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,7 +538,7 @@ MonoBehaviour:
   guid: 537a51c65cd819458447dafd7f319164
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -657,7 +691,7 @@ MonoBehaviour:
   Min: 0
   Max: 5.5
   Default: 5
-  Exists: 1
+  Exists: 0
 --- !u!114 &-6810268029382538751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +759,7 @@ MonoBehaviour:
   Min: 0
   Max: 3.5
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-6586637647889299398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,6 +795,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-6494002156105999034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SoundEffects.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/SoundEffects.bank
+  SubDir: 
+  lastModified: 637510630510897291
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-6290270828006907025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,7 +934,7 @@ MonoBehaviour:
   Path: event:/FX/Player/FX-BombPlaced
   guid: 299ba01adde336448f3a4ff0302ae70a
   Banks:
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -957,7 +1009,7 @@ MonoBehaviour:
   Min: 0
   Max: 2.5
   Default: 2
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5827805129358553413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,7 +1060,7 @@ MonoBehaviour:
   Min: 0
   Max: 5.5
   Default: 5
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5760241364861379361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,7 +1077,7 @@ MonoBehaviour:
   guid: 93931fab9fc7ac4fa41a30611d2ac73b
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1068,6 +1120,24 @@ MonoBehaviour:
   Max: 1.5
   Default: 0
   Exists: 0
+--- !u!114 &-5530168201134712037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637495171299440551
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-5469544632916505658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,7 +1223,7 @@ MonoBehaviour:
   guid: b45a04d31385e74ca87dfc808f9edb63
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1194,7 +1264,7 @@ MonoBehaviour:
   guid: e214b40e30dff143b55d126295291b2a
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1270,7 +1340,7 @@ MonoBehaviour:
   guid: 2e7716b2adfcbb42b1abf473ebec82c2
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1348,6 +1418,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-4608946138744204886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/GamePhase
+  m_EditorClassIdentifier: 
+  Name: GamePhase
+  Min: 0
+  Max: 2.5
+  Default: 2
+  Exists: 1
 --- !u!114 &-4543945286217811570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,7 +1504,7 @@ MonoBehaviour:
   guid: f9745645694765408b73f697d18d6823
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1516,7 +1603,7 @@ MonoBehaviour:
   guid: 23ac89f9f6487e438bdc772578d67f02
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1540,7 +1627,7 @@ MonoBehaviour:
   guid: ee0ad92a16a9ef4ca200f0e33b417f12
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1564,7 +1651,7 @@ MonoBehaviour:
   guid: e369ac615dff414ea99dd2436ab9c4f0
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1640,7 +1727,7 @@ MonoBehaviour:
   guid: 00fca1ca40a616488727588845750b1b
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1719,7 +1806,7 @@ MonoBehaviour:
   Path: event:/FX/Player/FX-BombExplode
   guid: 6784c47d352cc84bba76630e0011ae6b
   Banks:
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1795,7 +1882,7 @@ MonoBehaviour:
   guid: 2a45c272399f59489a54511531e10627
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1819,7 +1906,7 @@ MonoBehaviour:
   Min: 0
   Max: 1.5
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2802235054286729829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1836,7 +1923,7 @@ MonoBehaviour:
   guid: 8fc13fc00a1bc044bf98ae2cdec8cf5d
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1927,7 +2014,7 @@ MonoBehaviour:
   Path: event:/FX/Enemy/FX-EnemyBoomerang
   guid: 06fc2004d40651419bc7ab1d0f3e3235
   Banks:
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2037,7 +2124,7 @@ MonoBehaviour:
   guid: 6bcbdfcf17068e42a0fc0851984c97e0
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2061,7 +2148,7 @@ MonoBehaviour:
   guid: d5e11d74cf6e4e4fb89b6627e302f5d4
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -2085,7 +2172,7 @@ MonoBehaviour:
   Min: 0
   Max: 3.5
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2112429898457910495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2121,6 +2208,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-2046673920382361795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level2-Battle/GamePhase
+  m_EditorClassIdentifier: 
+  Name: GamePhase
+  Min: 0
+  Max: 2.5
+  Default: 2
+  Exists: 1
 --- !u!114 &-2035572622212435913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2137,7 +2241,7 @@ MonoBehaviour:
   guid: f53231e6e389854c811ab7cad9986e98
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2161,7 +2265,7 @@ MonoBehaviour:
   guid: 52050807ae535148bfea5ff2e4bd9e6b
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2269,7 +2373,7 @@ MonoBehaviour:
   Path: event:/FX/Enemy/FX-BossBulletShoot
   guid: b5c47b32c798744daa93c4149fab610d
   Banks:
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2344,7 +2448,7 @@ MonoBehaviour:
   guid: 56f6809b8078274cb36dff30b38fe748
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2370,6 +2474,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-1301929728510506838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637510630510763747
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-1273454968712966942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2460,7 +2582,7 @@ MonoBehaviour:
   guid: 3cbe4ee47cbec14bbffac55a1557dac8
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2518,7 +2640,7 @@ MonoBehaviour:
   guid: 494084d1b3fdb5479597c57b22f45785
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -2600,6 +2722,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-804263298810267039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level2-Battle/TimeNumReact
+  m_EditorClassIdentifier: 
+  Name: TimeNumReact
+  Min: 0
+  Max: 5.5
+  Default: 5
+  Exists: 1
 --- !u!114 &-791823852766831303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2720,7 +2859,7 @@ MonoBehaviour:
   lastModified: 637510160828041719
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-297109414086493493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2823,7 +2962,7 @@ MonoBehaviour:
   guid: c9f7fe130fbba746a07f844a8e8a33a1
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -2863,7 +3002,7 @@ MonoBehaviour:
   Path: event:/FX/Enemy/FX-EnemyLaughter
   guid: 45aecb36715beb4095b2aeeecc3b6128
   Banks:
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2885,9 +3024,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 7115643803018187340}
-  - {fileID: 7122799362695323121}
-  - {fileID: 6134550210933142409}
-  - {fileID: -325273155928519840}
+  - {fileID: -5530168201134712037}
+  - {fileID: -1301929728510506838}
+  - {fileID: -6494002156105999034}
   EditorEvents:
   - {fileID: -3500569615587772636}
   - {fileID: 4940345872721023614}
@@ -2935,10 +3074,10 @@ MonoBehaviour:
   - {fileID: -6060160284417345359}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 7122799362695323121}
+  - {fileID: -5530168201134712037}
   StringsBanks:
   - {fileID: 7115643803018187340}
-  stringsBankWriteTime: 637510160824545360
+  stringsBankWriteTime: 637510630506172909
   cacheVersion: 3
 --- !u!114 &29848067171214985
 MonoBehaviour:
@@ -2956,7 +3095,7 @@ MonoBehaviour:
   guid: 455bee9405bd9a499ccb0182c2a4ad43
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2980,7 +3119,7 @@ MonoBehaviour:
   guid: 0c58f238a0681845b7233b02bab409cd
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3176,7 +3315,7 @@ MonoBehaviour:
   Min: 0
   Max: 2.5
   Default: 2
-  Exists: 1
+  Exists: 0
 --- !u!114 &1106224596402597799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3210,7 +3349,7 @@ MonoBehaviour:
   guid: a2d439c7b51dc14ba3ccb0493244a44d
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3252,7 +3391,7 @@ MonoBehaviour:
   guid: becc6681e579524cad837f424859da66
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3414,7 +3553,7 @@ MonoBehaviour:
   Path: event:/FX/Enemy/FX-BossStabPart2
   guid: 7db22b7829f760498efe1b3873f15e14
   Banks:
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3525,6 +3664,23 @@ MonoBehaviour:
   Max: 2.5
   Default: 2
   Exists: 0
+--- !u!114 &2981199736671440003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Debuff
+  m_EditorClassIdentifier: 
+  Name: Debuff
+  Min: 0
+  Max: 3.5
+  Default: 0
+  Exists: 1
 --- !u!114 &2989963059308885416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3649,15 +3805,15 @@ MonoBehaviour:
   guid: 4c3b432f49303444929986b5e6e2e954
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -2808955554225499588}
-  - {fileID: -6863018457930431453}
-  - {fileID: -6588521907838098197}
-  - {fileID: 1038439646154813646}
+  - {fileID: -7506308626768051252}
+  - {fileID: -804263298810267039}
+  - {fileID: 8717106417948407683}
+  - {fileID: -2046673920382361795}
   MinDistance: 0
   MaxDistance: 0
   Length: 140799
@@ -3868,7 +4024,7 @@ MonoBehaviour:
   guid: c37c0ed2f3151941859b1917b47848cb
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3892,7 +4048,7 @@ MonoBehaviour:
   guid: 40ee41fc1a4c744fa558cd5bfbc4e562
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3984,15 +4140,15 @@ MonoBehaviour:
   guid: d4dd64cc1ea9604e8f2a2400bd4dba19
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -2129990915250220259}
-  - {fileID: -5937779795861483217}
-  - {fileID: 6868144716965625704}
-  - {fileID: -5761504771249727235}
+  - {fileID: 2981199736671440003}
+  - {fileID: -4608946138744204886}
+  - {fileID: -8612323818464334547}
+  - {fileID: 4815917002247081874}
   MinDistance: 0
   MaxDistance: 0
   Length: 153600
@@ -4011,7 +4167,7 @@ MonoBehaviour:
   Path: event:/FX/Player/FX-Footsteps
   guid: e3e9ef3670d222469a1e5768d55fa19a
   Banks:
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4088,6 +4244,23 @@ MonoBehaviour:
   Max: 1.5
   Default: 0
   Exists: 0
+--- !u!114 &4815917002247081874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/TimeNumReact
+  m_EditorClassIdentifier: 
+  Name: TimeNumReact
+  Min: 0
+  Max: 5.5
+  Default: 5
+  Exists: 1
 --- !u!114 &4816084978665203660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4122,7 +4295,7 @@ MonoBehaviour:
   guid: 05807a9f5fb35340b4180bd4ce4d90d1
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4146,7 +4319,7 @@ MonoBehaviour:
   guid: 313a5c56760e084890582dd52ee18592
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -4273,7 +4446,7 @@ MonoBehaviour:
   guid: 0e81f977f647c4478b7632fecfb1768b
   Banks:
   - {fileID: -6160037795397395131}
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4540,7 +4713,7 @@ MonoBehaviour:
   lastModified: 637510160827300004
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &6302690852411805824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4661,7 +4834,7 @@ MonoBehaviour:
   guid: cf82406db85d6f4fbc58d4a7476bc3d0
   Banks:
   - {fileID: 5807950739588636810}
-  - {fileID: 6134550210933142409}
+  - {fileID: -1301929728510506838}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -4718,7 +4891,7 @@ MonoBehaviour:
   Path: event:/FX/Enemy/FX-BossBulletCharge
   guid: 77ec3ea497f86f4a9fcd5ba57c148442
   Banks:
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4794,7 +4967,7 @@ MonoBehaviour:
   Min: 0
   Max: 1.5
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &7031145588425094979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4861,7 +5034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FmodSoundSystem/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637510160824545360
+  lastModified: 637510630506172909
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -4884,7 +5057,7 @@ MonoBehaviour:
   lastModified: 637510160824525413
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &7236053295513660107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5131,7 +5304,7 @@ MonoBehaviour:
   Path: event:/FX/Enemy/FX-BossStabPart1
   guid: 5a0225f23cafe244bf0679d1164b8722
   Banks:
-  - {fileID: -325273155928519840}
+  - {fileID: -6494002156105999034}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -5293,6 +5466,23 @@ MonoBehaviour:
   Max: 1.5
   Default: 0
   Exists: 0
+--- !u!114 &8717106417948407683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level2-Battle/Debuff
+  m_EditorClassIdentifier: 
+  Name: Debuff
+  Min: 0
+  Max: 3.5
+  Default: 0
+  Exists: 1
 --- !u!114 &8719642074044184842
 MonoBehaviour:
   m_ObjectHideFlags: 0

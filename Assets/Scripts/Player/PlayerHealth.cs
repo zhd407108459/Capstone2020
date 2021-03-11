@@ -86,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
 
     void EndHurtAnimation()
     {
-        if(!GetComponent<PlayerAction>().isDizzy && !GetComponent<PlayerAction>().IsCloud())
+        if(!GetComponent<PlayerAction>().isDizzy && !GetComponent<PlayerAction>().IsCloud() && !GetComponent<PlayerAction>().IsChaos() && !GetComponent<PlayerAction>().IsOffTune() && !GetComponent<PlayerAction>().IsSilence())
         {
             GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", false);
         }

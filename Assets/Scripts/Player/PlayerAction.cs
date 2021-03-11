@@ -249,14 +249,26 @@ public class PlayerAction : RhythmObject
 
     public void StartChaos(int time)
     {
+        if (silenceTimer > 0)
+        {
+            EndSilence();
+        }
+        if (offTuneTimer > 0)
+        {
+            EndOffTune();
+        }
         chaosTipObject.SetActive(true);
         chaosTimer = time;
+        BeatsManager.instance.SetNormalBGMParameter("Debuff", 3);
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", true);
     }
 
     public void EndChaos()
     {
         chaosTipObject.SetActive(false);
         chaosTimer = 0;
+        BeatsManager.instance.SetNormalBGMParameter("Debuff", 0);
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", false);
     }
 
     public void StartOffTune(int time)
@@ -265,9 +277,14 @@ public class PlayerAction : RhythmObject
         {
             EndSilence();
         }
+        if(chaosTimer > 0)
+        {
+            EndChaos();
+        }
         offTuneTipObject.SetActive(true);
         offTuneTimer = time;
         BeatsManager.instance.SetNormalBGMParameter("Debuff", 1);
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", true);
     }
 
     public void EndOffTune()
@@ -275,6 +292,7 @@ public class PlayerAction : RhythmObject
         offTuneTipObject.SetActive(false);
         offTuneTimer = 0;
         BeatsManager.instance.SetNormalBGMParameter("Debuff", 0);
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", false);
     }
 
     public void StartSilence(int time)
@@ -283,9 +301,14 @@ public class PlayerAction : RhythmObject
         {
             EndOffTune();
         }
+        if (chaosTimer > 0)
+        {
+            EndChaos();
+        }
         silenceTipObject.SetActive(true);
         silenceTimer = time;
         BeatsManager.instance.SetNormalBGMParameter("Debuff", 2);
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", true);
     }
 
     public void EndSilence()
@@ -293,6 +316,7 @@ public class PlayerAction : RhythmObject
         silenceTipObject.SetActive(false);
         silenceTimer = 0;
         BeatsManager.instance.SetNormalBGMParameter("Debuff", 0);
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", false);
     }
 
     public void ClearAllBuffs()
