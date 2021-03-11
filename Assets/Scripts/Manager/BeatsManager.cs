@@ -36,9 +36,9 @@ public class BeatsManager : MonoBehaviour
     private int totalIndex;
     private float lastAudioTime;
 
-    private float[] normalBGMParameters = new float[4];
-    private float[] lastNormalBGMParameters = new float[4];
-    private float[] currentNormalBGMParameters = new float[4];
+    private float[] normalBGMParameters = new float[5];
+    private float[] lastNormalBGMParameters = new float[5];
+    private float[] currentNormalBGMParameters = new float[5];
     private float bgmVolume;
 
     private bool isVolumeFading;
@@ -308,18 +308,22 @@ public class BeatsManager : MonoBehaviour
         bgmEvent.setParameterByName("TimeNumReact", 5);
         bgmEvent.setParameterByName("LowHealth", 0);
         bgmEvent.setParameterByName("Combo", 0);
+        bgmEvent.setParameterByName("Debuff", 0);
         normalBGMParameters[0] = 2;
         normalBGMParameters[1] = 5;
         normalBGMParameters[2] = 0;
         normalBGMParameters[3] = 0;
+        normalBGMParameters[4] = 0;
         lastNormalBGMParameters[0] = 2;
         lastNormalBGMParameters[1] = 5;
         lastNormalBGMParameters[2] = 0;
         lastNormalBGMParameters[3] = 0;
+        lastNormalBGMParameters[4] = 0;
         currentNormalBGMParameters[0] = 2;
         currentNormalBGMParameters[1] = 5;
         currentNormalBGMParameters[2] = 0;
         currentNormalBGMParameters[3] = 0;
+        currentNormalBGMParameters[4] = 0;
     }
 
     public void SetNormalBGMParameter(string name, float value)
@@ -359,6 +363,11 @@ public class BeatsManager : MonoBehaviour
             //}
             lastNormalBGMParameters[3] = GetBGMParameter("Combo");
             normalBGMParameters[3] = value;
+        }
+        if (name.Equals("Debuff"))
+        {
+            lastNormalBGMParameters[4] = GetBGMParameter("Debuff");
+            normalBGMParameters[4] = value;
         }
     }
 
@@ -408,6 +417,13 @@ public class BeatsManager : MonoBehaviour
             normalBGMParameters[3] = value;
             bgmEvent.setParameterByName("Combo", value);
         }
+        if (name.Equals("Debuff"))
+        {
+            lastNormalBGMParameters[4] = value;
+            currentNormalBGMParameters[4] = value;
+            normalBGMParameters[4] = value;
+            bgmEvent.setParameterByName("Debuff", value);
+        }
     }
 
     float GetBGMParameter(string name)
@@ -423,6 +439,7 @@ public class BeatsManager : MonoBehaviour
         UpdateNormalBGMParameter("TimeNumReact", 1);
         UpdateNormalBGMParameter("LowHealth", 2);
         UpdateNormalBGMParameter("Combo", 3);
+        UpdateNormalBGMParameter("Debuff", 4);
         //if (GetBGMParameter("GamePhase") != normalBGMParameters[0])
         //{
         //    if(GetBGMParameter("GamePhase") <= lastNormalBGMParameters[0] + 0.5f && GetBGMParameter("GamePhase") > lastNormalBGMParameters[0])
