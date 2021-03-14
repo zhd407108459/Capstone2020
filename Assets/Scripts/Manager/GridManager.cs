@@ -238,6 +238,13 @@ public class GridManager : MonoBehaviour
         else
         {
             HideNextStageIcon();
+            for (int i = 0; i < phases[phaseIndex].basicPlatforms.Count; i++)
+            {
+                if (phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>() != null)
+                {
+                    phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>().Recover();
+                }
+            }
             for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
             {
                 phases[phaseIndex].enemies[i].gameObject.SetActive(true);
@@ -329,7 +336,14 @@ public class GridManager : MonoBehaviour
             else
             {
                 HideNextStageIcon();
-                for(int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+                for (int i = 0; i < phases[phaseIndex].basicPlatforms.Count; i++)
+                {
+                    if (phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>() != null)
+                    {
+                        phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>().Recover();
+                    }
+                }
+                for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
                 {
                     phases[phaseIndex].enemies[i].gameObject.SetActive(true);
                     phases[phaseIndex].enemies[i].transform.position = GetPhaseInitialPosition() + new Vector2(phases[phaseIndex].enemies[i].xPos * gridSize.x, phases[phaseIndex].enemies[i].yPos * gridSize.y);
@@ -356,6 +370,13 @@ public class GridManager : MonoBehaviour
         GameManager.instance.player.GetComponent<PlayerGridMovement>().ResetPos();
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
         HideNextStageIcon();
+        for(int i = 0; i < phases[phaseIndex].basicPlatforms.Count; i++)
+        {
+            if (phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>() != null)
+            {
+                phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>().Recover();
+            }
+        }
         for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
         {
             phases[phaseIndex].enemies[i].gameObject.SetActive(true);
@@ -674,7 +695,17 @@ public class GridManager : MonoBehaviour
             {
                 if (phases[phaseIndex].basicPlatforms[i].xPos == x && phases[phaseIndex].basicPlatforms[i].yPos > nextY && phases[phaseIndex].basicPlatforms[i].yPos <= y)
                 {
-                    nextY = phases[phaseIndex].basicPlatforms[i].yPos;
+                    if (phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>() != null)
+                    {
+                        if (!phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>().isBroken)
+                        {
+                            nextY = phases[phaseIndex].basicPlatforms[i].yPos;
+                        }
+                    }
+                    else
+                    {
+                        nextY = phases[phaseIndex].basicPlatforms[i].yPos;
+                    }
                 }
             }
         }
@@ -689,7 +720,17 @@ public class GridManager : MonoBehaviour
             {
                 if (phases[phaseIndex].basicPlatforms[i].xPos == x && phases[phaseIndex].basicPlatforms[i].yPos == y)
                 {
-                    return true;
+                    if (phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>() != null)
+                    {
+                        if (!phases[phaseIndex].basicPlatforms[i].GetComponent<BrokenPlatform>().isBroken)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
             }
         }

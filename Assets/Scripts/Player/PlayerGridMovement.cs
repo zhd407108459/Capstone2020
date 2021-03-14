@@ -275,6 +275,24 @@ public class PlayerGridMovement : MonoBehaviour
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
     }
 
+    public void CheckYPosition()
+    {
+        int tempY = GridManager.instance.GetFirstLowerPlatformYPosition(xPos, yPos);
+        if (yPos != tempY)
+        {
+            EventInstance moveFX;
+            moveFX = RuntimeManager.CreateInstance(moveFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                moveFX.setVolume(SettingManager.instance.overAllVolume);
+                //moveFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            }
+            moveFX.start();
+            yPos = tempY;
+            targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        }
+    }
+
     public bool IsPlayerInActualPosition()
     {
         if (Vector2.Distance(targetPos, transform.position) < 0.05f) 

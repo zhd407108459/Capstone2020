@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicPlatform : MonoBehaviour
+public class BasicPlatform : RhythmObject
 {
     public int xPos;
     public int yPos;
