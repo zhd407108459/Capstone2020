@@ -40,7 +40,7 @@ public class BossRopeHangingObject : RhythmObject
                 movementStage = 1;
                 stayTimer = 0;
             }
-            transform.position = new Vector3(transform.position.x, heightAnimationCurve.Evaluate(movementTimer / movementTime) * targetPos.y + heightAnimationCurve.Evaluate(1.0f - (movementTimer / movementTime)) * originPos.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, heightAnimationCurve.Evaluate(movementTimer / movementTime) * originPos.y + heightAnimationCurve.Evaluate(1.0f - (movementTimer / movementTime)) * targetPos.y, transform.position.z);
 
         }
         if (movementStage == 2)
