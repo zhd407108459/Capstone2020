@@ -30,7 +30,6 @@ public class ShellBulletEnemy : BasicEnemy
 
     void Update()
     {
-
     }
 
     public override void Activate()
@@ -121,6 +120,14 @@ public class ShellBulletEnemy : BasicEnemy
 
     public override void TakeDamage(int damage)
     {
+        if(state == 0)
+        {
+            AnimatorClipInfo[] aci = animator.GetCurrentAnimatorClipInfo(0);
+            if (aci[0].clip.name.Equals("in") || aci[0].clip.name.Equals("Idle2") || aci[0].clip.name.Equals("attack") || aci[0].clip.name.Equals("out"))
+            {
+                base.TakeDamage(damage);
+            }
+        }
         if(state == 1)
         {
             base.TakeDamage(damage);
