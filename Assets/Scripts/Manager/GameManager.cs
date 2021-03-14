@@ -133,6 +133,10 @@ public class GameManager : MonoBehaviour
         {
             deadBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
+        if(SettingManager.instance != null)
+        {
+            SettingManager.instance.ClearSkillSelection();
+        }
     }
 
     void RestartGame()
@@ -194,6 +198,10 @@ public class GameManager : MonoBehaviour
         if (deadBGMEvent.isValid())
         {
             deadBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+        if (SettingManager.instance != null)
+        {
+            SettingManager.instance.ClearSkillSelection();
         }
     }
 

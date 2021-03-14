@@ -26,6 +26,10 @@ public class SettingManager : MonoBehaviour
 
     public int targetPhase;
 
+    public int lastSkillIndex1;
+    public int lastSkillIndex2;
+
+
     [HideInInspector] public float hearingRange = 18.0f;
 
     void Awake()
@@ -312,5 +316,11 @@ public class SettingManager : MonoBehaviour
         temp.phaseProcess = 1;
         string jsonstr = JsonMapper.ToJson(temp);
         File.WriteAllText(infoPath, jsonstr);
+    }
+    
+    public void ClearSkillSelection()
+    {
+        lastSkillIndex1 = 0;
+        lastSkillIndex2 = 0;
     }
 }

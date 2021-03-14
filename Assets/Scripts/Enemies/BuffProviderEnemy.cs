@@ -159,6 +159,10 @@ public class BuffProviderEnemy : BasicEnemy
     {
         base.Die();
         List<BasicEnemy> enemies = GridManager.instance.GetAllEnemies();
+        if(enemies == null)
+        {
+            return;
+        }
         for (int i = 0; i < enemies.Count; i++)
         {
             if (Vector2.Distance(enemies[i].transform.position, transform.position) <= buffRange && enemies[i].gameObject != this.gameObject)

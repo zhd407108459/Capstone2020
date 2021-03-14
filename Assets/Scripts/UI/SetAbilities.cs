@@ -269,6 +269,17 @@ public class SetAbilities : MonoBehaviour
                                 ClearAbility(abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex());
                             }
                             abilityPositions[i].GetComponent<AbilityIcon>().ShowMeleeAttackIcon();
+                            if (SettingManager.instance != null)
+                            {
+                                if (i == 0)
+                                {
+                                    SettingManager.instance.lastSkillIndex1 = 1;
+                                }
+                                else
+                                {
+                                    SettingManager.instance.lastSkillIndex2 = 1;
+                                }
+                            }
                             GameManager.instance.player.GetComponent<PlayerMeleeAttack>().SetAbilityIcon(abilityPositions[i].GetComponent<AbilityIcon>());
                             basicMeleeAttackIcon.gameObject.SetActive(false);
                             isSet = true;
@@ -288,6 +299,17 @@ public class SetAbilities : MonoBehaviour
                                 ClearAbility(abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex());
                             }
                             abilityPositions[i].GetComponent<AbilityIcon>().ShowShieldIcon();
+                            if (SettingManager.instance != null)
+                            {
+                                if (i == 0)
+                                {
+                                    SettingManager.instance.lastSkillIndex1 = 2;
+                                }
+                                else
+                                {
+                                    SettingManager.instance.lastSkillIndex2 = 2;
+                                }
+                            }
                             GameManager.instance.player.GetComponent<PlayerShield>().SetAbilityIcon(abilityPositions[i].GetComponent<AbilityIcon>());
                             shieldIcon.gameObject.SetActive(false);
                             isSet = true;
@@ -307,6 +329,17 @@ public class SetAbilities : MonoBehaviour
                                 ClearAbility(abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex());
                             }
                             abilityPositions[i].GetComponent<AbilityIcon>().ShowDashIcon();
+                            if (SettingManager.instance != null)
+                            {
+                                if (i == 0)
+                                {
+                                    SettingManager.instance.lastSkillIndex1 = 3;
+                                }
+                                else
+                                {
+                                    SettingManager.instance.lastSkillIndex2 = 3;
+                                }
+                            }
                             GameManager.instance.player.GetComponent<PlayerDash>().SetAbilityIcon(abilityPositions[i].GetComponent<AbilityIcon>());
                             dashIcon.gameObject.SetActive(false);
                             isSet = true;
@@ -327,6 +360,17 @@ public class SetAbilities : MonoBehaviour
                                 ClearAbility(abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex());
                             }
                             abilityPositions[i].GetComponent<AbilityIcon>().ShowThrowBombIcon();
+                            if (SettingManager.instance != null)
+                            {
+                                if (i == 0)
+                                {
+                                    SettingManager.instance.lastSkillIndex1 = 4;
+                                }
+                                else
+                                {
+                                    SettingManager.instance.lastSkillIndex2 = 4;
+                                }
+                            }
                             GameManager.instance.player.GetComponent<PlayerThrowBomb>().SetAbilityIcon(abilityPositions[i].GetComponent<AbilityIcon>());
                             throwBombIcon.gameObject.SetActive(false);
                             isSet = true;
@@ -474,6 +518,65 @@ public class SetAbilities : MonoBehaviour
         if (GridManager.instance.levelIndex < 2)
         {
             throwBombIcon.gameObject.SetActive(false);
+        }
+        if(SettingManager.instance != null)
+        {
+            if(SettingManager.instance.lastSkillIndex1 == 1)
+            {
+                abilityPositions[0].GetComponent<AbilityIcon>().ShowMeleeAttackIcon();
+                GameManager.instance.player.GetComponent<PlayerMeleeAttack>().SetAbilityIcon(abilityPositions[0].GetComponent<AbilityIcon>());
+                basicMeleeAttackIcon.transform.position = abilityPositions[0].transform.position;
+                basicMeleeAttackIcon.gameObject.SetActive(false);
+            }
+            if (SettingManager.instance.lastSkillIndex1 == 2)
+            {
+                abilityPositions[0].GetComponent<AbilityIcon>().ShowShieldIcon();
+                GameManager.instance.player.GetComponent<PlayerShield>().SetAbilityIcon(abilityPositions[0].GetComponent<AbilityIcon>());
+                shieldIcon.transform.position = abilityPositions[0].transform.position;
+                shieldIcon.gameObject.SetActive(false);
+            }
+            if (SettingManager.instance.lastSkillIndex1 == 3)
+            {
+                abilityPositions[0].GetComponent<AbilityIcon>().ShowDashIcon();
+                GameManager.instance.player.GetComponent<PlayerDash>().SetAbilityIcon(abilityPositions[0].GetComponent<AbilityIcon>());
+                dashIcon.transform.position = abilityPositions[0].transform.position;
+                dashIcon.gameObject.SetActive(false);
+            }
+            if (SettingManager.instance.lastSkillIndex1 == 4)
+            {
+                abilityPositions[0].GetComponent<AbilityIcon>().ShowThrowBombIcon();
+                GameManager.instance.player.GetComponent<PlayerThrowBomb>().SetAbilityIcon(abilityPositions[0].GetComponent<AbilityIcon>());
+                throwBombIcon.transform.position = abilityPositions[0].transform.position;
+                throwBombIcon.gameObject.SetActive(false);
+            }
+            if (SettingManager.instance.lastSkillIndex2 == 1)
+            {
+                abilityPositions[1].GetComponent<AbilityIcon>().ShowMeleeAttackIcon();
+                GameManager.instance.player.GetComponent<PlayerMeleeAttack>().SetAbilityIcon(abilityPositions[1].GetComponent<AbilityIcon>());
+                basicMeleeAttackIcon.transform.position = abilityPositions[1].transform.position;
+                basicMeleeAttackIcon.gameObject.SetActive(false);
+            }
+            if (SettingManager.instance.lastSkillIndex2 == 2)
+            {
+                abilityPositions[1].GetComponent<AbilityIcon>().ShowShieldIcon();
+                GameManager.instance.player.GetComponent<PlayerShield>().SetAbilityIcon(abilityPositions[1].GetComponent<AbilityIcon>());
+                shieldIcon.transform.position = abilityPositions[1].transform.position;
+                shieldIcon.gameObject.SetActive(false);
+            }
+            if (SettingManager.instance.lastSkillIndex2 == 3)
+            {
+                abilityPositions[1].GetComponent<AbilityIcon>().ShowDashIcon();
+                GameManager.instance.player.GetComponent<PlayerDash>().SetAbilityIcon(abilityPositions[1].GetComponent<AbilityIcon>());
+                dashIcon.transform.position = abilityPositions[1].transform.position;
+                dashIcon.gameObject.SetActive(false);
+            }
+            if (SettingManager.instance.lastSkillIndex2 == 4)
+            {
+                abilityPositions[1].GetComponent<AbilityIcon>().ShowThrowBombIcon();
+                GameManager.instance.player.GetComponent<PlayerThrowBomb>().SetAbilityIcon(abilityPositions[1].GetComponent<AbilityIcon>());
+                throwBombIcon.transform.position = abilityPositions[1].transform.position;
+                throwBombIcon.gameObject.SetActive(false);
+            }
         }
     }
 
