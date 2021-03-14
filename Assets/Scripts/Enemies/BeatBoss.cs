@@ -27,6 +27,12 @@ public class BeatBoss : MonoBehaviour
     public int bombDelay;
     public GameObject bombPrefab;
 
+    public int dollDamage;
+    public int dollAttackDelay;
+    public GameObject dollPrefab;
+
+    public GameObject ropeHangingObjectPrefab;
+
     public List<Transform> bombPositions = new List<Transform>();
 
     public UnityEvent resetAnimationEvent;
@@ -240,6 +246,35 @@ public class BeatBoss : MonoBehaviour
                     InvokeBossEvent(bi.actions[i].actionParameters[j]);
                 }
             }
+            //Doll Attack
+            if(bi.actions[i].actionType == 13 && dollPrefab != null)
+            {
+                DollAttack(GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos, GameManager.instance.player.GetComponent<PlayerGridMovement>().yPos);
+            }
+            //Shoot Bullet From A Certain Position
+            if (bi.actions[i].actionType == 14)
+            {
+                if(bi.actions[i].actionParameters.Count > 3)
+                {
+                    ShootBulletFromPosition(bi.actions[i].actionParameters[0], bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2]);
+                }
+                else
+                {
+                    Debug.Log("Wrong action parameters count. Action type: 14. Index: " + bi.index);
+                }
+            }
+            //Rope hanging object
+            if (bi.actions[i].actionType == 15 && ropeHangingObjectPrefab != null)
+            {
+                if (bi.actions[i].actionParameters.Count > 3)
+                {
+                    RopeHangingObject(bi.actions[i].actionParameters[0], bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2]);
+                }
+                else
+                {
+                    Debug.Log("Wrong action parameters count. Action type: 15. Index: " + bi.index);
+                }
+            }
         }
     }
 
@@ -326,6 +361,48 @@ public class BeatBoss : MonoBehaviour
         go.GetComponent<EnemyGridBullet>().SetBulletRotation();
     }
 
+    void ShootBulletFromPosition(int direction, int x, int y)
+    {
+        if (direction >= 8)
+        {
+            Debug.Log("Wrong Direction: " + direction);
+            return;
+        }
+        if(x < 0 || y < 0 || x > 9 || y > 4)
+        {
+            Debug.Log("Wrong Position: " + x + ", " + y);
+            return;
+        }
+        GameObject go = Instantiate(bulletPrefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), transform.rotation);
+        if (direction == 0 || direction == 1 || direction == 7)
+        {
+            go.GetComponent<EnemyGridBullet>().xDirection = 1;
+        }
+        else if (direction == 3 || direction == 4 || direction == 5)
+        {
+            go.GetComponent<EnemyGridBullet>().xDirection = -1;
+        }
+        else
+        {
+            go.GetComponent<EnemyGridBullet>().xDirection = 0;
+        }
+        if (direction == 1 || direction == 2 || direction == 3)
+        {
+            go.GetComponent<EnemyGridBullet>().yDirection = 1;
+        }
+        else if (direction == 5 || direction == 6 || direction == 7)
+        {
+            go.GetComponent<EnemyGridBullet>().yDirection = -1;
+        }
+        else
+        {
+            go.GetComponent<EnemyGridBullet>().yDirection = 0;
+        }
+        go.GetComponent<EnemyGridBullet>().damage = (int)(bulletDamage);
+        go.GetComponent<EnemyGridBullet>().SetUp(x + go.GetComponent<EnemyGridBullet>().xDirection, y + go.GetComponent<EnemyGridBullet>().yDirection);
+        go.GetComponent<EnemyGridBullet>().SetBulletRotation();
+    }
+
     void InvokeBossEvent(int index)
     {
         if(index >= bossEvents.Count)
@@ -334,5 +411,20 @@ public class BeatBoss : MonoBehaviour
             return;
         }
         bossEvents[index].Invoke();
+    }
+
+    void DollAttack(int x, int y)
+    {
+        GameObject go = Instantiate(dollPrefab);
+        go.GetComponent<BossDollAttack>().damage = dollDamage;
+        go.GetComponent<BossDollAttack>().attackDelay = dollAttackDelay;
+        go.GetComponent<BossDollAttack>().SetUp(x, y);
+    }
+
+    void RopeHangingObject(int delay, int x, int y)
+    {
+        GameObject go = Instantiate(ropeHangingObjectPrefab);
+        go.GetComponent<BossRopeHangingObject>().stayDelay = delay;
+        go.GetComponent<BossRopeHangingObject>().SetUp(x, y);
     }
 }

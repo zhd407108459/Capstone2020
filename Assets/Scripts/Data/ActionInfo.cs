@@ -45,5 +45,22 @@ public class ActionInfo
     /// for action 12
     /// action paramter x = event[x]
     /// 
+    /// for action 13 Doll Attack
+    /// track player's position automatically
+    /// 
+    /// for action 14 shoot bullet from a position
+    /// action parameter[0] 0 - 7 = direction:
+    ///   3  2  1
+    ///    \ | /
+    ///  4 - * - 0
+    ///    / | \
+    ///   5  6  7
+    /// action parameter[1] == posX
+    /// action parameter[2] == posY
+    /// 
+    /// for action 15 hanging clock by rope
+    /// action parameter[0] == time
+    /// action parameter[1] == posX
+    /// action parameter[2] == posY
     /// </summary>
 }
