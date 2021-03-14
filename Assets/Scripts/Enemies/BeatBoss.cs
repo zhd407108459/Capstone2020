@@ -254,25 +254,25 @@ public class BeatBoss : MonoBehaviour
             //Shoot Bullet From A Certain Position
             if (bi.actions[i].actionType == 14)
             {
-                if(bi.actions[i].actionParameters.Count > 3)
+                if(bi.actions[i].actionParameters.Count >= 3)
                 {
                     ShootBulletFromPosition(bi.actions[i].actionParameters[0], bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2]);
                 }
                 else
                 {
-                    Debug.Log("Wrong action parameters count. Action type: 14. Index: " + bi.index);
+                    Debug.LogError("Wrong action parameters count. Action type: 14. Index: " + bi.index);
                 }
             }
             //Rope hanging object
             if (bi.actions[i].actionType == 15 && ropeHangingObjectPrefab != null)
             {
-                if (bi.actions[i].actionParameters.Count > 3)
+                if (bi.actions[i].actionParameters.Count >= 3)
                 {
                     RopeHangingObject(bi.actions[i].actionParameters[0], bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2]);
                 }
                 else
                 {
-                    Debug.Log("Wrong action parameters count. Action type: 15. Index: " + bi.index);
+                    Debug.LogError("Wrong action parameters count. Action type: 15. Index: " + bi.index);
                 }
             }
         }
@@ -298,7 +298,7 @@ public class BeatBoss : MonoBehaviour
     {
         if(index >= bossComponents.Count)
         {
-            Debug.Log("Wrong Boss Component Index: " + index);
+            Debug.LogError("Wrong Boss Component Index: " + index);
             return;
         }
         bossComponents[index].GetComponent<BossComponent>().Show(1);
@@ -316,7 +316,7 @@ public class BeatBoss : MonoBehaviour
     {
         if(index >= bombPositions.Count)
         {
-            Debug.Log("Wrong Boss Bomb Position Index: " + index);
+            Debug.LogError("Wrong Boss Bomb Position Index: " + index);
             return;
         }
         GameObject go = Instantiate(bombPrefab, bombPositions[index].position, bombPositions[index].rotation);
@@ -327,7 +327,7 @@ public class BeatBoss : MonoBehaviour
     {
         if(direction >= 8)
         {
-            Debug.Log("Wrong Direction: " + direction);
+            Debug.LogError("Wrong Direction: " + direction);
             return;
         }
         shootCenterObject.SetActive(true);
@@ -365,12 +365,12 @@ public class BeatBoss : MonoBehaviour
     {
         if (direction >= 8)
         {
-            Debug.Log("Wrong Direction: " + direction);
+            Debug.LogError("Wrong Direction: " + direction);
             return;
         }
         if(x < 0 || y < 0 || x > 9 || y > 4)
         {
-            Debug.Log("Wrong Position: " + x + ", " + y);
+            Debug.LogError("Wrong Position: " + x + ", " + y);
             return;
         }
         GameObject go = Instantiate(bulletPrefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), transform.rotation);
@@ -407,7 +407,7 @@ public class BeatBoss : MonoBehaviour
     {
         if(index >= bossEvents.Count)
         {
-            Debug.Log("Wrong Index: " + index);
+            Debug.LogError("Wrong Index: " + index);
             return;
         }
         bossEvents[index].Invoke();

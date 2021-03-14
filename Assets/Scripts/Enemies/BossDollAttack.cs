@@ -42,8 +42,8 @@ public class BossDollAttack : RhythmObject
                 movementStage = 1;
                 attackTimer = 0;
             }
-            transform.position = heightAnimationCurve.Evaluate(movementTimer / movementTime) * targetPos + heightAnimationCurve.Evaluate(1.0f - (movementTimer / movementTime)) * originPos;
-            
+            transform.position = new Vector3(transform.position.x, heightAnimationCurve.Evaluate(movementTimer / movementTime) * targetPos.y + heightAnimationCurve.Evaluate(1.0f - (movementTimer / movementTime)) * originPos.y, transform.position.z);
+
         }
         if (movementStage == 2)
         {
@@ -53,7 +53,7 @@ public class BossDollAttack : RhythmObject
                 movementTimer = movementTime;
                 Destroy(this.gameObject);
             }
-            transform.position = heightAnimationBackCurve.Evaluate(movementTimer / movementTime) * originPos + heightAnimationBackCurve.Evaluate(1.0f - (movementTimer / movementTime)) * targetPos;
+            transform.position = new Vector3(transform.position.x, heightAnimationBackCurve.Evaluate(movementTimer / movementTime) * originPos.y + heightAnimationBackCurve.Evaluate(1.0f - (movementTimer / movementTime)) * targetPos.y, transform.position.z);
 
         }
     }

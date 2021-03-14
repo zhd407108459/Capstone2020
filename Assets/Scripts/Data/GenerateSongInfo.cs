@@ -16,7 +16,8 @@ public class GenerateSongInfo : MonoBehaviour
         //KnifeBoss1Phase1Normal();
         //KnifeBoss1Phase2Normal();
         //KnifeBoss1Phase1Hard();
-        KnifeBoss1Phase2Hard();
+        //KnifeBoss1Phase2Hard();
+        Boss2ExampleFile();
     }
 
     void GenerateTestFileFor10And11()
@@ -5277,6 +5278,100 @@ public class GenerateSongInfo : MonoBehaviour
         }
         SaveAFile(temp, "./Data/KnifeBoss1Phase2Normal.info");
     }
+
+    void Boss2ExampleFile()
+    {
+        SongInfo temp = new SongInfo();
+        temp.length = 256;
+        temp.interval = 0.5f;
+        for (int i = 0; i < 256; i++)
+        {
+            BeatInfo bi = new BeatInfo();
+            bi.index = i;
+            temp.beatsInfo.Add(bi);
+        }
+        for (int i = 8; i < 256; i += 8)
+        {
+            ActionInfo ai = new ActionInfo();
+            ai.actionType = 13;
+            temp.beatsInfo[i].actions.Add(ai);
+        }
+        for (int i = 4; i < 256; i += 16)
+        {
+            ActionInfo ai = new ActionInfo();
+            ai.actionType = 15;
+            ai.actionParameters.Add(13);
+            ai.actionParameters.Add(2);
+            ai.actionParameters.Add(2);
+            temp.beatsInfo[i].actions.Add(ai);
+
+            ActionInfo ai1 = new ActionInfo();
+            ai1.actionType = 14;
+            ai1.actionParameters.Add(0);
+            ai1.actionParameters.Add(2);
+            ai1.actionParameters.Add(2);
+            temp.beatsInfo[i+2].actions.Add(ai1);
+
+
+            ActionInfo ai2 = new ActionInfo();
+            ai2.actionType = 14;
+            ai2.actionParameters.Add(1);
+            ai2.actionParameters.Add(2);
+            ai2.actionParameters.Add(2);
+            temp.beatsInfo[i + 3].actions.Add(ai2);
+
+
+            ActionInfo ai3 = new ActionInfo();
+            ai3.actionType = 14;
+            ai3.actionParameters.Add(2);
+            ai3.actionParameters.Add(2);
+            ai3.actionParameters.Add(2);
+            temp.beatsInfo[i + 4].actions.Add(ai3);
+
+
+            ActionInfo ai4 = new ActionInfo();
+            ai4.actionType = 14;
+            ai4.actionParameters.Add(3);
+            ai4.actionParameters.Add(2);
+            ai4.actionParameters.Add(2);
+            temp.beatsInfo[i + 5].actions.Add(ai4);
+
+
+            ActionInfo ai5 = new ActionInfo();
+            ai5.actionType = 14;
+            ai5.actionParameters.Add(4);
+            ai5.actionParameters.Add(2);
+            ai5.actionParameters.Add(2);
+            temp.beatsInfo[i + 6].actions.Add(ai5);
+
+
+            ActionInfo ai6 = new ActionInfo();
+            ai6.actionType = 14;
+            ai6.actionParameters.Add(5);
+            ai6.actionParameters.Add(2);
+            ai6.actionParameters.Add(2);
+            temp.beatsInfo[i + 7].actions.Add(ai6);
+
+
+            ActionInfo ai7 = new ActionInfo();
+            ai7.actionType = 14;
+            ai7.actionParameters.Add(6);
+            ai7.actionParameters.Add(2);
+            ai7.actionParameters.Add(2);
+            temp.beatsInfo[i + 8].actions.Add(ai7);
+
+
+            ActionInfo ai8 = new ActionInfo();
+            ai8.actionType = 14;
+            ai8.actionParameters.Add(7);
+            ai8.actionParameters.Add(2);
+            ai8.actionParameters.Add(2);
+            temp.beatsInfo[i + 9].actions.Add(ai8);
+
+        }
+        SaveAFile(temp, "./Data/Boss2Example.info");
+    }
+
     void SaveAFile(SongInfo info, string path)
     {
         string jsonstr = JsonMapper.ToJson(info);
