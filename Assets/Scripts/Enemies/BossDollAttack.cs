@@ -13,6 +13,8 @@ public class BossDollAttack : RhythmObject
     public AnimationCurve heightAnimationBackCurve;
     public float movementTime;
 
+    public Animator animator;
+
     private int targetX;
     private int targetY;
 
@@ -72,6 +74,10 @@ public class BossDollAttack : RhythmObject
                     {
                         cos[i].GetComponent<PlayerHealth>().TakeDamage(damage);
                     }
+                }
+                if(animator != null)
+                {
+                    animator.SetTrigger("Attack");
                 }
             }
             if(attackTimer > attackDelay)
