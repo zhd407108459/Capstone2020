@@ -62,5 +62,6 @@ public class ActionInfo
     /// action parameter[0] == time
     /// action parameter[1] == posX
     /// action parameter[2] == posY
+    /// action parameter[3] == object index
     /// </summary>
 }

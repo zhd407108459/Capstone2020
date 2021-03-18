@@ -31,7 +31,7 @@ public class BeatBoss : MonoBehaviour
     public int dollAttackDelay;
     public GameObject dollPrefab;
 
-    public GameObject ropeHangingObjectPrefab;
+    public List<GameObject> ropeHangingObjectPrefabList;
 
     public List<Transform> bombPositions = new List<Transform>();
 
@@ -264,11 +264,11 @@ public class BeatBoss : MonoBehaviour
                 }
             }
             //Rope hanging object
-            if (bi.actions[i].actionType == 15 && ropeHangingObjectPrefab != null)
+            if (bi.actions[i].actionType == 15 && ropeHangingObjectPrefabList != null)
             {
-                if (bi.actions[i].actionParameters.Count >= 3)
+                if (bi.actions[i].actionParameters.Count >= 4)
                 {
-                    RopeHangingObject(bi.actions[i].actionParameters[0], bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2]);
+                    RopeHangingObject(bi.actions[i].actionParameters[0], bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2], bi.actions[i].actionParameters[3]);
                 }
                 else
                 {
@@ -421,9 +421,14 @@ public class BeatBoss : MonoBehaviour
         go.GetComponent<BossDollAttack>().SetUp(x, y);
     }
 
-    void RopeHangingObject(int delay, int x, int y)
+    void RopeHangingObject(int delay, int x, int y, int index)
     {
-        GameObject go = Instantiate(ropeHangingObjectPrefab);
+        if(index >= ropeHangingObjectPrefabList.Count)
+        {
+            Debug.LogError("Wrong Index: " + index);
+            return;
+        }
+        GameObject go = Instantiate(ropeHangingObjectPrefabList[index]);
         go.GetComponent<BossRopeHangingObject>().stayDelay = delay;
         go.GetComponent<BossRopeHangingObject>().SetUp(x, y);
     }

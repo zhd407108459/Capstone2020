@@ -5805,6 +5805,7 @@ public class GenerateSongInfo : MonoBehaviour
             ai.actionParameters.Add(13);
             ai.actionParameters.Add(2);
             ai.actionParameters.Add(2);
+            ai.actionParameters.Add(0);
             temp.beatsInfo[i].actions.Add(ai);
 
             ActionInfo ai1 = new ActionInfo();
