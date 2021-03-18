@@ -97,6 +97,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{589c71c3-8463-4fcd-9c55-377049042239}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -113,6 +116,9 @@
 	<object class="MixerBusEffectChain" id="{b431c2d7-221c-4fc3-9b3a-6fd06099921e}">
 		<relationship name="effects">
 			<destination>{b9db448a-dd7f-4cff-b4bd-0c2b46ad2958}</destination>
+			<destination>{26741365-4584-4cad-9fef-a6dc871a50de}</destination>
+			<destination>{d2ef145b-91e7-4d42-bc8b-7df24df88d85}</destination>
+			<destination>{fac5b7bd-6ce6-4834-b5ca-a9dc442fcc8b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6708f572-ebd5-4698-b2ad-78e2c55912bb}" />
@@ -124,5 +130,29 @@
 	</object>
 	<object class="MixerBusPanner" id="{871d0147-7ae3-43b8-8913-a8366213ad3e}" />
 	<object class="MixerBusFader" id="{b9db448a-dd7f-4cff-b4bd-0c2b46ad2958}" />
+	<object class="DelayEffect" id="{26741365-4584-4cad-9fef-a6dc871a50de}">
+		<property name="delay">
+			<value>480</value>
+		</property>
+		<property name="feedback">
+			<value>40.5</value>
+		</property>
+	</object>
+	<object class="SFXReverbEffect" id="{d2ef145b-91e7-4d42-bc8b-7df24df88d85}">
+		<property name="decayTime">
+			<value>1000</value>
+		</property>
+		<property name="earlyDelay">
+			<value>11.5</value>
+		</property>
+		<property name="diffusion">
+			<value>76</value>
+		</property>
+	</object>
+	<object class="LimiterEffect" id="{fac5b7bd-6ce6-4834-b5ca-a9dc442fcc8b}">
+		<property name="ceiling">
+			<value>-2.39999986</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{33a5b47f-023c-43df-a8f2-0568e099bd97}" />
 </objects>
