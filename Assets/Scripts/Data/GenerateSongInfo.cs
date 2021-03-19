@@ -13,10 +13,10 @@ public class GenerateSongInfo : MonoBehaviour
         //GenerateDefaultBoss2SongInfo();
         //KnifeBoss1Phase1Easy();
         //KnifeBoss1Phase2Easy();
-        //KnifeBoss1Phase1Normal();
-        //KnifeBoss1Phase2Normal();
+        KnifeBoss1Phase1Normal();
+        KnifeBoss1Phase2Normal();
         //KnifeBoss1Phase1Hard();
-        KnifeBoss1Phase2Hard();
+        //KnifeBoss1Phase2Hard();
         Boss2ExampleFile();
     }
 
@@ -3803,6 +3803,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 34) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 32 - bossSolidDelay)
             {
@@ -3825,12 +3837,24 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionParameters.Add(7);
                 bi.actions.Add(ai);
             }
-            if (i == 32 - animationSolidDelay)
+            if (i == 36 - animationSolidDelay)
             {
                 ActionInfo ai12 = new ActionInfo();
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(2);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 38) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 36 - bossSolidDelay)
             {
@@ -3859,6 +3883,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(2);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 42) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 40 - bossSolidDelay)
             {
@@ -3894,6 +3930,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(1);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 46) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 44 - bossSolidDelay)
             {
@@ -3922,6 +3970,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 50) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 48 - bossSolidDelay)
             {
@@ -3957,6 +4017,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 54) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 52 - bossSolidDelay)
             {
@@ -3992,6 +4064,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(2);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 58) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 56 - bossSolidDelay)
             {
@@ -4018,6 +4102,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(1);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 62) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 60 - bossSolidDelay)
             {
@@ -4051,6 +4147,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 66) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 64 - bossSolidDelay)
             {
@@ -4070,6 +4178,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 70) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 68 - bossSolidDelay)
             {
@@ -4089,6 +4209,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 74) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 72 - bossSolidDelay)
             {
@@ -4108,6 +4240,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 78) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 76 - bossSolidDelay)
             {
@@ -4139,6 +4283,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 80) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 78 - bossSolidDelay)
             {
@@ -4153,6 +4309,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 82) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 80 - bossSolidDelay)
             {
@@ -4167,6 +4335,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 84) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 82 - bossSolidDelay)
             {
@@ -4181,6 +4361,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 86) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 84 - bossSolidDelay)
             {
@@ -4195,6 +4387,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 88) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 86 - bossSolidDelay)
             {
@@ -4209,6 +4413,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 90) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 88 - bossSolidDelay)
             {
@@ -4223,6 +4439,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 92 || i == 94 || i == 96) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 90 - bossSolidDelay)
             {
@@ -4251,9 +4479,21 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(4);
                 bi.actions.Add(ai);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(8);
+                bi.actions.Add(ai13);
             }
-                //Section3,Beat96-159
-                if (i == 96 || i == 104)
+            //Section3,Beat96-159
+            if (i >= 96 && i <= 111) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(9);
+                bi.actions.Add(ai13);
+            }
+            if (i == 96 || i == 104)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 11;
@@ -4344,6 +4584,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionType = 8;
                 ai4.actionParameters.Add(0);
                 bi.actions.Add(ai4);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 114) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 112)
             {
@@ -4373,6 +4625,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 122) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 120 - bossSolidDelay)
             {
@@ -4467,6 +4731,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(2);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 133 || i == 134 || i == 135) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 131 - bossSolidDelay)
             {
@@ -4516,6 +4792,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(1);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 141 || i == 142 || i == 143) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 139 - bossSolidDelay)
             {
@@ -4565,6 +4853,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 149 || i == 150 || i == 151) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 147 - bossSolidDelay)
             {
@@ -4614,6 +4914,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 158) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 156 - bossSolidDelay)
             {
@@ -4687,6 +4999,25 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i >= 166 && i <= 169) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
+            }
+            if (i >= 182 && i <= 185) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 164 - bossSolidDelay || i == 180 - bossSolidDelay)
             {
@@ -4770,6 +5101,25 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i >= 174 && i <= 177) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
+            }
+            if (i >= 190 && i <= 193) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 172 - bossSolidDelay || i == 188 - bossSolidDelay)
             {
@@ -4805,6 +5155,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(4);
                 bi.actions.Add(ai);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(8);
+                bi.actions.Add(ai13);
+            }
+            if (i >= 192 && i <= 215) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(9);
+                bi.actions.Add(ai13);
             }
             if (i == 192 || i == 200 || i == 208)
             {
@@ -5151,6 +5513,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(1);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 6) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 4 - bossSolidDelay)
             {
@@ -5172,6 +5546,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(2);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 10) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 8 - bossSolidDelay)
             {
@@ -5198,6 +5584,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 14) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 12 - bossSolidDelay)
             {
@@ -5217,6 +5615,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 16 || i == 24) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(9);
+                bi.actions.Add(ai13);
             }
             if (i == 16)
             {
@@ -5270,6 +5680,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 37 || i == 38 || i == 39) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 35 - bossSolidDelay)
             {
@@ -5319,6 +5741,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 45 || i == 46 || i == 47) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 43 - bossSolidDelay)
             {
@@ -5347,6 +5781,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(4);
                 bi.actions.Add(ai);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(8);
+                bi.actions.Add(ai13);
+            }
+            if (i >= 52 && i <= 63) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(9);
+                bi.actions.Add(ai13);
             }
             if (i == 52 || i == 60)
             {
@@ -5430,6 +5876,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 68 || i == 72) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 66 - bossSolidDelay)
             {
@@ -5490,6 +5948,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 76) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 74 - bossSolidDelay)
             {
@@ -5531,6 +6001,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 80) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 78 - bossSolidDelay)
             {
@@ -5555,6 +6037,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 80 || i == 88) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(9);
+                bi.actions.Add(ai13);
             }
             if (i == 80)
             {
@@ -5587,6 +6081,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(4);
                 bi.actions.Add(ai);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(8);
+                bi.actions.Add(ai13);
+            }
+            if (i >= 100 && i <= 111) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(9);
+                bi.actions.Add(ai13);
             }
             if (i == 100 || i == 108)
             {
@@ -5657,6 +6163,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 114) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 112 - bossSolidDelay)
             {
@@ -5708,6 +6226,18 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(3);
                 bi.actions.Add(ai12);
+
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(6);
+                bi.actions.Add(ai13);
+            }
+            if (i == 122) //sfx
+            {
+                ActionInfo ai13 = new ActionInfo();
+                ai13.actionType = 12;
+                ai13.actionParameters.Add(7);
+                bi.actions.Add(ai13);
             }
             if (i == 120 - bossSolidDelay)
             {
