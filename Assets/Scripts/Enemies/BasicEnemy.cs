@@ -52,6 +52,8 @@ public class BasicEnemy : RhythmObject
         isActivated = true;
         isRaged = false;
         health = maxHealth;
+        extraHealth = 0;
+        maxExtraHealth = 0;
         damageIncreasement = 1.0f;
         healthSlider.value = (float)health / (float)maxHealth;
         extraHealthSlider.gameObject.SetActive(false);
@@ -103,7 +105,7 @@ public class BasicEnemy : RhythmObject
 
         Camera.main.GetComponent<CameraShake>().Shake();
         int tempD = damage;
-        if(extraHealth > 0)
+        if(extraHealth > 0 && extraHealthSlider.gameObject.activeSelf)
         {
             if(extraHealth > tempD)
             {
