@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        if (isGameEnd)
+        if (isGameEnd || deadPanel.activeSelf)
         {
             return;
         }
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame(bool pause)
     {
-        if (isGameEnd)
+        if (isGameEnd || deadPanel.activeSelf)
         {
             return;
         }
@@ -182,6 +182,7 @@ public class GameManager : MonoBehaviour
 
     void RestartCurrentBattle()
     {
+        GridManager.instance.setAbilities.StopBossPreBGM();
         isPaused = false;
         BeatsManager.instance.ResumeBGM();
         GridManager.instance.RestartCurrentPhase();

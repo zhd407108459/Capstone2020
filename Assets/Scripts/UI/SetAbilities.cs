@@ -36,6 +36,9 @@ public class SetAbilities : MonoBehaviour
     private Vector3 lastMousePosition;
     private float hoverTimer;
 
+    private string bossFightPreBGMPath = "event:/FX/UI/UI-Heartbeat";
+    private EventInstance bossFightPreBGMEvent;
+
     void Start()
     {
         originalBasicMeleeAttackPos = basicMeleeAttackIcon.position;
@@ -504,6 +507,16 @@ public class SetAbilities : MonoBehaviour
 
     public void Show()
     {
+        if (GridManager.instance.isBossFight)
+        {
+            bossFightPreBGMEvent = RuntimeManager.CreateInstance(bossFightPreBGMPath);
+            if (SettingManager.instance != null)
+            {
+                bossFightPreBGMEvent.setVolume(SettingManager.instance.overAllVolume);
+            }
+            bossFightPreBGMEvent.start();
+        }
+
         isActivated = true;
         preBattlePanel.SetActive(true);
         BeatsManager.instance.beatsContainer.transform.position = targetBeatsContainerPosition.position;
@@ -593,6 +606,10 @@ public class SetAbilities : MonoBehaviour
 
     public void Hide()
     {
+        if (GridManager.instance.isBossFight)
+        {
+            bossFightPreBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
         isActivated = false;
         for (int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
         {
@@ -676,6 +693,10 @@ public class SetAbilities : MonoBehaviour
 
     public void FinishSetting()
     {
+        if (GridManager.instance.isBossFight)
+        {
+            bossFightPreBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
         GridManager.instance.PreActivateCurrentPhase();
         BeatsManager.instance.beatsContainer.transform.position = originalBeatsContainerPosition.position;
         BeatsManager.instance.beatsContainer.transform.localScale = originalBeatsContainerPosition.localScale;
@@ -698,4 +719,13 @@ public class SetAbilities : MonoBehaviour
         }
         return sum;
     }
+
+    public void StopBossPreBGM()
+    {
+        if (GridManager.instance.isBossFight && bossFightPreBGMEvent.isValid())
+        {
+            bossFightPreBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
 }

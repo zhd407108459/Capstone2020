@@ -418,6 +418,14 @@ public class GridManager : MonoBehaviour
         {
             Destroy(n.gameObject);
         }
+        foreach (var n in FindObjectsOfType<BossDollAttack>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<BossRopeHangingObject>())
+        {
+            Destroy(n.gameObject);
+        }
         if (isBossFight)
         {
             boss.Reset();
