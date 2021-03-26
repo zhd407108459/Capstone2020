@@ -294,6 +294,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{c9798cac-c8a8-42a4-abd4-59a8a0fa1e35}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{afc2a1d3-8812-4135-a600-d5d155698eee}</destination>
 		</relationship>
@@ -1076,6 +1079,8 @@
 			<destination>{1eff01c2-9487-4d9a-9110-8d2e02202f38}</destination>
 			<destination>{f5d3e138-0232-4678-b797-fa04fcf55c80}</destination>
 			<destination>{ac4d59ed-357c-40d3-a0e0-258d55fb9123}</destination>
+			<destination>{7c0c21eb-f4a0-4929-8b27-0e7cbe512bcb}</destination>
+			<destination>{ee68c8f4-aafc-4e44-b5a6-3af169369a67}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9ef957ba-b549-4e2e-ba2c-9e488813f7ed}" />
@@ -1370,6 +1375,22 @@
 		<relationship name="automators">
 			<destination>{807bb55c-dc4f-4cb8-ad08-9ddceb9f4ad6}</destination>
 		</relationship>
+	</object>
+	<object class="CompressorEffect" id="{7c0c21eb-f4a0-4929-8b27-0e7cbe512bcb}">
+		<property name="threshold">
+			<value>-14</value>
+		</property>
+		<property name="ratio">
+			<value>1.89999986</value>
+		</property>
+		<property name="releaseTime">
+			<value>660</value>
+		</property>
+	</object>
+	<object class="LimiterEffect" id="{ee68c8f4-aafc-4e44-b5a6-3af169369a67}">
+		<property name="ceiling">
+			<value>-4.99999952</value>
+		</property>
 	</object>
 	<object class="AutomationPoint" id="{d6424efc-f203-44eb-8052-9c39bf2e988e}">
 		<property name="position">
@@ -2368,7 +2389,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-2</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{05c15420-86bc-4333-be40-1622abeea0fc}">
@@ -2384,7 +2405,7 @@
 			<value>0.5</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-2</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{de0c3e6f-94fa-4aa6-8dac-8d5a38eeafe1}">

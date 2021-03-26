@@ -92,11 +92,17 @@
 		<property name="length">
 			<value>0.69741496598639452</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{d2aa3835-11c5-4623-b0bf-4b45f3f7d72c}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{a49d3040-a082-4a34-9898-3390cfdf43b6}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{8c240c9f-26ec-41c1-b116-fcdea5de1875}">
+		<property name="volume">
+			<value>-1</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -117,12 +123,60 @@
 	</object>
 	<object class="MixerBusPanner" id="{55a217fa-5a0d-4f00-8364-5dcfbe0cff90}" />
 	<object class="MixerBusFader" id="{64b12560-41bf-4a94-8fdc-13ce68112196}" />
+	<object class="FadeCurve" id="{d2aa3835-11c5-4623-b0bf-4b45f3f7d72c}">
+		<relationship name="startPoint">
+			<destination>{f77b54a0-75f5-4dcf-9292-fc7080a394d6}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{648b5dd0-8253-4bb7-8fcd-f0bee7bb9ab2}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{d73e5179-033c-4f6e-8b73-285bd655c5f2}">
 		<relationship name="effects">
 			<destination>{fac32b1e-9141-471b-8927-0650cac093ef}</destination>
+			<destination>{dac8a73e-b9b0-4dfb-9c11-31a6096817ea}</destination>
+			<destination>{309734f9-4346-4cb7-9df7-26f768ef4834}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e9f6020f-2168-403c-b04b-4c3a4b0635c7}" />
 	<object class="MixerBusFader" id="{902a582f-2955-425f-9de3-274431d0bdd0}" />
+	<object class="AutomationPoint" id="{f77b54a0-75f5-4dcf-9292-fc7080a394d6}">
+		<property name="position">
+			<value>0.60999999999999999</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{648b5dd0-8253-4bb7-8fcd-f0bee7bb9ab2}">
+		<property name="position">
+			<value>0.69741496598639452</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{fac32b1e-9141-471b-8927-0650cac093ef}" />
+	<object class="DelayEffect" id="{dac8a73e-b9b0-4dfb-9c11-31a6096817ea}">
+		<property name="delay">
+			<value>300</value>
+		</property>
+		<property name="feedback">
+			<value>23.5</value>
+		</property>
+		<property name="level">
+			<value>-12</value>
+		</property>
+	</object>
+	<object class="SFXReverbEffect" id="{309734f9-4346-4cb7-9df7-26f768ef4834}">
+		<property name="decayTime">
+			<value>290</value>
+		</property>
+		<property name="wetLevel">
+			<value>-17.5</value>
+		</property>
+	</object>
 </objects>

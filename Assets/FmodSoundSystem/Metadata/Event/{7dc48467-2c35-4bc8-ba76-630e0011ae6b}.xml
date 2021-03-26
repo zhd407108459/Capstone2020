@@ -90,7 +90,10 @@
 	<object class="MixerBusPanner" id="{dee33945-c0c0-4359-b4a3-95ce050c9648}" />
 	<object class="SingleSound" id="{7e5a7d59-27d8-435a-b9c4-4ab3d03402db}">
 		<property name="length">
-			<value>0.41761904761904761</value>
+			<value>0.41461904761904761</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.0030000000000000001</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{354f7a9b-c1c6-499a-87b4-19573600f0d7}</destination>
@@ -123,9 +126,15 @@
 	<object class="MixerBusEffectChain" id="{850b9d0a-6beb-445c-8141-c6ec8ac28246}">
 		<relationship name="effects">
 			<destination>{331c1066-8337-4f9c-a081-a8bd683b008e}</destination>
+			<destination>{0d78ac72-0ba9-4e52-9669-dc8d1910914c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ef56d1ac-a427-495f-9329-d598d54f1532}" />
 	<object class="MixerBusFader" id="{ad4f967b-4ec7-4af3-bede-ddab7ce9d148}" />
 	<object class="MixerBusFader" id="{331c1066-8337-4f9c-a081-a8bd683b008e}" />
+	<object class="LimiterEffect" id="{0d78ac72-0ba9-4e52-9669-dc8d1910914c}">
+		<property name="ceiling">
+			<value>-1.49999988</value>
+		</property>
+	</object>
 </objects>
