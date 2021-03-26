@@ -7,7 +7,9 @@ using FMODUnity;
 public class EnemyReflectionBullet : RhythmObject
 {
     public GameObject sprite;
+    public SpriteRenderer spriteRenderer;
 
+    public Color reflectedColor;
 
     public float movementLerpValue;
 
@@ -53,6 +55,7 @@ public class EnemyReflectionBullet : RhythmObject
                 || (transform.position.y >= GridManager.instance.GetPhaseInitialPosition().y + 4.5f * GridManager.instance.gridSize.y)))
             {
                 isReflected = true;
+                spriteRenderer.color = reflectedColor;
                 xDirection = -xDirection;
                 yDirection = -yDirection;
                 xPos += xDirection;
@@ -70,12 +73,15 @@ public class EnemyReflectionBullet : RhythmObject
         }
         if (Vector2.Distance(transform.position, targetPos) < 0.05f && xPos == originalXPos && yPos == originalYPos)
         {
-            if (owner.gameObject.activeSelf)
+            if (owner != null)
             {
-                if (owner.isActivated)
+                if (owner.gameObject.activeSelf)
                 {
-                    owner.Reload(false);
-                    Destroy(this.gameObject);
+                    if (owner.isActivated)
+                    {
+                        owner.Reload(false);
+                        Destroy(this.gameObject);
+                    }
                 }
             }
         }
@@ -116,12 +122,60 @@ public class EnemyReflectionBullet : RhythmObject
         }
     }
 
+
+    public void SetBulletRotation()
+    {
+        if (xDirection > 0 && yDirection == 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            return;
+        }
+        if (xDirection < 0 && yDirection == 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            return;
+        }
+        if (xDirection == 0 && yDirection > 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+            return;
+        }
+        if (xDirection == 0 && yDirection < 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 270.0f);
+            return;
+        }
+        if (xDirection > 0 && yDirection > 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 45.0f);
+            return;
+        }
+        if (xDirection < 0 && yDirection > 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 135.0f);
+            return;
+        }
+        if (xDirection < 0 && yDirection < 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 225.0f);
+            return;
+        }
+        if (xDirection > 0 && yDirection < 0)
+        {
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 315.0f);
+            return;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(damage);
-            owner.Reload(true);
+            if(owner != null)
+            {
+                owner.Reload(true);
+            }
             Destroy(this.gameObject);
         }
         if (collision.tag.Equals("PlayerShield"))
@@ -169,7 +223,10 @@ public class EnemyReflectionBullet : RhythmObject
                     main.startRotationZ = new ParticleSystem.MinMaxCurve(-90.0f);
                 }
             }
-            owner.Reload(true);
+            if (owner != null)
+            {
+                owner.Reload(true);
+            }
             Destroy(this.gameObject);
         }
     }

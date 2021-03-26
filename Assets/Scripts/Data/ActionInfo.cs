@@ -21,10 +21,23 @@ public class ActionInfo
     /// 10 throw bomb
     /// 
     /// 11 shoot bullet from center
+    /// 
+    /// 12 boss events
+    /// 
+    /// 13 doll attack
+    /// 
+    /// 14 shoot bullet from a position
+    /// 
+    /// 15 hanging clock by rope
+    /// 
+    /// 16 shoot reflect bullet from left to right
+    /// 17 shoot reflect bullet from right to left
+    /// 18 shoot reflect bullet from top to bottom
+    /// 19 shoot reflect bullet from bottom to top
     /// </summary>
     public List<int> actionParameters = new List<int>();
     /// <summary>
-    /// for action 1 - 8
+    /// for action 1 - 8 and 16 - 19
     /// position left -> right 0-9
     /// position bottom -> top 0-4
     /// 
@@ -63,5 +76,7 @@ public class ActionInfo
     /// action parameter[1] == posX
     /// action parameter[2] == posY
     /// action parameter[3] == object index
+    /// 
+    /// 
     /// </summary>
 }

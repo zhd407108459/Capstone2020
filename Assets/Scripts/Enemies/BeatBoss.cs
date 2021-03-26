@@ -13,6 +13,9 @@ public class BeatBoss : MonoBehaviour
     public int bulletDamage;
     public GameObject bulletPrefab;
 
+    public int reflectBulletDamage;
+    public GameObject reflectBulletPrefab;
+
     public GameObject shootCenterObject;
     public int centerShootPosX;
     public int centerShootPosY;
@@ -275,6 +278,35 @@ public class BeatBoss : MonoBehaviour
                     Debug.LogError("Wrong action parameters count. Action type: 15. Index: " + bi.index);
                 }
             }
+            //Reflection Bullet attack
+            if (bi.actions[i].actionType == 16)
+            {
+                for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
+                {
+                    BossReflectBulletAttack(1, 0, 0, bi.actions[i].actionParameters[j]);
+                }
+            }
+            if (bi.actions[i].actionType == 17)
+            {
+                for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
+                {
+                    BossReflectBulletAttack(-1, 0, 9, bi.actions[i].actionParameters[j]);
+                }
+            }
+            if (bi.actions[i].actionType == 18)
+            {
+                for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
+                {
+                    BossReflectBulletAttack(0, -1, bi.actions[i].actionParameters[j], 4);
+                }
+            }
+            if (bi.actions[i].actionType == 19)
+            {
+                for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
+                {
+                    BossReflectBulletAttack(0, 1, bi.actions[i].actionParameters[j], 0);
+                }
+            }
         }
     }
 
@@ -286,6 +318,20 @@ public class BeatBoss : MonoBehaviour
         go.GetComponent<EnemyGridBullet>().damage = (int)(bulletDamage);
         go.GetComponent<EnemyGridBullet>().SetUp(xPos, yPos);
         go.GetComponent<EnemyGridBullet>().SetBulletRotation();
+    }
+    void BossReflectBulletAttack(int xDirection, int yDirection, int xPos, int yPos)
+    {
+        if (reflectBulletPrefab == null)
+        {
+            Debug.LogError("Prefab isn't set!!");
+            return;
+        }
+        GameObject go = Instantiate(reflectBulletPrefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2((xPos - xDirection) * GridManager.instance.gridSize.x, (yPos - yDirection) * GridManager.instance.gridSize.y), transform.rotation);
+        go.GetComponent<EnemyReflectionBullet>().xDirection = xDirection;
+        go.GetComponent<EnemyReflectionBullet>().yDirection = yDirection;
+        go.GetComponent<EnemyReflectionBullet>().damage = (int)(reflectBulletDamage);
+        go.GetComponent<EnemyReflectionBullet>().SetUp(xPos, yPos);
+        go.GetComponent<EnemyReflectionBullet>().SetBulletRotation();
     }
 
     void BossSolidAttack(int x, int y, int midX, int midY, int endX, int endY, float rotationZ)
