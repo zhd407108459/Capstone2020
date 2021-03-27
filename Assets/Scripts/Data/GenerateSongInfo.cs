@@ -8874,21 +8874,21 @@ public class GenerateSongInfo : MonoBehaviour
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
-                ai.actionParameters.Add(4);
+                ai.actionParameters.Add(5);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 131 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
-                ai.actionParameters.Add(6);
+                ai.actionParameters.Add(3);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 132 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
-                ai.actionParameters.Add(8);
+                ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 136)
@@ -9015,14 +9015,14 @@ public class GenerateSongInfo : MonoBehaviour
                 temp.beatsInfo[i].actions.Add(ai);
             }
             //Bullet Floors
-            if (i == 156 || i == 158  || i == 164 || i == 166 || i == 172 || i == 174 || i == 180 || i == 182)
+            if (i == 156 || i == 158 || i == 160 || i == 164 || i == 166 || i == 168 || i == 172 || i == 174 || i == 176 || i == 180 || i == 182 || i == 184)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
                 ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            if (i == 168 || i == 170 || i == 172 || i == 176 || i == 178 || i == 180)
+            if (i == 168 || i == 170 || i == 172 || i == 176 || i == 178 || i == 180 || i == 184)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 2;
