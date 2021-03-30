@@ -290,6 +290,7 @@ public class SettingManager : MonoBehaviour
         }
         targetPhase = 0;
         difficulty = 0;
+        SaveToPath();
     }
 
     public void SaveToPath()

@@ -2491,7 +2491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6156,6 +6156,7 @@ GameObject:
   - component: {fileID: 1273687128}
   - component: {fileID: 1273687129}
   - component: {fileID: 1273687130}
+  - component: {fileID: 1273687131}
   m_Layer: 0
   m_Name: BeatBoss
   m_TagString: Untagged
@@ -6339,6 +6340,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2137265563}
+--- !u!114 &1273687131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273687127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdd4058307704f478a24686e3c5c2bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathList: []
 --- !u!1 &1293744240
 GameObject:
   m_ObjectHideFlags: 0
@@ -10363,7 +10377,7 @@ PrefabInstance:
     - target: {fileID: 447175700513225018, guid: 65c61b6cf68c3a34483a4df0612570aa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 447175700513225018, guid: 65c61b6cf68c3a34483a4df0612570aa,
         type: 3}
@@ -10537,7 +10551,7 @@ PrefabInstance:
     - target: {fileID: 8822223990036533577, guid: 89e3070a4d2542042b5ae5442c6e4466,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8822223990036533577, guid: 89e3070a4d2542042b5ae5442c6e4466,
         type: 3}
@@ -10611,7 +10625,7 @@ PrefabInstance:
     - target: {fileID: 6958526943584437335, guid: 6e23f412c286a17418521ba3d88d8a98,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6958526943584437335, guid: 6e23f412c286a17418521ba3d88d8a98,
         type: 3}
@@ -10865,7 +10879,7 @@ PrefabInstance:
     - target: {fileID: 7680393747666586464, guid: 26d1815df4ab9b745b678083d9a7ef48,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7680393747666586464, guid: 26d1815df4ab9b745b678083d9a7ef48,
         type: 3}
@@ -11039,7 +11053,7 @@ PrefabInstance:
     - target: {fileID: 6052392329503402785, guid: 7f3669d52af0dc5499861f22b7a9d0e0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6052392329503402785, guid: 7f3669d52af0dc5499861f22b7a9d0e0,
         type: 3}
@@ -11210,7 +11224,7 @@ PrefabInstance:
     - target: {fileID: 3757307458651406226, guid: 4e0d539e08089b64cb7aeb635a560155,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3757307458651406226, guid: 4e0d539e08089b64cb7aeb635a560155,
         type: 3}
@@ -11730,7 +11744,7 @@ PrefabInstance:
     - target: {fileID: 6617123322093084974, guid: 01de2fe792130c949b2d6547f480e5b1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6617123322093084974, guid: 01de2fe792130c949b2d6547f480e5b1,
         type: 3}
@@ -12988,7 +13002,7 @@ PrefabInstance:
     - target: {fileID: 4696048824458000043, guid: e93f69b04c20fd04fa1f56369c5ff99b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696048824458000043, guid: e93f69b04c20fd04fa1f56369c5ff99b,
         type: 3}
@@ -13173,7 +13187,7 @@ PrefabInstance:
     - target: {fileID: 6938666054207921134, guid: 6a85904775ea6544897cb92678b7b1cf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6938666054207921134, guid: 6a85904775ea6544897cb92678b7b1cf,
         type: 3}
@@ -13260,7 +13274,7 @@ PrefabInstance:
     - target: {fileID: 6976565331715690684, guid: d0c5feda8743c2e4e945b9b51333e49b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6976565331715690684, guid: d0c5feda8743c2e4e945b9b51333e49b,
         type: 3}

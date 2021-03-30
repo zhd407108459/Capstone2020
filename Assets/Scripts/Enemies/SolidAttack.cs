@@ -7,6 +7,7 @@ public class SolidAttack : RhythmObject
     public float movementLerpValue;
 
     public GameObject sprite;
+    public SpriteRenderer indicator;
     public int damage;
 
     public int attackDelay;
@@ -26,6 +27,9 @@ public class SolidAttack : RhythmObject
     [HideInInspector] public int delayTimer;
     [HideInInspector] public int state;
 
+    private Color indicatorTargetColor;
+
+
     void Start()
     {
         
@@ -36,6 +40,10 @@ public class SolidAttack : RhythmObject
         if (GameManager.instance.isPaused)
         {
             return;
+        }
+        if(indicator.color.a != indicatorTargetColor.a)
+        {
+            indicator.color = Color.Lerp(indicator.color, indicatorTargetColor, movementLerpValue * Time.deltaTime);
         }
         if (Vector2.Distance(transform.position, targetPos) > 0.0001f)
         {
@@ -54,6 +62,7 @@ public class SolidAttack : RhythmObject
         }
         if(delayTimer >= stayDelay && state == 1)
         {
+            indicator.gameObject.SetActive(false);
             targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(endX * GridManager.instance.gridSize.x, endY * GridManager.instance.gridSize.y);
             state = 2;
             delayTimer = 0;
@@ -79,6 +88,9 @@ public class SolidAttack : RhythmObject
         delayTimer = 0;
         state = 0;
         transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+        indicator.gameObject.SetActive(true);
+        indicatorTargetColor = indicator.color;
+        indicator.color = new Color(indicator.color.r, indicator.color.g, indicator.color.b, 0);
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
