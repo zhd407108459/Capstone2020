@@ -8,7 +8,7 @@ public class BrokenPlatform : BasicPlatform
     public int recoverTime;
 
     public GameObject brokenParticlePrefab;
-    public GameObject breakingParticle;
+    public GameObject breakingParticlePrefab;
 
     public Color normalColor;
     public Color breakingColor;
@@ -18,10 +18,10 @@ public class BrokenPlatform : BasicPlatform
     public bool isBroken;
 
     private int breakTimer;
+    private GameObject breakingParticle;
 
     void Start()
     {
-        breakingParticle.SetActive(true);
     }
 
     void Update()
@@ -64,14 +64,18 @@ public class BrokenPlatform : BasicPlatform
     {
         isBroken = false;
         isBreaking = false;
-
         if (breakingParticle != null)
         {
             ParticleSystem[] ps = breakingParticle.GetComponentsInChildren<ParticleSystem>();
             foreach (var n in ps)
             {
-                n.Stop();
+                if (n.isPlaying)
+                {
+                    n.Stop();
+                }
             }
+            Destroy(breakingParticle, 3.0f);
+            breakingParticle = null;
         }
         for (int i = 0; i < sprites.Count; i++)
         {
@@ -83,13 +87,9 @@ public class BrokenPlatform : BasicPlatform
     public void Breaking()
     {
         isBreaking = true;
-        if(breakingParticle != null)
+        if (breakingParticlePrefab != null && breakingParticle == null)
         {
-            ParticleSystem[] ps = breakingParticle.GetComponentsInChildren<ParticleSystem>();
-            foreach(var n in ps)
-            {
-                n.Play();
-            }
+            breakingParticle = Instantiate(breakingParticlePrefab, transform.position, Quaternion.identity);
         }
         for (int i = 0; i < sprites.Count; i++)
         {
@@ -110,12 +110,17 @@ public class BrokenPlatform : BasicPlatform
             ParticleSystem[] ps = breakingParticle.GetComponentsInChildren<ParticleSystem>();
             foreach (var n in ps)
             {
-                n.Stop();
+                if (n.isPlaying)
+                {
+                    n.Stop();
+                }
             }
+            Destroy(breakingParticle, 3.0f);
+            breakingParticle = null;
         }
         if (brokenParticlePrefab != null)
         {
-            Instantiate(brokenParticlePrefab, sprites[0].transform.position, Quaternion.identity);
+            Instantiate(brokenParticlePrefab, transform.position, Quaternion.identity);
         }
         GameManager.instance.player.GetComponent<PlayerGridMovement>().CheckYPosition();
     }
