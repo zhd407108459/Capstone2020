@@ -306,6 +306,7 @@ public class GridManager : MonoBehaviour
             //ShowRecordPanel(recordTimer);
         }
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
+        GameManager.instance.player.GetComponent<PlayerAction>().ClearAllBuffs();
         isInPhase = false;
         EndCombo();
         BeatsManager.instance.SetNormalBGMParameter("Debuff", 0);
