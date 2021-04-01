@@ -27,10 +27,10 @@ public class SetAbilities : MonoBehaviour
     [HideInInspector] public bool isActivated;
 
     private int selection = 0;
-    private Vector3 originalBasicMeleeAttackPos;
-    private Vector3 originalShieldPos;
-    private Vector3 originalDashPos;
-    private Vector3 originalThrowBombPos;
+    public RectTransform originalBasicMeleeAttackPos;
+    public RectTransform originalShieldPos;
+    public RectTransform originalDashPos;
+    public RectTransform originalThrowBombPos;
     //private Vector3 originalBulletShootingPos;
 
     private Vector3 lastMousePosition;
@@ -41,10 +41,10 @@ public class SetAbilities : MonoBehaviour
 
     void Start()
     {
-        originalBasicMeleeAttackPos = basicMeleeAttackIcon.position;
-        originalShieldPos = shieldIcon.position;
-        originalDashPos = dashIcon.position;
-        originalThrowBombPos = throwBombIcon.position;
+        //originalBasicMeleeAttackPos = basicMeleeAttackIcon.position;
+        //originalShieldPos = shieldIcon.position;
+        //originalDashPos = dashIcon.position;
+        //originalThrowBombPos = throwBombIcon.position;
         //originalBulletShootingPos = bulletShootingIcon.position;
         nextButton.onClick.AddListener(FinishSetting);
         if (GridManager.instance.levelIndex < 2)
@@ -152,7 +152,7 @@ public class SetAbilities : MonoBehaviour
                                 abilityPositions[i].GetComponent<AbilityIcon>().HideIcons();
                                 GameManager.instance.player.GetComponent<PlayerMeleeAttack>().ClearAvalibility();
                                 basicMeleeAttackIcon.gameObject.SetActive(true);
-                                basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
+                                basicMeleeAttackIcon.position = originalBasicMeleeAttackPos.position;
                                 break;
                             }
                             if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 2)
@@ -160,7 +160,7 @@ public class SetAbilities : MonoBehaviour
                                 abilityPositions[i].GetComponent<AbilityIcon>().HideIcons();
                                 GameManager.instance.player.GetComponent<PlayerShield>().ClearAvalibility();
                                 shieldIcon.gameObject.SetActive(true);
-                                shieldIcon.position = originalShieldPos;
+                                shieldIcon.position = originalShieldPos.position;
                                 break;
                             }
                             if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 3)
@@ -168,7 +168,7 @@ public class SetAbilities : MonoBehaviour
                                 abilityPositions[i].GetComponent<AbilityIcon>().HideIcons();
                                 GameManager.instance.player.GetComponent<PlayerDash>().ClearAvalibility();
                                 dashIcon.gameObject.SetActive(true);
-                                dashIcon.position = originalDashPos;
+                                dashIcon.position = originalDashPos.position;
                                 break;
                             }
                             if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 4)
@@ -176,7 +176,7 @@ public class SetAbilities : MonoBehaviour
                                 abilityPositions[i].GetComponent<AbilityIcon>().HideIcons();
                                 GameManager.instance.player.GetComponent<PlayerThrowBomb>().ClearAvalibility();
                                 throwBombIcon.gameObject.SetActive(true);
-                                throwBombIcon.position = originalThrowBombPos;
+                                throwBombIcon.position = originalThrowBombPos.position;
                                 break;
                             }
                         }
@@ -263,7 +263,7 @@ public class SetAbilities : MonoBehaviour
                         {
                             if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 0 && GetActivatedAbilitiesCount() == 2)
                             {
-                                basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
+                                basicMeleeAttackIcon.position = originalBasicMeleeAttackPos.position;
                                 selection = 0;
                                 return;
                             }
@@ -293,7 +293,7 @@ public class SetAbilities : MonoBehaviour
                         {
                             if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 0 && GetActivatedAbilitiesCount() == 2)
                             {
-                                shieldIcon.position = originalShieldPos;
+                                shieldIcon.position = originalShieldPos.position;
                                 selection = 0;
                                 return;
                             }
@@ -323,7 +323,7 @@ public class SetAbilities : MonoBehaviour
                         {
                             if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 0 && GetActivatedAbilitiesCount() == 2)
                             {
-                                dashIcon.position = originalDashPos;
+                                dashIcon.position = originalDashPos.position;
                                 selection = 0;
                                 return;
                             }
@@ -354,7 +354,7 @@ public class SetAbilities : MonoBehaviour
                         {
                             if (abilityPositions[i].GetComponent<AbilityIcon>().AbilityIndex() == 0 && GetActivatedAbilitiesCount() == 2)
                             {
-                                throwBombIcon.position = originalThrowBombPos;
+                                throwBombIcon.position = originalThrowBombPos.position;
                                 selection = 0;
                                 return;
                             }
@@ -462,22 +462,22 @@ public class SetAbilities : MonoBehaviour
                 {
                     if (selection == 1)
                     {
-                        basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
+                        basicMeleeAttackIcon.position = originalBasicMeleeAttackPos.position;
                         selection = 0;
                     }
                     if (selection == 2)
                     {
-                        shieldIcon.position = originalShieldPos;
+                        shieldIcon.position = originalShieldPos.position;
                         selection = 0;
                     }
                     if (selection == 3)
                     {
-                        dashIcon.position = originalDashPos;
+                        dashIcon.position = originalDashPos.position;
                         selection = 0;
                     }
                     if (selection == 4)
                     {
-                        throwBombIcon.position = originalThrowBombPos;
+                        throwBombIcon.position = originalThrowBombPos.position;
                         selection = 0;
                     }
                     //if (selection == 3)
@@ -624,27 +624,27 @@ public class SetAbilities : MonoBehaviour
         {
             GameManager.instance.player.GetComponent<PlayerMeleeAttack>().ClearAvalibility();
             basicMeleeAttackIcon.gameObject.SetActive(true);
-            basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
+            basicMeleeAttackIcon.position = originalBasicMeleeAttackPos.position;
         }
         else if(index == 2)
         {
             GameManager.instance.player.GetComponent<PlayerShield>().ClearAvalibility();
             shieldIcon.gameObject.SetActive(true);
-            shieldIcon.position = originalShieldPos;
+            shieldIcon.position = originalShieldPos.position;
 
         }
         else if (index == 3)
         {
             GameManager.instance.player.GetComponent<PlayerDash>().ClearAvalibility();
             dashIcon.gameObject.SetActive(true);
-            dashIcon.position = originalDashPos;
+            dashIcon.position = originalDashPos.position;
 
         }
         else if (index == 4)
         {
             GameManager.instance.player.GetComponent<PlayerThrowBomb>().ClearAvalibility();
             throwBombIcon.gameObject.SetActive(true);
-            throwBombIcon.position = originalThrowBombPos;
+            throwBombIcon.position = originalThrowBombPos.position;
 
         }
         if (GridManager.instance.levelIndex < 2)
@@ -671,10 +671,10 @@ public class SetAbilities : MonoBehaviour
         dashIcon.gameObject.SetActive(true);
         throwBombIcon.gameObject.SetActive(true);
         //bulletShootingIcon.gameObject.SetActive(true);
-        basicMeleeAttackIcon.position = originalBasicMeleeAttackPos;
-        shieldIcon.position = originalShieldPos;
-        dashIcon.position = originalDashPos;
-        throwBombIcon.position = originalThrowBombPos;
+        basicMeleeAttackIcon.position = originalBasicMeleeAttackPos.position;
+        shieldIcon.position = originalShieldPos.position;
+        dashIcon.position = originalDashPos.position;
+        throwBombIcon.position = originalThrowBombPos.position;
         //bulletShootingIcon.position = originalBulletShootingPos;
 
         if (GridManager.instance.levelIndex < 2)
