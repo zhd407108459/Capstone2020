@@ -20,6 +20,8 @@ public class SetAbilities : MonoBehaviour
     public GameObject dashTips;
     public GameObject throwBombTips;
     public List<RectTransform> abilityPositions = new List<RectTransform>();
+    public GameObject bossPhase1Tip;
+    public GameObject bossPhase2Tip;
     public float hoverTipTime = 0.8f;
     //public RectTransform bulletShootingIcon;
     public Button nextButton;
@@ -515,6 +517,21 @@ public class SetAbilities : MonoBehaviour
                 bossFightPreBGMEvent.setVolume(SettingManager.instance.overAllVolume);
             }
             bossFightPreBGMEvent.start();
+            if (GridManager.instance.boss.canBeAttacked)
+            {
+                bossPhase1Tip.SetActive(false);
+                bossPhase2Tip.SetActive(true);
+            }
+            else
+            {
+                bossPhase1Tip.SetActive(true);
+                bossPhase2Tip.SetActive(false);
+            }
+        }
+        else
+        {
+            bossPhase1Tip.SetActive(false);
+            bossPhase2Tip.SetActive(false);
         }
 
         isActivated = true;
