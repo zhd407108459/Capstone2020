@@ -226,7 +226,7 @@ public class GridManager : MonoBehaviour
         if (!IsInBattlePhase())
         {
             isCameraFollowing = true;
-            HideNextStageIcon();
+            ShowNextStageIcon();
             for (int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
             {
                 BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();
@@ -325,7 +325,7 @@ public class GridManager : MonoBehaviour
                 BeatsManager.instance.SetNormalBGMParameter("TimeNumReact", 5);
                 isCameraFollowing = true;
                 setAbilities.ClearAbilities();
-                HideNextStageIcon();
+                ShowNextStageIcon();
                 for(int i = 0; i < BeatsManager.instance.beatsTips.Count; i++)
                 {
                     BeatsManager.instance.beatsTips[i].GetComponent<BeatTip>().HideIcons();
