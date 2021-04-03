@@ -20,7 +20,7 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             buttonFX = RuntimeManager.CreateInstance(hoverFX);
             if (SettingManager.instance != null)
             {
-                buttonFX.setVolume(SettingManager.instance.overAllVolume);
+                buttonFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
             }
             buttonFX.start();
             //RuntimeManager.PlayOneShot(hoverFX);
@@ -41,7 +41,7 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             buttonFX = RuntimeManager.CreateInstance(clickFX);
             if (SettingManager.instance != null)
             {
-                buttonFX.setVolume(SettingManager.instance.overAllVolume);
+                buttonFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
             }
             buttonFX.start();
             //RuntimeManager.PlayOneShot(clickFX);
@@ -56,7 +56,7 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             buttonFX = RuntimeManager.CreateInstance(upFX);
             if (SettingManager.instance != null)
             {
-                buttonFX.setVolume(SettingManager.instance.overAllVolume);
+                buttonFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
             }
             buttonFX.start();
             //RuntimeManager.PlayOneShot(upFX);

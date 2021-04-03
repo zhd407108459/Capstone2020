@@ -240,7 +240,7 @@ public class PlayerGridMovement : MonoBehaviour
             moveFX = RuntimeManager.CreateInstance(moveFXEventPath);
             if (SettingManager.instance != null)
             {
-                moveFX.setVolume(SettingManager.instance.overAllVolume);
+                moveFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
                 //moveFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
             }
             moveFX.start();
@@ -264,7 +264,7 @@ public class PlayerGridMovement : MonoBehaviour
                 moveFX = RuntimeManager.CreateInstance(moveFXEventPath);
                 if (SettingManager.instance != null)
                 {
-                    moveFX.setVolume(SettingManager.instance.overAllVolume);
+                    moveFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
                     //moveFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
                 }
                 moveFX.start();
@@ -284,7 +284,7 @@ public class PlayerGridMovement : MonoBehaviour
             moveFX = RuntimeManager.CreateInstance(moveFXEventPath);
             if (SettingManager.instance != null)
             {
-                moveFX.setVolume(SettingManager.instance.overAllVolume);
+                moveFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
                 //moveFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
             }
             moveFX.start();

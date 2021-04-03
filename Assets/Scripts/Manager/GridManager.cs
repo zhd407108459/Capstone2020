@@ -573,7 +573,7 @@ public class GridManager : MonoBehaviour
         itemEmergenceFX = RuntimeManager.CreateInstance(itemEmergenceFXEventPath);
         if (SettingManager.instance != null)
         {
-            itemEmergenceFX.setVolume(SettingManager.instance.overAllVolume);
+            itemEmergenceFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
         }
         itemEmergenceFX.start();
     }
@@ -628,7 +628,7 @@ public class GridManager : MonoBehaviour
         itemEmergenceFX = RuntimeManager.CreateInstance(itemEmergenceFXEventPath);
         if (SettingManager.instance != null)
         {
-            itemEmergenceFX.setVolume(SettingManager.instance.overAllVolume);
+            itemEmergenceFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
         }
         itemEmergenceFX.start();
     }

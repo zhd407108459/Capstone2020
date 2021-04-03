@@ -133,7 +133,7 @@ public class PlayerMeleeAttack : RhythmObject
         meleeAttackFX = RuntimeManager.CreateInstance(meleeAttackFXEventPath);
         if (SettingManager.instance != null)
         {
-            meleeAttackFX.setVolume(SettingManager.instance.overAllVolume);
+            meleeAttackFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
         }
         meleeAttackFX.start();
 
@@ -179,7 +179,7 @@ public class PlayerMeleeAttack : RhythmObject
                     meleeImpactFX = RuntimeManager.CreateInstance(meleeImpactFXEventPath);
                     if (SettingManager.instance != null)
                     {
-                        meleeImpactFX.setVolume(SettingManager.instance.overAllVolume);
+                        meleeImpactFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
                     }
                     meleeImpactFX.start();
 
@@ -217,7 +217,7 @@ public class PlayerMeleeAttack : RhythmObject
                     }
                     if (SettingManager.instance != null)
                     {
-                        meleeImpactFX.setVolume(SettingManager.instance.overAllVolume);
+                        meleeImpactFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
                     }
                     meleeImpactFX.start();
 
@@ -277,7 +277,7 @@ public class PlayerMeleeAttack : RhythmObject
                     meleeImpactFX = RuntimeManager.CreateInstance(meleeImpactFXEventPath);
                     if (SettingManager.instance != null)
                     {
-                        meleeImpactFX.setVolume(SettingManager.instance.overAllVolume);
+                        meleeImpactFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
                     }
                     meleeImpactFX.start();
 

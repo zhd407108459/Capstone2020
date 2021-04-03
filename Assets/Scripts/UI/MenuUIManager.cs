@@ -26,6 +26,10 @@ public class MenuUIManager : MonoBehaviour
     public GameObject settingPanel;
     public Slider overAllVolumeSlider;
     public Text overAllVolumeText;
+    public Slider musicVolumeSlider;
+    public Text musicVolumeText;
+    public Slider soundEffectVolumeSlider;
+    public Text soundEffectVolumeText;
     public Dropdown resolutionDropdown;
     public Dropdown skill1Dropdown;
     public Dropdown skill2Dropdown;
@@ -67,6 +71,10 @@ public class MenuUIManager : MonoBehaviour
         {
             overAllVolumeSlider.value = SettingManager.instance.overAllVolume;
             overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
+            musicVolumeSlider.value = SettingManager.instance.musicVolume;
+            musicVolumeText.text = musicVolumeSlider.value.ToString("#0.00");
+            soundEffectVolumeSlider.value = SettingManager.instance.soundEffectVolume;
+            soundEffectVolumeText.text = soundEffectVolumeSlider.value.ToString("#0.00");
             resolutionDropdown.value = SettingManager.instance.resolutionIndex;
             skill1Dropdown.value = SettingManager.instance.skill1Index;
             skill2Dropdown.value = SettingManager.instance.skill2Index;
@@ -74,7 +82,7 @@ public class MenuUIManager : MonoBehaviour
         bgmEvent = RuntimeManager.CreateInstance(BGMEventPath);
         if (SettingManager.instance != null)
         {
-            bgmEvent.setVolume(SettingManager.instance.overAllVolume);
+            bgmEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
             bgmEvent.start();
         }
     }
@@ -159,7 +167,7 @@ public class MenuUIManager : MonoBehaviour
     {
         SettingManager.instance.ChangeOverAllVolume(overAllVolumeSlider.value);
         overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
-        bgmEvent.setVolume(SettingManager.instance.overAllVolume);
+        bgmEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
     }
 
     public void SetOverAllVolume(float value)
@@ -172,8 +180,47 @@ public class MenuUIManager : MonoBehaviour
             overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
             if (bgmEvent.isValid())
             {
-                bgmEvent.setVolume(SettingManager.instance.overAllVolume);
+                bgmEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
             }
+        }
+    }
+
+    public void ChangeMusicVolume()
+    {
+        SettingManager.instance.ChangeMusicVolume(musicVolumeSlider.value);
+        musicVolumeText.text = musicVolumeSlider.value.ToString("#0.00");
+        bgmEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
+    }
+
+    public void SetMusicVolume(float value)
+    {
+        if (SettingManager.instance != null)
+        {
+            float v = Mathf.Clamp01(value);
+            musicVolumeSlider.value = v;
+            SettingManager.instance.ChangeMusicVolume(musicVolumeSlider.value);
+            musicVolumeText.text = musicVolumeSlider.value.ToString("#0.00");
+            if (bgmEvent.isValid())
+            {
+                bgmEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
+            }
+        }
+    }
+
+    public void ChangeSoundEffectVolume()
+    {
+        SettingManager.instance.ChangeSoundEffectVolume(soundEffectVolumeSlider.value);
+        soundEffectVolumeText.text = soundEffectVolumeSlider.value.ToString("#0.00");
+    }
+
+    public void SetSoundEffectVolume(float value)
+    {
+        if (SettingManager.instance != null)
+        {
+            float v = Mathf.Clamp01(value);
+            soundEffectVolumeSlider.value = v;
+            SettingManager.instance.ChangeSoundEffectVolume(soundEffectVolumeSlider.value);
+            soundEffectVolumeText.text = soundEffectVolumeSlider.value.ToString("#0.00");
         }
     }
 

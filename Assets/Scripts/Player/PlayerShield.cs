@@ -111,7 +111,7 @@ public class PlayerShield : RhythmObject
         shieldFX = RuntimeManager.CreateInstance(shieldFXEventPath);
         if (SettingManager.instance != null)
         {
-            shieldFX.setVolume(SettingManager.instance.overAllVolume);
+            shieldFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
         }
         shieldFX.start();
 

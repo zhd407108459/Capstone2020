@@ -94,7 +94,7 @@ public class PlayerThrowBomb : RhythmObject
         throwBombFX = RuntimeManager.CreateInstance(throwBombFXEventPath);
         if (SettingManager.instance != null)
         {
-            throwBombFX.setVolume(SettingManager.instance.overAllVolume);
+            throwBombFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
         }
         throwBombFX.start();
 

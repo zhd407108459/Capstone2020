@@ -184,7 +184,7 @@ public class EnemyReflectionBullet : RhythmObject
             shieldImpactFX = RuntimeManager.CreateInstance(shieldImpactFXEventPath);
             if (SettingManager.instance != null)
             {
-                shieldImpactFX.setVolume(SettingManager.instance.overAllVolume);
+                shieldImpactFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
             }
             shieldImpactFX.start();
 

@@ -66,7 +66,7 @@ public class BuffProviderEnemy : BasicEnemy
             if (SettingManager.instance != null)
             {
                 float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-                enemyExtraHealthBuffFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+                enemyExtraHealthBuffFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume * (1.0f - value));
             }
             enemyExtraHealthBuffFX.start();
         }
@@ -77,7 +77,7 @@ public class BuffProviderEnemy : BasicEnemy
             if (SettingManager.instance != null)
             {
                 float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-                enemyHealBuffFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+                enemyHealBuffFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume * (1.0f - value));
             }
             enemyHealBuffFX.start();
         }
@@ -88,7 +88,7 @@ public class BuffProviderEnemy : BasicEnemy
             if (SettingManager.instance != null)
             {
                 float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-                enemyPowerupBuffFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+                enemyPowerupBuffFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume * (1.0f - value));
             }
             enemyPowerupBuffFX.start();
         }

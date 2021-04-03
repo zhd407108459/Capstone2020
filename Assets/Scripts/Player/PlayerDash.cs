@@ -120,7 +120,7 @@ public class PlayerDash : RhythmObject
         dashFX = RuntimeManager.CreateInstance(dashFXEventPath);
         if (SettingManager.instance != null)
         {
-            dashFX.setVolume(SettingManager.instance.overAllVolume);
+            dashFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
         }
         dashFX.start();
         Invoke("EndDash", 0.4f);

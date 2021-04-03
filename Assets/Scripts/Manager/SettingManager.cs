@@ -12,6 +12,8 @@ public class SettingManager : MonoBehaviour
 
     public bool isAutoAttack;
     public float overAllVolume;
+    public float musicVolume;
+    public float soundEffectVolume;
 
     public int resolutionIndex;
     public KeyCode skill1Keycode;
@@ -55,6 +57,18 @@ public class SettingManager : MonoBehaviour
     public void ChangeOverAllVolume(float volume)
     {
         overAllVolume = volume;
+        SaveToPath();
+    }
+
+    public void ChangeMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        SaveToPath();
+    }
+
+    public void ChangeSoundEffectVolume(float volume)
+    {
+        soundEffectVolume = volume;
         SaveToPath();
     }
 
@@ -274,6 +288,8 @@ public class SettingManager : MonoBehaviour
         if(temp != null)
         {
             ChangeOverAllVolume((float)temp.volume);
+            ChangeMusicVolume((float)temp.musicVolume);
+            ChangeSoundEffectVolume((float)temp.soundEffectVolume);
             ChangeResolution(temp.resolution);
             ChangeSkill1TriggerKey(temp.skill1key);
             ChangeSkill2TriggerKey(temp.skill2key);
@@ -297,6 +313,8 @@ public class SettingManager : MonoBehaviour
     {
         SettingInfo temp = new SettingInfo();
         temp.volume = overAllVolume;
+        temp.musicVolume = musicVolume;
+        temp.soundEffectVolume = soundEffectVolume;
         temp.resolution = resolutionIndex;
         temp.skill1key = skill1Index;
         temp.skill2key = skill2Index;
@@ -310,6 +328,8 @@ public class SettingManager : MonoBehaviour
     {
         SettingInfo temp = new SettingInfo();
         temp.volume = 0.5f;
+        temp.musicVolume = 1.0f;
+        temp.soundEffectVolume = 1.0f;
         temp.resolution = 0;
         temp.skill1key = 5;
         temp.skill2key = 6;

@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
             deadBGMEvent = RuntimeManager.CreateInstance(deadBGMEventPath);
             if (SettingManager.instance != null)
             {
-                deadBGMEvent.setVolume(SettingManager.instance.overAllVolume);
+                deadBGMEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
             }
             deadBGMEvent.start();
         }

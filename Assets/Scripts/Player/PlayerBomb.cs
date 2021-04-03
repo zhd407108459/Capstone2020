@@ -128,7 +128,7 @@ public class PlayerBomb : RhythmObject
             if (SettingManager.instance != null)
             {
                 float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-                explosionFX.setVolume(SettingManager.instance.overAllVolume * (1.0f - value));
+                explosionFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume * (1.0f - value));
             }
             explosionFX.start();
         }

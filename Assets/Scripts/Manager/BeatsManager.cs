@@ -97,7 +97,7 @@ public class BeatsManager : MonoBehaviour
         if (SettingManager.instance != null)
         {
             //bgm.volume = SettingManager.instance.overAllVolume;
-            bgmEvent.setVolume(SettingManager.instance.overAllVolume);
+            bgmEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
             bgmVolume = SettingManager.instance.overAllVolume;
         }
         else

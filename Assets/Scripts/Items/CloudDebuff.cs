@@ -44,7 +44,7 @@ public class CloudDebuff : BasicDebuff
                 itemEffectFX = RuntimeManager.CreateInstance(itemEffectFXEventPath);
                 if (SettingManager.instance != null)
                 {
-                    itemEffectFX.setVolume(SettingManager.instance.overAllVolume);
+                    itemEffectFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
                 }
                 itemEffectFX.start();
             }

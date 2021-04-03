@@ -58,7 +58,7 @@ public class PlayerHealth : MonoBehaviour
         damagedFX = RuntimeManager.CreateInstance(damagedFXEventPath);
         if (SettingManager.instance != null)
         {
-            damagedFX.setVolume(SettingManager.instance.overAllVolume);
+            damagedFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
         }
         damagedFX.start();
         GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", true);

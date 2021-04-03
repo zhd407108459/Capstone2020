@@ -144,7 +144,7 @@ public class SetAbilities : MonoBehaviour
                                 buttonFX = RuntimeManager.CreateInstance("event:/FX/UI/UI-Cancel");
                                 if (SettingManager.instance != null)
                                 {
-                                    buttonFX.setVolume(SettingManager.instance.overAllVolume);
+                                    buttonFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
                                 }
                                 buttonFX.start();
                             }
@@ -514,7 +514,7 @@ public class SetAbilities : MonoBehaviour
             bossFightPreBGMEvent = RuntimeManager.CreateInstance(bossFightPreBGMPath);
             if (SettingManager.instance != null)
             {
-                bossFightPreBGMEvent.setVolume(SettingManager.instance.overAllVolume);
+                bossFightPreBGMEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
             }
             bossFightPreBGMEvent.start();
             if (GridManager.instance.boss.canBeAttacked)

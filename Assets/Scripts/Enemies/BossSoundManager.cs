@@ -19,7 +19,7 @@ public class BossSoundManager : MonoBehaviour
         sound = RuntimeManager.CreateInstance(pathList[index]);
         if (SettingManager.instance != null)
         {
-            sound.setVolume(SettingManager.instance.overAllVolume);
+            sound.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
         }
         sound.start();
     }
