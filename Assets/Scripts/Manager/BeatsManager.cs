@@ -98,7 +98,7 @@ public class BeatsManager : MonoBehaviour
         {
             //bgm.volume = SettingManager.instance.overAllVolume;
             bgmEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
-            bgmVolume = SettingManager.instance.overAllVolume;
+            bgmVolume = SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume;
         }
         else
         {
@@ -120,7 +120,7 @@ public class BeatsManager : MonoBehaviour
             {
 
             }
-            UpdateBGMVolume();
+            //UpdateBGMVolume();
         }
         lastAudioTime = GetBgmTime();
     }
@@ -596,7 +596,7 @@ public class BeatsManager : MonoBehaviour
             {
                 if (SettingManager.instance != null)
                 {
-                    bgmVolume = SettingManager.instance.overAllVolume;
+                    bgmVolume = SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume;
                 }
                 else
                 {

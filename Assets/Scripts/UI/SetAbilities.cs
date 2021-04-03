@@ -618,6 +618,23 @@ public class SetAbilities : MonoBehaviour
             abilityPositions[0].GetComponent<AbilityIcon>().triggerKey = SettingManager.instance.skill1Keycode;
             abilityPositions[1].GetComponent<AbilityIcon>().SetKeyTip(SettingManager.instance.skill2Keycode);
             abilityPositions[1].GetComponent<AbilityIcon>().triggerKey = SettingManager.instance.skill2Keycode;
+            if (GameManager.instance.player.GetComponent<PlayerMeleeAttack>().abilityIcon != null)
+            {
+                GameManager.instance.player.GetComponent<PlayerMeleeAttack>().SetAbilityKey();
+            }
+            if (GameManager.instance.player.GetComponent<PlayerShield>().abilityIcon != null)
+            {
+                GameManager.instance.player.GetComponent<PlayerShield>().SetAbilityKey();
+            }
+            if (GameManager.instance.player.GetComponent<PlayerDash>().abilityIcon != null)
+            {
+                GameManager.instance.player.GetComponent<PlayerDash>().SetAbilityKey();
+            }
+            if (GameManager.instance.player.GetComponent<PlayerThrowBomb>().abilityIcon != null)
+            {
+                GameManager.instance.player.GetComponent<PlayerThrowBomb>().SetAbilityKey();
+            }
+
         }
     }
 

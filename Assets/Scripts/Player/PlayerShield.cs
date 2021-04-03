@@ -150,6 +150,16 @@ public class PlayerShield : RhythmObject
         triggerKey = icon.triggerKey;
         abilityIcon.coolDownTimer = 3;
     }
+
+
+    public void SetAbilityKey()
+    {
+        if (abilityIcon != null)
+        {
+            triggerKey = abilityIcon.triggerKey;
+        }
+    }
+
     public void ClearAvalibility()
     {
         for (int i = 0; i < availability.Count; i++)

@@ -112,6 +112,16 @@ public class PlayerThrowBomb : RhythmObject
         triggerKey = icon.triggerKey;
         abilityIcon.coolDownTimer = 3;
     }
+
+
+    public void SetAbilityKey()
+    {
+        if (abilityIcon != null)
+        {
+            triggerKey = abilityIcon.triggerKey;
+        }
+    }
+
     public void ClearAvalibility()
     {
         if (abilityIcon != null)
