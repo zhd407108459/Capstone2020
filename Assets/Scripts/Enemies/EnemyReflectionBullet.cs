@@ -13,6 +13,7 @@ public class EnemyReflectionBullet : RhythmObject
 
     public float movementLerpValue;
 
+    public int targetWall = 0;
 
     public int damage;
     public GameObject bounceOffBulletPrefab;
@@ -48,11 +49,11 @@ public class EnemyReflectionBullet : RhythmObject
         if (Vector2.Distance(transform.position, targetPos) > 0.0001f)
         {
             transform.position = Vector3.Lerp(transform.position, targetPos, movementLerpValue * Time.deltaTime);
-            if (!isReflected && 
-                ((transform.position.x <= GridManager.instance.GetPhaseInitialPosition().x - 0.5f * GridManager.instance.gridSize.x) 
-                || (transform.position.x >= GridManager.instance.GetPhaseInitialPosition().x + 9.5f * GridManager.instance.gridSize.x) 
-                || (transform.position.y <= GridManager.instance.GetPhaseInitialPosition().y - 0.5f * GridManager.instance.gridSize.y) 
-                || (transform.position.y >= GridManager.instance.GetPhaseInitialPosition().y + 4.5f * GridManager.instance.gridSize.y)))
+            if (!isReflected &&
+                (((transform.position.x <= GridManager.instance.GetPhaseInitialPosition().x - 0.5f * GridManager.instance.gridSize.x) && (targetWall == 0 || targetWall == 1))
+                || ((transform.position.x >= GridManager.instance.GetPhaseInitialPosition().x + 9.5f * GridManager.instance.gridSize.x) && (targetWall == 0 || targetWall == 2))
+                || ((transform.position.y <= GridManager.instance.GetPhaseInitialPosition().y - 0.5f * GridManager.instance.gridSize.y) && (targetWall == 0 || targetWall == 3))
+                || ((transform.position.y >= GridManager.instance.GetPhaseInitialPosition().y + 4.5f * GridManager.instance.gridSize.y) && (targetWall == 0 || targetWall == 4))))
             {
                 isReflected = true;
                 spriteRenderer.color = reflectedColor;
@@ -128,41 +129,49 @@ public class EnemyReflectionBullet : RhythmObject
         if (xDirection > 0 && yDirection == 0)
         {
             sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            sprite.transform.localScale = new Vector3(-1, 1, 1);
             return;
         }
         if (xDirection < 0 && yDirection == 0)
         {
-            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            sprite.transform.localScale = new Vector3(1, 1, 1);
             return;
         }
         if (xDirection == 0 && yDirection > 0)
         {
-            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 270.0f);
+            sprite.transform.localScale = new Vector3(1, 1, 1);
             return;
         }
         if (xDirection == 0 && yDirection < 0)
         {
             sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 270.0f);
+            sprite.transform.localScale = new Vector3(-1, 1, 1);
             return;
         }
         if (xDirection > 0 && yDirection > 0)
         {
             sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 45.0f);
+            sprite.transform.localScale = new Vector3(-1, 1, 1);
             return;
         }
         if (xDirection < 0 && yDirection > 0)
         {
             sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 135.0f);
+            sprite.transform.localScale = new Vector3(-1, 1, 1);
             return;
         }
         if (xDirection < 0 && yDirection < 0)
         {
-            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 225.0f);
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 45.0f);
+            sprite.transform.localScale = new Vector3(1, 1, 1);
             return;
         }
         if (xDirection > 0 && yDirection < 0)
         {
-            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 315.0f);
+            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 135.0f);
+            sprite.transform.localScale = new Vector3(1, 1, 1);
             return;
         }
     }

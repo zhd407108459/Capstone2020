@@ -283,28 +283,28 @@ public class BeatBoss : MonoBehaviour
             {
                 for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
                 {
-                    BossReflectBulletAttack(1, 0, 0, bi.actions[i].actionParameters[j]);
+                    BossReflectBulletAttack(1, 0, 0, bi.actions[i].actionParameters[j], 2);
                 }
             }
             if (bi.actions[i].actionType == 17)
             {
                 for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
                 {
-                    BossReflectBulletAttack(-1, 0, 9, bi.actions[i].actionParameters[j]);
+                    BossReflectBulletAttack(-1, 0, 9, bi.actions[i].actionParameters[j], 1);
                 }
             }
             if (bi.actions[i].actionType == 18)
             {
                 for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
                 {
-                    BossReflectBulletAttack(0, -1, bi.actions[i].actionParameters[j], 4);
+                    BossReflectBulletAttack(0, -1, bi.actions[i].actionParameters[j], 4, 3);
                 }
             }
             if (bi.actions[i].actionType == 19)
             {
                 for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
                 {
-                    BossReflectBulletAttack(0, 1, bi.actions[i].actionParameters[j], 0);
+                    BossReflectBulletAttack(0, 1, bi.actions[i].actionParameters[j], 0, 4);
                 }
             }
         }
@@ -319,7 +319,7 @@ public class BeatBoss : MonoBehaviour
         go.GetComponent<EnemyGridBullet>().SetUp(xPos, yPos);
         go.GetComponent<EnemyGridBullet>().SetBulletRotation();
     }
-    void BossReflectBulletAttack(int xDirection, int yDirection, int xPos, int yPos)
+    void BossReflectBulletAttack(int xDirection, int yDirection, int xPos, int yPos, int targetWall)
     {
         if (reflectBulletPrefab == null)
         {
@@ -330,6 +330,7 @@ public class BeatBoss : MonoBehaviour
         go.GetComponent<EnemyReflectionBullet>().xDirection = xDirection;
         go.GetComponent<EnemyReflectionBullet>().yDirection = yDirection;
         go.GetComponent<EnemyReflectionBullet>().damage = (int)(reflectBulletDamage);
+        go.GetComponent<EnemyReflectionBullet>().targetWall = targetWall;
         go.GetComponent<EnemyReflectionBullet>().SetUp(xPos, yPos);
         go.GetComponent<EnemyReflectionBullet>().SetBulletRotation();
     }
