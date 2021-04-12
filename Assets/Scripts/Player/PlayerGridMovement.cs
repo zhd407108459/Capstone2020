@@ -37,7 +37,7 @@ public class PlayerGridMovement : MonoBehaviour
 
     void Update()
     {
-        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !isInDialog)
+        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !isInDialog && !GameManager.instance.isCutScene)
         {
             Move();
         }

@@ -68,7 +68,7 @@ public class PlayerMeleeAttack : RhythmObject
         //}
         if(abilityIcon != null && Input.GetKeyDown(triggerKey) && !action.IsOffTune())
         {
-            if(BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && abilityIcon.isCoolDown)
+            if(BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && abilityIcon.isCoolDown && !GameManager.instance.isCutScene)
             {
                 MeleeAttack();
             }
