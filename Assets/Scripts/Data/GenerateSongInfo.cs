@@ -9352,7 +9352,7 @@ public class GenerateSongInfo : MonoBehaviour
             }
             //Section2,Beat16-55
             //Center1
-            if (i == 16 || i == 80)
+            if (i == 15 || i == 79)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 15;
@@ -9375,7 +9375,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(1);
                 ai2.actionParameters.Add(4);
                 ai2.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai2);
+                temp.beatsInfo[i + 4].actions.Add(ai2);
 
 
                 ActionInfo ai3 = new ActionInfo();
@@ -9391,7 +9391,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(3);
                 ai4.actionParameters.Add(4);
                 ai4.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai4);
+                temp.beatsInfo[i + 4].actions.Add(ai4);
 
 
                 ActionInfo ai5 = new ActionInfo();
@@ -9407,7 +9407,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai6.actionParameters.Add(5);
                 ai6.actionParameters.Add(4);
                 ai6.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai6);
+                temp.beatsInfo[i + 4].actions.Add(ai6);
 
                 ActionInfo ai7 = new ActionInfo();
                 ai7.actionType = 14;
@@ -9422,10 +9422,10 @@ public class GenerateSongInfo : MonoBehaviour
                 ai8.actionParameters.Add(7);
                 ai8.actionParameters.Add(4);
                 ai8.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai8);
+                temp.beatsInfo[i + 4].actions.Add(ai8);
             }
             //Center2
-            if (i == 20 || i == 100)
+            if (i == 19 || i == 99)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 15;
@@ -9448,7 +9448,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(1);
                 ai2.actionParameters.Add(7);
                 ai2.actionParameters.Add(3);
-                temp.beatsInfo[i + 3].actions.Add(ai2);
+                temp.beatsInfo[i + 4].actions.Add(ai2);
 
 
                 ActionInfo ai3 = new ActionInfo();
@@ -9464,7 +9464,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(3);
                 ai4.actionParameters.Add(7);
                 ai4.actionParameters.Add(3);
-                temp.beatsInfo[i + 3].actions.Add(ai4);
+                temp.beatsInfo[i + 4].actions.Add(ai4);
 
 
                 ActionInfo ai5 = new ActionInfo();
@@ -9480,7 +9480,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai6.actionParameters.Add(5);
                 ai6.actionParameters.Add(7);
                 ai6.actionParameters.Add(3);
-                temp.beatsInfo[i + 3].actions.Add(ai6);
+                temp.beatsInfo[i + 4].actions.Add(ai6);
 
                 ActionInfo ai7 = new ActionInfo();
                 ai7.actionType = 14;
@@ -9495,44 +9495,31 @@ public class GenerateSongInfo : MonoBehaviour
                 ai8.actionParameters.Add(7);
                 ai8.actionParameters.Add(7);
                 ai8.actionParameters.Add(3);
-                temp.beatsInfo[i + 3].actions.Add(ai8);
+                temp.beatsInfo[i + 4].actions.Add(ai8);
             }
             if (i == 16)
             {
                 ActionInfo ai = new ActionInfo();
-                ai.actionType = 16;
+                ai.actionType = 17;
                 ai.actionParameters.Add(4);
                 temp.beatsInfo[i].actions.Add(ai);
-
+            }
+            if (i == 17)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 17;
+                ai.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 18)
             {
                 ActionInfo ai = new ActionInfo();
-                ai.actionType = 16;
-                ai.actionParameters.Add(3);
-                temp.beatsInfo[i].actions.Add(ai);
-            }
-            if (i == 20)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 16;
-                ai.actionParameters.Add(2);
-                temp.beatsInfo[i].actions.Add(ai);
-            }
-            if (i == 22)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 16;
-                ai.actionParameters.Add(1);
+                ai.actionType = 17;
+                ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 24)
             {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 16;
-                ai.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai);
-
                 ActionInfo ai2 = new ActionInfo();
                 ai2.actionType = 4;
                 ai2.actionParameters.Add(0);
@@ -9545,7 +9532,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            //if (i == 26 - animationSolidDelay)
+            //if (i == 25 - animationSolidDelay)
             //{
             //    ActionInfo ai12 = new ActionInfo();
             //    ai12.actionType = 12;
@@ -9557,14 +9544,14 @@ public class GenerateSongInfo : MonoBehaviour
             //    ai13.actionParameters.Add(6);
             //    temp.beatsInfo[i].actions.Add(ai13);
             //}
-            //if (i == 28) //sfx
+            //if (i == 27) //sfx
             //{
             //    ActionInfo ai13 = new ActionInfo();
             //    ai13.actionType = 12;
             //    ai13.actionParameters.Add(7);
             //    temp.beatsInfo[i].actions.Add(ai13);
             //}
-            if (i == 26 - bossSolidDelay)
+            if (i == 25 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
@@ -9585,7 +9572,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionParameters.Add(4);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            //if (i == 30 - animationSolidDelay)
+            //if (i == 29 - animationSolidDelay)
             //{
             //    ActionInfo ai12 = new ActionInfo();
             //    ai12.actionType = 12;
@@ -9597,14 +9584,14 @@ public class GenerateSongInfo : MonoBehaviour
             //    ai13.actionParameters.Add(6);
             //    temp.beatsInfo[i].actions.Add(ai13);
             //}
-            //if (i == 32) //sfx
+            //if (i == 31) //sfx
             //{
             //    ActionInfo ai13 = new ActionInfo();
             //    ai13.actionType = 12;
             //    ai13.actionParameters.Add(7);
             //    temp.beatsInfo[i].actions.Add(ai13);
             //}
-            if (i == 30 - bossSolidDelay)
+            if (i == 29 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
@@ -9612,7 +9599,7 @@ public class GenerateSongInfo : MonoBehaviour
                 temp.beatsInfo[i].actions.Add(ai);
             }
             //Center3
-            if (i == 32 || i == 84)
+            if (i == 31 || i == 83)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 15;
@@ -9635,7 +9622,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(1);
                 ai2.actionParameters.Add(5);
                 ai2.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai2);
+                temp.beatsInfo[i + 4].actions.Add(ai2);
 
 
                 ActionInfo ai3 = new ActionInfo();
@@ -9651,7 +9638,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(3);
                 ai4.actionParameters.Add(5);
                 ai4.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai4);
+                temp.beatsInfo[i + 4].actions.Add(ai4);
 
 
                 ActionInfo ai5 = new ActionInfo();
@@ -9667,7 +9654,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai6.actionParameters.Add(5);
                 ai6.actionParameters.Add(5);
                 ai6.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai6);
+                temp.beatsInfo[i + 4].actions.Add(ai6);
 
                 ActionInfo ai7 = new ActionInfo();
                 ai7.actionType = 14;
@@ -9682,10 +9669,10 @@ public class GenerateSongInfo : MonoBehaviour
                 ai8.actionParameters.Add(7);
                 ai8.actionParameters.Add(5);
                 ai8.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai8);
+                temp.beatsInfo[i + 4].actions.Add(ai8);
             }
             //Center4
-            if (i == 36 || i == 96)
+            if (i == 35 || i == 95)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 15;
@@ -9708,7 +9695,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(1);
                 ai2.actionParameters.Add(2);
                 ai2.actionParameters.Add(3);
-                temp.beatsInfo[i + 3].actions.Add(ai2);
+                temp.beatsInfo[i + 4].actions.Add(ai2);
 
 
                 ActionInfo ai3 = new ActionInfo();
@@ -9724,7 +9711,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(3);
                 ai4.actionParameters.Add(2);
                 ai4.actionParameters.Add(3);
-                temp.beatsInfo[i + 3].actions.Add(ai4);
+                temp.beatsInfo[i + 4].actions.Add(ai4);
 
 
                 ActionInfo ai5 = new ActionInfo();
@@ -9740,7 +9727,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai6.actionParameters.Add(5);
                 ai6.actionParameters.Add(2);
                 ai6.actionParameters.Add(3);
-                temp.beatsInfo[i + 3].actions.Add(ai6);
+                temp.beatsInfo[i + 4].actions.Add(ai6);
 
                 ActionInfo ai7 = new ActionInfo();
                 ai7.actionType = 14;
@@ -9755,44 +9742,31 @@ public class GenerateSongInfo : MonoBehaviour
                 ai8.actionParameters.Add(7);
                 ai8.actionParameters.Add(2);
                 ai8.actionParameters.Add(3);
-                temp.beatsInfo[i + 3].actions.Add(ai8);
+                temp.beatsInfo[i + 4].actions.Add(ai8);
             }
             if (i == 32)
             {
                 ActionInfo ai = new ActionInfo();
-                ai.actionType = 17;
-                ai.actionParameters.Add(0);
+                ai.actionType = 16;
+                ai.actionParameters.Add(4);
                 temp.beatsInfo[i].actions.Add(ai);
-
+            }
+            if (i == 33)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 16;
+                ai.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 34)
             {
                 ActionInfo ai = new ActionInfo();
-                ai.actionType = 17;
-                ai.actionParameters.Add(1);
-                temp.beatsInfo[i].actions.Add(ai);
-            }
-            if (i == 36)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 17;
-                ai.actionParameters.Add(2);
-                temp.beatsInfo[i].actions.Add(ai);
-            }
-            if (i == 38)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 17;
-                ai.actionParameters.Add(3);
+                ai.actionType = 16;
+                ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 40)
             {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 17;
-                ai.actionParameters.Add(4);
-                temp.beatsInfo[i].actions.Add(ai);
-
                 ActionInfo ai2 = new ActionInfo();
                 ai2.actionType = 4;
                 ai2.actionParameters.Add(9);
@@ -9805,7 +9779,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            //if (i == 42 - animationSolidDelay)
+            //if (i == 41 - animationSolidDelay)
             //{
             //    ActionInfo ai12 = new ActionInfo();
             //    ai12.actionType = 12;
@@ -9817,14 +9791,14 @@ public class GenerateSongInfo : MonoBehaviour
             //    ai13.actionParameters.Add(6);
             //    temp.beatsInfo[i].actions.Add(ai13);
             //}
-            //if (i == 44) //sfx
+            //if (i == 43) //sfx
             //{
             //    ActionInfo ai13 = new ActionInfo();
             //    ai13.actionType = 12;
             //    ai13.actionParameters.Add(7);
             //    temp.beatsInfo[i].actions.Add(ai13);
             //}
-            if (i == 42 - bossSolidDelay)
+            if (i == 41 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
@@ -9845,7 +9819,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionParameters.Add(5);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            //if (i == 46 - animationSolidDelay)
+            //if (i == 45 - animationSolidDelay)
             //{
             //    ActionInfo ai12 = new ActionInfo();
             //    ai12.actionType = 12;
@@ -9857,31 +9831,48 @@ public class GenerateSongInfo : MonoBehaviour
             //    ai13.actionParameters.Add(6);
             //    temp.beatsInfo[i].actions.Add(ai13);
             //}
-            //if (i == 48) //sfx
+            //if (i == 47) //sfx
             //{
             //    ActionInfo ai13 = new ActionInfo();
             //    ai13.actionType = 12;
             //    ai13.actionParameters.Add(7);
             //    temp.beatsInfo[i].actions.Add(ai13);
             //}
-            if (i == 46 - bossSolidDelay)
+            if (i == 45 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
                 ai.actionParameters.Add(4);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            if (i == 48 || i == 50 || i == 52 || i == 54)
+            if (i == 48)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 16;
                 ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 16;
+                ai2.actionParameters.Add(4);
+                temp.beatsInfo[i].actions.Add(ai2);
             }
-            if (i == 49 || i == 51 || i == 53 || i == 55)
+            if (i == 50)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 17;
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 17;
+                ai2.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai2);
+            }
+            if (i == 52)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 16;
                 ai.actionParameters.Add(2);
                 temp.beatsInfo[i].actions.Add(ai);
             }
@@ -9899,19 +9890,21 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionType = 10;
                 ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
-
-                ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 10;
-                ai2.actionParameters.Add(3);
-                temp.beatsInfo[i].actions.Add(ai2);
+            }
+            if (i == 60)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 10;
+                ai.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai);
             }
             //Section3,Beat56-87
             //Center5
-            if (i == 56)
+            if (i == 55)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 15;
-                ai.actionParameters.Add(5);
+                ai.actionParameters.Add(6);
                 ai.actionParameters.Add(0);
                 ai.actionParameters.Add(2);
                 ai.actionParameters.Add(0);
@@ -9930,7 +9923,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(1);
                 ai2.actionParameters.Add(0);
                 ai2.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai2);
+                temp.beatsInfo[i + 4].actions.Add(ai2);
 
 
                 ActionInfo ai3 = new ActionInfo();
@@ -9946,7 +9939,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(3);
                 ai4.actionParameters.Add(0);
                 ai4.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai4);
+                temp.beatsInfo[i + 4].actions.Add(ai4);
 
 
                 ActionInfo ai5 = new ActionInfo();
@@ -9962,7 +9955,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai6.actionParameters.Add(5);
                 ai6.actionParameters.Add(0);
                 ai6.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai6);
+                temp.beatsInfo[i + 4].actions.Add(ai6);
 
                 ActionInfo ai7 = new ActionInfo();
                 ai7.actionType = 14;
@@ -9977,7 +9970,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai8.actionParameters.Add(7);
                 ai8.actionParameters.Add(0);
                 ai8.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai8);
+                temp.beatsInfo[i + 4].actions.Add(ai8);
 
                 ActionInfo ai11 = new ActionInfo();
                 ai11.actionType = 14;
@@ -9992,7 +9985,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai21.actionParameters.Add(1);
                 ai21.actionParameters.Add(0);
                 ai21.actionParameters.Add(2);
-                temp.beatsInfo[i + 7].actions.Add(ai21);
+                temp.beatsInfo[i + 8].actions.Add(ai21);
 
 
                 ActionInfo ai31 = new ActionInfo();
@@ -10008,7 +10001,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai41.actionParameters.Add(3);
                 ai41.actionParameters.Add(0);
                 ai41.actionParameters.Add(2);
-                temp.beatsInfo[i + 7].actions.Add(ai41);
+                temp.beatsInfo[i + 8].actions.Add(ai41);
 
 
                 ActionInfo ai51 = new ActionInfo();
@@ -10024,7 +10017,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai61.actionParameters.Add(5);
                 ai61.actionParameters.Add(0);
                 ai61.actionParameters.Add(2);
-                temp.beatsInfo[i + 7].actions.Add(ai61);
+                temp.beatsInfo[i + 8].actions.Add(ai61);
 
                 ActionInfo ai71 = new ActionInfo();
                 ai71.actionType = 14;
@@ -10039,7 +10032,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai81.actionParameters.Add(7);
                 ai81.actionParameters.Add(0);
                 ai81.actionParameters.Add(2);
-                temp.beatsInfo[i + 7].actions.Add(ai81);
+                temp.beatsInfo[i + 8].actions.Add(ai81);
             }
             if (i == 64)
             {
@@ -10047,18 +10040,20 @@ public class GenerateSongInfo : MonoBehaviour
                 ai.actionType = 10;
                 ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
-
-                ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 10;
-                ai2.actionParameters.Add(2);
-                temp.beatsInfo[i].actions.Add(ai2);
+            }
+            if (i == 68)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 10;
+                ai.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai);
             }
             //Center6
-            if (i == 64)
+            if (i == 63)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 15;
-                ai.actionParameters.Add(5);
+                ai.actionParameters.Add(6);
                 ai.actionParameters.Add(9);
                 ai.actionParameters.Add(2);
                 ai.actionParameters.Add(0);
@@ -10077,7 +10072,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(1);
                 ai2.actionParameters.Add(9);
                 ai2.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai2);
+                temp.beatsInfo[i + 4].actions.Add(ai2);
 
 
                 ActionInfo ai3 = new ActionInfo();
@@ -10093,7 +10088,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(3);
                 ai4.actionParameters.Add(9);
                 ai4.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai4);
+                temp.beatsInfo[i + 4].actions.Add(ai4);
 
 
                 ActionInfo ai5 = new ActionInfo();
@@ -10109,7 +10104,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai6.actionParameters.Add(5);
                 ai6.actionParameters.Add(9);
                 ai6.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai6);
+                temp.beatsInfo[i + 4].actions.Add(ai6);
 
                 ActionInfo ai7 = new ActionInfo();
                 ai7.actionType = 14;
@@ -10124,7 +10119,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai8.actionParameters.Add(7);
                 ai8.actionParameters.Add(9);
                 ai8.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai8);
+                temp.beatsInfo[i + 4].actions.Add(ai8);
 
                 ActionInfo ai11 = new ActionInfo();
                 ai11.actionType = 14;
@@ -10139,7 +10134,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai21.actionParameters.Add(1);
                 ai21.actionParameters.Add(9);
                 ai21.actionParameters.Add(2);
-                temp.beatsInfo[i + 7].actions.Add(ai21);
+                temp.beatsInfo[i + 8].actions.Add(ai21);
 
 
                 ActionInfo ai31 = new ActionInfo();
@@ -10155,7 +10150,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai41.actionParameters.Add(3);
                 ai41.actionParameters.Add(9);
                 ai41.actionParameters.Add(2);
-                temp.beatsInfo[i + 7].actions.Add(ai41);
+                temp.beatsInfo[i + 8].actions.Add(ai41);
 
 
                 ActionInfo ai51 = new ActionInfo();
@@ -10171,7 +10166,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai61.actionParameters.Add(5);
                 ai61.actionParameters.Add(9);
                 ai61.actionParameters.Add(2);
-                temp.beatsInfo[i + 7].actions.Add(ai61);
+                temp.beatsInfo[i + 8].actions.Add(ai61);
 
                 ActionInfo ai71 = new ActionInfo();
                 ai71.actionType = 14;
@@ -10186,14 +10181,14 @@ public class GenerateSongInfo : MonoBehaviour
                 ai81.actionParameters.Add(7);
                 ai81.actionParameters.Add(9);
                 ai81.actionParameters.Add(2);
-                temp.beatsInfo[i + 7].actions.Add(ai81);
+                temp.beatsInfo[i + 8].actions.Add(ai81);
             }
             //Center7
-            if (i == 72)
+            if (i == 71)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 15;
-                ai.actionParameters.Add(6);
+                ai.actionParameters.Add(9);
                 ai.actionParameters.Add(1);
                 ai.actionParameters.Add(4);
                 ai.actionParameters.Add(0);
@@ -10254,11 +10249,11 @@ public class GenerateSongInfo : MonoBehaviour
                 temp.beatsInfo[i + 7].actions.Add(ai7);
             }
             //Center8
-            if (i == 72)
+            if (i == 71)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 15;
-                ai.actionParameters.Add(6);
+                ai.actionParameters.Add(9);
                 ai.actionParameters.Add(8);
                 ai.actionParameters.Add(4);
                 ai.actionParameters.Add(0);
@@ -10623,7 +10618,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(1);
                 ai2.actionParameters.Add(0);
                 ai2.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai2);
+                temp.beatsInfo[i + 4].actions.Add(ai2);
 
 
                 ActionInfo ai3 = new ActionInfo();
@@ -10639,7 +10634,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(3);
                 ai4.actionParameters.Add(0);
                 ai4.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai4);
+                temp.beatsInfo[i + 4].actions.Add(ai4);
 
 
                 ActionInfo ai5 = new ActionInfo();
@@ -10655,7 +10650,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai6.actionParameters.Add(5);
                 ai6.actionParameters.Add(0);
                 ai6.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai6);
+                temp.beatsInfo[i + 4].actions.Add(ai6);
 
                 ActionInfo ai7 = new ActionInfo();
                 ai7.actionType = 14;
@@ -10670,7 +10665,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai8.actionParameters.Add(7);
                 ai8.actionParameters.Add(0);
                 ai8.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai8);
+                temp.beatsInfo[i + 4].actions.Add(ai8);
             }
             //Center6 Short
             if (i == 116)
@@ -10696,7 +10691,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(1);
                 ai2.actionParameters.Add(9);
                 ai2.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai2);
+                temp.beatsInfo[i + 4].actions.Add(ai2);
 
 
                 ActionInfo ai3 = new ActionInfo();
@@ -10712,7 +10707,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(3);
                 ai4.actionParameters.Add(9);
                 ai4.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai4);
+                temp.beatsInfo[i + 4].actions.Add(ai4);
 
 
                 ActionInfo ai5 = new ActionInfo();
@@ -10728,7 +10723,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai6.actionParameters.Add(5);
                 ai6.actionParameters.Add(9);
                 ai6.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai6);
+                temp.beatsInfo[i + 4].actions.Add(ai6);
 
                 ActionInfo ai7 = new ActionInfo();
                 ai7.actionType = 14;
@@ -10743,7 +10738,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai8.actionParameters.Add(7);
                 ai8.actionParameters.Add(9);
                 ai8.actionParameters.Add(2);
-                temp.beatsInfo[i + 3].actions.Add(ai8);
+                temp.beatsInfo[i + 4].actions.Add(ai8);
             }
             if (i == 120)
             {
