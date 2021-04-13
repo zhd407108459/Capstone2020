@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PhaseInfo : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PhaseInfo : MonoBehaviour
     public float rageTime;
     public int enemyBGMChangeCount1;
     public int enemyBGMChangeCount2;
+
+    public UnityEvent startEvent;
 
     public List<BasicPlatform> basicPlatforms = new List<BasicPlatform>();
     public List<BasicEnemy> enemies = new List<BasicEnemy>();
@@ -52,6 +55,5 @@ public class PhaseInfo : MonoBehaviour
             traps.Add(bts[i]);
             bts[i].gameObject.SetActive(false);
         }
-
     }
 }

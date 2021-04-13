@@ -225,6 +225,7 @@ public class GridManager : MonoBehaviour
         {
             phases[i].Initialize();
         }
+        phases[phaseIndex].startEvent.Invoke();
         if (startCutScene != null && ((SettingManager.instance != null && SettingManager.instance.targetPhase == 0) || SettingManager.instance == null))
         {
             startCutScene.Invoke();
@@ -324,6 +325,7 @@ public class GridManager : MonoBehaviour
         if(phaseIndex < phases.Count - 1)
         {
             phaseIndex++;
+            phases[phaseIndex].startEvent.Invoke();
             setAbilities.RecoverCoolDown();
             if (!IsInBattlePhase())
             {

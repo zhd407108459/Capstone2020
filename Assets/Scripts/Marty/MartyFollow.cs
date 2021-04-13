@@ -45,4 +45,9 @@ public class MartyFollow : MonoBehaviour
     {
         isFollow = flag;
     }
+
+    public void SetPosition(Transform target)
+    {
+        this.transform.position = target.position;
+    }
 }
