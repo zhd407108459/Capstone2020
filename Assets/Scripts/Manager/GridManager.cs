@@ -225,7 +225,7 @@ public class GridManager : MonoBehaviour
         {
             phases[i].Initialize();
         }
-        if (startCutScene != null)
+        if (startCutScene != null && ((SettingManager.instance != null && SettingManager.instance.targetPhase == 0) || SettingManager.instance == null))
         {
             startCutScene.Invoke();
         }
