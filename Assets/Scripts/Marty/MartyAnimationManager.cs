@@ -23,7 +23,9 @@ public class MartyAnimationManager : MonoBehaviour
         Happy,
         Sad,
         Sulk,
-        Surprised
+        Surprised,
+        EmptySunGlass,
+        SunGlass
     }
 
     public void SetIdle()
@@ -291,6 +293,15 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
             animator.SetBool("IsSuprised", true);
+        }
+
+        if (type == MartyAnimationEventType.EmptySunGlass)
+        {
+            animator.SetBool("IsSunGlass", false);
+        }
+        if (type == MartyAnimationEventType.SunGlass)
+        {
+            animator.SetBool("IsSunGlass", true);
         }
     }
 
