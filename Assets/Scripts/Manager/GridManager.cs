@@ -212,11 +212,11 @@ public class GridManager : MonoBehaviour
 
     private void Initialize()
     {
-        if (!isBossFight)
+        if (!isBossFight && (startCutScene == null || (startCutScene != null && phaseIndex != 0)))
         {
             BeatsManager.instance.StartBeats();
         }
-        else
+        else if(isBossFight)
         {
             phases[0].rageTime = BeatsManager.instance.GetBoss1BGMLength();
             //Debug.Log(BeatsManager.instance.GetBoss1BGMLength());
