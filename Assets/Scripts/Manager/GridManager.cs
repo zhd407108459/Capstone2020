@@ -18,6 +18,8 @@ public class GridManager : MonoBehaviour
     public Vector2 gridSize;
     public Vector2 initialPos;
 
+    public CutScene startCutScene;
+
     public float cameraDistanceToBoundary;
     public GameObject cameraObject;
     public float cameraFollowLerpValue;
@@ -135,7 +137,7 @@ public class GridManager : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!GameManager.instance.isPaused)
+        if (!GameManager.instance.isPaused && !GameManager.instance.isCutScene)
         {
             UpdateTargetCameraPosition();
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetCameraPos, cameraFollowLerpValue * Time.deltaTime);
@@ -222,6 +224,10 @@ public class GridManager : MonoBehaviour
         for (int i = 0; i < phases.Count; i++)
         {
             phases[i].Initialize();
+        }
+        if (startCutScene != null)
+        {
+            startCutScene.Invoke();
         }
         if (!IsInBattlePhase())
         {

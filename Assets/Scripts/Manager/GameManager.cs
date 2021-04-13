@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public bool isPaused;
     [HideInInspector] public bool isGameEnd;
+    [HideInInspector] public bool isCutScene;
 
 
 
@@ -79,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        if (isGameEnd || deadPanel.activeSelf)
+        if (isGameEnd || deadPanel.activeSelf || isCutScene)
         {
             return;
         }
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame(bool pause)
     {
-        if (isGameEnd || deadPanel.activeSelf)
+        if (isGameEnd || deadPanel.activeSelf || isCutScene)
         {
             return;
         }

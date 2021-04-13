@@ -61,7 +61,7 @@ public class SetAbilities : MonoBehaviour
         {
             return;
         }
-        if (isActivated)
+        if (isActivated && !GameManager.instance.isCutScene)
         {
             //ShowTips
             if(Input.mousePosition == lastMousePosition && !Input.GetMouseButton(0))
