@@ -10944,13 +10944,13 @@ public class GenerateSongInfo : MonoBehaviour
             if (i == 104 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
-                ai.actionType = 5;
-                ai.actionParameters.Add(6);
+                ai.actionType = 7;
+                ai.actionParameters.Add(5);
                 temp.beatsInfo[i].actions.Add(ai);
 
                 ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 5;
-                ai2.actionParameters.Add(9);
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
             if (i == 108 - animationSolidDelay)
@@ -10975,13 +10975,13 @@ public class GenerateSongInfo : MonoBehaviour
             if (i == 108 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
-                ai.actionType = 6;
-                ai.actionParameters.Add(5);
+                ai.actionType = 7;
+                ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
 
                 ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 6;
-                ai2.actionParameters.Add(8);
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(4);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
             if (i == 112 - animationSolidDelay)
@@ -12612,13 +12612,13 @@ public class GenerateSongInfo : MonoBehaviour
             if (i == 104 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
-                ai.actionType = 5;
-                ai.actionParameters.Add(6);
+                ai.actionType = 7;
+                ai.actionParameters.Add(5);
                 temp.beatsInfo[i].actions.Add(ai);
 
                 ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 5;
-                ai2.actionParameters.Add(9);
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
             if (i == 108 - animationSolidDelay)
@@ -12643,13 +12643,13 @@ public class GenerateSongInfo : MonoBehaviour
             if (i == 108 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
-                ai.actionType = 6;
-                ai.actionParameters.Add(5);
+                ai.actionType = 7;
+                ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
 
                 ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 6;
-                ai2.actionParameters.Add(8);
+                ai2.actionType = 7;
+                ai2.actionParameters.Add(4);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
             if (i == 112 - animationSolidDelay)
