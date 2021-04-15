@@ -7434,21 +7434,21 @@ public class GenerateSongInfo : MonoBehaviour
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
-                ai.actionParameters.Add(4);
+                ai.actionParameters.Add(5);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 132 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
-                ai.actionParameters.Add(6);
+                ai.actionParameters.Add(3);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 133 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
-                ai.actionParameters.Add(8);
+                ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 136)
@@ -7928,7 +7928,7 @@ public class GenerateSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(9);
                 temp.beatsInfo[i].actions.Add(ai4);
             }
-            if( i == 86 || i == 94 || i == 102 || i == 110 || i == 118 || i == 126 || i == 134 || i == 142 || i == 186 || i == 194 || i == 202 || i == 210)
+            if (i == 86 || i == 94 || i == 102 || i == 110 || i == 118 || i == 126 || i == 134 || i == 142 || i == 186 || i == 194 || i == 202 || i == 210)
             {
                 ActionInfo ai12 = new ActionInfo();
                 ai12.actionType = 12;
@@ -9074,21 +9074,21 @@ public class GenerateSongInfo : MonoBehaviour
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
-                ai.actionParameters.Add(4);
+                ai.actionParameters.Add(5);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 132 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
-                ai.actionParameters.Add(6);
+                ai.actionParameters.Add(3);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 133 - bossSolidDelay)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 8;
-                ai.actionParameters.Add(8);
+                ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             if (i == 136)
