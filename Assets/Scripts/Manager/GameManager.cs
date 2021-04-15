@@ -57,7 +57,10 @@ public class GameManager : MonoBehaviour
         pausePanelMenuButton.onClick.AddListener(BackToMenu);
         pausePanelRestartButton.onClick.AddListener(RestartCurrentBattle);
         pausePanelRestartButton.onClick.AddListener(HidePausePanel);
-        deadPanelRestartButton.onClick.AddListener(RestartCurrentBattle);
+        if(deadPanelRestartButton != null)
+        {
+            deadPanelRestartButton.onClick.AddListener(RestartCurrentBattle);
+        }
         deadPanelMenuButton.onClick.AddListener(BackToMenu);
 
     }
