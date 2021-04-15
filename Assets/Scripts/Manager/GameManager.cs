@@ -138,6 +138,7 @@ public class GameManager : MonoBehaviour
         {
             SettingManager.instance.ClearSkillSelection();
         }
+        GridManager.instance.setAbilities.StopBossPreBGM();
     }
 
     void RestartGame()
@@ -163,6 +164,7 @@ public class GameManager : MonoBehaviour
         {
             deadBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
+        GridManager.instance.setAbilities.StopBossPreBGM();
     }
 
     public void PlayerDie()
