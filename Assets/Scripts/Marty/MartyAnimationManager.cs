@@ -108,6 +108,15 @@ public class MartyAnimationManager : MonoBehaviour
         SetAnimation(MartyAnimationEventType.Surprised);
     }
 
+    public void SetEmptySunGlass()
+    {
+        SetAnimation(MartyAnimationEventType.EmptySunGlass);
+    }
+    public void SetSunGlass()
+    {
+        SetAnimation(MartyAnimationEventType.SunGlass);
+    }
+
     public void SetAnimation(MartyAnimationEventType type)
     {
         if(animator == null)
