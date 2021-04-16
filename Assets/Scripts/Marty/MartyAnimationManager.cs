@@ -13,6 +13,7 @@ public class MartyAnimationManager : MonoBehaviour
         Dying,
         Pointing1,
         Pointing2,
+        LayDown,
         Netural,
         Adore,
         Akimbo,
@@ -51,6 +52,11 @@ public class MartyAnimationManager : MonoBehaviour
     public void SetPointing2()
     {
         SetAnimation(MartyAnimationEventType.Pointing2);
+    }
+
+    public void SetLayDown()
+    {
+        SetAnimation(MartyAnimationEventType.LayDown);
     }
 
     public void SetNetural()
@@ -130,6 +136,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsDying", false);
             animator.SetBool("IsPointing1", false);
             animator.SetBool("IsPointing2", false);
+            animator.SetBool("IsLayDown", false);
         }
         if (type == MartyAnimationEventType.Moving)
         {
@@ -137,6 +144,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsDying", false);
             animator.SetBool("IsPointing1", false);
             animator.SetBool("IsPointing2", false);
+            animator.SetBool("IsLayDown", false);
         }
         if (type == MartyAnimationEventType.Dying)
         {
@@ -144,6 +152,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsDying", true);
             animator.SetBool("IsPointing1", false);
             animator.SetBool("IsPointing2", false);
+            animator.SetBool("IsLayDown", false);
         }
         if (type == MartyAnimationEventType.Pointing1)
         {
@@ -151,6 +160,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsDying", false);
             animator.SetBool("IsPointing1", true);
             animator.SetBool("IsPointing2", false);
+            animator.SetBool("IsLayDown", false);
         }
         if (type == MartyAnimationEventType.Pointing2)
         {
@@ -158,6 +168,15 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsDying", false);
             animator.SetBool("IsPointing1", false);
             animator.SetBool("IsPointing2", true);
+            animator.SetBool("IsLayDown", false);
+        }
+        if (type == MartyAnimationEventType.LayDown)
+        {
+            animator.SetBool("IsMoving", false);
+            animator.SetBool("IsDying", false);
+            animator.SetBool("IsPointing1", false);
+            animator.SetBool("IsPointing2", false);
+            animator.SetBool("IsLayDown", true);
         }
 
         if (type == MartyAnimationEventType.Netural)
