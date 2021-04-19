@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class BrokenPlatform : BasicPlatform
 {
@@ -16,6 +18,8 @@ public class BrokenPlatform : BasicPlatform
 
     public bool isBreaking;
     public bool isBroken;
+
+    public string brokenEffectFXEventPath = "event:/FX/Player/GlassBreak";
 
     private int breakTimer;
     private GameObject breakingParticle;
@@ -123,5 +127,16 @@ public class BrokenPlatform : BasicPlatform
             Instantiate(brokenParticlePrefab, transform.position, Quaternion.identity);
         }
         GameManager.instance.player.GetComponent<PlayerGridMovement>().CheckYPosition();
+
+        if(brokenEffectFXEventPath != null && brokenEffectFXEventPath != "")
+            {
+            EventInstance brokenEffectFX;
+            brokenEffectFX = RuntimeManager.CreateInstance(brokenEffectFXEventPath);
+            if (SettingManager.instance != null)
+            {
+                brokenEffectFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
+            }
+            brokenEffectFX.start();
+        }
     }
 }

@@ -15,6 +15,8 @@ public class BossDollAttack : RhythmObject
 
     public Animator animator;
 
+    public string enemyAttackFXEventPath = "event:/FX/Enemy/FX-EnemyFrogCroak";
+
     private int targetX;
     private int targetY;
 
@@ -78,6 +80,17 @@ public class BossDollAttack : RhythmObject
                 if(animator != null)
                 {
                     animator.SetTrigger("Attack");
+                    if (enemyAttackFXEventPath != null && enemyAttackFXEventPath != "")
+                    {
+                        EventInstance enemyAttackFX;
+                        enemyAttackFX = RuntimeManager.CreateInstance(enemyAttackFXEventPath);
+                        if (SettingManager.instance != null)
+                        {
+                            float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                            enemyAttackFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume * (1.0f - value));
+                        }
+                        enemyAttackFX.start();
+                    }
                 }
             }
             if(attackTimer > attackDelay)

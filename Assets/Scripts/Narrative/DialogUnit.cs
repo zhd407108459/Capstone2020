@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using FMOD.Studio;
+using FMODUnity;
 
 public class DialogUnit : MonoBehaviour
 {
@@ -12,9 +14,23 @@ public class DialogUnit : MonoBehaviour
     public bool isFollowTarget;
     public UnityEvent startEvents;
 
+    public enum TypingFX {
+        None,
+        Vigorus,
+        Marty,
+        N
+    }
+    public TypingFX typingFX;
+
     private string originText;
     private int typingIndex;
     private Coroutine typingCoroutine;
+    private EventInstance typingFXEvent;
+
+    private string vigorusTypingFXPath = "event:/FX/VO/VO-Vigorus";
+    private string martyTypingFXPath = "event:/FX/VO/VO-Marty";
+    private string nTypingFXPath = "event:/FX/VO/VO-N";
+
 
     void Start()
     {
@@ -45,6 +61,33 @@ public class DialogUnit : MonoBehaviour
         }
         typingCoroutine = StartCoroutine(Type());
         startEvents.Invoke();
+        if(typingFX == TypingFX.Vigorus)
+        {
+            typingFXEvent = RuntimeManager.CreateInstance(vigorusTypingFXPath);
+            if (SettingManager.instance != null)
+            {
+                typingFXEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
+            }
+            typingFXEvent.start();
+        }
+        else if (typingFX == TypingFX.Marty)
+        {
+            typingFXEvent = RuntimeManager.CreateInstance(martyTypingFXPath);
+            if (SettingManager.instance != null)
+            {
+                typingFXEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
+            }
+            typingFXEvent.start();
+        }
+        else if (typingFX == TypingFX.N)
+        {
+            typingFXEvent = RuntimeManager.CreateInstance(nTypingFXPath);
+            if (SettingManager.instance != null)
+            {
+                typingFXEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
+            }
+            typingFXEvent.start();
+        }
     }
 
     public void ImmediateShow()
@@ -55,6 +98,10 @@ public class DialogUnit : MonoBehaviour
         }
         typingIndex = originText.Length;
         textContent.text = originText;
+        if (typingFXEvent.isValid())
+        {
+            typingFXEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
     }
 
     IEnumerator Type()
@@ -63,6 +110,10 @@ public class DialogUnit : MonoBehaviour
         if(typingIndex < originText.Length)
         {
             textContent.text += originText.Substring(typingIndex, 1);
+            if (typingFXEvent.isValid())
+            {
+                typingFXEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            }
         }
         if (typingIndex < originText.Length - 1)
         {

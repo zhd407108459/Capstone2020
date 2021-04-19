@@ -113,7 +113,6 @@ public class DirectionalLightCaster2D : MonoBehaviour
         {
             angledLines[1].vert = lightRays.transform.worldToLocalMatrix.MultiplyPoint3x4(endHit.point);
             angledLines[1].uv = CalculateUV(endHit.point, angleDir, lineDir, lineDistance);
-            Debug.Log(angledLines[1].uv);
         }
         else
         {

@@ -16,6 +16,7 @@ public class ShellBulletEnemy : BasicEnemy
 
     public string enemyBulletAttackFXEventPath = "event:/FX/Enemy/FX-EnemyBullet";
     public string enemyAppearFXEventPath = "event:/FX/Enemy/FX-EnemyLaughter";
+    public string enemyNotHittedFXEventPath = "event:/FX/Player/FX-HitBox";
 
     private int state; //0=idle,1=ready to atttack
     private int shootTimer;
@@ -126,6 +127,19 @@ public class ShellBulletEnemy : BasicEnemy
             if (aci[0].clip.name.Equals("in") || aci[0].clip.name.Equals("Idle2") || aci[0].clip.name.Equals("attack") || aci[0].clip.name.Equals("out"))
             {
                 base.TakeDamage(damage);
+            }
+            else
+            {
+                if (enemyNotHittedFXEventPath != null && enemyNotHittedFXEventPath != "")
+                {
+                    EventInstance enemyNotHittedFX;
+                    enemyNotHittedFX = RuntimeManager.CreateInstance(enemyNotHittedFXEventPath);
+                    if (SettingManager.instance != null)
+                    {
+                        enemyNotHittedFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
+                    }
+                    enemyNotHittedFX.start();
+                }
             }
         }
         if(state == 1)
