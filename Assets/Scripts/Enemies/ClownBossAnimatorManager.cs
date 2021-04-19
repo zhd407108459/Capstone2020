@@ -40,6 +40,36 @@ public class ClownBossAnimatorManager : MonoBehaviour
         animator.SetBool("IsAngry", false);
     }
 
+    public void Glitch1On()
+    {
+        animator.SetBool("IsGlitch1", true);
+    }
+
+    public void Glitch1Off()
+    {
+        animator.SetBool("IsGlitch1", false);
+    }
+
+    public void Glitch2On()
+    {
+        animator.SetBool("IsGlitch2", true);
+    }
+
+    public void Glitch2Off()
+    {
+        animator.SetBool("IsGlitch2", false);
+    }
+
+    public void Glitch3On()
+    {
+        animator.SetBool("IsGlitch3", true);
+    }
+
+    public void Glitch3Off()
+    {
+        animator.SetBool("IsGlitch3", false);
+    }
+
     public void Reset()
     {
 
