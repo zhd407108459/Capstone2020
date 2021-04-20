@@ -110,14 +110,18 @@ public class DialogUnit : MonoBehaviour
         if(typingIndex < originText.Length)
         {
             textContent.text += originText.Substring(typingIndex, 1);
-            if (typingFXEvent.isValid())
-            {
-                typingFXEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            }
         }
         if (typingIndex < originText.Length - 1)
         {
             typingIndex++;
+            if (typingIndex == originText.Length - 1)
+            {
+
+                if (typingFXEvent.isValid())
+                {
+                    typingFXEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                }
+            }
             StartCoroutine(Type());
         }
     }
