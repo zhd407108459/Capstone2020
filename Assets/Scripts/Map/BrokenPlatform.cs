@@ -19,7 +19,7 @@ public class BrokenPlatform : BasicPlatform
     public bool isBreaking;
     public bool isBroken;
 
-    public string brokenEffectFXEventPath = "event:/FX/Player/GlassBreak";
+    public string brokenEffectFXEventPath = "event:/FX/Player/FX-GlassBreak";
 
     private int breakTimer;
     private GameObject breakingParticle;
