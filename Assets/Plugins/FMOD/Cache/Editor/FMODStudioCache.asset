@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: event:/FX/Enemy/FX-EnemyBuff2_1
   guid: 45917b68303c534d987e213628dfcd4f
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -23,6 +23,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1125
+--- !u!114 &-9109063828390139954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Debuff
+  m_EditorClassIdentifier: 
+  Name: Debuff
+  Min: 0
+  Max: 3.5
+  Default: 0
+  Exists: 1
 --- !u!114 &-8923617213783867069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,7 +73,7 @@ MonoBehaviour:
   Min: 0
   Max: 5.5
   Default: 5
-  Exists: 1
+  Exists: 0
 --- !u!114 &-8888117656150811888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +161,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -204,15 +221,15 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -7381956755593470368}
-  - {fileID: -8906570583921878528}
-  - {fileID: -1248730470708687140}
-  - {fileID: -2951647758342659523}
+  - {fileID: -4051780495402661571}
+  - {fileID: 6083113727377850923}
+  - {fileID: 4287541961828682745}
+  - {fileID: 1401087335946872909}
   MinDistance: 0
   MaxDistance: 0
   Length: 140799
@@ -267,6 +284,23 @@ MonoBehaviour:
   Max: 2.5
   Default: 2
   Exists: 1
+--- !u!114 &-7620568716583130421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/TimeNumReact
+  m_EditorClassIdentifier: 
+  Name: TimeNumReact
+  Min: 0
+  Max: 5.5
+  Default: 5
+  Exists: 1
 --- !u!114 &-7569725685723901881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +319,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -344,6 +378,24 @@ MonoBehaviour:
   Min: 0
   Max: 1.5
   Default: 0
+  Exists: 0
+--- !u!114 &-7300005836181571655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SoundEffects.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/SoundEffects.bank
+  SubDir: 
+  lastModified: 637549002602196059
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &-7263970127950848751
 MonoBehaviour:
@@ -414,7 +466,7 @@ MonoBehaviour:
   lastModified: 637544703966586436
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-7178551794198447995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,7 +538,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -543,7 +595,7 @@ MonoBehaviour:
   Path: event:/FX/VO/VO-N
   guid: ebc128e23ee94e4983a00be5e29d8088
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -655,7 +707,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -752,7 +804,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -813,7 +865,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -856,7 +908,7 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -882,7 +934,7 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -956,7 +1008,7 @@ MonoBehaviour:
   Path: event:/FX/Item/FX-Spike
   guid: 738ec742db33b2438dd2d522e59ac087
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -999,7 +1051,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1025,7 +1077,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1068,7 +1120,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1180,7 +1232,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1326,7 +1378,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1351,6 +1403,23 @@ MonoBehaviour:
   lastModified: 637532391427981672
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &-4051780495402661571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level2-Battle/Combo
+  m_EditorClassIdentifier: 
+  Name: Combo
+  Min: 0
+  Max: 1.5
+  Default: 0
   Exists: 1
 --- !u!114 &-4048473163121611091
 MonoBehaviour:
@@ -1423,7 +1492,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1449,7 +1518,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1473,7 +1542,7 @@ MonoBehaviour:
   Min: 0
   Max: 1.5
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-3074789157797000622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,7 +1558,7 @@ MonoBehaviour:
   Path: event:/FX/VO/VO-Marty
   guid: 0ab163261b71234ca947d1c5f788caac
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -1548,7 +1617,7 @@ MonoBehaviour:
   Min: 0
   Max: 2.5
   Default: 2
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2914477061269009962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,7 +1653,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1607,7 +1676,7 @@ MonoBehaviour:
   Path: event:/FX/Player/FX-HitBox
   guid: 00fe6ebb20dafc4fa4aa73f686289a91
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1633,7 +1702,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1740,11 +1809,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FmodSoundSystem/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637544669398536326
+  lastModified: 637549002595564870
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 3886
+    Value: 3920
   Exists: 1
 --- !u!114 &-1753114287429506973
 MonoBehaviour:
@@ -1781,7 +1850,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1839,7 +1908,7 @@ MonoBehaviour:
   Min: 0
   Max: 3.5
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-1165492435423332324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1876,7 +1945,7 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -1937,6 +2006,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-909058927846038103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/GamePhase
+  m_EditorClassIdentifier: 
+  Name: GamePhase
+  Min: 0
+  Max: 2.5
+  Default: 2
+  Exists: 1
 --- !u!114 &-752590691669699353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1955,7 +2041,7 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -1981,7 +2067,7 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -2022,7 +2108,7 @@ MonoBehaviour:
   Path: event:/FX/VO/VO-Vigorus
   guid: d755deb1069bd649821523bf2d1d7711
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -2082,7 +2168,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2139,9 +2225,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -1762550800751407181}
-  - {fileID: 4626737637186115167}
-  - {fileID: 7663442496045657800}
-  - {fileID: -7184409125591523288}
+  - {fileID: 8506540781473232885}
+  - {fileID: 1670842680178253154}
+  - {fileID: -7300005836181571655}
   EditorEvents:
   - {fileID: 8964471188454000680}
   - {fileID: 2960622014905968078}
@@ -2200,10 +2286,10 @@ MonoBehaviour:
   - {fileID: 6299190139072000281}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 4626737637186115167}
+  - {fileID: 8506540781473232885}
   StringsBanks:
   - {fileID: -1762550800751407181}
-  stringsBankWriteTime: 637544669398536326
+  stringsBankWriteTime: 637549002595564870
   cacheVersion: 3
 --- !u!114 &18546893740300764
 MonoBehaviour:
@@ -2257,7 +2343,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2335,7 +2421,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2411,7 +2497,7 @@ MonoBehaviour:
   Min: 0
   Max: 3.5
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &1290994178108328484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2428,7 +2514,7 @@ MonoBehaviour:
   Min: 0
   Max: 5.5
   Default: 5
-  Exists: 1
+  Exists: 0
 --- !u!114 &1340381278777838301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2447,7 +2533,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2455,6 +2541,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 197
+--- !u!114 &1401087335946872909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level2-Battle/GamePhase
+  m_EditorClassIdentifier: 
+  Name: GamePhase
+  Min: 0
+  Max: 2.5
+  Default: 2
+  Exists: 1
 --- !u!114 &1446160756210673729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2470,7 +2573,7 @@ MonoBehaviour:
   Path: event:/FX/Enemy/FX-EnemyFrogCroak
   guid: dc2d2947e5d441459b59ccc3cc1cf065
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2496,7 +2599,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2539,7 +2642,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2547,6 +2650,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 387
+--- !u!114 &1670842680178253154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637549002602115987
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &1743486509100403200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2616,7 +2737,7 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -2711,7 +2832,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2823,7 +2944,7 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -2883,7 +3004,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2926,7 +3047,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2952,7 +3073,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3081,7 +3202,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -3176,6 +3297,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &4287541961828682745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level2-Battle/Debuff
+  m_EditorClassIdentifier: 
+  Name: Debuff
+  Min: 0
+  Max: 3.5
+  Default: 0
+  Exists: 1
 --- !u!114 &4308610077960994553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3245,7 +3383,7 @@ MonoBehaviour:
   lastModified: 637544669398506425
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &4661410771405571808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3295,7 +3433,7 @@ MonoBehaviour:
   Path: event:/FX/Item/FX-QuickCharge
   guid: a686430db0f3ba44a2523eafafd83b62
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3390,15 +3528,15 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 1243355984707851952}
-  - {fileID: 6939325705644438397}
-  - {fileID: -3078660514740180929}
-  - {fileID: 1290994178108328484}
+  - {fileID: -9109063828390139954}
+  - {fileID: -909058927846038103}
+  - {fileID: 7933683906619751030}
+  - {fileID: -7620568716583130421}
   MinDistance: 0
   MaxDistance: 0
   Length: 153600
@@ -3437,7 +3575,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3532,6 +3670,23 @@ MonoBehaviour:
   lastModified: 637532391359327438
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &6083113727377850923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level2-Battle/TimeNumReact
+  m_EditorClassIdentifier: 
+  Name: TimeNumReact
+  Min: 0
+  Max: 5.5
+  Default: 5
   Exists: 1
 --- !u!114 &6092393884667649167
 MonoBehaviour:
@@ -3633,7 +3788,7 @@ MonoBehaviour:
   Path: event:/FX/Enemy/FX-EnemyBuff2_2
   guid: eeda899d75456f4f8a4c00ff5873a0b0
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3693,7 +3848,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3717,7 +3872,7 @@ MonoBehaviour:
   Min: 0
   Max: 2.5
   Default: 2
-  Exists: 1
+  Exists: 0
 --- !u!114 &6991527088157265813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3770,7 +3925,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3810,7 +3965,7 @@ MonoBehaviour:
   Path: event:/FX/Player/FX-GlassBreak
   guid: dc3f364de8833240aac36bf3821f7061
   Banks:
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3888,7 +4043,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3931,7 +4086,7 @@ MonoBehaviour:
   lastModified: 637544669430434135
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &7677438796436106663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3950,7 +4105,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3993,6 +4148,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &7933683906619751030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level1-Battle/Combo
+  m_EditorClassIdentifier: 
+  Name: Combo
+  Min: 0
+  Max: 1.5
+  Default: 0
+  Exists: 1
 --- !u!114 &7936333774161893014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4064,7 +4236,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4176,6 +4348,24 @@ MonoBehaviour:
   Max: 2.5
   Default: 2
   Exists: 0
+--- !u!114 &8506540781473232885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodSoundSystem/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637549002595554860
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &8573722153571129592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4229,7 +4419,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4255,7 +4445,7 @@ MonoBehaviour:
   - {fileID: 906808297544704689}
   - {fileID: -4092486358153468349}
   - {fileID: -1165492435423332324}
-  - {fileID: 7663442496045657800}
+  - {fileID: 1670842680178253154}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -4316,7 +4506,7 @@ MonoBehaviour:
   - {fileID: -7112025065034719276}
   - {fileID: -8779680201080713125}
   - {fileID: -7213179936008368190}
-  - {fileID: -7184409125591523288}
+  - {fileID: -7300005836181571655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
