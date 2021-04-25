@@ -579,6 +579,11 @@ public class BeatsManager : MonoBehaviour
         bgmEvent.start();
     }
 
+    public void EndBGM()
+    {
+        bgmEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
     public void BGMVolumeFade()
     {
         isVolumeFading = true;

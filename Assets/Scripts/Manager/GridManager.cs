@@ -19,6 +19,7 @@ public class GridManager : MonoBehaviour
     public Vector2 initialPos;
 
     public CutScene startCutScene;
+    public CutScene bossEndingCutScene;
 
     public float cameraDistanceToBoundary;
     public GameObject cameraObject;
@@ -994,5 +995,13 @@ public class GridManager : MonoBehaviour
         combo = 0;
         //comboTimer = 0;
         comboTipObject.SetActive(false);
+    }
+
+    public void PlayBossEndingCutScene()
+    {
+        if(bossEndingCutScene != null)
+        {
+            bossEndingCutScene.Invoke();
+        }
     }
 }

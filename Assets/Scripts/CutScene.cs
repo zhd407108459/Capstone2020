@@ -11,14 +11,30 @@ public class CutScene : MonoBehaviour
     public List<GameObject> showObjects = new List<GameObject>();
     public List<GameObject> hideObjects = new List<GameObject>();
 
+    public UnityEvent skipEvent;
+    public GameObject skipTip;
+
     private float timer;
     private float lastTimer;
     private bool isPlaying = false;
+    private bool isSkipTipOn = false;
 
     void Update()
     {
         if (isPlaying)
         {
+            if (Input.anyKeyDown && !isSkipTipOn)
+            {
+                isSkipTipOn = true;
+                skipTip.SetActive(true);
+            }
+
+            if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl)) && isSkipTipOn) 
+            {
+                skipEvent.Invoke();
+                Stop();
+            }
+
             timer += Time.deltaTime;
 
             for(int i = 0; i < events.Count; i++)
@@ -40,6 +56,7 @@ public class CutScene : MonoBehaviour
     public void Invoke()
     {
         isPlaying = true;
+        isSkipTipOn = false;
         timer = 0;
         lastTimer = 0;
         for(int i = 0; i < hideObjects.Count; i++)
@@ -51,11 +68,13 @@ public class CutScene : MonoBehaviour
             showObjects[i].SetActive(true);
         }
         GameManager.instance.isCutScene = true;
+        skipTip.SetActive(false);
     }
 
     public void Stop()
     {
         isPlaying = false;
+        isSkipTipOn = false;
         for (int i = 0; i < hideObjects.Count; i++)
         {
             hideObjects[i].SetActive(true);
@@ -65,5 +84,6 @@ public class CutScene : MonoBehaviour
             showObjects[i].SetActive(false);
         }
         GameManager.instance.isCutScene = false;
+        skipTip.SetActive(false);
     }
 }

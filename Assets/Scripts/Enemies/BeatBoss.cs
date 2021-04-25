@@ -111,8 +111,38 @@ public class BeatBoss : MonoBehaviour
     public void Die()
     {
         //Debug.Log("BossDie");
-        endUIPanel.SetActive(true);
-        if(SettingManager.instance != null)
+        //endUIPanel.SetActive(true);
+        GridManager.instance.PlayBossEndingCutScene();
+        BeatsManager.instance.EndBGM();
+        foreach (var n in FindObjectsOfType<EnemyGridBullet>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<EnemyReflectionBullet>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<PlayerGridBullet>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<SolidAttack>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<EnemyBomb>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<BossDollAttack>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<BossRopeHangingObject>())
+        {
+            Destroy(n.gameObject);
+        }
+        if (SettingManager.instance != null)
         {
             if(SettingManager.instance.levelProcess == GridManager.instance.levelIndex)
             {
