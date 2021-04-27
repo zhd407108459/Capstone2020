@@ -55,6 +55,7 @@ public class GridManager : MonoBehaviour
     public GameObject narrativeTip;
 
     [HideInInspector] public Vector3 targetCameraPos;
+    [HideInInspector] public float targetCameraSize = 5.0f;
     [HideInInspector] public bool isCameraFollowing;
     [HideInInspector] public bool isInPhase;
     [HideInInspector] public string itemEmergenceFXEventPath = "event:/FX/Item/FX-ItemEmergence";
@@ -99,6 +100,7 @@ public class GridManager : MonoBehaviour
             setAbilities.SetSkillKeys();
         }
         targetCameraPos = cameraObject.transform.position;
+        targetCameraSize = Camera.main.orthographicSize;
         closeRecordPanelButton.onClick.AddListener(HideRecordPanel);
         Initialize();
     }
@@ -141,6 +143,10 @@ public class GridManager : MonoBehaviour
         if (!GameManager.instance.isPaused && !GameManager.instance.isCutScene)
         {
             UpdateTargetCameraPosition();
+            if(Camera.main.orthographicSize != targetCameraSize)
+            {
+                Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, targetCameraSize, cameraFollowLerpValue * Time.deltaTime);
+            }
             cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetCameraPos, cameraFollowLerpValue * Time.deltaTime);
             fixedBackground.transform.position = new Vector3(cameraObject.transform.position.x, cameraObject.transform.position.y, fixedBackground.transform.position.z);
             backgroundMovement.MoveBackgrounds(cameraObject.transform.position.x - lastCameraPos.x);
@@ -651,18 +657,26 @@ public class GridManager : MonoBehaviour
     {
         if (!IsInBattlePhase())
         {
-            if (GameManager.instance.player.transform.position.x < GetPhaseInitialPosition().x + cameraDistanceToBoundary)
+            if (!narrativeTip.activeSelf)
             {
-                targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
-            }
-            else if (GameManager.instance.player.transform.position.x > GetPhaseEndPosition().x - cameraDistanceToBoundary)
-            {
-                targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
+                if (GameManager.instance.player.transform.position.x < GetPhaseInitialPosition().x + cameraDistanceToBoundary)
+                {
+                    targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
+                }
+                else if (GameManager.instance.player.transform.position.x > GetPhaseEndPosition().x - cameraDistanceToBoundary)
+                {
+                    targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
+                }
+                else
+                {
+                    targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, 0, cameraObject.transform.position.z);
+                }
             }
             else
             {
-                targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, 0, cameraObject.transform.position.z);
+                targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.3f, 1.8f), cameraObject.transform.position.z);
             }
+            
         }
         else
         {
@@ -973,12 +987,14 @@ public class GridManager : MonoBehaviour
     {
         narrativeTip.SetActive(true);
         BeatsManager.instance.beatsContainer.transform.position = new Vector3(0, -450.0f, 0);
+        targetCameraSize = 4.0f;
     }
 
     public void EndDialogEvents()
     {
         narrativeTip.SetActive(false);
         BeatsManager.instance.beatsContainer.transform.position = setAbilities.originalBeatsContainerPosition.position;
+        targetCameraSize = 5.0f;
     }
 
     public void AddCombo()
