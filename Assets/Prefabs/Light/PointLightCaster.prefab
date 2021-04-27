@@ -76,8 +76,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 70880245
+  m_SortingLayer: 18
   m_SortingOrder: 0
 --- !u!1 &3898362876640323174
 GameObject:
@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3898362876640323173}
   - component: {fileID: 3898362876640323172}
+  - component: {fileID: 2370880029637041694}
   m_Layer: 0
   m_Name: PointLightCaster
   m_TagString: Untagged
@@ -135,3 +136,16 @@ MonoBehaviour:
   sortingLayer: Lighting2D
   offset: 0.01
   lightRays: {fileID: 3898362875865117342}
+--- !u!114 &2370880029637041694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898362876640323174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d217a4142f4804ca46668af32f76e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
