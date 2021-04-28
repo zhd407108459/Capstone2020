@@ -566,6 +566,8 @@ public class BeatsManager : MonoBehaviour
             {
                 bossSongInfo.LoadFromPath(boss2HardSongInfoPath);
             }
+            bgmEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
+            bgmVolume = SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume;
         }
         else
         {
