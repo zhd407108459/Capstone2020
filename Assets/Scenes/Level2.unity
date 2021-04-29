@@ -491,7 +491,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &3580436
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +651,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &8009748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,19 +1973,8 @@ MonoBehaviour:
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1527667954}
-        m_MethodName: Hurt
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  typingFX: 0
+      m_Calls: []
+  typingFX: 1
 --- !u!1 &41552827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2378,12 +2367,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 963443714}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!4 &51352714 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5196976936206737313, guid: 4eee39ab6ac6e7140bd41e097fd0de50,
@@ -2775,7 +2764,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!224 &66423714
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6249,7 +6238,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &141457161
 GameObject:
   m_ObjectHideFlags: 0
@@ -7231,7 +7220,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &167519990
 GameObject:
   m_ObjectHideFlags: 0
@@ -7483,7 +7472,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &170461205
 GameObject:
   m_ObjectHideFlags: 0
@@ -8995,7 +8984,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &196004475
 GameObject:
   m_ObjectHideFlags: 0
@@ -9041,7 +9030,7 @@ MonoBehaviour:
   - {fileID: 1035650100}
   isFreezeMovement: 1
   isRepeatable: 0
-  triggerX: 3
+  triggerX: 4
   isLimitTriggerY: 0
   triggerY: 0
   endEvents:
@@ -10626,7 +10615,7 @@ MonoBehaviour:
   - {fileID: 939985777}
   isFreezeMovement: 1
   isRepeatable: 0
-  triggerX: 3
+  triggerX: 4
   isLimitTriggerY: 0
   triggerY: 0
   endEvents:
@@ -11480,7 +11469,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &231636697
 GameObject:
   m_ObjectHideFlags: 0
@@ -12477,7 +12466,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &244232493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15805,8 +15794,19 @@ MonoBehaviour:
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
-      m_Calls: []
-  typingFX: 0
+      m_Calls:
+      - m_Target: {fileID: 1527667954}
+        m_MethodName: Neutral
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  typingFX: 1
 --- !u!1 &321921805 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1628286497895297416, guid: 7382d7c857b2b0e409b039af9c60d082,
@@ -16192,7 +16192,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &328101744
 GameObject:
   m_ObjectHideFlags: 0
@@ -16600,7 +16600,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+      - m_Target: {fileID: 1527667954}
+        m_MethodName: Neutral
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  typingFX: 2
 --- !u!1 &336144032
 GameObject:
   m_ObjectHideFlags: 0
@@ -17815,7 +17826,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &360933711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18671,19 +18682,8 @@ MonoBehaviour:
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1527667954}
-        m_MethodName: Annoyed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  typingFX: 0
+      m_Calls: []
+  typingFX: 1
 --- !u!1 &371456036
 GameObject:
   m_ObjectHideFlags: 0
@@ -20595,12 +20595,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 445526667}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &401875129
 GameObject:
   m_ObjectHideFlags: 0
@@ -21269,7 +21269,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &416061016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22137,7 +22137,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &435858834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22997,7 +22997,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &444640788
 GameObject:
   m_ObjectHideFlags: 0
@@ -23069,7 +23069,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &445526665
 GameObject:
   m_ObjectHideFlags: 0
@@ -25935,7 +25935,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &510475998
 GameObject:
   m_ObjectHideFlags: 0
@@ -28675,7 +28675,7 @@ MonoBehaviour:
   - {fileID: 1840211127}
   isFreezeMovement: 1
   isRepeatable: 0
-  triggerX: 3
+  triggerX: 4
   isLimitTriggerY: 0
   triggerY: 0
   endEvents:
@@ -33200,12 +33200,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 401875131}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &662460839
 GameObject:
   m_ObjectHideFlags: 0
@@ -33716,7 +33716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 750198271}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -33732,7 +33732,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &676331126
 GameObject:
   m_ObjectHideFlags: 0
@@ -34142,12 +34142,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 412278806}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 2
 --- !u!4 &683640526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7134429014725220913, guid: 844f05bc6a68bda4882b645681a8325b,
@@ -35402,7 +35402,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!4 &711177565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6419740113495202781, guid: e102e1be021ab194bb83dfa6464b6c46,
@@ -36557,12 +36557,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 880387052}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!224 &734231424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37677,7 +37677,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!4 &753718148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7893330619068457863, guid: 2b5045a69a7963140ae754e278d09aeb,
@@ -39357,7 +39357,7 @@ MonoBehaviour:
   - {fileID: 1514092903}
   isFreezeMovement: 1
   isRepeatable: 0
-  triggerX: 3
+  triggerX: 4
   isLimitTriggerY: 0
   triggerY: 0
   endEvents:
@@ -41090,7 +41090,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &831737717
 GameObject:
   m_ObjectHideFlags: 0
@@ -42012,7 +42012,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &850880025
 GameObject:
   m_ObjectHideFlags: 0
@@ -42874,12 +42874,6 @@ Transform:
   m_Father: {fileID: 1968299752}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &862638027 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7209899000261639068, guid: 37b00a650f58bdb409d526d2a2486d40,
-    type: 3}
-  m_PrefabInstance: {fileID: 379661859}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &863911001
 GameObject:
   m_ObjectHideFlags: 0
@@ -45051,7 +45045,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &902204735
 GameObject:
   m_ObjectHideFlags: 0
@@ -45112,7 +45106,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!4 &902508923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4089242113866268158, guid: ef1cf87e2c637ee4cab1a1d3e65ceb27,
@@ -46005,12 +45999,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 212441731}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &932186485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46498,12 +46492,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1863538823}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!224 &939985778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47178,7 +47172,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &951238745
 GameObject:
   m_ObjectHideFlags: 0
@@ -50598,12 +50592,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 2126115004}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!224 &1035650101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52634,12 +52628,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1521783203}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1081356782
 GameObject:
   m_ObjectHideFlags: 0
@@ -53116,7 +53110,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1094710750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53646,7 +53640,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &1103887115
 GameObject:
   m_ObjectHideFlags: 0
@@ -54691,12 +54685,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1817447925}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1120341285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54836,7 +54830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1518470694}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -54852,7 +54846,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &1120905538
 GameObject:
   m_ObjectHideFlags: 0
@@ -55133,7 +55127,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1137650438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55578,7 +55572,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &1143177958
 GameObject:
   m_ObjectHideFlags: 0
@@ -55634,12 +55628,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1476589047}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!4 &1143367193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5522234732505196205, guid: eb47b999e4ebbb74d942be0ba33a9abe,
@@ -56088,7 +56082,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1154982059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57125,7 +57119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 141457163}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -57141,7 +57135,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &1181106746
 GameObject:
   m_ObjectHideFlags: 0
@@ -58884,7 +58878,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1220211115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59722,7 +59716,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1228888641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59929,7 +59923,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1232757376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60082,7 +60076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1269315816}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -60098,7 +60092,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1237111325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60601,7 +60595,7 @@ MonoBehaviour:
   - {fileID: 66423713}
   isFreezeMovement: 1
   isRepeatable: 0
-  triggerX: 3
+  triggerX: 4
   isLimitTriggerY: 0
   triggerY: 0
   endEvents:
@@ -62189,7 +62183,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &1282757317
 GameObject:
   m_ObjectHideFlags: 0
@@ -65049,7 +65043,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1001 &1315178258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66826,7 +66820,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!4 &1331287981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6481655200662868804, guid: 2a301579a8cac3a47891b0b39ec1fcb4,
@@ -67428,7 +67422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340217016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.97, y: 1.39, z: 0}
+  m_LocalPosition: {x: 7.3, y: 1.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1527667955}
@@ -67596,7 +67590,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1343770374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69219,12 +69213,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1045591646}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1372428325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69816,7 +69810,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &1382282772
 GameObject:
   m_ObjectHideFlags: 0
@@ -70019,12 +70013,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 796404296}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1384541975
 GameObject:
   m_ObjectHideFlags: 0
@@ -70132,7 +70126,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &1388306298
 GameObject:
   m_ObjectHideFlags: 0
@@ -70438,7 +70432,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1527667954}
-        m_MethodName: Hurt
+        m_MethodName: Confused
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -70448,7 +70442,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!114 &1396340273 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1273661179028296950, guid: e102e1be021ab194bb83dfa6464b6c46,
@@ -70574,7 +70568,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &1398970851
 GameObject:
   m_ObjectHideFlags: 0
@@ -71787,7 +71781,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1424572716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73160,7 +73154,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1445436099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73731,12 +73725,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1570544708}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1451742871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75818,7 +75812,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1490403847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76548,7 +76542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 484354749}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -76564,7 +76558,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 3
 --- !u!224 &1504699063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -77171,7 +77165,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 2
 --- !u!224 &1514092904
 RectTransform:
   m_ObjectHideFlags: 0
@@ -79010,12 +79004,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1623078646}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1541691794
 GameObject:
   m_ObjectHideFlags: 0
@@ -79241,7 +79235,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1544386375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79481,7 +79475,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!4 &1548378598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8172267155624679475, guid: 421ce23b9c988ea4c888d5e0fdb603e8,
@@ -80881,12 +80875,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 122847732}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1573923824
 GameObject:
   m_ObjectHideFlags: 0
@@ -81407,7 +81401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1733024364}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -81423,7 +81417,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1588895334
 GameObject:
   m_ObjectHideFlags: 0
@@ -81479,7 +81473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 231700747}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -81495,7 +81489,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1589691556
 GameObject:
   m_ObjectHideFlags: 0
@@ -83342,7 +83336,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1611586319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83718,7 +83712,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &1620002219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85507,7 +85501,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1527667954}
-        m_MethodName: Hurt
+        m_MethodName: Annoyed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -85517,7 +85511,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &1649680736
 GameObject:
   m_ObjectHideFlags: 0
@@ -87041,12 +87035,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 215972200}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1669990919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87696,7 +87690,7 @@ MonoBehaviour:
   - {fileID: 1504699062}
   isFreezeMovement: 1
   isRepeatable: 0
-  triggerX: 3
+  triggerX: 4
   isLimitTriggerY: 0
   triggerY: 0
   endEvents:
@@ -88412,7 +88406,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &1687073232
 GameObject:
   m_ObjectHideFlags: 0
@@ -89415,7 +89409,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1695166930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90437,7 +90431,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1727856338
 GameObject:
   m_ObjectHideFlags: 0
@@ -90824,7 +90818,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1527667954}
-        m_MethodName: Hurt
+        m_MethodName: Blink
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -90834,7 +90828,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &1733024362
 GameObject:
   m_ObjectHideFlags: 0
@@ -92992,7 +92986,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &1760645960
 GameObject:
   m_ObjectHideFlags: 0
@@ -93394,12 +93388,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 10218292}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1768797476
 GameObject:
   m_ObjectHideFlags: 0
@@ -94705,7 +94699,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1786119932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95535,7 +95529,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1001 &1798866631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97381,12 +97375,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1181106748}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1827917872
 GameObject:
   m_ObjectHideFlags: 0
@@ -98144,12 +98138,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1419728822}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!224 &1840211128
 RectTransform:
   m_ObjectHideFlags: 0
@@ -98295,7 +98289,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1001 &1844249528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98994,7 +98988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1040979438}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -99010,7 +99004,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 2
 --- !u!1 &1851542930
 GameObject:
   m_ObjectHideFlags: 0
@@ -100427,7 +100421,7 @@ MonoBehaviour:
   - {fileID: 734231423}
   isFreezeMovement: 1
   isRepeatable: 0
-  triggerX: 3
+  triggerX: 4
   isLimitTriggerY: 0
   triggerY: 0
   endEvents:
@@ -101943,7 +101937,7 @@ MonoBehaviour:
   - {fileID: 709635363}
   isFreezeMovement: 1
   isRepeatable: 0
-  triggerX: 3
+  triggerX: 4
   isLimitTriggerY: 0
   triggerY: 0
   endEvents:
@@ -102215,7 +102209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 705567403}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -102231,7 +102225,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1902758993
 GameObject:
   m_ObjectHideFlags: 0
@@ -102971,7 +102965,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &1924647098
 GameObject:
   m_ObjectHideFlags: 0
@@ -103171,12 +103165,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 958251332}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &1929298585
 GameObject:
   m_ObjectHideFlags: 0
@@ -103451,7 +103445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1467126639}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
@@ -103467,7 +103461,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 3
 --- !u!1001 &1936369891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104417,7 +104411,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 2
 --- !u!1001 &1949741050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107224,7 +107218,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &2014420136
 GameObject:
   m_ObjectHideFlags: 0
@@ -108393,12 +108387,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 2073993696}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!4 &2037670555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5561864340031930898, guid: e4391a81427b38341842b3d9e52dfae5,
@@ -109201,7 +109195,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &2051922596
 GameObject:
   m_ObjectHideFlags: 0
@@ -109861,7 +109855,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1 &2069633332
 GameObject:
   m_ObjectHideFlags: 0
@@ -110919,12 +110913,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContent: {fileID: 1838213003}
   typingInterval: 0.02
-  targetPosition: {fileID: 862638027}
+  targetPosition: {fileID: 1060693395}
   isFollowTarget: 1
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!1 &2084065838
 GameObject:
   m_ObjectHideFlags: 0
@@ -111105,7 +111099,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  typingFX: 0
+  typingFX: 1
 --- !u!1001 &2088261947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111880,7 +111874,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls: []
-  typingFX: 0
+  typingFX: 3
 --- !u!4 &2105575955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6299868406546010940, guid: da7699060dd2a3f408dcb80046d712f8,
