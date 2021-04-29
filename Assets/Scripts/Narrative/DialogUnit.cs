@@ -126,6 +126,14 @@ public class DialogUnit : MonoBehaviour
         }
     }
 
+    public void StopTpyingFX()
+    {
+        if (typingFXEvent.isValid())
+        {
+            typingFXEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+    }
+
     public bool IsPlayFinished()
     {
         return typingIndex >= originText.Length - 1;

@@ -64,6 +64,7 @@ public class DialogSet : MonoBehaviour
             }
             else
             {
+                dialogUnits[currentIndex].StopTpyingFX();
                 currentIndex++;
                 ShowDialogUnit(currentIndex);
             }
@@ -71,6 +72,7 @@ public class DialogSet : MonoBehaviour
         else
         {
             dialogUnits[currentIndex].ImmediateShow();
+            dialogUnits[currentIndex].StopTpyingFX();
         }
     }
 
@@ -93,6 +95,7 @@ public class DialogSet : MonoBehaviour
         for (int i = 0; i < dialogUnits.Count; i++)
         {
             dialogUnits[i].gameObject.SetActive(false);
+            dialogUnits[i].StopTpyingFX();
         }
         GridManager.instance.currentDialog = null;
         GridManager.instance.EndDialogEvents();
