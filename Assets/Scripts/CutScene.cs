@@ -23,17 +23,17 @@ public class CutScene : MonoBehaviour
     {
         if (isPlaying)
         {
-            if (Input.anyKeyDown && !isSkipTipOn)
+            if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl)) && isSkipTipOn)
+            {
+                skipEvent.Invoke();
+                Stop();
+            }
+            else if (Input.anyKeyDown && !isSkipTipOn)
             {
                 isSkipTipOn = true;
                 skipTip.SetActive(true);
             }
 
-            if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl)) && isSkipTipOn) 
-            {
-                skipEvent.Invoke();
-                Stop();
-            }
 
             timer += Time.deltaTime;
 
