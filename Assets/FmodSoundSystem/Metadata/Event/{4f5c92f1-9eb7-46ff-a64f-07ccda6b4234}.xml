@@ -94,6 +94,7 @@
 		</property>
 		<relationship name="modulators">
 			<destination>{24b78030-92b6-4352-94f0-a3bcd748ecd3}</destination>
+			<destination>{22946469-2763-439b-89e4-f9f50496f8ec}</destination>
 		</relationship>
 		<relationship name="sounds">
 			<destination>{15a9687c-b872-402d-9e4d-12ac85ed7135}</destination>
@@ -128,6 +129,23 @@
 		</property>
 		<property name="amount">
 			<value>5.5</value>
+		</property>
+	</object>
+	<object class="ADSRModulator" id="{22946469-2763-439b-89e4-f9f50496f8ec}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>0</value>
+		</property>
+		<property name="releaseTime">
+			<value>500</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
 		</property>
 	</object>
 	<object class="SingleSound" id="{15a9687c-b872-402d-9e4d-12ac85ed7135}">
