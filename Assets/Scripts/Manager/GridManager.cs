@@ -676,15 +676,15 @@ public class GridManager : MonoBehaviour
             {
                 if (GameManager.instance.player.transform.position.x < GetPhaseInitialPosition().x + cameraDistanceToBoundary)
                 {
-                    targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.3f, 1.8f), cameraObject.transform.position.z);
+                    targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.2f, 0.0f), cameraObject.transform.position.z);
                 }
                 else if (GameManager.instance.player.transform.position.x > GetPhaseEndPosition().x - cameraDistanceToBoundary)
                 {
-                    targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.3f, 1.8f), cameraObject.transform.position.z);
+                    targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.2f, 0.0f), cameraObject.transform.position.z);
                 }
                 else
                 {
-                    targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.3f, 1.8f), cameraObject.transform.position.z);
+                    targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.2f, 0.0f), cameraObject.transform.position.z);
                 }
             }
             
