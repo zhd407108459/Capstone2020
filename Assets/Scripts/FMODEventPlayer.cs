@@ -8,8 +8,17 @@ public class FMODEventPlayer : MonoBehaviour
 {
     public string path;
     public bool isBGM;
+    public bool playOnAwake;
 
     private EventInstance sound;
+
+    private void Start()
+    {
+        if (playOnAwake)
+        {
+            Play();
+        }
+    }
 
     public void Play()
     {
