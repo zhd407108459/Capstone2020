@@ -11253,6 +11253,48 @@ public class GenerateSongInfo : MonoBehaviour
                 ai12.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai12);
             }
+            if (i == 15 || i == 45 || i == 73 || i == 111)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 16 || i == 47 || i == 74 || i == 112)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(7);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 12 || i == 27 || i == 58 || i == 75 || i == 103 || i == 125)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(8);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 13 || i == 28 || i == 59 || i == 76 || i == 104 || i == 126)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(9);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 7 || i == 31 || i == 55 || i == 99 || i == 109)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 8 || i == 32 || i == 56 || i == 100 || i == 110)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(11);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
         }
         SaveAFile(temp, "./Data/KnifeBoss2Phase2Hard.info");
     }
@@ -12924,6 +12966,48 @@ public class GenerateSongInfo : MonoBehaviour
                 ActionInfo ai12 = new ActionInfo();
                 ai12.actionType = 12;
                 ai12.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 15 || i == 45 || i == 73 || i == 111)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 16 || i == 47 || i == 74 || i == 112)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(7);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 12 || i == 27 || i == 58 || i == 75 || i == 103 || i == 125)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(8);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 13 || i == 28 || i == 59 || i == 76 || i == 104 || i == 126)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(9);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 7 || i == 31 || i == 55 || i == 99 || i == 109)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+            if (i == 8 || i == 32 || i == 56 || i == 100 || i == 110)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(11);
                 temp.beatsInfo[i].actions.Add(ai12);
             }
         }
