@@ -434,6 +434,10 @@ public class GridManager : MonoBehaviour
         {
             Destroy(n.gameObject);
         }
+        foreach (var n in FindObjectsOfType<PlayerBomb>())
+        {
+            Destroy(n.gameObject);
+        }
         foreach (var n in FindObjectsOfType<BossDollAttack>())
         {
             Destroy(n.gameObject);
