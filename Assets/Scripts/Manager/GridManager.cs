@@ -1003,6 +1003,7 @@ public class GridManager : MonoBehaviour
         narrativeTip.SetActive(true);
         BeatsManager.instance.beatsContainer.transform.position = new Vector3(0, -450.0f, 0);
         targetCameraSize = 4.0f;
+        nextStageIcon.SetActive(false);
     }
 
     public void EndDialogEvents()
@@ -1010,6 +1011,7 @@ public class GridManager : MonoBehaviour
         narrativeTip.SetActive(false);
         BeatsManager.instance.beatsContainer.transform.position = setAbilities.originalBeatsContainerPosition.position;
         targetCameraSize = 5.0f;
+        nextStageIcon.SetActive(true);
     }
 
     public void AddCombo()
