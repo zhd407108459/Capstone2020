@@ -6804,7 +6804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -439, y: -0.0000076294}
+  m_AnchoredPosition: {x: -434, y: -44.200012}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763582271
@@ -10306,6 +10306,7 @@ RectTransform:
   - {fileID: 1540548260}
   - {fileID: 1558518059}
   - {fileID: 1601483071}
+  - {fileID: 1300990761}
   m_Father: {fileID: 48559542}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12388,6 +12389,79 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1300990760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1300990761}
+  - component: {fileID: 1300990763}
+  - component: {fileID: 1300990762}
+  m_Layer: 5
+  m_Name: Image (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1300990761
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300990760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1160793478}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -412, y: -78}
+  m_SizeDelta: {x: 141.3, y: 142}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1300990762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300990760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 603f7d0c23620564988085a0df8ba212, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1300990763
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300990760}
+  m_CullTransparentMesh: 0
 --- !u!1 &1302005181
 GameObject:
   m_ObjectHideFlags: 0
@@ -14940,8 +15014,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 30.6}
-  m_SizeDelta: {x: 1324.9, y: 518.6}
+  m_AnchoredPosition: {x: 0, y: 7.2}
+  m_SizeDelta: {x: 1324.9, y: 565.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540548261
 MonoBehaviour:
@@ -14974,19 +15048,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: 'Shield Buff:
-
-    A temporary shield for the player, preventing the next
-    damage the player takes, lasts for 16 beats, also disappears after triggered.
-
-
-    Energy
-    Drink Buff:
-
-    All abilities will take only 50% of usual time to charge, lasts
-    for 12 beats.
-
-'
+  m_Text: "Shield Buff:\nA temporary shield for the player, preventing the next damage
+    the player takes, lasts for 16 beats, also disappears after triggered.\n\nEnergy
+    Drink Buff:\nAll abilities will take only 50% of usual time to charge, lasts
+    for 12 beats.\n\nSpike Trap: \nDeal 40 damage to the player.\n"
 --- !u!222 &1540548262
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15827,7 +15892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -357, y: 66}
+  m_AnchoredPosition: {x: -357, y: 50.50003}
   m_SizeDelta: {x: 67, y: 101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601483072
@@ -17306,7 +17371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -434, y: -185}
+  m_AnchoredPosition: {x: -434, y: -236.2}
   m_SizeDelta: {x: 55.8, y: 81.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1786843935
