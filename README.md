@@ -4,11 +4,13 @@ Website: http://hagicians.com/
 
 Github Link: https://github.com/zhd407108459/Capstone2020
 
+
 We are Hagicians.
 
 We are doing a game named "Vigorus".
 
 Vigorus is a visually stunning rhythm platformer, a musical adventure into a bizarre world, with a talking frog puppet as your guide. Observing the enemies, mirages, and leverage the beat to lead the pas de deux with the enemies at the correct timing. While playing, become our girl Vigorus, retrieve the memory once was lost, and help your little companion to save the world from monsters looks like a beautiful nightmare.
+
 
 Team: Hagicians
 
@@ -25,6 +27,15 @@ Yunsheng Zhou: 2D Artist/ UI&UX Designer
 Lejia Zhang: Illustrator/Character Designer
 
 Lingxiao Fan: Animator
+
+
+Advisors:
+
+Ian Schreiber
+
+Steven Yi
+
+Chao Peng
 
 
 For build this project, you need:
