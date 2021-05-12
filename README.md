@@ -47,5 +47,5 @@ Steps:
 8. Run the executable.
 
 
-Copyright © 2021 by Hagicians
-All rights reserved
+Copyright © 2021 by Hagicians.
+All rights reserved.
