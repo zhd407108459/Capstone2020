@@ -45,3 +45,7 @@ Steps:
 (Important! Boss fights will not be able to work if this step is ignored!)
 
 8. Run the executable.
+
+
+Copyright © 2021 by Hagicians
+All rights reserved
