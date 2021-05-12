@@ -4,6 +4,12 @@ Website: http://hagicians.com/
 
 Github Link: https://github.com/zhd407108459/Capstone2020
 
+We are Hagicians.
+
+We are doing a game named "Vigorus".
+
+Vigorus is a visually stunning rhythm platformer, a musical adventure into a bizarre world, with a talking frog puppet as your guide. Observing the enemies, mirages, and leverage the beat to lead the pas de deux with the enemies at the correct timing. While playing, become our girl Vigorus, retrieve the memory once was lost, and help your little companion to save the world from monsters looks like a beautiful nightmare.
+
 Team: Hagicians
 
 Members:
@@ -22,7 +28,9 @@ Lingxiao Fan: Animator
 
 
 For build this project, you need:
+
 Unity 2019.3.0f6 with Windows Build Support
+
 Unity Hub
 
 Steps:
@@ -48,4 +56,5 @@ Steps:
 
 
 Copyright © 2021 by Hagicians.
+
 All rights reserved.
