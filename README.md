@@ -1,6 +1,8 @@
 # Vigorus
 
-Website: hagicians.com
+Website: http://hagicians.com/
+
+Github Link: https://github.com/zhd407108459/Capstone2020
 
 Team: Hagicians
 
