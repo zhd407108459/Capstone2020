@@ -16,4 +16,5 @@ public class SettingInfo
     public int levelProcess;
     public int phaseProcess;
 
+    public int language;
 }
