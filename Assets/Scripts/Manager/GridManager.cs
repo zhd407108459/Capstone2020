@@ -80,6 +80,14 @@ public class GridManager : MonoBehaviour
     private int combo;
     //private int comboTimer;
 
+    private int upTimer;
+    private int currentYHeight;
+    public GameObject testPlatformPrefab;
+    public List<GameObject> testEnemyPrefabs;
+    public List<GameObject> testTrapPrefabs;
+
+
+
     void Awake()
     {
         if (instance == null)
@@ -219,6 +227,12 @@ public class GridManager : MonoBehaviour
 
     private void Initialize()
     {
+        currentYHeight = 0;
+        upTimer = 0;
+        //for(int i = 0; i < 7; i++)
+        //{
+        //    GenerateALayer(currentYHeight + i);
+        //}
         if (!isBossFight && (startCutScene == null || (startCutScene != null && phaseIndex != 0)))
         {
             BeatsManager.instance.StartBeats();
@@ -534,6 +548,21 @@ public class GridManager : MonoBehaviour
             generateDebuffsTimer++;
             generateBuffsTimer++;
         }
+        if(isInPhase && IsInBattlePhase())
+        {
+            upTimer++;
+            if (upTimer >= 2)
+            {
+                upTimer = 0;
+                currentYHeight += 1;
+                if (GameManager.instance.player.transform.position.y < initialPos.y + currentYHeight - 0.1f)
+                {
+                    GameManager.instance.player.GetComponent<PlayerGridMovement>().SetPos(GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos, currentYHeight);
+                    GameManager.instance.player.GetComponent<PlayerHealth>().TakeDamage(10);
+                }
+                //GenerateALayer(currentYHeight + 6);
+            }
+        }
         //comboTimer++;
         //if (comboTimer > 2 && comboTipObject.activeSelf)
         //{
@@ -665,37 +694,37 @@ public class GridManager : MonoBehaviour
             {
                 if (GameManager.instance.player.transform.position.x < GetPhaseInitialPosition().x + cameraDistanceToBoundary)
                 {
-                    targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
+                    targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, currentYHeight * gridSize.y, cameraObject.transform.position.z);
                 }
                 else if (GameManager.instance.player.transform.position.x > GetPhaseEndPosition().x - cameraDistanceToBoundary)
                 {
-                    targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
+                    targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, currentYHeight * gridSize.y, cameraObject.transform.position.z);
                 }
                 else
                 {
-                    targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, 0, cameraObject.transform.position.z);
+                    targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, currentYHeight * gridSize.y, cameraObject.transform.position.z);
                 }
             }
             else
             {
                 if (GameManager.instance.player.transform.position.x < GetPhaseInitialPosition().x + cameraDistanceToBoundary)
                 {
-                    targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.2f, 0.0f), cameraObject.transform.position.z);
+                    targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, currentYHeight * gridSize.y, cameraObject.transform.position.z);
                 }
                 else if (GameManager.instance.player.transform.position.x > GetPhaseEndPosition().x - cameraDistanceToBoundary)
                 {
-                    targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.2f, 0.0f), cameraObject.transform.position.z);
+                    targetCameraPos = new Vector3(GetPhaseEndPosition().x - cameraDistanceToBoundary, currentYHeight * gridSize.y, cameraObject.transform.position.z);
                 }
                 else
                 {
-                    targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, Mathf.Clamp(GameManager.instance.player.transform.position.y, -1.2f, 0.0f), cameraObject.transform.position.z);
+                    targetCameraPos = new Vector3(GameManager.instance.player.transform.position.x, currentYHeight * gridSize.y, cameraObject.transform.position.z);
                 }
             }
             
         }
         else
         {
-            targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, 0, cameraObject.transform.position.z);
+            targetCameraPos = new Vector3(GetPhaseInitialPosition().x + cameraDistanceToBoundary, currentYHeight * gridSize.y, cameraObject.transform.position.z);
         }
     }
 
@@ -1035,6 +1064,48 @@ public class GridManager : MonoBehaviour
         if(bossEndingCutScene != null)
         {
             bossEndingCutScene.Invoke();
+        }
+    }
+
+    public void GenerateALayer(int layerY)
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            int seed = Random.Range(0, 100);
+            if(seed > 20)
+            {
+                GameObject pl = Instantiate(testPlatformPrefab, phases[0].transform);
+                pl.transform.position = GetPhaseInitialPosition(0) + new Vector2(i * gridSize.x, layerY * gridSize.y);
+                pl.GetComponent<BasicPlatform>().xPos = i;
+                pl.GetComponent<BasicPlatform>().yPos = layerY;
+                phases[0].basicPlatforms.Add(pl.GetComponent<BasicPlatform>());
+            }
+            int seed2 = Random.Range(0, 100);
+            if (seed2 > 95 && seed > 20)
+            {
+                int index = Random.Range(0, testEnemyPrefabs.Count);
+                GameObject en = Instantiate(testEnemyPrefabs[index], phases[0].transform);
+                en.transform.position = GetPhaseInitialPosition(0) + new Vector2(i * gridSize.x, layerY * gridSize.y);
+                if(isInPhase && IsInBattlePhase())
+                {
+                    en.GetComponent<BasicEnemy>().Activate();
+                }
+                en.GetComponent<BasicEnemy>().xPos = i;
+                en.GetComponent<BasicEnemy>().yPos = layerY;
+                phases[0].enemies.Add(en.GetComponent<BasicEnemy>());
+
+            }
+            int seed3 = Random.Range(0, 100);
+            if (seed3 > 85 && seed > 20 && seed2 <= 90)
+            {
+                int index = Random.Range(0, testTrapPrefabs.Count);
+                GameObject en = Instantiate(testTrapPrefabs[index], phases[0].transform);
+                en.transform.position = GetPhaseInitialPosition(0) + new Vector2(i * gridSize.x, layerY * gridSize.y);
+                en.GetComponent<BasicTrap>().xPos = i;
+                en.GetComponent<BasicTrap>().yPos = layerY;
+                phases[0].traps.Add(en.GetComponent<BasicTrap>());
+
+            }
         }
     }
 }

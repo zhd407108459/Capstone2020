@@ -249,10 +249,6 @@ public class PlayerGridMovement : MonoBehaviour
         {
             yPos = 0;
         }
-        else if (y >= GridManager.instance.battleColumnGridCount)
-        {
-            yPos = GridManager.instance.battleColumnGridCount - 1;
-        }
         else
         {
             int tempY = GridManager.instance.GetFirstLowerPlatformYPosition(xPos, y);
