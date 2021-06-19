@@ -33,6 +33,7 @@ public class MenuUIManager : MonoBehaviour
     public Dropdown resolutionDropdown;
     public Dropdown skill1Dropdown;
     public Dropdown skill2Dropdown;
+    public Dropdown languageDropdown;
     [Header("CreditsPanel")]
     public GameObject creditsPanel;
     public GameObject[] credits;
@@ -78,6 +79,7 @@ public class MenuUIManager : MonoBehaviour
             resolutionDropdown.value = SettingManager.instance.resolutionIndex;
             skill1Dropdown.value = SettingManager.instance.skill1Index;
             skill2Dropdown.value = SettingManager.instance.skill2Index;
+            languageDropdown.value = SettingManager.instance.language;
         }
         bgmEvent = RuntimeManager.CreateInstance(BGMEventPath);
         if (SettingManager.instance != null)
@@ -292,6 +294,23 @@ public class MenuUIManager : MonoBehaviour
                 skill1Dropdown.value = 21;
                 SettingManager.instance.ChangeSkill1TriggerKey(21);
             }
+        }
+    }
+
+    public void SetLanguage()
+    {
+        if(SettingManager.instance != null)
+        {
+            SettingManager.instance.ChangeLanguage(languageDropdown.value);
+        }
+    }
+
+    public void SetLanguage(int index)
+    {
+        if (SettingManager.instance != null)
+        {
+            languageDropdown.value = index;
+            SettingManager.instance.ChangeLanguage(index);
         }
     }
 

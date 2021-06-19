@@ -9,6 +9,8 @@ using FMODUnity;
 public class DialogUnit : MonoBehaviour
 {
     public Text textContent;
+    public List<string> textInLanguages = new List<string>();
+    public List<Font> fonts = new List<Font>();
     public float typingInterval = 0.01f;
     public Transform targetPosition;
     public bool isFollowTarget;
@@ -52,7 +54,18 @@ public class DialogUnit : MonoBehaviour
         {
             transform.position = targetPosition.position;
         }
-        originText = textContent.text;
+        if(SettingManager.instance == null || textInLanguages.Count < SettingManager.instance.language)
+        {
+            originText = textContent.text;
+        }
+        else
+        {
+            originText = textInLanguages[SettingManager.instance.language];
+            if(fonts.Count >= SettingManager.instance.language)
+            {
+                textContent.font = fonts[SettingManager.instance.language];
+            }
+        }
         textContent.text = "";
         typingIndex = 0;
         if(typingCoroutine != null)

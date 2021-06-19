@@ -31,6 +31,8 @@ public class SettingManager : MonoBehaviour
     public int lastSkillIndex1;
     public int lastSkillIndex2;
 
+    public int language;
+
 
     [HideInInspector] public float hearingRange = 18.0f;
 
@@ -282,6 +284,25 @@ public class SettingManager : MonoBehaviour
         SaveToPath();
     }
 
+    public void ChangeLanguage(int index)
+    {
+        language = index == 0 ? 0 : 1;
+        SaveToPath();
+        ApplyLanguageToObjects();
+    }
+
+    void ApplyLanguageToObjects()
+    {
+        foreach (var n in FindObjectsOfType<SimpleTextLocalization>())
+        {
+            n.ApplyLanguage();
+        }
+        foreach (var n in FindObjectsOfType<DropdownTextLocalization>())
+        {
+            n.ApplyLanguage();
+        }
+    }
+
     public void LoadFromPath()
     {
         SettingInfo temp = JsonMapper.ToObject<SettingInfo>(File.ReadAllText(infoPath));
@@ -295,6 +316,7 @@ public class SettingManager : MonoBehaviour
             ChangeSkill2TriggerKey(temp.skill2key);
             levelProcess = temp.levelProcess > 0 ? temp.levelProcess : 1;
             phaseProcess = temp.phaseProcess > 0 ? temp.phaseProcess : 1;
+            language = temp.language == 0 ? 0 : 1;
             if (temp.skill1key == temp.skill2key)
             {
                 ChangeSkill1TriggerKey(21);
@@ -306,6 +328,7 @@ public class SettingManager : MonoBehaviour
         }
         targetPhase = 0;
         difficulty = 0;
+        ApplyLanguageToObjects();
         SaveToPath();
     }
 
@@ -320,6 +343,7 @@ public class SettingManager : MonoBehaviour
         temp.skill2key = skill2Index;
         temp.levelProcess = levelProcess;
         temp.phaseProcess = phaseProcess;
+        temp.language = language;
         string jsonstr = JsonMapper.ToJson(temp);
         File.WriteAllText(infoPath, jsonstr);
     }
@@ -335,6 +359,7 @@ public class SettingManager : MonoBehaviour
         temp.skill2key = 6;
         temp.levelProcess = 1;
         temp.phaseProcess = 1;
+        temp.language = 0;
         string jsonstr = JsonMapper.ToJson(temp);
         File.WriteAllText(infoPath, jsonstr);
     }
