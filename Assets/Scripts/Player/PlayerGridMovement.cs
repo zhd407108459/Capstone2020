@@ -45,6 +45,24 @@ public class PlayerGridMovement : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, targetPos, movementLerpValue * Time.deltaTime);
         }
+        else
+        {
+            if(TutorialManager.instance != null)
+            {
+                if(xPos == 2 && yPos == 0 && TutorialManager.instance.tutorialTips[1].activeSelf)
+                {
+                    TutorialManager.instance.ShowTutorialTip(2);
+                }
+                if (xPos == 3 && yPos == 1 && TutorialManager.instance.tutorialTips[2].activeSelf)
+                {
+                    TutorialManager.instance.ShowTutorialTip(3);
+                }
+                if (xPos == 6 && yPos == 1 && TutorialManager.instance.tutorialTips[4].activeSelf)
+                {
+                    TutorialManager.instance.ShowTutorialTip(5);
+                }
+            }
+        }
         //else if (GetComponent<PlayerDash>().isDashing)
         //{
         //    GetComponent<PlayerDash>().EndDash();
@@ -130,6 +148,13 @@ public class PlayerGridMovement : MonoBehaviour
                 isPlayerFacingRight = false;
                 sprite.transform.localScale = new Vector3(-Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
+                if (TutorialManager.instance != null)
+                {
+                    if (TutorialManager.instance.tutorialTips[3].activeSelf)
+                    {
+                        TutorialManager.instance.ShowTutorialTip(4);
+                    }
+                }
             }
         }
         else if ((Input.GetKeyDown(KeyCode.E) && !action.IsChaos()) || (Input.GetKeyDown(KeyCode.Q) && action.IsChaos()))
@@ -139,6 +164,13 @@ public class PlayerGridMovement : MonoBehaviour
                 isPlayerFacingRight = true;
                 sprite.transform.localScale = new Vector3(Mathf.Abs(sprite.transform.localScale.x), sprite.transform.localScale.y, sprite.transform.localScale.z);
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
+                if (TutorialManager.instance != null)
+                {
+                    if (TutorialManager.instance.tutorialTips[3].activeSelf)
+                    {
+                        TutorialManager.instance.ShowTutorialTip(4);
+                    }
+                }
             }
         }
         else if (Input.GetKeyDown(GetComponent<PlayerDash>().triggerKey) && GetComponent<PlayerDash>().abilityIcon != null && !action.IsOffTune())
@@ -160,6 +192,13 @@ public class PlayerGridMovement : MonoBehaviour
                 //GridManager.instance.AddCombo();
                 GetComponent<PlayerAction>().comboBreakTimer = 0;
                 action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] = true;//Moved
+                if (TutorialManager.instance != null)
+                {
+                    if (TutorialManager.instance.tutorialTips[5].activeSelf)
+                    {
+                        TutorialManager.instance.ShowTutorialTip(6);
+                    }
+                }
             }
         }
         if (action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.IsInBattlePhase())
@@ -186,8 +225,15 @@ public class PlayerGridMovement : MonoBehaviour
         else if (x >= GridManager.instance.GetPhaseLength())
         {
             xPos = GridManager.instance.GetPhaseLength() - 1;
+            if (TutorialManager.instance != null)
+            {
+                if (TutorialManager.instance.tutorialTips[7].activeSelf && GridManager.instance.IsEnemyClear())
+                {
+                    GameManager.instance.BackToMenu();
+                }
+            }
             //Temp
-            if(GridManager.instance.phaseIndex < GridManager.instance.phases.Count - 1)
+            if (GridManager.instance.phaseIndex < GridManager.instance.phases.Count - 1)
             {
                 if (GridManager.instance.IsInBattlePhase() && !GridManager.instance.isBossFight)
                 {

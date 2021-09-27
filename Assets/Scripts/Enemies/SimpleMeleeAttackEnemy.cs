@@ -166,6 +166,18 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
         }
     }
 
+    public override void Die()
+    {
+        base.Die();
+        if (TutorialManager.instance != null)
+        {
+            if (TutorialManager.instance.tutorialTips[6].activeSelf)
+            {
+                TutorialManager.instance.ShowTutorialTip(7);
+            }
+        }
+    }
+
     void Move()
     {
         lastPosX = xPos;

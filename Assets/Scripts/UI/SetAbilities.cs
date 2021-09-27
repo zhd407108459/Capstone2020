@@ -509,6 +509,10 @@ public class SetAbilities : MonoBehaviour
 
     public void Show()
     {
+        if(TutorialManager.instance != null)
+        {
+            TutorialManager.instance.ShowTutorialTip(0);
+        }
         if (GridManager.instance.isBossFight)
         {
             bossFightPreBGMEvent = RuntimeManager.CreateInstance(bossFightPreBGMPath);
@@ -727,6 +731,10 @@ public class SetAbilities : MonoBehaviour
 
     public void FinishSetting()
     {
+        if(TutorialManager.instance != null)
+        {
+            TutorialManager.instance.ShowTutorialTip(1);
+        }
         if (GridManager.instance.isBossFight)
         {
             bossFightPreBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);

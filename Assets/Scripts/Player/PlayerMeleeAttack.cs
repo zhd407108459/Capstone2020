@@ -71,6 +71,13 @@ public class PlayerMeleeAttack : RhythmObject
             if(BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && abilityIcon.isCoolDown && !GameManager.instance.isCutScene)
             {
                 MeleeAttack();
+                if(TutorialManager.instance != null)
+                {
+                    if (TutorialManager.instance.tutorialTips[5].activeSelf)
+                    {
+                        TutorialManager.instance.ShowTutorialTip(6);
+                    }
+                }
             }
         }
         if (meleeAttackBox.gameObject.activeSelf)
