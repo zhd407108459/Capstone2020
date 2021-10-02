@@ -124,6 +124,16 @@ public class MenuUIManager : MonoBehaviour
         SettingManager.instance.SwitchAutoAttack(isAutoAttackToggle.isOn);
     }
 
+    public void LoadTutorial()
+    {
+        SettingManager.instance.targetPhase = 0;
+        ShowLoadingPanel();
+        operation = SceneManager.LoadSceneAsync(5);
+        operation.allowSceneActivation = false;
+        isLoading = true;
+        backgrounds.SetActive(false);
+    }
+
     public void LoadLevel1Phase(int phaseIndex)
     {
         SettingManager.instance.targetPhase = phaseIndex;
