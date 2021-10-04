@@ -93,7 +93,14 @@ public class Boss3HookTracker : RhythmObject
         {
             if (isCaughtPlayer)
             {
-                targetXPos = GridManager.instance.GetPhaseInitialPosition().x + 12 * GridManager.instance.gridSize.x;
+                if(targetX < 4.5)
+                {
+                    targetXPos = GridManager.instance.GetPhaseInitialPosition().x + -1.5f * GridManager.instance.gridSize.x;
+                }
+                else
+                {
+                    targetXPos = GridManager.instance.GetPhaseInitialPosition().x + 11.5f * GridManager.instance.gridSize.x;
+                }
                 hookTargetYPos = defaultHookLocalHeight;
                 movementStage = 5;
                 releaseTimer = -1;

@@ -26,7 +26,7 @@ public class GenerateTestSongInfo : MonoBehaviour
         }
         for (int i = 0; i < 219; i++)
         {
-            if (i == 3)
+            if (i == 9)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 20;
