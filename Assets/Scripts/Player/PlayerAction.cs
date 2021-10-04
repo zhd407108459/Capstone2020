@@ -16,6 +16,7 @@ public class PlayerAction : RhythmObject
     public GameObject silenceTipObject;
 
     [HideInInspector] public bool isDizzy;
+    [HideInInspector] public bool isCaught;
     [HideInInspector] public float damageIncreasingRatio;
 
     private int cloudTimer;
@@ -40,6 +41,7 @@ public class PlayerAction : RhythmObject
         cloudTimer = 0;
         dizzyTimer = 0;
         isDizzy = false;
+        isCaught = false;
         damageIncreasingTimer = 0;
         damageIncreasingRatio = 1.0f;
     }
@@ -208,6 +210,19 @@ public class PlayerAction : RhythmObject
         GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", true);
     }
 
+    public void StartCaught()
+    {
+        isCaught = true;
+        GridManager.instance.EndCombo();
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", true);
+    }
+
+    public void EndCaught()
+    {
+        isCaught = false;
+        GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", false);
+    }
+
     public void StartIncreasingDamage(int time, float ratio)
     {
         damageIncreasingTipObject.SetActive(true);
@@ -326,6 +341,7 @@ public class PlayerAction : RhythmObject
         dizzyTimer = 0;
         dizzyTipObject.SetActive(false);
         isDizzy = false;
+        isCaught = false;
         damageIncreasingTipObject.SetActive(false);
         damageIncreasingTimer = 0;
         damageIncreasingRatio = 1.0f;
@@ -334,6 +350,7 @@ public class PlayerAction : RhythmObject
         EndChaos();
         EndOffTune();
         EndSilence();
+        EndCaught();
     }
 
     public bool IsCloud()

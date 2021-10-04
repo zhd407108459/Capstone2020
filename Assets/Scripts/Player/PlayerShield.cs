@@ -49,7 +49,7 @@ public class PlayerShield : RhythmObject
         //}
         if (abilityIcon != null && Input.GetKeyDown(triggerKey) && !action.IsOffTune())
         {
-            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && abilityIcon.isCoolDown && !GameManager.instance.isCutScene)
+            if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && GridManager.instance.isInPhase && !action.isDizzy && !action.isCaught && !GameManager.instance.isPaused && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && abilityIcon.isCoolDown && !GameManager.instance.isCutScene)
             {
                 UseShield();
                 if (TutorialManager.instance != null)

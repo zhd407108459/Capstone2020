@@ -37,11 +37,11 @@ public class PlayerGridMovement : MonoBehaviour
 
     void Update()
     {
-        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !GameManager.instance.isPaused && !isInDialog && !GameManager.instance.isCutScene)
+        if (BeatsManager.instance.GetTimeToNearestBeat() <= actionTolerance && !action.isActionUsed[BeatsManager.instance.GetIndexToNearestBeat()] && GridManager.instance.isInPhase && !action.isDizzy && !action.isCaught && !GameManager.instance.isPaused && !isInDialog && !GameManager.instance.isCutScene)
         {
             Move();
         }
-        if (Vector2.Distance(transform.position, targetPos) > 0.01f)
+        if (Vector2.Distance(transform.position, targetPos) > 0.01f && !action.isCaught)
         {
             transform.position = Vector3.Lerp(transform.position, targetPos, movementLerpValue * Time.deltaTime);
         }

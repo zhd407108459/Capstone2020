@@ -17,6 +17,8 @@ public class EnemyGridBullet : RhythmObject
     public int xDirection;
     public int yDirection;
 
+    public bool isFlipIn180 = false;
+
     [HideInInspector] public int xPos;
     [HideInInspector] public int yPos;
 
@@ -70,7 +72,15 @@ public class EnemyGridBullet : RhythmObject
         }
         if (xDirection < 0 && yDirection == 0)
         {
-            sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            if (!isFlipIn180)
+            {
+                sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+            }
+            else
+            {
+                sprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                sprite.transform.localScale = new Vector3(-sprite.transform.localScale.x, sprite.transform.localScale.y, sprite.transform.localScale.z);
+            }
             return;
         }
         if (xDirection == 0 && yDirection > 0)

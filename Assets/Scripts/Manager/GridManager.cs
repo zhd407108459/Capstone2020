@@ -385,6 +385,7 @@ public class GridManager : MonoBehaviour
     {
         GameManager.instance.player.GetComponent<PlayerGridMovement>().ResetPos();
         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
+        GameManager.instance.player.GetComponent<PlayerAction>().ClearAllBuffs();
         HideNextStageIcon();
         for(int i = 0; i < phases[phaseIndex].basicPlatforms.Count; i++)
         {
@@ -427,6 +428,10 @@ public class GridManager : MonoBehaviour
             Destroy(n.gameObject);
         }
         foreach (var n in FindObjectsOfType<SolidAttack>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<BossLaserAttack>())
         {
             Destroy(n.gameObject);
         }

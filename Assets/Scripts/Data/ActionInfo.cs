@@ -34,6 +34,11 @@ public class ActionInfo
     /// 17 shoot reflect bullet from right to left
     /// 18 shoot reflect bullet from top to bottom
     /// 19 shoot reflect bullet from bottom to top
+    /// 
+    /// 20 start boss 3 hook tracking
+    /// 
+    /// 21 shoot laser horizontal
+    /// 22 shoot laser vertical
     /// </summary>
     public List<int> actionParameters = new List<int>();
     /// <summary>
@@ -76,6 +81,15 @@ public class ActionInfo
     /// action parameter[1] == posX
     /// action parameter[2] == posY
     /// action parameter[3] == object index
+    /// 
+    /// for action 20 start boss 3 hook tracking
+    /// no parameter
+    /// 
+    /// for action 21 and 22
+    /// action parameter[0] == pos
+    /// 21 horizontal 0-4
+    /// 22 vertical 0-9
+    /// action parameter[1] == color index
     /// 
     /// 
     /// </summary>

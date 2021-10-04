@@ -25,6 +25,11 @@ public class BeatBoss : MonoBehaviour
     public int solidAttackDelay;
     public int solidStayDelay;
 
+    public int laserDamage;
+    public GameObject laserPrefab;
+    public int laserAttackDelay;
+    public int laserStayDelay;
+
     public int bombDamage;
     public float bombRange;
     public int bombDelay;
@@ -33,6 +38,9 @@ public class BeatBoss : MonoBehaviour
     public int dollDamage;
     public int dollAttackDelay;
     public GameObject dollPrefab;
+
+    public Boss3HookTracker bossHook;
+    public int bossHookDamage;
 
     public List<GameObject> ropeHangingObjectPrefabList;
 
@@ -61,6 +69,10 @@ public class BeatBoss : MonoBehaviour
         healthSlider.gameObject.SetActive(false);
         resetAnimationEvent.Invoke();
         HideBossComponents();
+        if (bossHook != null)
+        {
+            bossHook.Initialize();
+        }
     }
 
     public void Activate()
@@ -70,6 +82,10 @@ public class BeatBoss : MonoBehaviour
         healthSlider.gameObject.SetActive(false);
         resetAnimationEvent.Invoke();
         HideBossComponents();
+        if (bossHook != null)
+        {
+            bossHook.Initialize();
+        }
     }
 
     public void Reset()
@@ -86,6 +102,10 @@ public class BeatBoss : MonoBehaviour
         }
         resetAnimationEvent.Invoke();
         HideBossComponents();
+        if (bossHook != null)
+        {
+            bossHook.Initialize();
+        }
     }
 
     void Update()
@@ -127,6 +147,10 @@ public class BeatBoss : MonoBehaviour
             Destroy(n.gameObject);
         }
         foreach (var n in FindObjectsOfType<SolidAttack>())
+        {
+            Destroy(n.gameObject);
+        }
+        foreach (var n in FindObjectsOfType<BossLaserAttack>())
         {
             Destroy(n.gameObject);
         }
@@ -172,6 +196,10 @@ public class BeatBoss : MonoBehaviour
         healthSlider.value = (float)health / (float)maxHealth;
         canBeAttacked = true;
         healthSlider.gameObject.SetActive(true);
+        if (bossHook != null)
+        {
+            bossHook.Initialize();
+        }
     }
 
     public void OnBeat(int index)
@@ -335,6 +363,32 @@ public class BeatBoss : MonoBehaviour
                 for (int j = 0; j < bi.actions[i].actionParameters.Count; j++)
                 {
                     BossReflectBulletAttack(0, 1, bi.actions[i].actionParameters[j], 0, 4);
+                }
+            }
+            if(bi.actions[i].actionType == 20)
+            {
+                BossHookAttack();
+            }
+            if (bi.actions[i].actionType == 21)
+            {
+                if(bi.actions[i].actionParameters.Count >= 2)
+                {
+                    BossLaserAttack(4, bi.actions[i].actionParameters[0], 0, bi.actions[i].actionParameters[1]);
+                }
+                else
+                {
+                    BossLaserAttack(4, bi.actions[i].actionParameters[0], 0, 0);
+                }
+            }
+            if (bi.actions[i].actionType == 22)
+            {
+                if (bi.actions[i].actionParameters.Count >= 2)
+                {
+                    BossLaserAttack(bi.actions[i].actionParameters[0], 2, 90, bi.actions[i].actionParameters[1]);
+                }
+                else
+                {
+                    BossLaserAttack(bi.actions[i].actionParameters[0], 2, 90, 0);
                 }
             }
         }
@@ -508,5 +562,20 @@ public class BeatBoss : MonoBehaviour
         GameObject go = Instantiate(ropeHangingObjectPrefabList[index]);
         go.GetComponent<BossRopeHangingObject>().stayDelay = delay;
         go.GetComponent<BossRopeHangingObject>().SetUp(x, y);
+    }
+
+    void BossHookAttack()
+    {
+        if (bossHook != null)
+        {
+            bossHook.damage = bossHookDamage;
+            bossHook.SetUp(GameManager.instance.player.GetComponent<PlayerGridMovement>().xPos, 0);
+        }
+    }
+
+    void BossLaserAttack(int x, int y, float rotationZ, int colorIndex)
+    {
+        GameObject go = Instantiate(laserPrefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), transform.rotation);
+        go.GetComponent<BossLaserAttack>().SetUp(x, y, laserDamage, laserAttackDelay, laserStayDelay, rotationZ, colorIndex);
     }
 }
