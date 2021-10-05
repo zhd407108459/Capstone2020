@@ -37,6 +37,8 @@ public class Boss3HookTracker : RhythmObject
     private bool isCaughtPlayer;
     private int releaseTimer;
 
+    private bool waitflag = false;
+
     void Start()
     {
     }
@@ -67,6 +69,11 @@ public class Boss3HookTracker : RhythmObject
     public override void OnBeat(int beatIndex)
     {
         base.OnBeat(beatIndex);
+        waitflag = !waitflag;
+        if (waitflag)
+        {
+            return;
+        }
         if(movementStage == 1)
         {
             targetXPos = GridManager.instance.GetPhaseInitialPosition().x + targetX * GridManager.instance.gridSize.x;
@@ -142,6 +149,7 @@ public class Boss3HookTracker : RhythmObject
         movementStage = 1;
         attackTimer = 0;
         isCaughtPlayer = false;
+        waitflag = false;
     }
 
     public void Initialize()
@@ -161,9 +169,14 @@ public class Boss3HookTracker : RhythmObject
 
     public void CatchPlayer()
     {
+        if (isCaughtPlayer)
+        {
+            return;
+        }
         GameManager.instance.player.GetComponent<PlayerAction>().StartCaught();
         targetXPos = GridManager.instance.GetPhaseInitialPosition().x + targetX * GridManager.instance.gridSize.x;
         hookTargetYPos = defaultHookLocalHeight;
+        hook.transform.position = GameManager.instance.player.transform.position;
         isCaughtPlayer = true;
     }
 }

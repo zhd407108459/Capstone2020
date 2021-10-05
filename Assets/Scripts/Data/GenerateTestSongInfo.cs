@@ -26,7 +26,7 @@ public class GenerateTestSongInfo : MonoBehaviour
         }
         for (int i = 0; i < 219; i++)
         {
-            if (i == 9)
+            if (i == 85 || i == 105 || i == 125 || i == 145 || i == 165 || i == 185)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 20;
@@ -157,32 +157,218 @@ public class GenerateTestSongInfo : MonoBehaviour
             }
 
 
-            if (i == 25)
+            if (i == 34)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 1;
+                ai.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 35)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 1;
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 36)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
                 ai.actionParameters.Add(2);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            if (i == 26)
+            if (i == 37)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 1;
+                ai.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 38)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 1;
+                ai.actionParameters.Add(4);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            if (i == 39)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 2;
+                ai.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 40)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 2;
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 41)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 2;
                 ai.actionParameters.Add(2);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            if (i == 27)
+            if (i == 42)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 2;
+                ai.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 43)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 2;
+                ai.actionParameters.Add(4);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+
+
+            if (i == 44)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 45)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 46)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 3;
                 ai.actionParameters.Add(2);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            if (i == 28)
+            if (i == 47)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 48)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(4);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 49)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(5);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 50)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 51)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(7);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 52)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(8);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 53)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 3;
+                ai.actionParameters.Add(9);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            if (i == 54)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 55)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 56)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 4;
                 ai.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 57)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 58)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(4);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 59)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(5);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 60)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 61)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(7);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 62)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(8);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 63)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 4;
+                ai.actionParameters.Add(9);
                 temp.beatsInfo[i].actions.Add(ai);
             }
         }

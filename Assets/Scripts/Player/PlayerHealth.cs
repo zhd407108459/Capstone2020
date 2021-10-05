@@ -53,6 +53,12 @@ public class PlayerHealth : MonoBehaviour
             GetComponent<PlayerAction>().EndShield();
             return;
         }
+        if(GetComponent<PlayerAction>().isCaught && 
+            (transform.position.x < GridManager.instance.GetPhaseInitialPosition().x - 0.5f * GridManager.instance.gridSize.x || transform.position.x > GridManager.instance.GetPhaseInitialPosition().x + 9.5f * GridManager.instance.gridSize.x ||
+            transform.position.y < GridManager.instance.GetPhaseInitialPosition().y - 0.5f * GridManager.instance.gridSize.y || transform.position.y > GridManager.instance.GetPhaseInitialPosition().y + 4.5f * GridManager.instance.gridSize.y))
+        {
+            return;
+        }
 
         EventInstance damagedFX;
         damagedFX = RuntimeManager.CreateInstance(damagedFXEventPath);
@@ -86,7 +92,7 @@ public class PlayerHealth : MonoBehaviour
 
     void EndHurtAnimation()
     {
-        if(!GetComponent<PlayerAction>().isDizzy && !GetComponent<PlayerAction>().IsCloud() && !GetComponent<PlayerAction>().IsChaos() && !GetComponent<PlayerAction>().IsOffTune() && !GetComponent<PlayerAction>().IsSilence())
+        if(!GetComponent<PlayerAction>().isDizzy && !GetComponent<PlayerAction>().IsCloud() && !GetComponent<PlayerAction>().IsChaos() && !GetComponent<PlayerAction>().IsOffTune() && !GetComponent<PlayerAction>().IsSilence() && !GetComponent<PlayerAction>().isCaught)
         {
             GetComponent<PlayerGridMovement>().animator.SetBool("Hurt", false);
         }
