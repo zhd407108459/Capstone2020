@@ -140,4 +140,16 @@ public class PlayerFaceExpressionController : MonoBehaviour
             animator.SetBool("Blink", true);
         }
     }
+
+    public void EnableEmptyHand()
+    {
+        Animator animator = GetComponent<PlayerGridMovement>().animator;
+        animator.SetBool("EmptyHand", true);
+    }
+
+    public void DisableEmptyHand()
+    {
+        Animator animator = GetComponent<PlayerGridMovement>().animator;
+        animator.SetBool("EmptyHand", false);
+    }
 }
