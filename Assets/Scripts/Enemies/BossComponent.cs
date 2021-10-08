@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossComponent : RhythmObject
 {
+    public bool isDamageEffectWithPlayer = false;
+
     private int timer;
     private int hideTime;
     [HideInInspector] public bool isDashed;

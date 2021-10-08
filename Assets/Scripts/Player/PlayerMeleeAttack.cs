@@ -230,7 +230,11 @@ public class PlayerMeleeAttack : RhythmObject
 
                     if (hitEffectPrefab != null)
                     {
-                        if (cos[i].GetComponent<SolidAttack>() == null)
+                        if (cos[i].GetComponent<BossComponent>().isDamageEffectWithPlayer)
+                        {
+                            Instantiate(hitEffectPrefab, new Vector3(cos[i].transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                        }
+                        else if (cos[i].GetComponent<SolidAttack>() == null)
                         {
                             Instantiate(hitEffectPrefab, cos[i].transform.position, Quaternion.identity);
                         }

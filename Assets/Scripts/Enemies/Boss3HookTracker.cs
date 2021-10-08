@@ -39,6 +39,8 @@ public class Boss3HookTracker : RhythmObject
 
     private bool waitflag = false;
 
+    private GameObject bomb;
+
     void Start()
     {
     }
@@ -50,7 +52,7 @@ public class Boss3HookTracker : RhythmObject
         {
             return;
         }
-        if (movementStage != 0 && !(isCaughtPlayer && movementStage == 3))
+        if (movementStage != 0 && !(isCaughtPlayer && movementStage == 3) && !(bomb != null && movementStage == 3))
         {
             movementTimer += Time.deltaTime;
             if (movementTimer >= movementTime)
@@ -64,6 +66,10 @@ public class Boss3HookTracker : RhythmObject
         {
             GameManager.instance.player.transform.position = hook.transform.position;
         }
+        if (bomb != null)
+        {
+            bomb.transform.position = hook.transform.position;
+        }
     }
 
     public override void OnBeat(int beatIndex)
@@ -74,6 +80,7 @@ public class Boss3HookTracker : RhythmObject
         {
             return;
         }
+        movementTimer = 0;
         if(movementStage == 1)
         {
             targetXPos = GridManager.instance.GetPhaseInitialPosition().x + targetX * GridManager.instance.gridSize.x;
@@ -178,5 +185,15 @@ public class Boss3HookTracker : RhythmObject
         hookTargetYPos = defaultHookLocalHeight;
         hook.transform.position = GameManager.instance.player.transform.position;
         isCaughtPlayer = true;
+    }
+
+    public void CatchBomb(GameObject bomb)
+    {
+        if (isCaughtPlayer)
+        {
+            return;
+        }
+        hook.transform.position = bomb.transform.position;
+        this.bomb = bomb;
     }
 }

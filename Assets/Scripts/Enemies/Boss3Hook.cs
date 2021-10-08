@@ -28,6 +28,10 @@ public class Boss3Hook : MonoBehaviour
                 {
                     parent.CatchPlayer();
                 }
+                if (rh2d[i].collider.tag.Equals("PlayerBomb"))
+                {
+                    parent.CatchBomb(rh2d[i].collider.gameObject);
+                }
             }
             lastPos = transform.position;
         }
@@ -39,6 +43,10 @@ public class Boss3Hook : MonoBehaviour
         {
             parent.CatchPlayer();
         }
+        if (collision.tag.Equals("PlayerBomb") && parent.GetStage() == 3)
+        {
+            parent.CatchBomb(collision.gameObject);
+        }
     }
 
 
@@ -47,6 +55,10 @@ public class Boss3Hook : MonoBehaviour
         if (collision.tag.Equals("Player") && parent.GetStage() == 3)
         {
             parent.CatchPlayer();
+        }
+        if (collision.tag.Equals("PlayerBomb") && parent.GetStage() == 3)
+        {
+            parent.CatchBomb(collision.gameObject);
         }
     }
 }
