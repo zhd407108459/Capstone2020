@@ -144,6 +144,10 @@ public class Boss3HookTracker : RhythmObject
         else if (movementStage == 6)
         {
             movementStage = 0;
+            if(bomb != null)
+            {
+                bomb.GetComponent<PlayerBomb>().Explode();
+            }
         }
     }
 
@@ -195,5 +199,6 @@ public class Boss3HookTracker : RhythmObject
         }
         hook.transform.position = bomb.transform.position;
         this.bomb = bomb;
+        bomb.GetComponent<PlayerBomb>().delay += 100;
     }
 }
