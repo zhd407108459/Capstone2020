@@ -30,6 +30,11 @@ public class BeatBoss : MonoBehaviour
     public int laserAttackDelay;
     public int laserStayDelay;
 
+    public int laser2Damage;
+    public GameObject laser2Prefab;
+    public int laser2AttackDelay;
+    public int laser2StayDelay;
+
     public int bombDamage;
     public float bombRange;
     public int bombDelay;
@@ -371,24 +376,24 @@ public class BeatBoss : MonoBehaviour
             }
             if (bi.actions[i].actionType == 21)
             {
-                if(bi.actions[i].actionParameters.Count >= 2)
+                if(bi.actions[i].actionParameters.Count >= 3)
                 {
-                    BossLaserAttack(4, bi.actions[i].actionParameters[0], 0, bi.actions[i].actionParameters[1]);
+                    BossLaserAttack(4, bi.actions[i].actionParameters[0], 0, bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2]);
                 }
                 else
                 {
-                    BossLaserAttack(4, bi.actions[i].actionParameters[0], 0, 0);
+                    BossLaserAttack(4, bi.actions[i].actionParameters[0], 0, 0, 0);
                 }
             }
             if (bi.actions[i].actionType == 22)
             {
-                if (bi.actions[i].actionParameters.Count >= 2)
+                if (bi.actions[i].actionParameters.Count >= 3)
                 {
-                    BossLaserAttack(bi.actions[i].actionParameters[0], 2, 90, bi.actions[i].actionParameters[1]);
+                    BossLaserAttack(bi.actions[i].actionParameters[0], 2, 90, bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2]);
                 }
                 else
                 {
-                    BossLaserAttack(bi.actions[i].actionParameters[0], 2, 90, 0);
+                    BossLaserAttack(bi.actions[i].actionParameters[0], 2, 90, 0, 0);
                 }
             }
         }
@@ -573,9 +578,17 @@ public class BeatBoss : MonoBehaviour
         }
     }
 
-    void BossLaserAttack(int x, int y, float rotationZ, int colorIndex)
+    void BossLaserAttack(int x, int y, float rotationZ, int colorIndex, int lengthIndex)
     {
-        GameObject go = Instantiate(laserPrefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), transform.rotation);
-        go.GetComponent<BossLaserAttack>().SetUp(x, y, laserDamage, laserAttackDelay, laserStayDelay, rotationZ, colorIndex);
+        if(lengthIndex == 0)
+        {
+            GameObject go = Instantiate(laserPrefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), transform.rotation);
+            go.GetComponent<BossLaserAttack>().SetUp(x, y, laserDamage, laserAttackDelay, laserStayDelay, rotationZ, colorIndex);
+        }
+        else
+        {
+            GameObject go = Instantiate(laser2Prefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), transform.rotation);
+            go.GetComponent<BossLaserAttack>().SetUp(x, y, laser2Damage, laser2AttackDelay, laser2StayDelay, rotationZ, colorIndex);
+        }
     }
 }

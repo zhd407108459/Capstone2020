@@ -90,7 +90,7 @@ public class ActionInfo
     /// 21 horizontal 0-4
     /// 22 vertical 0-9
     /// action parameter[1] == color index
-    /// 
+    /// action parameter[2] == length index
     /// 
     /// </summary>
 }
