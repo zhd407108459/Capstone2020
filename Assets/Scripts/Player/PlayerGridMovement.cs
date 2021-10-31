@@ -41,7 +41,7 @@ public class PlayerGridMovement : MonoBehaviour
         {
             Move();
         }
-        if (Vector2.Distance(transform.position, targetPos) > 0.01f && !action.isCaught)
+        if (Vector2.Distance(transform.position, targetPos) > 0.02f && !action.isCaught)
         {
             transform.position = Vector3.Lerp(transform.position, targetPos, movementLerpValue * Time.deltaTime);
         }
@@ -60,6 +60,7 @@ public class PlayerGridMovement : MonoBehaviour
                 if (xPos == 6 && yPos == 1 && TutorialManager.instance.tutorialTips[4].activeSelf)
                 {
                     TutorialManager.instance.ShowTutorialTip(5);
+                    TutorialManager.instance.HideExternalObject(1);
                 }
             }
         }

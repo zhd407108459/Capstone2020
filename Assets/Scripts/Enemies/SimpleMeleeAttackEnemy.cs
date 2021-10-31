@@ -166,6 +166,19 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
         }
     }
 
+    public override void TakeDamage(int damage)
+    {
+        if(TutorialManager.instance != null)
+        {
+            if (TutorialManager.instance.externalObjects[1].activeSelf)
+            {
+                return;
+            }
+        }
+
+        base.TakeDamage(damage);
+    }
+
     public override void Die()
     {
         base.Die();

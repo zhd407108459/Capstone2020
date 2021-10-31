@@ -78,6 +78,11 @@ public class PlayerHealth : MonoBehaviour
         {
             GridManager.instance.EndCombo();
         }
+        if(TutorialManager.instance != null)
+        {
+            return;
+        }
+
         health -= damage;
         if(health <= 0)
         {

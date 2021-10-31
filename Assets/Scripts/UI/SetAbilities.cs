@@ -512,6 +512,8 @@ public class SetAbilities : MonoBehaviour
         if(TutorialManager.instance != null)
         {
             TutorialManager.instance.ShowTutorialTip(0);
+            TutorialManager.instance.ShowExternalObject(1);
+            TutorialManager.instance.HideExternalObject(0);
         }
         if (GridManager.instance.isBossFight)
         {
@@ -552,6 +554,10 @@ public class SetAbilities : MonoBehaviour
         if (GridManager.instance.levelIndex < 2)
         {
             throwBombIcon.gameObject.SetActive(false);
+        }
+        if(TutorialManager.instance != null)
+        {
+            shieldIcon.gameObject.SetActive(false);
         }
         if(SettingManager.instance != null)
         {
@@ -733,7 +739,16 @@ public class SetAbilities : MonoBehaviour
     {
         if(TutorialManager.instance != null)
         {
-            TutorialManager.instance.ShowTutorialTip(1);
+            if (abilityPositions[0].GetComponent<AbilityIcon>().AbilityIndex() == 0 && abilityPositions[1].GetComponent<AbilityIcon>().AbilityIndex() == 0)
+            {
+                TutorialManager.instance.ShowExternalObject(0);
+                return;
+            }
+            else
+            {
+                TutorialManager.instance.ShowTutorialTip(1);
+                TutorialManager.instance.HideExternalObject(0);
+            }
         }
         if (GridManager.instance.isBossFight)
         {
