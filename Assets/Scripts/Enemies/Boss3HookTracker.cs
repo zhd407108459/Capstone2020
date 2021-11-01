@@ -153,6 +153,10 @@ public class Boss3HookTracker : RhythmObject
 
     public void SetUp(int x, int y)
     {
+        if(movementStage != 0)
+        {
+            return;
+        }
         targetX = x;
         targetY = y;
         targetXPos = sprite.transform.position.x;
