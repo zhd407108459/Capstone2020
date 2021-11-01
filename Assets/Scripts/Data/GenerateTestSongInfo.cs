@@ -469,7 +469,7 @@ public class GenerateTestSongInfo : MonoBehaviour
             }
 
             //Laser type2
-            if (i == 27)
+            if (i == 26)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -478,6 +478,15 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
 
+                ActionInfo ai4 = new ActionInfo();
+                ai4.actionType = 22;
+                ai4.actionParameters.Add(6);
+                ai4.actionParameters.Add(0);
+                ai4.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai4);
+            }
+            if (i == 27)
+            {
                 ActionInfo ai2 = new ActionInfo();
                 ai2.actionType = 22;
                 ai2.actionParameters.Add(4);
@@ -491,13 +500,6 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai3.actionParameters.Add(0);
                 ai3.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai3);
-
-                ActionInfo ai4 = new ActionInfo();
-                ai4.actionType = 22;
-                ai4.actionParameters.Add(6);
-                ai4.actionParameters.Add(0);
-                ai4.actionParameters.Add(1);
-                temp.beatsInfo[i].actions.Add(ai4);
             }
 
             //Bullets
@@ -608,7 +610,7 @@ public class GenerateTestSongInfo : MonoBehaviour
             }
 
             //Laser type2
-            if (i == 60)
+            if (i == 59)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 21;
@@ -985,7 +987,7 @@ public class GenerateTestSongInfo : MonoBehaviour
             }
 
             //Bullet Horizontal
-            if (i == 100 || i == 105)
+            if (i == 100 || i == 105 || i == 116)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
@@ -1006,7 +1008,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            if (i == 102 || i == 109)
+            if (i == 102 || i == 109 || i == 113)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 2;
@@ -1085,45 +1087,8 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai3.actionParameters.Add(0);
                 ai3.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai3);
-
-                ActionInfo ai4 = new ActionInfo();
-                ai4.actionType = 22;
-                ai4.actionParameters.Add(6);
-                ai4.actionParameters.Add(0);
-                ai4.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai4);
             }
             if (i == 140)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 22;
-                ai.actionParameters.Add(2);
-                ai.actionParameters.Add(0);
-                ai.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai);
-
-                ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 22;
-                ai2.actionParameters.Add(4);
-                ai2.actionParameters.Add(0);
-                ai2.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai2);
-
-                ActionInfo ai3 = new ActionInfo();
-                ai3.actionType = 22;
-                ai3.actionParameters.Add(6);
-                ai3.actionParameters.Add(0);
-                ai3.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai3);
-
-                ActionInfo ai4 = new ActionInfo();
-                ai4.actionType = 22;
-                ai4.actionParameters.Add(8);
-                ai4.actionParameters.Add(0);
-                ai4.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai4);
-            }
-            if (i == 144)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1134,7 +1099,30 @@ public class GenerateTestSongInfo : MonoBehaviour
 
                 ActionInfo ai2 = new ActionInfo();
                 ai2.actionType = 22;
-                ai2.actionParameters.Add(5);
+                ai2.actionParameters.Add(6);
+                ai2.actionParameters.Add(0);
+                ai2.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai2);
+
+                ActionInfo ai3 = new ActionInfo();
+                ai3.actionType = 22;
+                ai3.actionParameters.Add(8);
+                ai3.actionParameters.Add(0);
+                ai3.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai3);
+            }
+            if (i == 144)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 22;
+                ai.actionParameters.Add(1);
+                ai.actionParameters.Add(0);
+                ai.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 22;
+                ai2.actionParameters.Add(8);
                 ai2.actionParameters.Add(0);
                 ai2.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai2);
@@ -1143,14 +1131,14 @@ public class GenerateTestSongInfo : MonoBehaviour
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
-                ai.actionParameters.Add(3);
+                ai.actionParameters.Add(2);
                 ai.actionParameters.Add(0);
                 ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
 
                 ActionInfo ai2 = new ActionInfo();
                 ai2.actionType = 22;
-                ai2.actionParameters.Add(6);
+                ai2.actionParameters.Add(7);
                 ai2.actionParameters.Add(0);
                 ai2.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai2);
@@ -1178,6 +1166,22 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai3.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai3);
             }
+            if (i == 152)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 22;
+                ai.actionParameters.Add(4);
+                ai.actionParameters.Add(0);
+                ai.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 22;
+                ai2.actionParameters.Add(5);
+                ai2.actionParameters.Add(0);
+                ai2.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai2);
+            }
             if (i == 154)
             {
                 ActionInfo ai = new ActionInfo();
@@ -1189,24 +1193,10 @@ public class GenerateTestSongInfo : MonoBehaviour
 
                 ActionInfo ai2 = new ActionInfo();
                 ai2.actionType = 22;
-                ai2.actionParameters.Add(4);
+                ai2.actionParameters.Add(6);
                 ai2.actionParameters.Add(0);
                 ai2.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai2);
-
-                ActionInfo ai3 = new ActionInfo();
-                ai3.actionType = 22;
-                ai3.actionParameters.Add(5);
-                ai3.actionParameters.Add(0);
-                ai3.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai3);
-
-                ActionInfo ai4 = new ActionInfo();
-                ai4.actionType = 22;
-                ai4.actionParameters.Add(6);
-                ai4.actionParameters.Add(0);
-                ai4.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai4);
             }
 
             //Laser type2
@@ -1246,31 +1236,24 @@ public class GenerateTestSongInfo : MonoBehaviour
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
-                ai.actionParameters.Add(3);
+                ai.actionParameters.Add(5);
                 ai.actionParameters.Add(0);
                 ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
 
                 ActionInfo ai2 = new ActionInfo();
                 ai2.actionType = 22;
-                ai2.actionParameters.Add(5);
+                ai2.actionParameters.Add(7);
                 ai2.actionParameters.Add(0);
                 ai2.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai2);
 
                 ActionInfo ai3 = new ActionInfo();
                 ai3.actionType = 22;
-                ai3.actionParameters.Add(7);
+                ai3.actionParameters.Add(9);
                 ai3.actionParameters.Add(0);
                 ai3.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai3);
-
-                ActionInfo ai4 = new ActionInfo();
-                ai4.actionType = 22;
-                ai4.actionParameters.Add(9);
-                ai4.actionParameters.Add(0);
-                ai4.actionParameters.Add(1);
-                temp.beatsInfo[i].actions.Add(ai4);
             }
             if (i == 140)
             {
@@ -1294,13 +1277,6 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai3.actionParameters.Add(0);
                 ai3.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai3);
-
-                ActionInfo ai4 = new ActionInfo();
-                ai4.actionType = 22;
-                ai4.actionParameters.Add(7);
-                ai4.actionParameters.Add(0);
-                ai4.actionParameters.Add(1);
-                temp.beatsInfo[i].actions.Add(ai4);
             }
             if (i == 148)
             {
@@ -1317,29 +1293,6 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(0);
                 ai2.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai2);
-            }
-            if (i == 150)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 21;
-                ai.actionParameters.Add(2);
-                ai.actionParameters.Add(0);
-                ai.actionParameters.Add(1);
-                temp.beatsInfo[i].actions.Add(ai);
-
-                ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 21;
-                ai2.actionParameters.Add(3);
-                ai2.actionParameters.Add(0);
-                ai2.actionParameters.Add(1);
-                temp.beatsInfo[i].actions.Add(ai2);
-
-                ActionInfo ai3 = new ActionInfo();
-                ai3.actionType = 21;
-                ai3.actionParameters.Add(4);
-                ai3.actionParameters.Add(0);
-                ai3.actionParameters.Add(1);
-                temp.beatsInfo[i].actions.Add(ai3);
             }
             if (i == 154)
             {
@@ -1385,10 +1338,42 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai6.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai6);
             }
+            if (i == 156)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 21;
+                ai.actionParameters.Add(0);
+                ai.actionParameters.Add(0);
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 21;
+                ai2.actionParameters.Add(4);
+                ai2.actionParameters.Add(0);
+                ai2.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai2);
+            }
+            if (i == 158)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 21;
+                ai.actionParameters.Add(1);
+                ai.actionParameters.Add(0);
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 21;
+                ai2.actionParameters.Add(3);
+                ai2.actionParameters.Add(0);
+                ai2.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai2);
+            }
 
             //Pattern02(Beats160-223)
             //Laser type1
-            if (i == 208)
+            if (i == 210)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1455,7 +1440,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai4.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai4);
             }
-            if (i == 220)
+            if (i == 219)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1478,7 +1463,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai3.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai3);
             }
-            if (i == 221)
+            if (i == 220)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1501,7 +1486,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai3.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai3);
             }
-            if (i == 222)
+            if (i == 221)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1520,29 +1505,6 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ActionInfo ai3 = new ActionInfo();
                 ai3.actionType = 22;
                 ai3.actionParameters.Add(8);
-                ai3.actionParameters.Add(0);
-                ai3.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai3);
-            }
-            if (i == 223)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 22;
-                ai.actionParameters.Add(3);
-                ai.actionParameters.Add(0);
-                ai.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai);
-
-                ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 22;
-                ai2.actionParameters.Add(6);
-                ai2.actionParameters.Add(0);
-                ai2.actionParameters.Add(0);
-                temp.beatsInfo[i].actions.Add(ai2);
-
-                ActionInfo ai3 = new ActionInfo();
-                ai3.actionType = 22;
-                ai3.actionParameters.Add(9);
                 ai3.actionParameters.Add(0);
                 ai3.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai3);
@@ -1572,7 +1534,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai3.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai3);
             }
-            if (i == 162 || i == 170 || i == 198 || i == 206 || i == 208)
+            if (i == 162 || i == 170 || i == 198 || i == 206 || i == 210)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1625,7 +1587,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
-            if (i == 166 || i == 174 || i == 194 || i == 202 || i == 210)
+            if (i == 166 || i == 174 || i == 194 || i == 202)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1717,21 +1679,7 @@ public class GenerateTestSongInfo : MonoBehaviour
             }
 
             //Bullet Wall
-            if (i >= 170 && i <= 181)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 1;
-                ai.actionParameters.Add(3);
-                temp.beatsInfo[i].actions.Add(ai);
-
-                ActionInfo ai2 = new ActionInfo();
-                ai2.actionType = 1;
-                ai2.actionParameters.Add(4);
-                temp.beatsInfo[i].actions.Add(ai2);
-            }
-
-            //Bullet Horizontal
-            if (i == 172 || i == 176 || i == 180)
+            if (i >= 170 && i <= 186)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
@@ -1740,14 +1688,37 @@ public class GenerateTestSongInfo : MonoBehaviour
 
                 ActionInfo ai2 = new ActionInfo();
                 ai2.actionType = 1;
-                ai2.actionParameters.Add(2);
+                ai2.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
-            if (i == 174 || i == 178)
+            if (i == 187)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
-                ai.actionParameters.Add(1);
+                ai.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            //Bullet Horizontal
+            if (i == 172 || i == 176 || i == 180 || i == 184)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 1;
+                ai.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 173 || i == 177 || i == 181 || i == 185)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 2;
+                ai.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 174 || i == 178 || i == 182 || i == 186)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 1;
+                ai.actionParameters.Add(4);
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
@@ -1828,16 +1799,8 @@ public class GenerateTestSongInfo : MonoBehaviour
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
-            //Hook
-            if (i == 226 || i == 234 || i == 242 || i == 250)
-            {
-                ActionInfo ai = new ActionInfo();
-                ai.actionType = 20;
-                temp.beatsInfo[i].actions.Add(ai);
-            }
-
             //Laser type1
-            if (i == 238 || i == 246)
+            if (i == 238)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1853,7 +1816,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
-            if (i == 240 || i == 248)
+            if (i == 240 || i == 246)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1885,7 +1848,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
-            if (i == 244 || i == 252)
+            if (i == 252)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 22;
@@ -1910,6 +1873,73 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+
+            //Laser type2
+            if (i == 224)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 22;
+                ai.actionParameters.Add(1);
+                ai.actionParameters.Add(0);
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 22;
+                ai2.actionParameters.Add(5);
+                ai2.actionParameters.Add(0);
+                ai2.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai2);
+            }
+            if (i == 228)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 22;
+                ai.actionParameters.Add(4);
+                ai.actionParameters.Add(0);
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 22;
+                ai2.actionParameters.Add(8);
+                ai2.actionParameters.Add(0);
+                ai2.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai2);
+            }
+            if (i == 232)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 22;
+                ai.actionParameters.Add(3);
+                ai.actionParameters.Add(0);
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 22;
+                ai2.actionParameters.Add(7);
+                ai2.actionParameters.Add(0);
+                ai2.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai2);
+            }
+            if (i == 236)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 22;
+                ai.actionParameters.Add(2);
+                ai.actionParameters.Add(0);
+                ai.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai);
+
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 22;
+                ai2.actionParameters.Add(6);
+                ai2.actionParameters.Add(0);
+                ai2.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai2);
+            }
+
         }
         SaveAFile(temp, "./Data/KnifeBoss3Phase1Hard.info");
     }
