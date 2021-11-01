@@ -54,6 +54,9 @@ public class GridManager : MonoBehaviour
     public GameObject interactionTip;
     public GameObject narrativeTip;
 
+    public bool boss3Developing;
+    public GameObject btmPanel;
+
     [HideInInspector] public Vector3 targetCameraPos;
     [HideInInspector] public float targetCameraSize = 5.0f;
     [HideInInspector] public bool isCameraFollowing;
@@ -196,7 +199,14 @@ public class GridManager : MonoBehaviour
                         rageTimerText.gameObject.SetActive(false);
                         BeatsManager.instance.SwitchToBoss2BGM();
                         boss.StartStage2();
-                        setAbilities.Show();
+                        if (!boss3Developing)
+                        {
+                            setAbilities.Show();
+                        }
+                        else
+                        {
+                            btmPanel.SetActive(true);
+                        }
                         isInPhase = false;
                         GameManager.instance.player.GetComponent<PlayerHealth>().RecoverAll();
                         foreach (var n in FindObjectsOfType<EnemyGridBullet>())
