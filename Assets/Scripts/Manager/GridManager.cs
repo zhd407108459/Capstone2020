@@ -102,6 +102,7 @@ public class GridManager : MonoBehaviour
             phaseIndex = SettingManager.instance.targetPhase;
             setAbilities.SetSkillKeys();
         }
+        //cameraObject.transform.position = new Vector3(0, 0, -10);
         targetCameraPos = cameraObject.transform.position;
         targetCameraSize = Camera.main.orthographicSize;
         closeRecordPanelButton.onClick.AddListener(HideRecordPanel);

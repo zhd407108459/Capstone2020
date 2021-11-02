@@ -54,7 +54,7 @@ public class DialogUnit : MonoBehaviour
         {
             transform.position = targetPosition.position;
         }
-        if(SettingManager.instance == null || textInLanguages.Count < SettingManager.instance.language)
+        if(SettingManager.instance == null || textInLanguages.Count < 2)
         {
             originText = textContent.text;
         }
