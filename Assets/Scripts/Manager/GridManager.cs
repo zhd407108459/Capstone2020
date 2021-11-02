@@ -114,7 +114,7 @@ public class GridManager : MonoBehaviour
         {
             if(currentDialog != null)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
                 {
                     currentDialog.SkipOrNextDialogUnit();
                 }
