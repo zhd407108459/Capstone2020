@@ -175,6 +175,16 @@ public class MenuUIManager : MonoBehaviour
         backgrounds.SetActive(false);
     }
 
+    public void LoadBoss3()
+    {
+        SettingManager.instance.targetPhase = 0;
+        ShowLoadingPanel();
+        operation = SceneManager.LoadSceneAsync(6);
+        operation.allowSceneActivation = false;
+        isLoading = true;
+        backgrounds.SetActive(false);
+    }
+
     public void ChangeOverAllVolume()
     {
         SettingManager.instance.ChangeOverAllVolume(overAllVolumeSlider.value);
