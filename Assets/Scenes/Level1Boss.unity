@@ -2147,7 +2147,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -6819,7 +6819,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -12399,6 +12399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c23e01e5b254448ba16d70bea638d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDamageEffectWithPlayer: 0
   isDashed: 0
 --- !u!1 &325637088
 GameObject:
@@ -13092,7 +13093,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -18608,6 +18609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c23e01e5b254448ba16d70bea638d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDamageEffectWithPlayer: 0
   isDashed: 0
 --- !u!1 &497558036
 GameObject:
@@ -19091,6 +19093,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2869619438738942508, guid: 7382d7c857b2b0e409b039af9c60d082,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7382d7c857b2b0e409b039af9c60d082, type: 3}
 --- !u!224 &624339685 stripped
@@ -19359,7 +19366,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -24238,7 +24245,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -30521,7 +30528,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -36306,7 +36313,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -41501,7 +41508,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -46821,7 +46828,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -51649,7 +51656,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -57403,7 +57410,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -62284,6 +62291,14 @@ MonoBehaviour:
     type: 3}
   solidAttackDelay: 2
   solidStayDelay: 2
+  laserDamage: 0
+  laserPrefab: {fileID: 0}
+  laserAttackDelay: 0
+  laserStayDelay: 0
+  laser2Damage: 0
+  laser2Prefab: {fileID: 0}
+  laser2AttackDelay: 0
+  laser2StayDelay: 0
   bombDamage: 20
   bombRange: 2.7
   bombDelay: 12
@@ -62292,6 +62307,8 @@ MonoBehaviour:
   dollDamage: 0
   dollAttackDelay: 0
   dollPrefab: {fileID: 0}
+  bossHook: {fileID: 0}
+  bossHookDamage: 0
   ropeHangingObjectPrefabList: []
   bombPositions:
   - {fileID: 745154016}
@@ -62770,6 +62787,8 @@ MonoBehaviour:
   comboTipText: {fileID: 1513692460}
   interactionTip: {fileID: 277942132}
   narrativeTip: {fileID: 624339689}
+  boss3Developing: 0
+  btmPanel: {fileID: 0}
   targetCameraPos: {x: 0, y: 0, z: 0}
   targetCameraSize: 5
   isCameraFollowing: 0
@@ -63626,7 +63645,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -83763,7 +83782,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -88525,7 +88544,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -88589,7 +88608,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1243013545
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
