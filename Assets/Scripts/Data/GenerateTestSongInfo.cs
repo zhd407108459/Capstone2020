@@ -17,16 +17,16 @@ public class GenerateTestSongInfo : MonoBehaviour
     void GenerateBoss3TestFile()
     {
         SongInfo temp = new SongInfo();
-        temp.length = 219;
-        temp.interval = 0.48f;
-        for (int i = 0; i < 219; i++)
+        temp.length = 259;
+        temp.interval = 0.46f;
+        for (int i = 0; i < 259; i++)
         {
             BeatInfo bi = new BeatInfo();
             bi.index = i;
             //End Adding ActionInfo
             temp.beatsInfo.Add(bi);
         }
-        for (int i = 0; i < 219; i++)
+        for (int i = 0; i < 259; i++)
         {
             if (i == 85 || i == 105 || i == 125 || i == 145 || i == 165 || i == 185)
             {
@@ -43,6 +43,11 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(0);
                 ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 12;
+                ai2.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai2);
+
             }
             if (i == 11)
             {
@@ -99,6 +104,10 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(1);
                 ai.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai);
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 12;
+                ai2.actionParameters.Add(7);
+                temp.beatsInfo[i].actions.Add(ai2);
             }
             if (i == 17)
             {
