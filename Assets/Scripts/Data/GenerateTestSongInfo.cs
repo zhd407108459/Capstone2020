@@ -117,6 +117,10 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(2);
                 ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 12;
+                ai2.actionParameters.Add(4);
+                temp.beatsInfo[i].actions.Add(ai2);
             }
             if (i == 18)
             {
@@ -396,6 +400,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 4;
                 ai.actionParameters.Add(9);
                 temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            if (i == 180)
+            {
+                ActionInfo ai2 = new ActionInfo();
+                ai2.actionType = 12;
+                ai2.actionParameters.Add(5);
+                temp.beatsInfo[i].actions.Add(ai2);
             }
         }
         SaveAFile(temp, "./Data/Boss3Test.info");

@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossFrogAnimatorController : MonoBehaviour
 {
     public Animator animator;
+    public GameObject brainCollider;
+
     public void Attack1()
     {
         animator.SetTrigger("Attack1");
@@ -33,10 +35,12 @@ public class BossFrogAnimatorController : MonoBehaviour
     public void StartCoolDown()
     {
         animator.SetBool("IsCoolingDown", true);
+        brainCollider.SetActive(true);
     }
 
     public void EndCoolDown()
     {
         animator.SetBool("IsCoolingDown", false);
+        brainCollider.SetActive(false);
     }
 }
