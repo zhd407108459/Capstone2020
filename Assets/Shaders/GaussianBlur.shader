@@ -3,7 +3,7 @@
     Properties
     {
         _MainTex("Texture", 2D) = "white" {}
-        radius("Radius", Range(0,30)) = 15
+        radius("Radius", Range(0,300)) = 15
         resolution("Resolution", float) = 800
         hstep("HorizontalStep", Range(0,1)) = 0.5
         vstep("VerticalStep", Range(0,1)) = 0.5	
