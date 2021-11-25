@@ -39,7 +39,7 @@ public class CutScene : MonoBehaviour
 
             for(int i = 0; i < events.Count; i++)
             {
-                if(lastTimer <= triggerTimes[i] && triggerTimes[i] <= timer)
+                if(lastTimer <= triggerTimes[i] && triggerTimes[i] <= timer && triggerTimes[i] > 0)
                 {
                     events[i].Invoke();
                 }
@@ -69,6 +69,13 @@ public class CutScene : MonoBehaviour
         }
         GameManager.instance.isCutScene = true;
         skipTip.SetActive(false);
+        for (int i = 0; i < events.Count; i++)
+        {
+            if (triggerTimes[i] == 0)
+            {
+                events[i].Invoke();
+            }
+        }
     }
 
     public void Stop()
