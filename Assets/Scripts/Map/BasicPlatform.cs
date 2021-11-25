@@ -8,12 +8,17 @@ public class BasicPlatform : RhythmObject
     public int yPos;
 
     public List<SpriteRenderer> sprites = new List<SpriteRenderer>();
+    public SpriteRenderer glowingLayer;
 
     public void SetSortingOrder(int index)
     {
         for(int i = 0; i < sprites.Count; i++)
         {
             sprites[i].sortingOrder = index;
+        }
+        if(glowingLayer != null)
+        {
+            glowingLayer.sortingOrder = index - 1;
         }
     }
 }
