@@ -231,6 +231,7 @@ public class PlayerGridMovement : MonoBehaviour
                 if (TutorialManager.instance.tutorialTips[7].activeSelf && GridManager.instance.IsEnemyClear())
                 {
                     GameManager.instance.BackToMenu();
+                    return;
                 }
             }
             //Temp
