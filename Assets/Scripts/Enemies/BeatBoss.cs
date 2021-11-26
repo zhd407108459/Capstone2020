@@ -51,6 +51,9 @@ public class BeatBoss : MonoBehaviour
 
     public List<Transform> bombPositions = new List<Transform>();
 
+    public List<GameObject> bossBuff = new List<GameObject>();
+    public List<GameObject> bossDebuff = new List<GameObject>();
+
     public UnityEvent resetAnimationEvent;
     public UnityEvent bossHurtEvent;
     public List<UnityEvent> bossEvents = new List<UnityEvent>();
@@ -396,6 +399,28 @@ public class BeatBoss : MonoBehaviour
                     BossLaserAttack(bi.actions[i].actionParameters[0], 2, 90, 0, 0);
                 }
             }
+            if (bi.actions[i].actionType == 23)
+            {
+                if (bi.actions[i].actionParameters.Count >= 3)
+                {
+                    GenerateBossBuff(bi.actions[i].actionParameters[0], bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2]);
+                }
+                else
+                {
+                    Debug.LogError("Wrong Parameters!");
+                }
+            }
+            if (bi.actions[i].actionType == 24)
+            {
+                if (bi.actions[i].actionParameters.Count >= 3)
+                {
+                    GenerateBossDebuff(bi.actions[i].actionParameters[0], bi.actions[i].actionParameters[1], bi.actions[i].actionParameters[2]);
+                }
+                else
+                {
+                    Debug.LogError("Wrong Parameters!");
+                }
+            }
         }
     }
 
@@ -590,5 +615,25 @@ public class BeatBoss : MonoBehaviour
             GameObject go = Instantiate(laser2Prefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), transform.rotation);
             go.GetComponent<BossLaserAttack>().SetUp(x, y, laser2Damage, laser2AttackDelay, laser2StayDelay, rotationZ, colorIndex);
         }
+    }
+
+    void GenerateBossBuff(int itemIndex, int x, int y)
+    {
+        if(itemIndex < 0 || itemIndex >= bossBuff.Count || x<0 || x > 9 || y < 0 || y > 4)
+        {
+            Debug.LogError("Wrong Parameters!");
+        }
+        GameObject go = Instantiate(bossBuff[itemIndex], GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), Quaternion.identity);
+        go.GetComponent<BasicBuff>().Setup(x, y);
+    }
+
+    void GenerateBossDebuff(int itemIndex, int x, int y)
+    {
+        if (itemIndex < 0 || itemIndex >= bossDebuff.Count || x < 0 || x > 9 || y < 0 || y > 4)
+        {
+            Debug.LogError("Wrong Parameters!");
+        }
+        GameObject go = Instantiate(bossDebuff[itemIndex], GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), Quaternion.identity);
+        go.GetComponent<BasicDebuff>().Setup(x, y);
     }
 }

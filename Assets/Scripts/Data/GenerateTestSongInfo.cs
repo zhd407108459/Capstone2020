@@ -47,6 +47,12 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionType = 12;
                 ai2.actionParameters.Add(6);
                 temp.beatsInfo[i].actions.Add(ai2);
+                ActionInfo ai3 = new ActionInfo();
+                ai3.actionType = 23;
+                ai3.actionParameters.Add(0);
+                ai3.actionParameters.Add(2);
+                ai3.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai3);
 
             }
             if (i == 11)
@@ -66,6 +72,12 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(4);
                 ai.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai);
+                ActionInfo ai3 = new ActionInfo();
+                ai3.actionType = 24;
+                ai3.actionParameters.Add(2);
+                ai3.actionParameters.Add(3);
+                ai3.actionParameters.Add(4);
+                temp.beatsInfo[i].actions.Add(ai3);
             }
             if (i == 13)
             {

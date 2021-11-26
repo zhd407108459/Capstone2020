@@ -39,6 +39,9 @@ public class ActionInfo
     /// 
     /// 21 shoot laser horizontal
     /// 22 shoot laser vertical
+    /// 
+    /// 23 generate boss buff
+    /// 24 generate boss debuff
     /// </summary>
     public List<int> actionParameters = new List<int>();
     /// <summary>
@@ -92,5 +95,9 @@ public class ActionInfo
     /// action parameter[1] == color index
     /// action parameter[2] == length index
     /// 
+    /// for action 23 and 24 generate boss buff/debuff
+    /// action parameter[0] == item index
+    /// action parameter[1] == x position (0-9)
+    /// action parameter[2] == y position (0-4)
     /// </summary>
 }
