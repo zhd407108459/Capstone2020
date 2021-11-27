@@ -62,7 +62,8 @@
 	<object class="MarkerTrack" id="{a0c0f5af-14c0-4caf-89fe-fa4533deab7a}" />
 	<object class="GroupTrack" id="{32553a8f-579b-4204-a722-281ac28e3d7d}">
 		<relationship name="modules">
-			<destination>{b959001f-95ef-4f83-851b-7df322a84071}</destination>
+			<destination>{1326f9b2-026d-4d64-ba76-92b48c5c45ef}</destination>
+			<destination>{9fbff4e1-5a61-4c89-94e5-975cef65d3f6}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{cbd60f53-21ef-4c28-9000-f755a4e235dd}</destination>
@@ -70,7 +71,8 @@
 	</object>
 	<object class="Timeline" id="{3e78c077-c1ff-4d02-8408-be1e48366e34}">
 		<relationship name="modules">
-			<destination>{b959001f-95ef-4f83-851b-7df322a84071}</destination>
+			<destination>{1326f9b2-026d-4d64-ba76-92b48c5c45ef}</destination>
+			<destination>{9fbff4e1-5a61-4c89-94e5-975cef65d3f6}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{61a83b04-998e-4478-81b6-71827aa7ddb8}</destination>
@@ -97,12 +99,23 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{fd5725c5-1579-4df7-9ade-fb28b8cb1216}" />
-	<object class="SingleSound" id="{b959001f-95ef-4f83-851b-7df322a84071}">
+	<object class="SingleSound" id="{1326f9b2-026d-4d64-ba76-92b48c5c45ef}">
 		<property name="length">
 			<value>64</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{dd284fd6-16dd-4cbf-b96c-e9b05a33f318}</destination>
+			<destination>{2d01e78e-2ff5-4aa6-a62f-141a9f5cf882}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{9fbff4e1-5a61-4c89-94e5-975cef65d3f6}">
+		<property name="length">
+			<value>2</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>64</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{2d01e78e-2ff5-4aa6-a62f-141a9f5cf882}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{cbd60f53-21ef-4c28-9000-f755a4e235dd}">
@@ -155,7 +168,7 @@
 			<value>0</value>
 		</property>
 		<property name="releaseTime">
-			<value>3000</value>
+			<value>500</value>
 		</property>
 		<property name="finalValue">
 			<value>-80</value>
