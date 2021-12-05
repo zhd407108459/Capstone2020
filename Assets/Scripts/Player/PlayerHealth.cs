@@ -48,6 +48,10 @@ public class PlayerHealth : MonoBehaviour
         {
             return;
         }
+        if (GetComponent<PlayerAction>().isCaught)
+        {
+            return;
+        }
         if(damage > 0 && GetComponent<PlayerAction>().IsShield())
         {
             GetComponent<PlayerAction>().EndShield();
