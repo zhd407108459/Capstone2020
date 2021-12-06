@@ -19,6 +19,7 @@ public class BeatBoss : MonoBehaviour
     public GameObject shootCenterObject;
     public int centerShootPosX;
     public int centerShootPosY;
+    public bool isUseCenterObjectPos;
 
     public int solidDamage;
     public GameObject solidPrefab;
@@ -207,6 +208,20 @@ public class BeatBoss : MonoBehaviour
         if (bossHook != null)
         {
             bossHook.Initialize();
+        }
+    }
+
+    public Vector3 GetCenterPosition()
+    {
+        if (!isUseCenterObjectPos)
+        {
+            Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(centerShootPosX * GridManager.instance.gridSize.x, centerShootPosY * GridManager.instance.gridSize.y);
+            return centerPos;
+        }
+        else
+        {
+            Vector3 centerPos = shootCenterObject.transform.position;
+            return centerPos;
         }
     }
 

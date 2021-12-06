@@ -195,7 +195,7 @@ public class PlayerDash : RhythmObject
             }
             if (cos[i].tag.Equals("BossBomb"))
             {
-                Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+                Vector3 centerPos = GridManager.instance.boss.GetCenterPosition();
                 if ((cos[i].transform.position.x - centerPos.x >= 0 && !GetComponent<PlayerGridMovement>().isPlayerFacingRight) || (cos[i].transform.position.x - centerPos.x < 0 && GetComponent<PlayerGridMovement>().isPlayerFacingRight))
                 {
                     cos[i].GetComponent<EnemyBomb>().AttackedByPlayer(centerPos, true);
@@ -288,7 +288,7 @@ public class PlayerDash : RhythmObject
         }
         if (collision.tag.Equals("BossBomb"))
         {
-            Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+            Vector3 centerPos = GridManager.instance.boss.GetCenterPosition();
             if ((collision.transform.position.x - centerPos.x >= 0 && !GetComponent<PlayerGridMovement>().isPlayerFacingRight) || (collision.transform.position.x - centerPos.x < 0 && GetComponent<PlayerGridMovement>().isPlayerFacingRight))
             {
                 collision.GetComponent<EnemyBomb>().AttackedByPlayer(centerPos, true);
@@ -375,7 +375,7 @@ public class PlayerDash : RhythmObject
         }
         if (collision.tag.Equals("BossBomb"))
         {
-            Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+            Vector3 centerPos = GridManager.instance.boss.GetCenterPosition();
             if ((collision.transform.position.x - centerPos.x >= 0 && !GetComponent<PlayerGridMovement>().isPlayerFacingRight) || (collision.transform.position.x - centerPos.x < 0 && GetComponent<PlayerGridMovement>().isPlayerFacingRight))
             {
                 collision.GetComponent<EnemyBomb>().AttackedByPlayer(centerPos, true);

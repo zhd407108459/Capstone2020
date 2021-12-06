@@ -265,7 +265,7 @@ public class PlayerMeleeAttack : RhythmObject
             {
                 if (!cos[i].GetComponent<EnemyBomb>().isAttacked)
                 {
-                    Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+                    Vector3 centerPos = GridManager.instance.boss.GetCenterPosition();
                     //Debug.Log(cos[i].transform.position.x - centerPos.x);
                     if ((cos[i].transform.position.x - centerPos.x >= 0 && !GetComponent<PlayerGridMovement>().isPlayerFacingRight) || (cos[i].transform.position.x - centerPos.x < 0 && GetComponent<PlayerGridMovement>().isPlayerFacingRight))
                     {

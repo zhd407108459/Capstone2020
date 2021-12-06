@@ -169,7 +169,7 @@ public class PlayerGridBullet : RhythmObject
         }
         if (collision.tag.Equals("BossBomb"))
         {
-            Vector3 centerPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(GridManager.instance.boss.centerShootPosX * GridManager.instance.gridSize.x, GridManager.instance.boss.centerShootPosY * GridManager.instance.gridSize.y);
+            Vector3 centerPos = GridManager.instance.boss.GetCenterPosition();
             if ((collision.transform.position.x - centerPos.x >= 0 && xDirection <= 0) || (collision.transform.position.x - centerPos.x < 0 && xDirection >= 0))
             {
                 collision.GetComponent<EnemyBomb>().AttackedByPlayer(centerPos, true);
