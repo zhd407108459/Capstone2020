@@ -10,6 +10,7 @@ public class PlayerBomb : RhythmObject
     public int damage;
     public int xPos;
     public int yPos;
+    public float hookDamageRatio = 1.5f;
     public BoxCollider2D explosionArea;
     public GameObject bombParticlePrefab;
     public string explosionFXPath = "event:/FX/Enemy/FX-EnemyBomb";
@@ -65,12 +66,40 @@ public class PlayerBomb : RhythmObject
             {
                 if (action.damageIncreasingRatio > 1)
                 {
-                    GridManager.instance.boss.TakeDamage((int)(damage * action.damageIncreasingRatio));
+                    if(GridManager.instance.boss.bossHook != null)
+                    {
+                        if (GridManager.instance.boss.bossHook.IsCatchingBomb())
+                        {
+                            GridManager.instance.boss.TakeDamage((int)(damage * action.damageIncreasingRatio * hookDamageRatio));
+                        }
+                        else
+                        {
+                            GridManager.instance.boss.TakeDamage((int)(damage * action.damageIncreasingRatio));
+                        }
+                    }
+                    else
+                    {
+                        GridManager.instance.boss.TakeDamage((int)(damage * action.damageIncreasingRatio));
+                    }
                     ishit = true;
                 }
                 else
                 {
-                    GridManager.instance.boss.TakeDamage(damage);
+                    if (GridManager.instance.boss.bossHook != null)
+                    {
+                        if (GridManager.instance.boss.bossHook.IsCatchingBomb())
+                        {
+                            GridManager.instance.boss.TakeDamage((int)(damage * hookDamageRatio));
+                        }
+                        else
+                        {
+                            GridManager.instance.boss.TakeDamage(damage);
+                        }
+                    }
+                    else
+                    {
+                        GridManager.instance.boss.TakeDamage(damage);
+                    }
                 }
                 Camera.main.GetComponent<CameraShake>().Shake();
 

@@ -205,4 +205,16 @@ public class Boss3HookTracker : RhythmObject
         this.bomb = bomb;
         bomb.GetComponent<PlayerBomb>().delay += 100;
     }
+
+    public bool IsCatchingBomb()
+    {
+        if (bomb != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
