@@ -23,6 +23,11 @@ public class Boss3HookTracker : RhythmObject
 
     public float movementTime;
 
+    public string catchingFXPath;
+    public string caughtFXPath;
+    public string caughtPostFXPath;
+    public string notCaughtFXPath;
+
     private float movementTimer;
 
     private int targetX;
@@ -40,6 +45,7 @@ public class Boss3HookTracker : RhythmObject
     private bool waitflag = false;
 
     private GameObject bomb;
+    private int postCaughtTimer = -1;
 
     void Start()
     {
@@ -75,6 +81,23 @@ public class Boss3HookTracker : RhythmObject
     public override void OnBeat(int beatIndex)
     {
         base.OnBeat(beatIndex);
+
+        if(postCaughtTimer >= 0)
+        {
+            if (postCaughtTimer == 0)
+            {
+                EventInstance caughtPostFX;
+                caughtPostFX = RuntimeManager.CreateInstance(caughtPostFXPath);
+                if (SettingManager.instance != null)
+                {
+                    //float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                    caughtPostFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume); //* (1.0f - value));
+                }
+                caughtPostFX.start();
+            }
+            postCaughtTimer--;
+        }
+
         waitflag = !waitflag;
         if (waitflag)
         {
@@ -96,6 +119,17 @@ public class Boss3HookTracker : RhythmObject
             targetXPos = GridManager.instance.GetPhaseInitialPosition().x + targetX * GridManager.instance.gridSize.x;
             hookTargetYPos = floorHookLocalHeight + targetY * GridManager.instance.gridSize.y;
             movementStage = 3;
+            if (catchingFXPath != null && catchingFXPath != "")
+            {
+                EventInstance catchingFX;
+                catchingFX = RuntimeManager.CreateInstance(catchingFXPath);
+                if (SettingManager.instance != null)
+                {
+                    //float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                    catchingFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume); //* (1.0f - value));
+                }
+                catchingFX.start();
+            }
         }
         else if (movementStage == 3)
         {
@@ -124,6 +158,17 @@ public class Boss3HookTracker : RhythmObject
                 targetXPos = GridManager.instance.GetPhaseInitialPosition().x + 4 * GridManager.instance.gridSize.x;
                 hookTargetYPos = defaultHookLocalHeight;
                 movementStage = 6;
+                if (!IsCatchingBomb())
+                {
+                    EventInstance notCaughtFX;
+                    notCaughtFX = RuntimeManager.CreateInstance(notCaughtFXPath);
+                    if (SettingManager.instance != null)
+                    {
+                        //float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                        notCaughtFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume); //* (1.0f - value));
+                    }
+                    notCaughtFX.start();
+                }
             }
         }
         else if (movementStage == 5)
@@ -193,6 +238,16 @@ public class Boss3HookTracker : RhythmObject
         hookTargetYPos = defaultHookLocalHeight;
         hook.transform.position = GameManager.instance.player.transform.position;
         isCaughtPlayer = true;
+
+        EventInstance caughtFX;
+        caughtFX = RuntimeManager.CreateInstance(caughtFXPath);
+        if (SettingManager.instance != null)
+        {
+            //float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+            caughtFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume); //* (1.0f - value));
+        }
+        caughtFX.start();
+        postCaughtTimer = 1;
     }
 
     public void CatchBomb(GameObject bomb)
@@ -204,6 +259,16 @@ public class Boss3HookTracker : RhythmObject
         hook.transform.position = bomb.transform.position;
         this.bomb = bomb;
         bomb.GetComponent<PlayerBomb>().delay += 100;
+
+        EventInstance caughtFX;
+        caughtFX = RuntimeManager.CreateInstance(caughtFXPath);
+        if (SettingManager.instance != null)
+        {
+            //float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+            caughtFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume); //* (1.0f - value));
+        }
+        caughtFX.start();
+        postCaughtTimer = 1;
     }
 
     public bool IsCatchingBomb()
