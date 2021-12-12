@@ -10366,6 +10366,10 @@ MonoBehaviour:
   defaultHookLocalHeight: 4.55
   floorHookLocalHeight: -3.62
   movementTime: 0.95
+  catchingFXPath: event:/FX/Enemy/FX-MartyHookDown
+  caughtFXPath: event:/FX/Enemy/FX-MartyHookHit
+  caughtPostFXPath: event:/FX/Enemy/FX-MartyHookAttackFinish
+  notCaughtFXPath: event:/FX/Enemy/FX-MartyHookUpEmpty
 --- !u!1 &718758792
 GameObject:
   m_ObjectHideFlags: 0
@@ -18463,8 +18467,8 @@ MonoBehaviour:
   boss1EasySongInfoPath: ./Data/KnifeBoss3Phase1Easy.info
   boss1NormalSongInfoPath: ./Data/KnifeBoss3Phase1Easy.info
   boss1HardSongInfoPath: ./Data/KnifeBoss3Phase1Hard.info
-  boss2EasySongInfoPath: ./Data/KnifeBoss3Phase2Hard.info
-  boss2NormalSongInfoPath: ./Data/KnifeBoss3Phase2Hard.info
+  boss2EasySongInfoPath: ./Data/KnifeBoss3Phase2Easy.info
+  boss2NormalSongInfoPath: ./Data/KnifeBoss3Phase2Easy.info
   boss2HardSongInfoPath: ./Data/KnifeBoss3Phase2Hard.info
   beatsTime: 0.46
   beatsContainer: {fileID: 1721074713}
