@@ -947,10 +947,18 @@ public class GenerateTestSongInfo : MonoBehaviour
             }
 
             //Hook
-            if (i == 66 ||i == 82 || i == 98 ||i == 114)
+            if (i == 66 || i == 82 || i == 98 || i == 114)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 20;
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //HookSFX
+            if (i == 66 || i == 82 || i == 98 || i == 114)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
@@ -1765,6 +1773,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 20;
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //HookSFX
+            if (i == 176 || i == 192 || i == 208 || i == 224)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(8);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
             //Section5 Beats224-259
             //Bullets Down
@@ -1974,6 +1990,35 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(0);
                 ai2.actionParameters.Add(1);
                 temp.beatsInfo[i].actions.Add(ai2);
+            }
+
+            //SFX Laser Shoot
+            //Type1 (+2)
+            if ( i == 4 || i == 8 || i == 12 || i == 16 || i == 20 || i == 24 || i == 28 || i == 66 || i == 68 || i == 70 || i == 74 || i == 76 || i == 78 || i == 82 || i == 84 || i == 86 || i == 90 || i == 92 || i == 94 || i == 97 || i == 98 || i == 99
+                || i == 106 || i == 108 || i == 110 || i == 112 || i == 114 || i == 118 || i == 120 || i == 122 || i == 124 || i == 126 || i == 130 || i == 134 || i == 138 || i == 142 || i == 146 || i == 148 || i == 150 || i == 154 || i == 156
+                || i == 212 || i == 218 || i == 221 || i == 222 || i == 223 || i == 240 || i == 242 || i == 244 || i == 248 || i == 252 || i == 254 || i == 256)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //Type2 (+4)
+            if ( i == 30 || i == 31 || i == 63 || i == 132 || i == 136 || i == 140 || i == 144 || i == 152 || i == 158 || i == 160 || i == 162 || i == 164 || i == 166 || i == 168 || i == 170 || i == 172 || i == 174 || i == 176 || i == 178 || i == 180
+                 || i == 182 || i == 184 || i == 186 || i == 188 || i == 190 || i == 192 || i == 194 || i == 196 || i == 198 || i == 200 || i == 202 || i == 204 || i == 206 || i == 208 || i == 210 || i == 214 || i == 220 || i == 228 || i == 232 || i == 236)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //SFX Laser Charge
+            if ( i == 2 || i == 64 || i == 104 || i == 128 || i == 160 || i == 224 || i == 254)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(9);
+                temp.beatsInfo[i].actions.Add(ai);
             }
 
         }
@@ -2421,6 +2466,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 20;
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //HookSFX
+            if (i == 66 || i == 82 || i == 98 || i == 114)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(8);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
             //Bullet Horizontal
             if (i == 100 || i == 108)
@@ -2784,6 +2837,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 20;
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //HookSFX
+            if (i == 162 || i == 178 || i == 194 || i == 210)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(8);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
             //Section5 Beats224-259
             //Bullets Down
@@ -2953,6 +3014,14 @@ public class GenerateTestSongInfo : MonoBehaviour
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 20;
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //HookSFX
+            if (i == 8 || i == 24 || i == 40 || i == 56)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
@@ -4092,6 +4161,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 20;
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //HookSFX
+            if (i == 104 || i == 120 || i == 136 || i == 152)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(8);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
 
             //Section4 Beats160-191
@@ -4316,6 +4393,14 @@ public class GenerateTestSongInfo : MonoBehaviour
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 20;
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //HookSFX
+            if (i == 8 || i == 24 || i == 40 || i == 56)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
@@ -5051,6 +5136,14 @@ public class GenerateTestSongInfo : MonoBehaviour
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 20;
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //HookSFX
+            if (i == 104 || i == 120 || i == 136 || i == 152)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
