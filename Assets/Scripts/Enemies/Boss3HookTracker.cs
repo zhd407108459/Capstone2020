@@ -64,6 +64,18 @@ public class Boss3HookTracker : RhythmObject
             if (movementTimer >= movementTime)
             {
                 movementTimer = 0;
+
+                if (!IsCatchingBomb() && movementStage == 4)
+                {
+                    EventInstance notCaughtFX;
+                    notCaughtFX = RuntimeManager.CreateInstance(notCaughtFXPath);
+                    if (SettingManager.instance != null)
+                    {
+                        //float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
+                        notCaughtFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume); //* (1.0f - value));
+                    }
+                    notCaughtFX.start();
+                }
             }
             sprite.transform.position = new Vector3(spriteAnimationCurve.Evaluate(movementTimer / movementTime) * targetXPos + spriteAnimationCurve.Evaluate(1 - (movementTimer / movementTime)) * sprite.transform.position.x, spriteY);
             hook.transform.localPosition = new Vector3(0, hookAnimationCurve.Evaluate(movementTimer / movementTime) * hookTargetYPos + hookAnimationCurve.Evaluate(1 - (movementTimer / movementTime)) * hook.transform.localPosition.y);
@@ -158,17 +170,6 @@ public class Boss3HookTracker : RhythmObject
                 targetXPos = GridManager.instance.GetPhaseInitialPosition().x + 4 * GridManager.instance.gridSize.x;
                 hookTargetYPos = defaultHookLocalHeight;
                 movementStage = 6;
-                if (!IsCatchingBomb())
-                {
-                    EventInstance notCaughtFX;
-                    notCaughtFX = RuntimeManager.CreateInstance(notCaughtFXPath);
-                    if (SettingManager.instance != null)
-                    {
-                        //float value = Mathf.Clamp(Vector2.Distance(GameManager.instance.player.transform.position, transform.position), 0, SettingManager.instance.hearingRange) / SettingManager.instance.hearingRange;
-                        notCaughtFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume); //* (1.0f - value));
-                    }
-                    notCaughtFX.start();
-                }
             }
         }
         else if (movementStage == 5)
@@ -209,7 +210,7 @@ public class Boss3HookTracker : RhythmObject
         movementStage = 1;
         attackTimer = 0;
         isCaughtPlayer = false;
-        waitflag = false;
+        waitflag = true;
     }
 
     public void Initialize()
