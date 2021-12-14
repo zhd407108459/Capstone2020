@@ -4369,6 +4369,33 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(0);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
+
+            //SFX Laser Shoot
+            //Type1 (+2)
+            if (i == 17 || i == 21 || i == 25 || i == 29 || i == 56 || i == 60 || i == 93 || i == 94 || i == 95 || i == 98 || i == 100 || i == 102 || i == 104 || i == 114 || i == 116 || i == 118 || i == 120
+                 || i == 130 || i == 132 || i == 134 || i == 136 || i == 146 || i == 148 || i == 150 || i == 152 || i == 189 || i == 190 || i == 191)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //Type2 (+4)
+            if (i == 19 || i == 23 || i == 31 || i == 34 || i == 38 || i == 42 || i == 50 || i == 54 || i == 58 || i == 62 || i == 84 || i == 88 || i == 180 || i == 184)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //SFX Laser Charge
+            if (i == 15 || i == 19 || i == 23 || i == 27 || i == 30 || i == 80 || i == 91 || i == 96 || i == 112 || i == 128 || i == 144 || i == 176 || i == 187)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(9);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
         }
         SaveAFile(temp, "./Data/KnifeBoss3Phase2Hard.info");
     }
