@@ -58,7 +58,7 @@ public class BasicLaserEnemy : BasicEnemy
         Collider2D[] cos = Physics2D.OverlapBoxAll(laserCollider.transform.position, new Vector2(laserCollider.size.x * laserCollider.transform.localScale.x, laserCollider.size.y * laserCollider.transform.localScale.y), laserCollider.transform.rotation.eulerAngles.z);
         for(int i = 0; i < cos.Length; i++)
         {
-            if (cos[i].tag.Equals("Player"))
+            if (cos[i].tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
             {
                 cos[i].GetComponent<PlayerHealth>().TakeDamage((int)(damage * damageIncreasement));
                 Invoke("HideLaserObject", 0.5f);

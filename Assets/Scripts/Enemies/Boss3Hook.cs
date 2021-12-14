@@ -24,7 +24,7 @@ public class Boss3Hook : MonoBehaviour
             RaycastHit2D[] rh2d = Physics2D.LinecastAll(transform.position, lastPos);
             for (int i = 0; i < rh2d.Length; i++)
             {
-                if (rh2d[i].collider.tag.Equals("Player"))
+                if (rh2d[i].collider.tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
                 {
                     parent.CatchPlayer();
                 }
@@ -39,7 +39,7 @@ public class Boss3Hook : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player") && parent.GetStage() == 3)
+        if (collision.tag.Equals("Player") && parent.GetStage() == 3 && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
         {
             parent.CatchPlayer();
         }
@@ -52,7 +52,7 @@ public class Boss3Hook : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player") && parent.GetStage() == 3)
+        if (collision.tag.Equals("Player") && parent.GetStage() == 3 && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
         {
             parent.CatchPlayer();
         }

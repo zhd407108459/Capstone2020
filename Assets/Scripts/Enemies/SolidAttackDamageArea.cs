@@ -12,7 +12,7 @@ public class SolidAttackDamageArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player") && (parent.state == 1 || parent.state == 2))
+        if (collision.tag.Equals("Player") && (parent.state == 1 || parent.state == 2) && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(parent.damage);
         }

@@ -86,7 +86,7 @@ public class AdvancedLaserEnemy : BasicEnemy
         }
         for (int i = 0; i < cos.Length; i++)
         {
-            if (cos[i].tag.Equals("Player"))
+            if (cos[i].tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
             {
                 cos[i].GetComponent<PlayerHealth>().TakeDamage((int)(damage * damageIncreasement));
                 Invoke("HideLaserObject", 0.3f);

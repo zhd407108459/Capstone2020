@@ -76,7 +76,7 @@ public class EnemyBomb : RhythmObject
         timer++;
         if(timer == delay && !isAttacked)
         {
-            if(Vector2.Distance(GameManager.instance.player.transform.position, this.transform.position) <= range)
+            if(Vector2.Distance(GameManager.instance.player.transform.position, this.transform.position) <= range && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
             {
                 GameManager.instance.player.GetComponent<PlayerHealth>().TakeDamage(damage);
             }

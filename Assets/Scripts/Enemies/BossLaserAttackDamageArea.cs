@@ -13,7 +13,7 @@ public class BossLaserAttackDamageArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player") && (parent.state == 1))
+        if (collision.tag.Equals("Player") && (parent.state == 1) && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(parent.damage);
         }

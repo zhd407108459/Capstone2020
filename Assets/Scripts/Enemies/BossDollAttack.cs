@@ -72,7 +72,7 @@ public class BossDollAttack : RhythmObject
                 Collider2D[] cos = Physics2D.OverlapBoxAll(damageArea.transform.position, new Vector2(damageArea.size.x * damageArea.transform.localScale.x, damageArea.size.y * damageArea.transform.localScale.y), damageArea.transform.rotation.eulerAngles.z);
                 for (int i = 0; i < cos.Length; i++)
                 {
-                    if (cos[i].tag.Equals("Player"))
+                    if (cos[i].tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
                     {
                         cos[i].GetComponent<PlayerHealth>().TakeDamage(damage);
                     }

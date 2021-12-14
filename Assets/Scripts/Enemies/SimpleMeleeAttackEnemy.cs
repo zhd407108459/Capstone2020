@@ -233,7 +233,7 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
         Collider2D[] cos = Physics2D.OverlapBoxAll(transform.position, new Vector2(GetComponent<BoxCollider2D>().size.x, GetComponent<BoxCollider2D>().size.y), 0);
         for(int i = 0; i < cos.Length; i++)
         {
-            if (cos[i].tag.Equals("Player"))
+            if (cos[i].tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
             {
                 return true;
             }
