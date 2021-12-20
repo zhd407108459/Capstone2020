@@ -2021,6 +2021,23 @@ public class GenerateTestSongInfo : MonoBehaviour
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
+            //FX BlurredScreen Start
+            if (i == 256)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //FX BlurredScreen End
+            if (i == 259)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(7);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+
         }
         SaveAFile(temp, "./Data/KnifeBoss3Phase1Hard.info");
     }
@@ -2987,6 +3004,51 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(3);
                 ai.actionParameters.Add(0);
                 ai.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            //SFX Laser Shoot
+            //Type1 (+2)
+            if (i == 4 || i == 8 || i == 12 || i == 16 || i == 20 || i == 24 || i == 28 || i == 97 || i == 99 || i == 106 || i == 110 || i == 112 || i == 116 || i == 120 || i == 122 || i == 124 || i == 126 || i == 130 || i == 134
+                 || i == 138 || i == 142 || i == 146 || i == 148 || i == 154 || i == 156 || i == 240 || i == 242 || i == 244 || i == 248 || i == 252 || i == 254 || i == 256)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //Type2 (+4)
+            if (i == 30 || i == 31 || i == 63 || i == 132 || i == 136 || i == 140 || i == 144 || i == 152 || i == 158 || i == 164 || i == 168 || i == 172 || i == 176 || i == 180 || i == 184 || i == 188 || i == 192 || i == 196
+                 || i == 200 || i == 204 || i == 208 || i == 212 || i == 216 || i == 220)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //SFX Laser Charge
+            if (i == 2 || i == 59 || i == 95 || i == 104 || i == 238)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(9);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            //FX BlurredScreen Start
+            if (i == 256)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //FX BlurredScreen End
+            if (i == 259)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(7);
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
@@ -4396,6 +4458,23 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(9);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+
+            //FX BlurredScreen Start
+            if (i == 84 || i == 180)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //FX BlurredScreen End
+            if (i == 94 || i == 190)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(7);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
         }
         SaveAFile(temp, "./Data/KnifeBoss3Phase2Hard.info");
     }
@@ -5321,6 +5400,49 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 12;
                 ai.actionParameters.Add(5);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            //SFX Laser Shoot
+            //Type1 (+2)
+            if (i == 17 || i == 21 || i == 25 || i == 29 || i == 98 || i == 102 || i == 114 || i == 118 || i == 130 || i == 134 || i == 146 || i == 150)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //Type2 (+4)
+            if (i == 19 || i == 23 || i == 27 || i == 31 || i == 38 || i == 46 || i == 54 || i == 58 || i == 62 || i == 84 || i == 88 || i == 180 || i == 184)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(10);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //SFX Laser Charge
+            if (i == 15 || i == 19 || i == 23 || i == 27 || i == 34 || i == 42 || i == 50 || i == 80 || i == 96 || i == 112 || i == 128 || i == 144 || i == 176)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(9);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            //FX BlurredScreen Start
+            if (i == 84 || i == 180)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //FX BlurredScreen End
+            if (i == 94 || i == 190)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(7);
                 temp.beatsInfo[i].actions.Add(ai);
             }
         }
