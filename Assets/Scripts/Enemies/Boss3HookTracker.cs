@@ -236,7 +236,7 @@ public class Boss3HookTracker : RhythmObject
         GameManager.instance.player.GetComponent<PlayerAction>().StartCaught();
         targetXPos = GridManager.instance.GetPhaseInitialPosition().x + targetX * GridManager.instance.gridSize.x;
         hookTargetYPos = defaultHookLocalHeight;
-        hook.transform.position = GameManager.instance.player.transform.position;
+        //hook.transform.position = GameManager.instance.player.transform.position;
         isCaughtPlayer = true;
 
         EventInstance caughtFX;
