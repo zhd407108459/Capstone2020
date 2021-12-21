@@ -2029,6 +2029,13 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(6);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            if (i == 256)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(11);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
             //FX BlurredScreen End
             if (i == 259)
             {
@@ -3043,6 +3050,13 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(6);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            if (i == 256)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(11);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
             //FX BlurredScreen End
             if (i == 259)
             {
@@ -3552,6 +3566,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(2);
                 temp.beatsInfo[i].actions.Add(ai); 
             }
+            //Debuff SFX
+            if (i == 4 || i == 8 || i == 12 || i == 36 || i == 40 || i == 44)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(12);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
             //Section2, Beat64-95
             //Bullets Up
@@ -3683,6 +3705,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(3);
                 ai.actionParameters.Add(7);
                 ai.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //Buff SFX
+            if (i == 64 || i == 72)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(13);
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
@@ -4365,6 +4395,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(3);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //Buff SFX
+            if (i == 160 || i == 168)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(13);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
             //Overheat
             if (i == 180)
@@ -4465,6 +4503,13 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 12;
                 ai.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 84 || i == 180)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(11);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             //FX BlurredScreen End
@@ -4868,6 +4913,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(2);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //Debuff SFX
+            if (i == 4 || i == 8 || i == 12 || i == 36 || i == 40 || i == 44)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(12);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
             //Section2, Beat64-95
             //Bullets Up
@@ -4999,6 +5052,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(3);
                 ai.actionParameters.Add(7);
                 ai.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            //Buff SFX
+            if (i == 64 || i == 72)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(13);
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
@@ -5386,6 +5447,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(3);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //Buff SFX
+            if (i == 160 || i == 168)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(13);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
             //Overheat
             if (i == 180)
@@ -5435,6 +5504,13 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 12;
                 ai.actionParameters.Add(6);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
+            if (i == 84 || i == 180)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(11);
                 temp.beatsInfo[i].actions.Add(ai);
             }
             //FX BlurredScreen End
