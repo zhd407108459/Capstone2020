@@ -61,11 +61,6 @@ public class Boss3HookTracker : RhythmObject
         if (movementStage != 0 && !(isCaughtPlayer && movementStage == 3) && !(bomb != null && movementStage == 3))
         {
             movementTimer += Time.deltaTime;
-            if (movementTimer >= movementTime)
-            {
-                movementTimer = 0;
-
-            }
             sprite.transform.position = new Vector3(spriteAnimationCurve.Evaluate(movementTimer / movementTime) * targetXPos + spriteAnimationCurve.Evaluate(1 - (movementTimer / movementTime)) * sprite.transform.position.x, spriteY);
             hook.transform.localPosition = new Vector3(0, hookAnimationCurve.Evaluate(movementTimer / movementTime) * hookTargetYPos + hookAnimationCurve.Evaluate(1 - (movementTimer / movementTime)) * hook.transform.localPosition.y);
         }
@@ -102,6 +97,10 @@ public class Boss3HookTracker : RhythmObject
         if (waitflag)
         {
             return;
+        }
+        else
+        {
+            movementTimer = 0;
         }
         movementTimer = 0;
         if(movementStage == 1)
@@ -229,7 +228,7 @@ public class Boss3HookTracker : RhythmObject
 
     public void CatchPlayer()
     {
-        if (isCaughtPlayer)
+        if (isCaughtPlayer || IsCatchingBomb())
         {
             return;
         }
