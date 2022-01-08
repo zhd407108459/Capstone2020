@@ -150,6 +150,105 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &976193031454268004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8766328440231389297}
+  - component: {fileID: 6059252606055625464}
+  - component: {fileID: 8059177641055500342}
+  - component: {fileID: 2096404486942261423}
+  m_Layer: 5
+  m_Name: Text (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8766328440231389297
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976193031454268004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1628286497292300748}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 258.32, y: -91.9}
+  m_SizeDelta: {x: 476, y: 79.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6059252606055625464
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976193031454268004}
+  m_CullTransparentMesh: 0
+--- !u!114 &8059177641055500342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976193031454268004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: aa73ff48bdb77734ba4020a95d6c64ab, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Deal damage to enemy in front of the player on a certain beat
+
+'
+--- !u!114 &2096404486942261423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976193031454268004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 8059177641055500342}
+  texts:
+  - 'Deal damage to enemy in front of the player on a certain beat '
+  - "\u5728\u4E00\u62CD\u8282\u594F\u4E0A\u5BF9\u524D\u65B9\u4E00\u683C\u7684\u654C\u4EBA\u9020\u6210\u4F24\u5BB3\u3002"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &1628286496465780236
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +260,7 @@ GameObject:
   - component: {fileID: 1628286496465780239}
   - component: {fileID: 1628286496465780233}
   - component: {fileID: 1628286496465780238}
+  - component: {fileID: 530931805625046777}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -226,9 +326,26 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Dash: \r\nPress the assigned key on the beat to move 2 grids toward the
-    current direction. The player can ignore enemies\u2019 attacks, traps, and debuffs
-    when dashing. Also, this ability will deal damage to enemies on the line."
+  m_Text: "Dash: \r "
+--- !u!114 &530931805625046777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628286496465780236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1628286496465780238}
+  texts:
+  - 'Dash:   '
+  - "\u51B2\u523A:"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &1628286496867195121
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +430,7 @@ GameObject:
   - component: {fileID: 1628286496889953649}
   - component: {fileID: 1628286496889953651}
   - component: {fileID: 1628286496889953648}
+  - component: {fileID: 6615963166161328837}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -378,10 +496,28 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Shield:\r\nThe shield can bounce off the projectiles from enemies, and
-    the bullet will turn blue, which means this is the player\u2019s bullet. It could
-    also block the melee attack and the movement of enemies. Blocking melee attacks
-    of enemies can cause damage to them while blocking movements can\u2019t.\r\n"
+  m_Text: 'Shield:
+
+'
+--- !u!114 &6615963166161328837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628286496889953654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1628286496889953648}
+  texts:
+  - 'Shield: '
+  - "\u76FE:"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &1628286497292300749
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +547,7 @@ RectTransform:
   m_Children:
   - {fileID: 1628286496867195120}
   - {fileID: 1628286498473096140}
+  - {fileID: 8766328440231389297}
   m_Father: {fileID: 1628286497802313499}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -448,6 +585,7 @@ RectTransform:
   m_Children:
   - {fileID: 1628286497950976885}
   - {fileID: 1628286496889953649}
+  - {fileID: 6370323007271741188}
   m_Father: {fileID: 1628286497802313499}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -598,6 +736,7 @@ RectTransform:
   m_Children:
   - {fileID: 1628286497626081084}
   - {fileID: 1628286496465780239}
+  - {fileID: 2831496551481789082}
   m_Father: {fileID: 1628286497802313499}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -690,6 +829,7 @@ GameObject:
   - component: {fileID: 1628286498473096140}
   - component: {fileID: 1628286498473096142}
   - component: {fileID: 1628286498473096143}
+  - component: {fileID: 3652678057143848593}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -757,10 +897,26 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Melee attack:
 
-    Deal damage to enemy in front of the player on a certain
-    beat
-
 '
+--- !u!114 &3652678057143848593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628286498473096141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1628286498473096143}
+  texts:
+  - 'Melee attack: '
+  - "\u8FD1\u6218\u653B\u51FB:"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &2869619438738942508
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +928,7 @@ GameObject:
   - component: {fileID: 4204185919872072160}
   - component: {fileID: 8301050791280169910}
   - component: {fileID: 4916934897093796898}
+  - component: {fileID: 6210449654731990475}
   m_Layer: 5
   m_Name: NarrativeTip
   m_TagString: Untagged
@@ -794,6 +951,7 @@ RectTransform:
   - {fileID: 5396744197580297495}
   - {fileID: 6580229109763421133}
   - {fileID: 8779001035314309425}
+  - {fileID: 3519261397132438955}
   m_Father: {fileID: 1628286497802313499}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -843,7 +1001,26 @@ MonoBehaviour:
     m_LineSpacing: 1.41
   m_Text: 'Skip Typing Animation/Next Dialog
 
-    Skip Dialogs'
+'
+--- !u!114 &6210449654731990475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2869619438738942508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4916934897093796898}
+  texts:
+  - 'Skip Typing Animation/Next Dialog '
+  - "\u8DF3\u8FC7\u6253\u5B57\u52A8\u753B/\u4E0B\u4E2A\u5BF9\u8BDD"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &3311026535233095802
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,6 +1094,202 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3428980246959243374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6829449813855760269}
+  - component: {fileID: 7550525364915020439}
+  - component: {fileID: 5031680607020898154}
+  - component: {fileID: 8203834452258875368}
+  m_Layer: 5
+  m_Name: Text (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6829449813855760269
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428980246959243374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6178416533054602147}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 269.91, y: -164.6}
+  m_SizeDelta: {x: 497.4, y: 226}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7550525364915020439
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428980246959243374}
+  m_CullTransparentMesh: 0
+--- !u!114 &5031680607020898154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428980246959243374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: aa73ff48bdb77734ba4020a95d6c64ab, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Leave a bomb at the player's position. The bomb will explode after four
+    beats. It will cause damage to anything within its 1.5 horizontal distance.
+--- !u!114 &8203834452258875368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428980246959243374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 5031680607020898154}
+  texts:
+  - Leave a bomb at the player's position. The bomb will explode after four beats.
+    It will cause damage to anything within its 1.5 horizontal distance.
+  - "\u5728\u5F53\u524D\u4F4D\u7F6E\u7559\u4E0B\u4E00\u4E2A\u70B8\u5F39\uFF0C\u70B8\u5F39\u4F1A\u57284\u62CD\u540E\u7206\u70B8\uFF0C\u5BF9\u6C34\u5E73\u65B9\u5411\u76F8\u90BB\u683C\u5B50\u7684\u89D2\u8272\u9020\u6210\u4F24\u5BB3\uFF0C\u5305\u62EC\u654C\u4EBA\u548C\u73A9\u5BB6\u3002"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
+--- !u!1 &5362335464195872067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3519261397132438955}
+  - component: {fileID: 6564398599915953746}
+  - component: {fileID: 4589817724017656590}
+  - component: {fileID: 9020403792529514926}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3519261397132438955
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362335464195872067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4204185919872072160}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -11.25, y: -33.050034}
+  m_SizeDelta: {x: 614.7, y: 66.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6564398599915953746
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362335464195872067}
+  m_CullTransparentMesh: 0
+--- !u!114 &4589817724017656590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362335464195872067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: aa73ff48bdb77734ba4020a95d6c64ab, type: 3}
+    m_FontSize: 42
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 42
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Skip Dialogs
+--- !u!114 &9020403792529514926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362335464195872067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4589817724017656590}
+  texts:
+  - Skip Dialogs
+  - "\u8DF3\u8FC7\u5BF9\u8BDD"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &5697936824902290275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1465,7 @@ RectTransform:
   m_Children:
   - {fileID: 9098503641653124883}
   - {fileID: 4827519160765616873}
+  - {fileID: 6829449813855760269}
   m_Father: {fileID: 1628286497802313499}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1111,6 +1485,7 @@ GameObject:
   - component: {fileID: 4827519160765616873}
   - component: {fileID: 384466586821548047}
   - component: {fileID: 7751793257074947492}
+  - component: {fileID: 2220230974828581860}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -1176,6 +1551,227 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "ThrowBomb: \r\nLeave a bomb at the player's position. The bomb will explode
-    after four beats. It will cause damage to anything within its 1.5 horizontal
-    distance."
+  m_Text: "Bomb attack: \r"
+--- !u!114 &2220230974828581860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6945344798115792967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 7751793257074947492}
+  texts:
+  - 'Bomb attack:  '
+  - "\u70B8\u5F39\u653B\u51FB:"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
+--- !u!1 &8615217045218080313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2831496551481789082}
+  - component: {fileID: 1864783880490277620}
+  - component: {fileID: 6318676825260681070}
+  - component: {fileID: 2575997813695574960}
+  m_Layer: 5
+  m_Name: Text (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2831496551481789082
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615217045218080313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1628286497895297419}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 269.91, y: -164.6}
+  m_SizeDelta: {x: 497.4, y: 226}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1864783880490277620
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615217045218080313}
+  m_CullTransparentMesh: 0
+--- !u!114 &6318676825260681070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615217045218080313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: aa73ff48bdb77734ba4020a95d6c64ab, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Press the assigned key on the beat to move 2 grids toward the current
+    direction. The player can ignore enemies\u2019 attacks, traps, and debuffs when
+    dashing. Also, this ability will deal damage to enemies on the line."
+--- !u!114 &2575997813695574960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615217045218080313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 6318676825260681070}
+  texts:
+  - "Press the assigned key on the beat to move 2 grids toward the current direction.
+    The player can ignore enemies\u2019 attacks, traps, and debuffs when dashing.
+    Also, this ability will deal damage to enemies on the line."
+  - "\u671D\u5F53\u524D\u7684\u9762\u671D\u65B9\u5411\u51B2\u523A\u4E24\u683C\u8DDD\u79BB\u3002\u51B2\u523A\u662F\u65E0\u89C6\u654C\u4EBA\u653B\u51FB\uFF0C\u9677\u9631\uFF0C\u548CDebuff\uFF0C\u5E76\u5BF9\u51B2\u523A\u8DEF\u7EBF\u4E0A\u7684\u654C\u4EBA\u9020\u6210\u4F24\u5BB3\u3002"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
+--- !u!1 &8656977824811501925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6370323007271741188}
+  - component: {fileID: 8552447936719720519}
+  - component: {fileID: 813828927087480178}
+  - component: {fileID: 2920823390471352855}
+  m_Layer: 5
+  m_Name: Text (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6370323007271741188
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656977824811501925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1628286497422058770}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 283.58, y: -203}
+  m_SizeDelta: {x: 522.5, y: 297.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8552447936719720519
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656977824811501925}
+  m_CullTransparentMesh: 0
+--- !u!114 &813828927087480178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656977824811501925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: aa73ff48bdb77734ba4020a95d6c64ab, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "The shield can bounce off the projectiles from enemies, and the bullet
+    will turn blue, which means this is the player\u2019s bullet. It could also block
+    the melee attack and the movement of enemies. Blocking melee attacks of enemies
+    can cause damage to them while blocking movements can\u2019t.\r\n"
+--- !u!114 &2920823390471352855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656977824811501925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 813828927087480178}
+  texts:
+  - "The shield can bounce off the projectiles from enemies, and the bullet will
+    turn blue, which means this is the player\u2019s bullet. It could also block
+    the melee attack and the movement of enemies. Blocking melee attacks of enemies
+    can cause damage to them while blocking movements can\u2019t. "
+  - "\u76FE\u53EF\u4EE5\u53CD\u5F39\u654C\u4EBA\u7684\u5C04\u5F39\uFF0C\u88AB\u53CD\u5F39\u7684\u5C04\u5F39\u4F1A\u53D8\u84DD\u3002\u76FE\u8FD8\u53EF\u4EE5\u963B\u65AD\u654C\u4EBA\u7684\u8FD1\u6218\u653B\u51FB\u548C\u79FB\u52A8\u3002\u963B\u65AD\u654C\u4EBA\u7684\u8FD1\u6218\u653B\u51FB\u53EF\u4EE5\u9020\u6210\u53CD\u5F39\u4F24\u5BB3\uFF0C\u4F46\u963B\u65AD\u79FB\u52A8\u4E0D\u80FD\u3002"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}

@@ -126,7 +126,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -341}
-  m_SizeDelta: {x: 227.7, y: 60.5}
+  m_SizeDelta: {x: 281, y: 60.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &521923071642310
 CanvasRenderer:
@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 521923379490508}
   - component: {fileID: 521923379490510}
   - component: {fileID: 521923379490511}
+  - component: {fileID: 8174437618709716103}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -329,6 +330,25 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: START
+--- !u!114 &8174437618709716103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521923379490509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 521923379490511}
+  texts:
+  - START
+  - "\u5F00\u59CB\u6218\u6597"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &521923395639292
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +851,7 @@ GameObject:
   - component: {fileID: 7371268180343194166}
   - component: {fileID: 7323763086260469104}
   - component: {fileID: 5903339563660818103}
+  - component: {fileID: 7285778977428554973}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -897,6 +918,25 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Press to use skill
+--- !u!114 &7285778977428554973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3383987578872342282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 5903339563660818103}
+  texts:
+  - Press to use skill
+  - "\u6309\u952E\u4EE5\u4F7F\u7528\u6280\u80FD"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &3533794806650414855
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +948,7 @@ GameObject:
   - component: {fileID: 4403397350264135096}
   - component: {fileID: 3922942882284515986}
   - component: {fileID: 1252644949499955320}
+  - component: {fileID: 6606490244325319383}
   m_Layer: 5
   m_Name: BossTip1
   m_TagString: Untagged
@@ -973,8 +1014,28 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: During this phase, you can only dodge incoming attacks. Survive long enough
-    to clear the phase.
+  m_Text: During this stage, you can only dodge incoming attacks. Survive long enough
+    to clear the stage.
+--- !u!114 &6606490244325319383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3533794806650414855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1252644949499955320}
+  texts:
+  - During this stage, you can only dodge incoming attacks. Survive long enough to
+    clear the stage.
+  - "\u5728\u8FD9\u4E2A\u9636\u6BB5\uFF0C\u4F60\u53EA\u80FD\u8EB2\u907F\u653B\u51FB\uFF0C\u751F\u5B58\u4E0B\u53BB\u4EE5\u901A\u8FC7\u8FD9\u9636\u6BB5\u3002"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &4600946391113574512
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,6 +1047,7 @@ GameObject:
   - component: {fileID: 170186422232809938}
   - component: {fileID: 5449968966652706762}
   - component: {fileID: 70858046083426904}
+  - component: {fileID: 5741851516366970207}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1052,6 +1114,25 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: PREPARATION
+--- !u!114 &5741851516366970207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4600946391113574512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 70858046083426904}
+  texts:
+  - PREPARATION
+  - "\u51C6\u5907"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &5491088892287502264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,6 +1233,7 @@ GameObject:
   - component: {fileID: 7763354036046558733}
   - component: {fileID: 348981146168716799}
   - component: {fileID: 7983640678985761583}
+  - component: {fileID: 4939028068977166577}
   m_Layer: 5
   m_Name: Tip
   m_TagString: Untagged
@@ -1214,6 +1296,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4939028068977166577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6146889548640963020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d97f928f55bb64195913bd2253a4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 7983640678985761583}
+  sources:
+  - {fileID: 21300000, guid: fde4143583621f94e86a7138fcff8a5d, type: 3}
+  - {fileID: 21300000, guid: 9410719e956140f49adfde52e74a07fe, type: 3}
 --- !u!1 &6341592574671157427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,6 +1323,7 @@ GameObject:
   - component: {fileID: 6789801938731645002}
   - component: {fileID: 8929043928991197963}
   - component: {fileID: 4364604471091349140}
+  - component: {fileID: 6123838833009644708}
   m_Layer: 5
   m_Name: BossTip2
   m_TagString: Untagged
@@ -1290,8 +1389,28 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: During this phase, you can damage the boss when parts of his body is exposed
+  m_Text: During this stage, you can damage the boss when parts of his body is exposed
     after attack, or throw the bomb toward the right direction to hit the boss.
+--- !u!114 &6123838833009644708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341592574671157427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4364604471091349140}
+  texts:
+  - During this stage, you can damage the boss when parts of his body is exposed
+    after attack, or throw the bomb toward the right direction to hit the boss.
+  - "\u5728\u8FD9\u4E2A\u9636\u6BB5\uFF0C\u4F60\u53EF\u4EE5\u901A\u8FC7\u51FB\u6253Boss\u653B\u51FB\u65F6\u66B4\u9732\u7684\u8EAB\u4F53\u90E8\u5206\uFF0C\u6216\u5728\u70B8\u5F39\u7206\u70B8\u524D\u5C06\u70B8\u5F39\u6253\u56DE\u7ED9Boss\u4EE5\u9020\u6210\u4F24\u5BB3\u3002"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
 --- !u!1 &6866426901704853435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1584,7 @@ GameObject:
   - component: {fileID: 6000432672438406038}
   - component: {fileID: 1671687378209013897}
   - component: {fileID: 4328760914091028338}
+  - component: {fileID: 6327925933316235887}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -1531,3 +1651,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Press to use skill
+--- !u!114 &6327925933316235887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761672582508383865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aa0f3b707c33c46a7bc7034a2935ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4328760914091028338}
+  texts:
+  - Press to use skill
+  - "\u6309\u952E\u4EE5\u4F7F\u7528\u6280\u80FD"
+  fonts:
+  - {fileID: 12800000, guid: fa4240f0351427547af8d201d367c210, type: 3}
+  - {fileID: 12800000, guid: 673a85e0446474442b7d652da5bf5010, type: 3}
