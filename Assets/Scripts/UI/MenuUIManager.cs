@@ -128,7 +128,7 @@ public class MenuUIManager : MonoBehaviour
     {
         SettingManager.instance.targetPhase = 0;
         ShowLoadingPanel();
-        operation = SceneManager.LoadSceneAsync(5);
+        operation = SceneManager.LoadSceneAsync(6);
         operation.allowSceneActivation = false;
         isLoading = true;
         backgrounds.SetActive(false);
@@ -179,7 +179,7 @@ public class MenuUIManager : MonoBehaviour
     {
         SettingManager.instance.targetPhase = 0;
         ShowLoadingPanel();
-        operation = SceneManager.LoadSceneAsync(6);
+        operation = SceneManager.LoadSceneAsync(5);
         operation.allowSceneActivation = false;
         isLoading = true;
         backgrounds.SetActive(false);

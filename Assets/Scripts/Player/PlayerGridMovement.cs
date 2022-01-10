@@ -154,6 +154,7 @@ public class PlayerGridMovement : MonoBehaviour
                     if (TutorialManager.instance.tutorialTips[3].activeSelf)
                     {
                         TutorialManager.instance.ShowTutorialTip(4);
+                        TutorialManager.instance.ShowExternalObject(2);
                     }
                 }
             }
@@ -170,6 +171,7 @@ public class PlayerGridMovement : MonoBehaviour
                     if (TutorialManager.instance.tutorialTips[3].activeSelf)
                     {
                         TutorialManager.instance.ShowTutorialTip(4);
+                        TutorialManager.instance.ShowExternalObject(2);
                     }
                 }
             }
