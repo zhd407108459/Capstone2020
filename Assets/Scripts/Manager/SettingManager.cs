@@ -301,6 +301,14 @@ public class SettingManager : MonoBehaviour
         {
             n.ApplyLanguage();
         }
+        foreach (var n in FindObjectsOfType<SpriteRendererLocalization>())
+        {
+            n.ApplyLanguage();
+        }
+        foreach (var n in FindObjectsOfType<ImageLocalization>())
+        {
+            n.ApplyLanguage();
+        }
     }
 
     public void LoadFromPath()

@@ -455,6 +455,19 @@ public class MenuUIManager : MonoBehaviour
         settingPanel.SetActive(true);
         creditsPanel.SetActive(false);
         helpPanel.SetActive(false);
+        if (SettingManager.instance != null)
+        {
+            overAllVolumeSlider.value = SettingManager.instance.overAllVolume;
+            overAllVolumeText.text = overAllVolumeSlider.value.ToString("#0.00");
+            musicVolumeSlider.value = SettingManager.instance.musicVolume;
+            musicVolumeText.text = musicVolumeSlider.value.ToString("#0.00");
+            soundEffectVolumeSlider.value = SettingManager.instance.soundEffectVolume;
+            soundEffectVolumeText.text = soundEffectVolumeSlider.value.ToString("#0.00");
+            resolutionDropdown.value = SettingManager.instance.resolutionIndex;
+            skill1Dropdown.value = SettingManager.instance.skill1Index;
+            skill2Dropdown.value = SettingManager.instance.skill2Index;
+            languageDropdown.value = SettingManager.instance.language;
+        }
     }
 
     public void ShowCreditsPanel()
