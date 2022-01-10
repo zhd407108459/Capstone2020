@@ -87,6 +87,14 @@ public class MenuUIManager : MonoBehaviour
             bgmEvent.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.musicVolume);
             bgmEvent.start();
         }
+        if(TutorialBackToMenu.instance != null)
+        {
+            if (TutorialBackToMenu.instance.isFinished)
+            {
+                ShowPlayPanel();
+            }
+            Destroy(TutorialBackToMenu.instance.gameObject);
+        }
     }
 
     private void Update()
