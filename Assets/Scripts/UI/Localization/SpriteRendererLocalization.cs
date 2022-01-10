@@ -12,8 +12,9 @@ public class SpriteRendererLocalization : MonoBehaviour
         ApplyLanguage();
     }
 
-    void Start()
+    private void Start()
     {
+        ApplyLanguage();
     }
 
     public void ApplyLanguage()

@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ImageLocalization : MonoBehaviour
+public class LocalizationChangePosition : MonoBehaviour
 {
-    public Image target;
-    public List<Sprite> sources = new List<Sprite>();
+    public RectTransform target;
+    public List<Vector3> positions = new List<Vector3>();
 
     private void OnEnable()
     {
@@ -22,9 +21,9 @@ public class ImageLocalization : MonoBehaviour
     {
         if (SettingManager.instance != null)
         {
-            if (SettingManager.instance.language < sources.Count)
+            if (SettingManager.instance.language < positions.Count)
             {
-                target.sprite = sources[SettingManager.instance.language];
+                target.anchoredPosition3D = positions[SettingManager.instance.language];
             }
         }
     }

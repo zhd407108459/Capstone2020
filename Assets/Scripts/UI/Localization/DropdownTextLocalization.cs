@@ -15,10 +15,11 @@ public class DropdownTextLocalization : MonoBehaviour
         ApplyLanguage();
     }
 
-    void Update()
+    private void Start()
     {
-
+        ApplyLanguage();
     }
+
     public void ApplyLanguage()
     {
         if (SettingManager.instance != null)
