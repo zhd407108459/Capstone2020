@@ -271,7 +271,7 @@ public class PlayerGridMovement : MonoBehaviour
                     {
                         if (SettingManager.instance != null)
                         {
-                            if (GridManager.instance.levelIndex == SettingManager.instance.levelProcess && GridManager.instance.phaseIndex > (SettingManager.instance.phaseProcess - 1) * 2)
+                            if (GridManager.instance.levelIndex == SettingManager.instance.levelProcess && GridManager.instance.phaseIndex > (SettingManager.instance.phaseProcess - 1) * 2 && SettingManager.instance.levelProcess != 3)
                             {
                                 SettingManager.instance.phaseProcess += 1;
                                 SettingManager.instance.SaveToPath();

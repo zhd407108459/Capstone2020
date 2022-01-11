@@ -21,6 +21,7 @@ public class MenuUIManager : MonoBehaviour
     public List<GameObject> level1ButtonsList = new List<GameObject>();
     public GameObject level2Panel;
     public List<GameObject> level2ButtonsList = new List<GameObject>();
+    public GameObject boss3Button;
     public Toggle isAutoAttackToggle;
     [Header("SettingPanel")]
     public GameObject settingPanel;
@@ -375,6 +376,10 @@ public class MenuUIManager : MonoBehaviour
                 {
                     levelButtonsList[i].SetActive(false);
                 }
+            }
+            if(SettingManager.instance.levelProcess < 3)
+            {
+                boss3Button.SetActive(false);
             }
         }
         level1Panel.SetActive(false);
