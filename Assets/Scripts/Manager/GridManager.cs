@@ -160,6 +160,10 @@ public class GridManager : MonoBehaviour
                 comboTipText.transform.localScale = Vector3.Lerp(comboTipText.transform.localScale, new Vector3(1, 1, 1), 15.0f * Time.deltaTime);
             }
         }
+        if (GameManager.instance.isGameEnd)
+        {
+            cameraObject.transform.position = Vector3.Lerp(cameraObject.transform.position, targetCameraPos, cameraFollowLerpValue * Time.deltaTime);
+        }
         if (!GameManager.instance.isPaused && IsInBattlePhase() && isInPhase && !isBoss2Phase)
         {
             recordTimer += Time.deltaTime;
