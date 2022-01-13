@@ -21,6 +21,8 @@ public class Boss3HookTracker : RhythmObject
     public float defaultHookLocalHeight;
     public float floorHookLocalHeight;
 
+    public Boss3Hook hookCollider;
+
     public float movementTime;
 
     public string catchingFXPath;
@@ -122,6 +124,7 @@ public class Boss3HookTracker : RhythmObject
             targetXPos = GridManager.instance.GetPhaseInitialPosition().x + targetX * GridManager.instance.gridSize.x;
             hookTargetYPos = floorHookLocalHeight + targetY * GridManager.instance.gridSize.y;
             movementStage = 3;
+            hookCollider.ResetLastPos();
             if (catchingFXPath != null && catchingFXPath != "")
             {
                 EventInstance catchingFX;
@@ -236,8 +239,8 @@ public class Boss3HookTracker : RhythmObject
         {
             return;
         }
-        Debug.LogError(GetStage());
-        Debug.LogError(hook.transform.position);
+        //Debug.LogError(GetStage());
+        //Debug.LogError(hook.transform.position);
         GameManager.instance.player.GetComponent<PlayerAction>().StartCaught();
         targetXPos = GridManager.instance.GetPhaseInitialPosition().x + targetX * GridManager.instance.gridSize.x;
         hookTargetYPos = defaultHookLocalHeight;
@@ -257,7 +260,7 @@ public class Boss3HookTracker : RhythmObject
 
     public void CatchBomb(GameObject bomb)
     {
-        if (isCaughtPlayer)
+        if (isCaughtPlayer || IsCatchingBomb())
         {
             return;
         }

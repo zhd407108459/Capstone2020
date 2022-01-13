@@ -21,44 +21,60 @@ public class Boss3Hook : MonoBehaviour
         }
         if(parent.GetStage() == 3)
         {
+            bool isFindPlayer = false;
             RaycastHit2D[] rh2d = Physics2D.LinecastAll(transform.position, lastPos);
             for (int i = 0; i < rh2d.Length; i++)
             {
+                //Debug.LogError(rh2d[i].transform.gameObject);
                 if (rh2d[i].collider.tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
                 {
+                    Debug.LogError(transform.position);
+                    Debug.LogError(lastPos);
                     parent.CatchPlayer();
+                    isFindPlayer = true;
                 }
-                if (rh2d[i].collider.tag.Equals("PlayerBomb"))
+            }
+            if (!isFindPlayer)
+            {
+                for (int i = 0; i < rh2d.Length; i++)
                 {
-                    parent.CatchBomb(rh2d[i].collider.gameObject);
+                    if (rh2d[i].collider.tag.Equals("PlayerBomb"))
+                    {
+                        parent.CatchBomb(rh2d[i].collider.gameObject);
+                    }
                 }
             }
             lastPos = transform.position;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void ResetLastPos()
     {
-        if (collision.tag.Equals("Player") && parent.GetStage() == 3 && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
-        {
-            parent.CatchPlayer();
-        }
-        if (collision.tag.Equals("PlayerBomb") && parent.GetStage() == 3)
-        {
-            parent.CatchBomb(collision.gameObject);
-        }
+        lastPos = transform.position;
     }
 
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag.Equals("Player") && parent.GetStage() == 3 && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
+    //    {
+    //        parent.CatchPlayer();
+    //    }
+    //    if (collision.tag.Equals("PlayerBomb") && parent.GetStage() == 3)
+    //    {
+    //        parent.CatchBomb(collision.gameObject);
+    //    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag.Equals("Player") && parent.GetStage() == 3 && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
-        {
-            parent.CatchPlayer();
-        }
-        if (collision.tag.Equals("PlayerBomb") && parent.GetStage() == 3)
-        {
-            parent.CatchBomb(collision.gameObject);
-        }
-    }
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.tag.Equals("Player") && parent.GetStage() == 3 && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
+    //    {
+    //        parent.CatchPlayer();
+    //    }
+    //    if (collision.tag.Equals("PlayerBomb") && parent.GetStage() == 3)
+    //    {
+    //        parent.CatchBomb(collision.gameObject);
+    //    }
+    //}
 }

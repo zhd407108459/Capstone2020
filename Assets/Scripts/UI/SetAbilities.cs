@@ -63,6 +63,10 @@ public class SetAbilities : MonoBehaviour
         }
         if (isActivated && !GameManager.instance.isCutScene)
         {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                FinishSetting();
+            }
             //ShowTips
             if(Input.mousePosition == lastMousePosition && !Input.GetMouseButton(0))
             {
