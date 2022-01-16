@@ -197,6 +197,7 @@ public class GameManager : MonoBehaviour
         {
             deadBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
+        pauseButton.gameObject.SetActive(true);
     }
 
     void ExitGame()
