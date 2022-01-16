@@ -961,6 +961,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 65 || i == 81 || i == 97 || i == 113)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
             //Bullet Wall
             if (i == 98)
@@ -1781,6 +1789,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 175 || i == 191 || i == 207 || i == 223)
+            {
+                ActionInfo ai = new ActionInfo();
+                ai.actionType = 12;
+                ai.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai);
+            }
 
             //Section5 Beats224-259
             //Bullets Down
@@ -2020,6 +2036,15 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(9);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 3 || i == 11 || i == 19 || i == 27 ||i == 62 || i == 69 || i == 73 || i == 89 || i == 105 || i == 109 || i == 119 || i == 129 || i == 133 || i == 137 || i == 141 || i == 147 || i == 151 || i == 155 || i == 159 || i == 163 || i == 167
+                || i == 179 || i == 183 || i == 187 || i == 195 || i == 199 || i == 203 || i == 211 || i == 215 || i == 219 || i == 231 || i == 235 || i == 239 || i == 247)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
 
             //FX BlurredScreen Start
             if (i == 256)
@@ -2045,6 +2070,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
+            //BossAction(bullets)
+            if (i == 0 || i == 32 || i == 58 || i == 102 || i == 170 || i == 228)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
         }
         SaveAFile(temp, "./Data/KnifeBoss3Phase1Hard.info");
     }
@@ -2498,6 +2531,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 65 || i == 81 || i == 97 || i == 113)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
 
             //Bullet Horizontal
             if (i == 100 || i == 108)
@@ -2869,6 +2910,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 161 || i == 177 || i == 193 || i == 209)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
 
             //Section5 Beats224-259
             //Bullets Down
@@ -3041,6 +3090,15 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(9);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 3 || i == 11 || i == 19 || i == 27 || i == 62 || i == 105 || i == 109 || i == 119 || i == 129 || i == 133 || i == 137 || i == 143 || i == 151 || i == 155 || i == 171 || i == 183 || i == 187 
+                || i == 199 || i == 215 || i == 219 || i == 239 || i == 247)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
 
             //FX BlurredScreen Start
             if (i == 256)
@@ -3064,6 +3122,15 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(7);
                 temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            //BossAction (bullets)
+            if (i == 0 || i == 32 || i == 72 || i == 100 || i == 160 || i == 196 || i == 224)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai12);
             }
 
         }
@@ -3099,6 +3166,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
+            }
+            //BossAction
+            if (i == 7 || i == 23 || i == 39 || i == 55)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai12);
             }
 
             //Laser type1
@@ -3449,14 +3524,14 @@ public class GenerateTestSongInfo : MonoBehaviour
             }
 
             //Bullets
-            if (i == 1 || i == 11 || i == 33 || i == 43)
+            if (i == 1 || i == 11 || i == 33)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 2;
                 ai.actionParameters.Add(2);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            if (i == 6 || i == 14 || i == 38 || i == 46)
+            if (i == 6 || i == 14 || i == 45)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 2;
@@ -3468,7 +3543,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(3);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
-            if (i == 3 || i == 9 || i == 35 || i == 41)
+            if (i == 3 || i == 9 || i == 39)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 2;
@@ -3480,14 +3555,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(4);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
-            if (i == 7 || i == 13 || i == 39 || i == 45)
+            if (i == 7 || i == 13 ||  i == 42)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
                 ai.actionParameters.Add(2);
                 temp.beatsInfo[i].actions.Add(ai);
             }
-            if (i == 2 || i == 10 || i == 34 || i == 42)
+            if (i == 2 || i == 10 || i == 36)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
@@ -3499,7 +3574,7 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai2.actionParameters.Add(3);
                 temp.beatsInfo[i].actions.Add(ai2);
             }
-            if (i == 5 || i == 15 || i == 37 || i == 47)
+            if (i == 5 || i == 15 || i == 48)
             {
                 ActionInfo ai = new ActionInfo();
                 ai.actionType = 1;
@@ -3714,6 +3789,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(13);
                 temp.beatsInfo[i].actions.Add(ai);
+            }
+            //BossAction
+            if (i == 63 || i == 71)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai12);
             }
 
             //Overheat
@@ -4261,6 +4344,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 103 || i == 119 || i == 135 || i == 151)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
 
 
             //Section4 Beats160-191
@@ -4404,6 +4495,15 @@ public class GenerateTestSongInfo : MonoBehaviour
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
+            //BossAction
+            if (i == 159 || i == 167)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+
             //Overheat
             if (i == 180)
             {
@@ -4496,6 +4596,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(9);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 16 || i == 20 || i == 28 || i == 33 || i == 41 || i == 49 || i == 97 || i == 129)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
 
             //FX BlurredScreen Start
             if (i == 84 || i == 180)
@@ -4519,6 +4627,15 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(7);
                 temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            //BossAction (bullets)
+            if (i == 1 || i == 24 || i == 112 || i == 124 || i == 128 || i == 144)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai12);
             }
         }
         SaveAFile(temp, "./Data/KnifeBoss3Phase2Hard.info");
@@ -4553,6 +4670,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
+            }
+            //BossAction
+            if (i == 7 || i == 23 || i == 39 || i == 55)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai12);
             }
 
             //Laser type1
@@ -5063,6 +5188,15 @@ public class GenerateTestSongInfo : MonoBehaviour
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
+            //BossAction (bullets)
+            if (i == 63 || i == 71)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+
             //Overheat
             if (i == 84)
             {
@@ -5313,6 +5447,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(8);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 103 || i == 119 || i == 135 || i == 151)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(2);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
 
 
             //Section4 Beats160-191
@@ -5456,6 +5598,15 @@ public class GenerateTestSongInfo : MonoBehaviour
                 temp.beatsInfo[i].actions.Add(ai);
             }
 
+            //BossAction
+            if (i == 159 || i == 167)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(3);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
+
             //Overheat
             if (i == 180)
             {
@@ -5497,6 +5648,14 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionParameters.Add(9);
                 temp.beatsInfo[i].actions.Add(ai);
             }
+            //BossAction
+            if (i == 16 || i == 20 || i == 28 || i == 45 || i == 61)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(0);
+                temp.beatsInfo[i].actions.Add(ai12);
+            }
 
             //FX BlurredScreen Start
             if (i == 84 || i == 180)
@@ -5520,6 +5679,15 @@ public class GenerateTestSongInfo : MonoBehaviour
                 ai.actionType = 12;
                 ai.actionParameters.Add(7);
                 temp.beatsInfo[i].actions.Add(ai);
+            }
+
+            //BossAction (bullets)
+            if (i == 1 || i == 24 ||  i == 112 || i == 128 || i == 144 || i == 176)
+            {
+                ActionInfo ai12 = new ActionInfo();
+                ai12.actionType = 12;
+                ai12.actionParameters.Add(1);
+                temp.beatsInfo[i].actions.Add(ai12);
             }
         }
         SaveAFile(temp, "./Data/KnifeBoss3Phase2Easy.info");
