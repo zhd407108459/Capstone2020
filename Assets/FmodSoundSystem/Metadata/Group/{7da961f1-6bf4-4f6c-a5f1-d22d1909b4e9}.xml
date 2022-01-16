@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.00.00">
 	<object class="MixerGroup" id="{7da961f1-6bf4-4f6c-a5f1-d22d1909b4e9}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-1</value>
 		</property>
 		<property name="name">
 			<value>Music</value>
@@ -34,5 +34,9 @@
 			<value>3.99999976</value>
 		</property>
 	</object>
-	<object class="LoudnessMeter" id="{1fe4a741-f606-4e58-8454-f214532f45c4}" />
+	<object class="LoudnessMeter" id="{1fe4a741-f606-4e58-8454-f214532f45c4}">
+		<property name="loudnessTarget">
+			<value>-20</value>
+		</property>
+	</object>
 </objects>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.00.00">
 	<object class="MixerMaster" id="{276d5be7-8df8-46f0-b36e-6a30bb76e784}">
+		<property name="volume">
+			<value>-1</value>
+		</property>
 		<property name="name">
 			<value>Master Bus</value>
 		</property>
@@ -35,5 +38,9 @@
 			<value>-1.0999999</value>
 		</property>
 	</object>
-	<object class="LoudnessMeter" id="{5fc1047c-94bb-4377-a506-3ff0b3e6422c}" />
+	<object class="LoudnessMeter" id="{5fc1047c-94bb-4377-a506-3ff0b3e6422c}">
+		<property name="loudnessTarget">
+			<value>-20</value>
+		</property>
+	</object>
 </objects>
