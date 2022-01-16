@@ -28,8 +28,8 @@ public class Boss3Hook : MonoBehaviour
                 //Debug.LogError(rh2d[i].transform.gameObject);
                 if (rh2d[i].collider.tag.Equals("Player") && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
                 {
-                    Debug.LogError(transform.position);
-                    Debug.LogError(lastPos);
+                    //Debug.LogError(transform.position);
+                    //Debug.LogError(lastPos);
                     parent.CatchPlayer();
                     isFindPlayer = true;
                 }

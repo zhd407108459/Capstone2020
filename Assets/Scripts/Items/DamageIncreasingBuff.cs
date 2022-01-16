@@ -13,6 +13,8 @@ public class DamageIncreasingBuff : BasicBuff
 
     public string itemEffectFXEventPath = "event:/FX/Item/FX-PowBoost";
 
+    public bool isForTutorial = false;
+
     void Start()
     {
 
@@ -30,7 +32,14 @@ public class DamageIncreasingBuff : BasicBuff
             existingTimer--;
             if (existingTimer == 0)
             {
-                Destroy(this.gameObject);
+                if (isForTutorial)
+                {
+                    this.gameObject.SetActive(false);
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
@@ -56,7 +65,14 @@ public class DamageIncreasingBuff : BasicBuff
                 Instantiate(buffTriggerEffectPrefab, GameManager.instance.player.transform.position, Quaternion.identity);
             }
 
-            Destroy(this.gameObject);
+            if (isForTutorial)
+            {
+                this.gameObject.SetActive(false);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
