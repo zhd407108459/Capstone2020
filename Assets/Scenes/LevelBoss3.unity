@@ -1862,6 +1862,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1936049009}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1268773002}
@@ -1964,6 +1975,17 @@ MonoBehaviour:
           m_StringArgument: FadeIn
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1936049009}
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   triggerTimes:
   - 0.8
   - 1.6
@@ -1985,6 +2007,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1297692747}
         m_MethodName: BackToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1936049009}
+        m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19327,6 +19360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4339b77bbe7fd4c923050576df3e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPreLoadNextScene: 0
   player: {fileID: 394816454}
   pauseButton: {fileID: 825687684}
   pausePanel: {fileID: 269503456}
@@ -26621,7 +26655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae4bff014b1ad404ca89434f11b8a835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: event:/FX/Cutscene/FX-CutsceneEnding
+  path: event:/MX/Credits/MX_Credits_Finale
   isBGM: 0
   playOnAwake: 0
 --- !u!4 &1936049010

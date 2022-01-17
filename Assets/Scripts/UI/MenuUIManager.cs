@@ -137,7 +137,7 @@ public class MenuUIManager : MonoBehaviour
     {
         SettingManager.instance.targetPhase = 0;
         ShowLoadingPanel();
-        operation = SceneManager.LoadSceneAsync(6);
+        operation = SceneManager.LoadSceneAsync(7);
         operation.allowSceneActivation = false;
         isLoading = true;
         backgrounds.SetActive(false);

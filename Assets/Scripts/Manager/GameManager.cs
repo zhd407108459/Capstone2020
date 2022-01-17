@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public bool isPreLoadNextScene;
+
     public GameObject player;
 
     public Button pauseButton;
@@ -31,6 +33,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isGameEnd;
     [HideInInspector] public bool isCutScene;
 
+    private AsyncOperation operation;
+    private bool isLoading;
 
 
     void Awake()
@@ -63,6 +67,20 @@ public class GameManager : MonoBehaviour
         }
         deadPanelMenuButton.onClick.AddListener(BackToMenu);
 
+        if (isPreLoadNextScene)
+        {
+            int scene = SceneManager.GetActiveScene().buildIndex;
+            if (SceneManager.sceneCountInBuildSettings - 1 <= scene)
+            {
+                return;
+            }
+            else
+            {
+                operation = SceneManager.LoadSceneAsync(scene + 1);
+                operation.allowSceneActivation = false;
+                isLoading = true;
+            }
+        }
     }
 
     void Update()
@@ -157,7 +175,14 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        SceneManager.LoadScene(scene + 1, LoadSceneMode.Single);
+        if (isPreLoadNextScene)
+        {
+            operation.allowSceneActivation = true;
+        }
+        else
+        {
+            SceneManager.LoadScene(scene + 1, LoadSceneMode.Single);
+        }
         BeatsManager.instance.StopBGM();
         if(SettingManager.instance != null)
         {
