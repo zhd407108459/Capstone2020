@@ -22,6 +22,10 @@ public class FMODEventPlayer : MonoBehaviour
 
     public void Play()
     {
+        if(path == null || path.Equals(""))
+        {
+            return;
+        }
         sound = RuntimeManager.CreateInstance(path);
         if (SettingManager.instance != null)
         {
@@ -32,6 +36,10 @@ public class FMODEventPlayer : MonoBehaviour
 
     public void Stop()
     {
+        if (path == null || path.Equals(""))
+        {
+            return;
+        }
         if (sound.isValid())
         {
             sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);

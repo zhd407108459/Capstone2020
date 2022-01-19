@@ -11,8 +11,15 @@ public class CutScene : MonoBehaviour
     public List<GameObject> showObjects = new List<GameObject>();
     public List<GameObject> hideObjects = new List<GameObject>();
 
+    public bool hasSecondaryEvents = false;
+    public float secondaryTime;
+
+
     public UnityEvent skipEvent;
     public GameObject skipTip;
+
+    public UnityEvent secondarySkipEvent;
+
 
     private float timer;
     private float lastTimer;
@@ -25,8 +32,25 @@ public class CutScene : MonoBehaviour
         {
             if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl)) && isSkipTipOn)
             {
-                skipEvent.Invoke();
-                Stop();
+                if (hasSecondaryEvents && timer >= secondaryTime)
+                {
+                    if(timer < secondaryTime)
+                    {
+                        timer = secondaryTime;
+                        lastTimer = timer;
+                        skipEvent.Invoke();
+                    }
+                    else
+                    {
+                        secondarySkipEvent.Invoke();
+                        Stop();
+                    }
+                }
+                else
+                {
+                    skipEvent.Invoke();
+                    Stop();
+                }
             }
             else if (Input.anyKeyDown && !isSkipTipOn)
             {
