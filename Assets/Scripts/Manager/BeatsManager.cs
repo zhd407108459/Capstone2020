@@ -118,7 +118,7 @@ public class BeatsManager : MonoBehaviour
             }
             else
             {
-
+                UpdateNormalBGMParameter("Debuff", 4);
             }
             //UpdateBGMVolume();
         }
@@ -368,6 +368,7 @@ public class BeatsManager : MonoBehaviour
         {
             lastNormalBGMParameters[4] = GetBGMParameter("Debuff");
             normalBGMParameters[4] = value;
+            //Debug.LogError("Set: " + value.ToString());
         }
     }
 
@@ -495,6 +496,7 @@ public class BeatsManager : MonoBehaviour
     {
         if (lastNormalBGMParameters[index] != normalBGMParameters[index])
         {
+            //Debug.LogWarning(name + ": " + lastNormalBGMParameters[index] + normalBGMParameters[index] + currentNormalBGMParameters[index] + ", " + GetBGMParameter(name));
             if (currentNormalBGMParameters[index] <= lastNormalBGMParameters[index] + 0.5f && currentNormalBGMParameters[index] >= lastNormalBGMParameters[index])
             {
                 currentNormalBGMParameters[index] += parameterSwitchSpeed * Time.deltaTime * (index == 4 ? 8 : 1);
@@ -512,6 +514,7 @@ public class BeatsManager : MonoBehaviour
                     lastNormalBGMParameters[index] = normalBGMParameters[index];
                 }
             }
+            //Debug.LogWarning(name + ": " + lastNormalBGMParameters[index] + normalBGMParameters[index] + currentNormalBGMParameters[index] + ", " + GetBGMParameter(name));
             bgmEvent.setParameterByName(name, currentNormalBGMParameters[index]);
             //Debug.Log(lastNormalBGMParameters[0] + ", " + normalBGMParameters[0] + ": " + GetBGMParameter(name));
             //if (GetBGMParameter(name) <= lastNormalBGMParameters[index] + 0.5f && GetBGMParameter(name) >= lastNormalBGMParameters[index])
