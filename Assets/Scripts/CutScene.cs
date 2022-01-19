@@ -32,7 +32,7 @@ public class CutScene : MonoBehaviour
         {
             if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl)) && isSkipTipOn)
             {
-                if (hasSecondaryEvents && timer >= secondaryTime)
+                if (hasSecondaryEvents)
                 {
                     if(timer < secondaryTime)
                     {
