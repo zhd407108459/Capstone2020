@@ -23,6 +23,17 @@ public class SimpleTextLocalization : MonoBehaviour
     {
         if (SettingManager.instance != null)
         {
+            if(target == null)
+            {
+                if(GetComponent<Text>() == null)
+                {
+                    return;
+                }
+                else
+                {
+                    target = GetComponent<Text>();
+                }
+            }
             if(SettingManager.instance.language < texts.Count)
             {
                 target.text = texts[SettingManager.instance.language];

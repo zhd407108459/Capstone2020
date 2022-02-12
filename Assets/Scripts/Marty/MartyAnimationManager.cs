@@ -190,7 +190,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Adore)
         {
@@ -203,7 +203,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Akimbo)
         {
@@ -216,7 +216,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Angry)
         {
@@ -229,7 +229,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Complacement)
         {
@@ -242,7 +242,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Confident)
         {
@@ -255,7 +255,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Confused)
         {
@@ -268,7 +268,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Happy)
         {
@@ -281,7 +281,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", true);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Sad)
         {
@@ -294,7 +294,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", true);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Sulk)
         {
@@ -307,7 +307,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", true);
-            animator.SetBool("IsSuprised", false);
+            animator.SetBool("IsSurprised", false);
         }
         if (type == MartyAnimationEventType.Surprised)
         {
@@ -320,7 +320,7 @@ public class MartyAnimationManager : MonoBehaviour
             animator.SetBool("IsHappy", false);
             animator.SetBool("IsSad", false);
             animator.SetBool("IsSulk", false);
-            animator.SetBool("IsSuprised", true);
+            animator.SetBool("IsSurprised", true);
         }
 
         if (type == MartyAnimationEventType.EmptySunGlass)
