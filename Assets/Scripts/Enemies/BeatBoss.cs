@@ -623,12 +623,12 @@ public class BeatBoss : MonoBehaviour
         if(lengthIndex == 0)
         {
             GameObject go = Instantiate(laserPrefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), transform.rotation);
-            go.GetComponent<BossLaserAttack>().SetUp(x, y, laserDamage, laserAttackDelay, laserStayDelay, rotationZ, colorIndex);
+            go.GetComponent<BossLaserAttack>().SetUp(x, y, laserDamage, laserAttackDelay, laserStayDelay, rotationZ, 0);
         }
         else
         {
             GameObject go = Instantiate(laser2Prefab, GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), transform.rotation);
-            go.GetComponent<BossLaserAttack>().SetUp(x, y, laser2Damage, laser2AttackDelay, laser2StayDelay, rotationZ, colorIndex);
+            go.GetComponent<BossLaserAttack>().SetUp(x, y, laser2Damage, laser2AttackDelay, laser2StayDelay, rotationZ, 1);
         }
     }
 
