@@ -63,7 +63,7 @@ public class SetAbilities : MonoBehaviour
         }
         if (isActivated && !GameManager.instance.isCutScene)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
                 FinishSetting();
             }
