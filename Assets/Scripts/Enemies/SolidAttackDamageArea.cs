@@ -27,8 +27,8 @@ public class SolidAttackDamageArea : MonoBehaviour
             {
                 shieldImpactFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
             }
-            shieldImpactFX.start(); 
-            
+            shieldImpactFX.start();
+            parent.indicator.gameObject.SetActive(false);
             if (bounceOffEffectPrefab != null)
             {
                 if (GameManager.instance.player.GetComponent<PlayerGridMovement>().isPlayerFacingRight)
