@@ -12,7 +12,7 @@ public class SolidAttackDamageArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Player") && (parent.state == 1 || parent.state == 2) && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing)
+        if (collision.tag.Equals("Player") && (parent.state == 1 || parent.state == 2) && !GameManager.instance.player.GetComponent<PlayerDash>().isDashing && !parent.isBlocked)
         {
             collision.GetComponent<PlayerHealth>().TakeDamage(parent.damage);
         }
@@ -28,7 +28,10 @@ public class SolidAttackDamageArea : MonoBehaviour
                 shieldImpactFX.setVolume(SettingManager.instance.overAllVolume * SettingManager.instance.soundEffectVolume);
             }
             shieldImpactFX.start();
+
             parent.indicator.gameObject.SetActive(false);
+            parent.isBlocked = true;
+
             if (bounceOffEffectPrefab != null)
             {
                 if (GameManager.instance.player.GetComponent<PlayerGridMovement>().isPlayerFacingRight)

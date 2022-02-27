@@ -26,6 +26,7 @@ public class SolidAttack : RhythmObject
     [HideInInspector] public Vector3 targetPos;
     [HideInInspector] public int delayTimer;
     [HideInInspector] public int state;
+    [HideInInspector] public bool isBlocked;
 
     private Color indicatorTargetColor;
 
@@ -91,6 +92,7 @@ public class SolidAttack : RhythmObject
         indicator.gameObject.SetActive(true);
         indicatorTargetColor = indicator.color;
         indicator.color = new Color(indicator.color.r, indicator.color.g, indicator.color.b, 0);
+        isBlocked = false;
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
