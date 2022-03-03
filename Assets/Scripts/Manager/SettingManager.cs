@@ -313,7 +313,17 @@ public class SettingManager : MonoBehaviour
 
     public void LoadFromPath()
     {
-        SettingInfo temp = JsonMapper.ToObject<SettingInfo>(File.ReadAllText(infoPath));
+        SettingInfo temp = null;
+        try
+        {
+
+            temp = JsonMapper.ToObject<SettingInfo>(File.ReadAllText(infoPath));
+        }
+        catch
+        {
+
+        }
+
         if(temp != null)
         {
             ChangeOverAllVolume((float)temp.volume);

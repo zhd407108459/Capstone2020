@@ -41,6 +41,8 @@ public class SetAbilities : MonoBehaviour
     private string bossFightPreBGMPath = "event:/FX/UI/UI-Heartbeat";
     private EventInstance bossFightPreBGMEvent;
 
+    private float forceStayTimer;
+
     void Start()
     {
         //originalBasicMeleeAttackPos = basicMeleeAttackIcon.position;
@@ -63,10 +65,7 @@ public class SetAbilities : MonoBehaviour
         }
         if (isActivated && !GameManager.instance.isCutScene)
         {
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
-            {
-                FinishSetting();
-            }
+            forceStayTimer += Time.deltaTime;
             //ShowTips
             if(Input.mousePosition == lastMousePosition && !Input.GetMouseButton(0))
             {
@@ -493,6 +492,11 @@ public class SetAbilities : MonoBehaviour
                     //}
                 }
             }
+
+            if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) && preBattlePanel.activeSelf)
+            {
+                FinishSetting();
+            }
         }        
     }
 
@@ -543,7 +547,7 @@ public class SetAbilities : MonoBehaviour
             bossPhase1Tip.SetActive(false);
             bossPhase2Tip.SetActive(false);
         }
-
+        forceStayTimer = 0;
         isActivated = true;
         preBattlePanel.SetActive(true);
         BeatsManager.instance.beatsContainer.transform.position = targetBeatsContainerPosition.position;
@@ -741,6 +745,10 @@ public class SetAbilities : MonoBehaviour
 
     public void FinishSetting()
     {
+        if(forceStayTimer <= 0.5f)
+        {
+            return;
+        }
         if(TutorialManager.instance != null)
         {
             if (abilityPositions[0].GetComponent<AbilityIcon>().AbilityIndex() == 0 && abilityPositions[1].GetComponent<AbilityIcon>().AbilityIndex() == 0)
@@ -766,6 +774,11 @@ public class SetAbilities : MonoBehaviour
             BeatsManager.instance.beatsTips[i].SetActive(true);
         }
         preBattlePanel.SetActive(false);
+        basicMeleeAttackTips.SetActive(false);
+        shieldTips.SetActive(false);
+        dashTips.SetActive(false);
+        throwBombTips.SetActive(false);
+        forceStayTimer = 0;
     }
 
     int GetActivatedAbilitiesCount()
