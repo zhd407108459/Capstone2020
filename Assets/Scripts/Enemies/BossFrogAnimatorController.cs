@@ -51,4 +51,13 @@ public class BossFrogAnimatorController : MonoBehaviour
         shadowAnimator.SetBool("IsCoolingDown", false);
         brainCollider.SetActive(false);
     }
+
+    public void Reset()
+    {
+        animator.SetBool("IsCoolingDown", false);
+        shadowAnimator.SetBool("IsCoolingDown", false);
+        brainCollider.SetActive(false);
+        animator.Play("Idle", -1, 0f);
+        shadowAnimator.Play("Idle", -1, 0f);
+    }
 }

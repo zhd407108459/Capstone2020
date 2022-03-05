@@ -58,7 +58,8 @@ public class JellyFishAnimatorController : MonoBehaviour
 
     public void Reset()
     {
-        EndSkill();
+        EndSkill(); 
+        animator.Play("Idle", -1, 0f);
     }
 
 }

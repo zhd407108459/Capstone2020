@@ -299,7 +299,10 @@ public class BeatsManager : MonoBehaviour
 
     public void StopBGM()
     {
-        bgmEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        if (bgmEvent.isValid())
+        {
+            bgmEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     public void SetNormalBGMDefault()

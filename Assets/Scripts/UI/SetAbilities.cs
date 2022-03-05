@@ -22,6 +22,9 @@ public class SetAbilities : MonoBehaviour
     public List<RectTransform> abilityPositions = new List<RectTransform>();
     public GameObject bossPhase1Tip;
     public GameObject bossPhase2Tip;
+
+    public GameObject selectSkillTip;
+
     public float hoverTipTime = 0.8f;
     //public RectTransform bulletShootingIcon;
     public Button nextButton;
@@ -65,7 +68,10 @@ public class SetAbilities : MonoBehaviour
         }
         if (isActivated && !GameManager.instance.isCutScene)
         {
-            forceStayTimer += Time.deltaTime;
+            if(forceStayTimer <= 0.5f)
+            {
+                forceStayTimer += Time.deltaTime;
+            }
             //ShowTips
             if(Input.mousePosition == lastMousePosition && !Input.GetMouseButton(0))
             {
@@ -547,6 +553,8 @@ public class SetAbilities : MonoBehaviour
             bossPhase1Tip.SetActive(false);
             bossPhase2Tip.SetActive(false);
         }
+
+        selectSkillTip.SetActive(false);
         forceStayTimer = 0;
         isActivated = true;
         preBattlePanel.SetActive(true);
@@ -667,6 +675,7 @@ public class SetAbilities : MonoBehaviour
         {
             BeatsManager.instance.beatsTips[i].SetActive(true);
         }
+        selectSkillTip.SetActive(false);
         preBattlePanel.SetActive(false);
     }
 
@@ -760,6 +769,18 @@ public class SetAbilities : MonoBehaviour
             {
                 TutorialManager.instance.ShowTutorialTip(1);
                 TutorialManager.instance.HideExternalObject(0);
+            }
+        }
+        else
+        {
+            if (abilityPositions[0].GetComponent<AbilityIcon>().AbilityIndex() == 0 && abilityPositions[1].GetComponent<AbilityIcon>().AbilityIndex() == 0)
+            {
+                selectSkillTip.SetActive(true);
+                return;
+            }
+            else
+            {
+                selectSkillTip.SetActive(false);
             }
         }
         if (GridManager.instance.isBossFight)

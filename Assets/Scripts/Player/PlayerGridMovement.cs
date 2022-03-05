@@ -106,8 +106,11 @@ public class PlayerGridMovement : MonoBehaviour
             //}
             //else
             //{
-            SetPos(xPos, yPos - 1);
-            animator.SetTrigger("Jump");
+            if(yPos > 0)
+            {
+                SetPos(xPos, yPos - 1);
+                animator.SetTrigger("Jump");
+            }
             //}
         }
         else if ((Input.GetKeyDown(KeyCode.D) && !action.IsChaos()) || (Input.GetKeyDown(KeyCode.A) && action.IsChaos()))

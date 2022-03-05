@@ -72,6 +72,6 @@ public class ClownBossAnimatorManager : MonoBehaviour
 
     public void Reset()
     {
-
+        animator.Play("Idle", -1, 0f);
     }
 }

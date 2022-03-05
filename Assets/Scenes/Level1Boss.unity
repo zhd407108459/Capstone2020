@@ -18092,6 +18092,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1297692746}
+        m_MethodName: StopBGM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   triggerTimes:
   - 0.8
   - 1.6
@@ -18102,6 +18113,8 @@ MonoBehaviour:
   - 0
   showObjects: []
   hideObjects: []
+  hasSecondaryEvents: 0
+  secondaryTime: 0
   skipEvent:
     m_PersistentCalls:
       m_Calls:
@@ -18117,6 +18130,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   skipTip: {fileID: 1416867996}
+  secondarySkipEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &414489499
 Transform:
   m_ObjectHideFlags: 0
@@ -36170,6 +36186,12 @@ GameObject:
 --- !u!1 &943872720 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3533794806650414855, guid: 7c71974b315078c4b98772c794bf65f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 943872706}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &943872721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2859073448302406744, guid: 7c71974b315078c4b98772c794bf65f3,
     type: 3}
   m_PrefabInstance: {fileID: 943872706}
   m_PrefabAsset: {fileID: 0}
@@ -62940,6 +62962,7 @@ MonoBehaviour:
   - {fileID: 1721074707}
   bossPhase1Tip: {fileID: 943872720}
   bossPhase2Tip: {fileID: 943872719}
+  selectSkillTip: {fileID: 943872721}
   hoverTipTime: 0.2
   nextButton: {fileID: 943872708}
   isActivated: 0
@@ -70095,6 +70118,8 @@ MonoBehaviour:
   - {fileID: 394816454}
   - {fileID: 1919977841}
   - {fileID: 1241230174}
+  hasSecondaryEvents: 0
+  secondaryTime: 0
   skipEvent:
     m_PersistentCalls:
       m_Calls:
@@ -70132,6 +70157,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   skipTip: {fileID: 169142732}
+  secondarySkipEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1712536865
 Transform:
   m_ObjectHideFlags: 0

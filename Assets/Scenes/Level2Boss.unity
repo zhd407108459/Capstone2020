@@ -669,6 +669,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1297692746}
+        m_MethodName: StopBGM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1268773002}
@@ -7131,6 +7142,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 943872706}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &943872721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2859073448302406744, guid: 7c71974b315078c4b98772c794bf65f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 943872706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &948857179
 GameObject:
   m_ObjectHideFlags: 0
@@ -9262,7 +9279,18 @@ MonoBehaviour:
   bossDebuff: []
   resetAnimationEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1273687130}
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   bossHurtEvent:
     m_PersistentCalls:
       m_Calls:
@@ -9937,6 +9965,7 @@ MonoBehaviour:
   - {fileID: 1721074707}
   bossPhase1Tip: {fileID: 943872720}
   bossPhase2Tip: {fileID: 943872719}
+  selectSkillTip: {fileID: 943872721}
   hoverTipTime: 0.2
   nextButton: {fileID: 943872708}
   isActivated: 0
