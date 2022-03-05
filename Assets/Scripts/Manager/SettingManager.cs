@@ -370,14 +370,32 @@ public class SettingManager : MonoBehaviour
     {
         SettingInfo temp = new SettingInfo();
         temp.volume = 0.5f;
+        overAllVolume = 0.5f;
         temp.musicVolume = 1.0f;
+        musicVolume = 1.0f;
         temp.soundEffectVolume = 1.0f;
+        soundEffectVolume = 1.0f;
         temp.resolution = 0;
+        resolutionIndex = 0;
         temp.skill1key = 5;
+        skill1Index = 5;
         temp.skill2key = 6;
+        skill2Index = 6;
         temp.levelProcess = 1;
+        levelProcess = 1;
         temp.phaseProcess = 1;
-        temp.language = 0;
+        phaseProcess = 1;
+        if (Application.systemLanguage == SystemLanguage.Chinese || Application.systemLanguage == SystemLanguage.ChineseSimplified)
+        {
+            temp.language = 1;
+            language = 1;
+        }
+        else
+        {
+            temp.language = 0;
+            language = 0;
+        }
+
         string jsonstr = JsonMapper.ToJson(temp);
         File.WriteAllText(infoPath, jsonstr);
     }
