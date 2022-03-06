@@ -76,7 +76,7 @@ public class GridManager : MonoBehaviour
     private float lastRageTimer;
     private float recordTimer;
 
-    private bool isBoss2Phase;
+    [HideInInspector] public bool isBoss2Phase;
 
     [HideInInspector] public DialogSet currentDialog;
     private DialogSet nextDialog;

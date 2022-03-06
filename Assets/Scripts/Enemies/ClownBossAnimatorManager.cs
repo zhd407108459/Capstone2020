@@ -72,6 +72,18 @@ public class ClownBossAnimatorManager : MonoBehaviour
 
     public void Reset()
     {
-        animator.Play("Idle", -1, 0f);
+        if (GridManager.instance.isBoss2Phase)
+        {
+            animator.SetBool("IsAngry", true);
+        }
+        else
+        {
+            animator.SetBool("IsAngry", false);
+        }
+        animator.SetBool("IsGlitch1", false);
+        animator.SetBool("IsGlitch2", false);
+        animator.SetBool("IsGlitch3", false);
+        animator.Play("Boss_smile", 1, 0f);
+        animator.Play("Idle", 0, 0f);
     }
 }
