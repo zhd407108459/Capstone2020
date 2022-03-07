@@ -120,10 +120,21 @@ public class MenuUIManager : MonoBehaviour
 
             loadingText.text = ((int)(loadingSlider.value * 100)).ToString() + "%";
 
+            if((int)(loadingSlider.value * 100) > 85)
+            {
+                if (bgmEvent.isValid())
+                {
+                    bgmEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                }
+            }
+
             if ((int)(loadingSlider.value * 100) == 100)
             {
+                if (bgmEvent.isValid())
+                {
+                    bgmEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                }
                 operation.allowSceneActivation = true;
-                bgmEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
         }
     }
