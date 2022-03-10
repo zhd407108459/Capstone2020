@@ -62,6 +62,10 @@ public class BeatsManager : MonoBehaviour
 
     void Start()
     {
+        FMOD.Studio.Bus playerBus;
+        playerBus = FMODUnity.RuntimeManager.GetBus("Bus:/");
+        playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
         if (!isBossFight)
         {
             bgmEvent = RuntimeManager.CreateInstance(normalBGMEventPath);
