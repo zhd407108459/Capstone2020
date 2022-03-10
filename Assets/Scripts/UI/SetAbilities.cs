@@ -70,6 +70,7 @@ public class SetAbilities : MonoBehaviour
         {
             if(forceStayTimer <= 0.5f)
             {
+                GameManager.instance.StopDeadBGM();
                 forceStayTimer += Time.deltaTime;
             }
             //ShowTips

@@ -247,4 +247,12 @@ public class GameManager : MonoBehaviour
     {
         pausePanel.SetActive(false);
     }
+
+    public void StopDeadBGM()
+    {
+        if (deadBGMEvent.isValid())
+        {
+            deadBGMEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
 }
