@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using FMOD.Studio;
 using FMODUnity;
+using Steamworks;
 
 public class MenuUIManager : MonoBehaviour
 {
@@ -64,6 +65,28 @@ public class MenuUIManager : MonoBehaviour
 
     void Start()
     {
+        try
+        {
+            SteamClient.Init(1840150);
+        }
+        catch (System.Exception e)
+        {
+            // Couldn't init for some reason (steam is closed etc)
+            Debug.LogError("Failed to init Steam!");
+        }
+
+        if (SteamClient.IsValid)
+        {
+            Debug.LogError(SteamClient.State);
+            Debug.LogError(SteamClient.SteamId);
+            Debug.LogError(SteamClient.Name);
+            foreach (var a in SteamUserStats.Achievements)
+            {
+                Debug.LogError($"{a.Name}({a.State})");
+            }
+            SteamClient.Shutdown();
+        }
+
         FMOD.Studio.Bus playerBus;
         playerBus = FMODUnity.RuntimeManager.GetBus("Bus:/");
         playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
