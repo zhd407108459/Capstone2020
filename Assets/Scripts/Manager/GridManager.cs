@@ -1079,8 +1079,12 @@ public class GridManager : MonoBehaviour
         comboTipText.text = combo.ToString();
         //comboTimer = 0;
         comboTipText.transform.localScale = new Vector3(2, 2, 2);
-        
-        if(combo == 64 || combo == 128)
+        if (combo > highestCombo)
+        {
+            highestCombo = combo;
+        }
+
+        if (combo == 64 || combo == 128)
         {
             CheckComboAchievements();
         }
@@ -1112,15 +1116,18 @@ public class GridManager : MonoBehaviour
     {
         if (GameManager.instance.player.GetComponent<PlayerHealth>().IsAllHealth())
         {
-            //try
-            //{
-            //    SteamClient.Init(1840150);
-            //}
-            //catch (System.Exception e)
-            //{
-            //    // Couldn't init for some reason (steam is closed etc)
-            //    Debug.LogError("Failed to init Steam!");
-            //}
+            if (!SteamClient.IsValid)
+            {
+                try
+                {
+                    SteamClient.Init(1840150);
+                }
+                catch (System.Exception e)
+                {
+                    // Couldn't init for some reason (steam is closed etc)
+                    Debug.LogError("Failed to init Steam!");
+                }
+            }
 
             if (SteamClient.IsValid)
             {
@@ -1198,15 +1205,18 @@ public class GridManager : MonoBehaviour
 
     public void CheckComboAchievements()
     {
-        //try
-        //{
-        //    SteamClient.Init(1840150);
-        //}
-        //catch (System.Exception e)
-        //{
-        //    // Couldn't init for some reason (steam is closed etc)
-        //    Debug.LogError("Failed to init Steam!");
-        //}
+        if (!SteamClient.IsValid)
+        {
+            try
+            {
+                SteamClient.Init(1840150);
+            }
+            catch (System.Exception e)
+            {
+                // Couldn't init for some reason (steam is closed etc)
+                Debug.LogError("Failed to init Steam!");
+            }
+        }
 
         if (SteamClient.IsValid)
         {
@@ -1245,17 +1255,21 @@ public class GridManager : MonoBehaviour
 
     public void CheckStayRage1MinutesAchievement()
     {
-        if(rageAchTimer > 60.0f)
+        if(rageAchTimer >= 60.0f)
         {
-            //try
-            //{
-            //    SteamClient.Init(1840150);
-            //}
-            //catch (System.Exception e)
-            //{
-            //    // Couldn't init for some reason (steam is closed etc)
-            //    Debug.LogError("Failed to init Steam!");
-            //}
+            if (!SteamClient.IsValid)
+            {
+                try
+                {
+                    SteamClient.Init(1840150);
+                }
+                catch (System.Exception e)
+                {
+                    // Couldn't init for some reason (steam is closed etc)
+                    Debug.LogError("Failed to init Steam!");
+                }
+            }
+
 
             if (SteamClient.IsValid)
             {

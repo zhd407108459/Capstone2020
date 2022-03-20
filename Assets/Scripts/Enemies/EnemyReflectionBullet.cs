@@ -34,6 +34,7 @@ public class EnemyReflectionBullet : RhythmObject
     private bool isReflected = false;
 
     private Vector3 targetPos;
+    private Vector3 lastPos;
 
     void Start()
     {
@@ -46,7 +47,7 @@ public class EnemyReflectionBullet : RhythmObject
         {
             return;
         }
-        if (Vector2.Distance(transform.position, targetPos) > 0.0001f)
+        if (Vector2.Distance(transform.position, targetPos) > 0.0001f || (transform.position.x <= targetPos.x && lastPos.x >= targetPos.x) || (transform.position.x >= targetPos.x && lastPos.x <= targetPos.x))
         {
             transform.position = Vector3.Lerp(transform.position, targetPos, movementLerpValue * Time.deltaTime);
             if (!isReflected &&
@@ -72,7 +73,7 @@ public class EnemyReflectionBullet : RhythmObject
                 }
             }
         }
-        if (Vector2.Distance(transform.position, targetPos) < 0.05f && xPos == originalXPos && yPos == originalYPos)
+        if (xPos == originalXPos && yPos == originalYPos && (Vector2.Distance(transform.position, targetPos) < 0.05f || (transform.position.x <= targetPos.x && lastPos.x >= targetPos.x) || (transform.position.x >= targetPos.x && lastPos.x <= targetPos.x)))
         {
             if (owner != null)
             {
@@ -86,6 +87,7 @@ public class EnemyReflectionBullet : RhythmObject
                 }
             }
         }
+        lastPos = transform.position;
     }
 
     public override void OnBeat(int beatIndex)
@@ -102,6 +104,7 @@ public class EnemyReflectionBullet : RhythmObject
         xPos = x;
         yPos = y;
         targetPos = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+        lastPos = transform.position;
         if(xDirection > 0)
         {
             sprite.transform.localScale = new Vector3(-1, 1, 1);
