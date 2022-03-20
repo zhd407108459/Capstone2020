@@ -395,6 +395,10 @@ public class MenuUIManager : MonoBehaviour
 
     public void ExitGame()
     {
+        if (SteamClient.IsValid)
+        {
+            SteamClient.Shutdown();
+        }
         Application.Quit();
     }
 

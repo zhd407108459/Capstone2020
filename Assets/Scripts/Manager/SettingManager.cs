@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using LitJson;
+using Steamworks;
+using Steamworks.Data;
 
 public class SettingManager : MonoBehaviour
 {
@@ -44,6 +46,15 @@ public class SettingManager : MonoBehaviour
             LoadFromPath();
             //GenerateDefaultSetting();
             DontDestroyOnLoad(this.gameObject);
+            try
+            {
+                SteamClient.Init(1840150);
+            }
+            catch (System.Exception e)
+            {
+                // Couldn't init for some reason (steam is closed etc)
+                Debug.LogError("Failed to init Steam!");
+            }
         }
         else
         {

@@ -44,15 +44,15 @@ public class DizzyingTrap : BasicTrap
     }
     private void CheckGetAllDebuffTrapAchievement()
     {
-        try
-        {
-            SteamClient.Init(1840150);
-        }
-        catch (System.Exception e)
-        {
-            // Couldn't init for some reason (steam is closed etc)
-            Debug.LogError("Failed to init Steam!");
-        }
+        //try
+        //{
+        //    SteamClient.Init(1840150);
+        //}
+        //catch (System.Exception e)
+        //{
+        //    // Couldn't init for some reason (steam is closed etc)
+        //    Debug.LogError("Failed to init Steam!");
+        //}
 
         if (SteamClient.IsValid)
         {
@@ -82,7 +82,7 @@ public class DizzyingTrap : BasicTrap
 
             }
 
-            SteamClient.Shutdown();
+            //SteamClient.Shutdown();
         }
     }
 }

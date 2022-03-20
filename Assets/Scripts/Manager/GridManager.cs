@@ -1112,15 +1112,15 @@ public class GridManager : MonoBehaviour
     {
         if (GameManager.instance.player.GetComponent<PlayerHealth>().IsAllHealth())
         {
-            try
-            {
-                SteamClient.Init(1840150);
-            }
-            catch (System.Exception e)
-            {
-                // Couldn't init for some reason (steam is closed etc)
-                Debug.LogError("Failed to init Steam!");
-            }
+            //try
+            //{
+            //    SteamClient.Init(1840150);
+            //}
+            //catch (System.Exception e)
+            //{
+            //    // Couldn't init for some reason (steam is closed etc)
+            //    Debug.LogError("Failed to init Steam!");
+            //}
 
             if (SteamClient.IsValid)
             {
@@ -1190,7 +1190,7 @@ public class GridManager : MonoBehaviour
                         }
                     }
                 }
-                SteamClient.Shutdown();
+                //SteamClient.Shutdown();
             }
         }
     }
@@ -1198,15 +1198,15 @@ public class GridManager : MonoBehaviour
 
     public void CheckComboAchievements()
     {
-        try
-        {
-            SteamClient.Init(1840150);
-        }
-        catch (System.Exception e)
-        {
-            // Couldn't init for some reason (steam is closed etc)
-            Debug.LogError("Failed to init Steam!");
-        }
+        //try
+        //{
+        //    SteamClient.Init(1840150);
+        //}
+        //catch (System.Exception e)
+        //{
+        //    // Couldn't init for some reason (steam is closed etc)
+        //    Debug.LogError("Failed to init Steam!");
+        //}
 
         if (SteamClient.IsValid)
         {
@@ -1239,7 +1239,7 @@ public class GridManager : MonoBehaviour
                 }
             }
 
-            SteamClient.Shutdown();
+            //SteamClient.Shutdown();
         }
     }
 
@@ -1247,15 +1247,15 @@ public class GridManager : MonoBehaviour
     {
         if(rageAchTimer > 60.0f)
         {
-            try
-            {
-                SteamClient.Init(1840150);
-            }
-            catch (System.Exception e)
-            {
-                // Couldn't init for some reason (steam is closed etc)
-                Debug.LogError("Failed to init Steam!");
-            }
+            //try
+            //{
+            //    SteamClient.Init(1840150);
+            //}
+            //catch (System.Exception e)
+            //{
+            //    // Couldn't init for some reason (steam is closed etc)
+            //    Debug.LogError("Failed to init Steam!");
+            //}
 
             if (SteamClient.IsValid)
             {
@@ -1265,7 +1265,7 @@ public class GridManager : MonoBehaviour
                     ach.Trigger();
                 }
 
-                SteamClient.Shutdown();
+                //SteamClient.Shutdown();
             }
         }
     }

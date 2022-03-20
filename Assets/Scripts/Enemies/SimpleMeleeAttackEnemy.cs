@@ -299,15 +299,15 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
 
     private void CheckDefeatByFishtankAchievement()
     {
-        try
-        {
-            SteamClient.Init(1840150);
-        }
-        catch (System.Exception e)
-        {
-            // Couldn't init for some reason (steam is closed etc)
-            Debug.LogError("Failed to init Steam!");
-        }
+        //try
+        //{
+        //    SteamClient.Init(1840150);
+        //}
+        //catch (System.Exception e)
+        //{
+        //    // Couldn't init for some reason (steam is closed etc)
+        //    Debug.LogError("Failed to init Steam!");
+        //}
 
         if (SteamClient.IsValid)
         {
@@ -317,7 +317,7 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
                 ach.Trigger();
             }
 
-            SteamClient.Shutdown();
+            //SteamClient.Shutdown();
         }
     }
 }

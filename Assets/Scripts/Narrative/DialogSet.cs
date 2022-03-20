@@ -123,15 +123,7 @@ public class DialogSet : MonoBehaviour
 
     private void CheckMemFragAchievement()
     {
-        try
-        {
-            SteamClient.Init(1840150);
-        }
-        catch (System.Exception e)
-        {
-            // Couldn't init for some reason (steam is closed etc)
-            Debug.LogError("Failed to init Steam!");
-        }
+        
 
         if (SteamClient.IsValid)
         {
@@ -233,7 +225,6 @@ public class DialogSet : MonoBehaviour
 
             }
 
-            SteamClient.Shutdown();
         }
     }
 }
