@@ -102,6 +102,7 @@ public class MenuUIManager : MonoBehaviour
         playerBus = FMODUnity.RuntimeManager.GetBus("Bus:/");
         playerBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
+
         BackToInitialPanel();
         creditsNextButton.onClick.AddListener(NextCredits);
         creditsPreviousButton.onClick.AddListener(PreviousCredits);

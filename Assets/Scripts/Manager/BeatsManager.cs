@@ -69,6 +69,7 @@ public class BeatsManager : MonoBehaviour
         if (!isBossFight)
         {
             bgmEvent = RuntimeManager.CreateInstance(normalBGMEventPath);
+            //bgmEvent = FMODEventManager.instance.GetEvent(0);
         }
         else
         {
