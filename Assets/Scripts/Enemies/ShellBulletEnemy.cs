@@ -119,14 +119,15 @@ public class ShellBulletEnemy : BasicEnemy
         animator.SetTrigger("Attack");
     }
 
-    public override void TakeDamage(int damage)
+    public override bool TakeDamage(int damage)
     {
         if(state == 0)
         {
             AnimatorClipInfo[] aci = animator.GetCurrentAnimatorClipInfo(0);
             if (aci[0].clip.name.Equals("in") || aci[0].clip.name.Equals("Idle2") || aci[0].clip.name.Equals("attack") || aci[0].clip.name.Equals("out"))
             {
-                base.TakeDamage(damage);
+                bool flag = base.TakeDamage(damage);
+                return flag;
             }
             else
             {
@@ -140,12 +141,15 @@ public class ShellBulletEnemy : BasicEnemy
                     }
                     enemyNotHittedFX.start();
                 }
+                return false;
             }
         }
         if(state == 1)
         {
-            base.TakeDamage(damage);
+            bool flag = base.TakeDamage(damage);
+            return flag;
         }
+        return false;
     }
 
 }

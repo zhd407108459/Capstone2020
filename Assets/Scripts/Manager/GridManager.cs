@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using FMOD.Studio;
 using FMODUnity;
+using Steamworks;
+using Steamworks.Data;
 
 public class GridManager : MonoBehaviour
 {
@@ -82,6 +84,10 @@ public class GridManager : MonoBehaviour
     private DialogSet nextDialog;
     private int combo;
     //private int comboTimer;
+
+    private float rageAchTimer = 0;
+    private float lastRageAchTimer = 0;
+
 
     void Awake()
     {
@@ -185,6 +191,7 @@ public class GridManager : MonoBehaviour
                 if (rageTimer <= 0 && lastRageTimer > 0)
                 {
                     rageTimer = 0;
+                    rageAchTimer = 0;
                     //Rage
                     if (!isBossFight)
                     {
@@ -203,6 +210,9 @@ public class GridManager : MonoBehaviour
                         rageTimerSlider.gameObject.SetActive(false);
                         rageTimerText.gameObject.SetActive(false);
                         BeatsManager.instance.SwitchToBoss2BGM();
+
+                        CheckFlawlesslyAchievements();
+
                         boss.StartStage2();
                         if (!boss3Developing)
                         {
@@ -223,6 +233,15 @@ public class GridManager : MonoBehaviour
                             Destroy(n.gameObject);
                         }
                     }
+                }
+                if(rageTimer == 0 && !isBossFight)
+                {
+                    rageAchTimer += Time.deltaTime;
+                    if(lastRageAchTimer <= 60.0f && rageAchTimer >= 60.0f)
+                    {
+                        CheckStayRage1MinutesAchievement();
+                    }
+                    lastRageAchTimer = rageAchTimer;
                 }
                 rageTimerText.text = ((int)rageTimer).ToString() + "s";
                 rageTimerSlider.value = rageTimer / phases[phaseIndex].rageTime;
@@ -867,6 +886,26 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    public int GetEnemyCount()
+    {
+        if (IsInBattlePhase() && !isBossFight)
+        {
+            int count = 0;
+            for (int i = 0; i < phases[phaseIndex].enemies.Count; i++)
+            {
+                if (phases[phaseIndex].enemies[i].gameObject.activeSelf)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     public List<BasicEnemy> GetAllEnemies()
     {
         List<BasicEnemy> tempList = new List<BasicEnemy>();
@@ -1041,6 +1080,11 @@ public class GridManager : MonoBehaviour
         comboTipText.text = combo.ToString();
         //comboTimer = 0;
         comboTipText.transform.localScale = new Vector3(2, 2, 2);
+        
+        if(combo == 64 || combo == 128)
+        {
+            CheckComboAchievements();
+        }
     }
 
     public void EndCombo()
@@ -1048,6 +1092,8 @@ public class GridManager : MonoBehaviour
         combo = 0;
         //comboTimer = 0;
         comboTipObject.SetActive(false);
+
+        CheckComboAchievements();
     }
 
     public void PlayBossEndingCutScene()
@@ -1055,6 +1101,165 @@ public class GridManager : MonoBehaviour
         if(bossEndingCutScene != null)
         {
             bossEndingCutScene.Invoke();
+        }
+    }
+
+    private void CheckFlawlesslyAchievements()
+    {
+        if (GameManager.instance.player.GetComponent<PlayerHealth>().IsAllHealth())
+        {
+            try
+            {
+                SteamClient.Init(1840150);
+            }
+            catch (System.Exception e)
+            {
+                // Couldn't init for some reason (steam is closed etc)
+                Debug.LogError("Failed to init Steam!");
+            }
+
+            if (SteamClient.IsValid)
+            {
+                if (levelIndex == 1)
+                {
+                    if (SettingManager.instance != null)
+                    {
+                        if (SettingManager.instance.difficulty == 0 || SettingManager.instance.difficulty == 1)
+                        {
+                            var ach = new Achievement("FLAWLESSLY_PASS_BOSS1_EASY_NORMAL");
+                            if (!ach.State)
+                            {
+                                ach.Trigger();
+                            }
+                        }
+                        else if (SettingManager.instance.difficulty == 2)
+                        {
+                            var ach = new Achievement("FLAWLESSLY_PASS_BOSS1_HARD");
+                            if (!ach.State)
+                            {
+                                ach.Trigger();
+                            }
+                        }
+                    }
+                }
+                else if (levelIndex == 2)
+                {
+                    if (SettingManager.instance != null)
+                    {
+                        if (SettingManager.instance.difficulty == 0 || SettingManager.instance.difficulty == 1)
+                        {
+                            var ach = new Achievement("FLAWLESSLY_PASS_BOSS2_EASY_NORMAL");
+                            if (!ach.State)
+                            {
+                                ach.Trigger();
+                            }
+                        }
+                        else if (SettingManager.instance.difficulty == 2)
+                        {
+                            var ach = new Achievement("FLAWLESSLY_PASS_BOSS2_HARD");
+                            if (!ach.State)
+                            {
+                                ach.Trigger();
+                            }
+                        }
+                    }
+                }
+                else if (levelIndex == 3)
+                {
+                    if (SettingManager.instance != null)
+                    {
+                        if (SettingManager.instance.difficulty == 0 || SettingManager.instance.difficulty == 1)
+                        {
+                            var ach = new Achievement("FLAWLESSLY_PASS_BOSS3_EASY_NORMAL");
+                            if (!ach.State)
+                            {
+                                ach.Trigger();
+                            }
+                        }
+                        else if (SettingManager.instance.difficulty == 2)
+                        {
+                            var ach = new Achievement("FLAWLESSLY_PASS_BOSS3_HARD");
+                            if (!ach.State)
+                            {
+                                ach.Trigger();
+                            }
+                        }
+                    }
+                }
+                SteamClient.Shutdown();
+            }
+        }
+    }
+
+
+    private void CheckComboAchievements()
+    {
+        try
+        {
+            SteamClient.Init(1840150);
+        }
+        catch (System.Exception e)
+        {
+            // Couldn't init for some reason (steam is closed etc)
+            Debug.LogError("Failed to init Steam!");
+        }
+
+        if (SteamClient.IsValid)
+        {
+            var ach64 = new Achievement("REACH_COMBO_64");
+            var ach128 = new Achievement("REACH_COMBO_128");
+
+            if (!ach64.State)
+            {
+                int tempC = SteamUserStats.GetStatInt("COMBO_64_PROGRESS");
+                if(combo > tempC)
+                {
+                    SteamUserStats.SetStat("COMBO_64_PROGRESS", combo > 64 ? 64 : combo);
+                }
+                if(combo >= 64)
+                {
+                    ach64.Trigger();
+                }
+            }
+
+            if (!ach128.State)
+            {
+                int tempC = SteamUserStats.GetStatInt("COMBO_128_PROGRESS");
+                if (combo > tempC)
+                {
+                    SteamUserStats.SetStat("COMBO_128_PROGRESS", combo > 128 ? 128 : combo);
+                }
+                if (combo >= 128)
+                {
+                    ach128.Trigger();
+                }
+            }
+
+            SteamClient.Shutdown();
+        }
+    }
+
+    private void CheckStayRage1MinutesAchievement()
+    {
+        try
+        {
+            SteamClient.Init(1840150);
+        }
+        catch (System.Exception e)
+        {
+            // Couldn't init for some reason (steam is closed etc)
+            Debug.LogError("Failed to init Steam!");
+        }
+
+        if (SteamClient.IsValid)
+        {
+            var ach = new Achievement("STAY_RAGE_1_MINUTES");
+            if (!ach.State)
+            {
+                ach.Trigger();
+            }
+
+            SteamClient.Shutdown();
         }
     }
 }

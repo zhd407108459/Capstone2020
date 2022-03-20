@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using FMOD.Studio;
 using FMODUnity;
 using Steamworks;
+using Steamworks.Data;
 
 public class MenuUIManager : MonoBehaviour
 {
@@ -80,9 +81,19 @@ public class MenuUIManager : MonoBehaviour
         //    Debug.LogError(SteamClient.State);
         //    Debug.LogError(SteamClient.SteamId);
         //    Debug.LogError(SteamClient.Name);
+        //    Debug.LogError(SteamUserStats.GetStatInt("stat_Test"));
+        //    SteamUserStats.SetStat("stat_Test", 10);
+        //    Debug.LogError(SteamUserStats.GetStatInt("stat_Test"));
+        //    SteamUserStats.SetStat("stat_Test", 0);
+        //    Debug.LogError(SteamUserStats.GetStatInt("stat_Test"));
         //    foreach (var a in SteamUserStats.Achievements)
         //    {
         //        Debug.LogError($"{a.Name}({a.State})");
+        //    }
+        //    var ach = new Achievement("GM_PLAYED_WITH_GARRY");
+        //    if (!ach.State)
+        //    {
+        //        ach.Trigger();
         //    }
         //    SteamClient.Shutdown();
         //}

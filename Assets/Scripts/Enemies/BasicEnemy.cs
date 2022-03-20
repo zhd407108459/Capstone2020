@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using FMOD.Studio;
 using FMODUnity;
+using Steamworks;
+using Steamworks.Data;
 
 public class BasicEnemy : RhythmObject
 {
@@ -41,6 +43,8 @@ public class BasicEnemy : RhythmObject
     public string enemyDamagedFXEventPath = "event:/FX/Enemy/FX-EnemyDamaged";
     public string enemyDeathFXEventPath = "event:/FX/Enemy/FX-EnemyDeath";
     public string enemyDeathRattleFXEventPath = "event:/FX/Enemy/FX-EnemyRageBall";
+
+    public int typeID = -1;
 
     void Start()
     {
@@ -91,7 +95,7 @@ public class BasicEnemy : RhythmObject
         isDashed = false;
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual bool TakeDamage(int damage)
     {
 
         EventInstance enemyDamagedFX;
@@ -111,7 +115,7 @@ public class BasicEnemy : RhythmObject
             {
                 extraHealth -= tempD;
                 extraHealthSlider.value = (float)extraHealth / (float)maxExtraHealth;
-                return;
+                return false;
             }
             else
             {
@@ -125,9 +129,16 @@ public class BasicEnemy : RhythmObject
         if(health <= 0)
         {
             health = 0;
+            healthSlider.value = (float)health / (float)maxHealth;
             Die();
+            return true;
         }
-        healthSlider.value = (float)health / (float)maxHealth;
+        else
+        {
+            healthSlider.value = (float)health / (float)maxHealth;
+            return false;
+        }
+
     }
 
     public void Recover(int value)
@@ -174,6 +185,13 @@ public class BasicEnemy : RhythmObject
             return;
         }
         GridManager.instance.CheckEnemyCount();
+
+        if(typeID == 4) {
+            if(GridManager.instance.GetEnemyCount() == 1)
+            {
+                CheckLastBeatShieldBuffEnemyAchievement();
+            }
+        }
 
         EventInstance enemyDeathFX;
         enemyDeathFX = RuntimeManager.CreateInstance(enemyDeathFXEventPath);
@@ -256,5 +274,29 @@ public class BasicEnemy : RhythmObject
     public void DeathRattleRage(BasicEnemy target)
     {
         target.isRaged = true;
+    }
+
+    private void CheckLastBeatShieldBuffEnemyAchievement()
+    {
+        try
+        {
+            SteamClient.Init(1840150);
+        }
+        catch (System.Exception e)
+        {
+            // Couldn't init for some reason (steam is closed etc)
+            Debug.LogError("Failed to init Steam!");
+        }
+
+        if (SteamClient.IsValid)
+        {
+            var ach = new Achievement("LAST_BEAT_SHIELD_BUFF_ENEMY");
+            if (!ach.State)
+            {
+                ach.Trigger();
+            }
+
+            SteamClient.Shutdown();
+        }
     }
 }

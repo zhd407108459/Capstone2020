@@ -133,4 +133,28 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.value = (float)health / (float)maxHealth;
         BeatsManager.instance.SetNormalBGMParameter("LowHealth", 0);
     }
+
+    public bool IsAllHealth()
+    {
+        if(health == maxHealth)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool IsDead()
+    {
+        if(health == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

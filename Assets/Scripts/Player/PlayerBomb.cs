@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
+using Steamworks;
+using Steamworks.Data;
 
 public class PlayerBomb : RhythmObject
 {
@@ -50,14 +52,19 @@ public class PlayerBomb : RhythmObject
         {
             if (cos[i].tag.Equals("Enemy"))
             {
+                bool isEliminated = false;
                 if (action.damageIncreasingRatio > 1)
                 {
-                    cos[i].GetComponent<BasicEnemy>().TakeDamage((int)(damage * action.damageIncreasingRatio));
+                    isEliminated = cos[i].GetComponent<BasicEnemy>().TakeDamage((int)(damage * action.damageIncreasingRatio));
                     ishit = true;
                 }
                 else
                 {
-                    cos[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                    isEliminated = cos[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                }
+                if (isEliminated && cos[i].GetComponent<BasicEnemy>().typeID == 21)
+                {
+                    CheckBombLaughFlowerAchievement();
                 }
                 Camera.main.GetComponent<CameraShake>().Shake();
 
@@ -181,5 +188,29 @@ public class PlayerBomb : RhythmObject
         this.yPos = yPos;
         timer = -1;
         transform.position = GridManager.instance.GetPhaseInitialPosition() + new Vector2(xPos * GridManager.instance.gridSize.x, yPos * GridManager.instance.gridSize.y);
+    }
+
+    private void CheckBombLaughFlowerAchievement()
+    {
+        try
+        {
+            SteamClient.Init(1840150);
+        }
+        catch (System.Exception e)
+        {
+            // Couldn't init for some reason (steam is closed etc)
+            Debug.LogError("Failed to init Steam!");
+        }
+
+        if (SteamClient.IsValid)
+        {
+            var ach = new Achievement("BOMB_LAUGH_FLOWER");
+            if (!ach.State)
+            {
+                ach.Trigger();
+            }
+
+            SteamClient.Shutdown();
+        }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Steamworks;
+using Steamworks.Data;
 
 public class BeatBoss : MonoBehaviour
 {
@@ -179,13 +181,19 @@ public class BeatBoss : MonoBehaviour
         {
             if(SettingManager.instance.levelProcess == GridManager.instance.levelIndex)
             {
-                SettingManager.instance.levelProcess += 1;
-                SettingManager.instance.phaseProcess = 1;
-                SettingManager.instance.SaveToPath();
+                if(SettingManager.instance.levelProcess < 3)
+                {
+                    SettingManager.instance.levelProcess += 1;
+                    SettingManager.instance.phaseProcess = 1;
+                    SettingManager.instance.SaveToPath();
+                }
             }
         }
         GameManager.instance.isGameEnd = true;
         GameManager.instance.isPaused = true;
+
+        CheckPassAchievements();
+
     }
 
     public void MeleeAttacked()
@@ -650,5 +658,47 @@ public class BeatBoss : MonoBehaviour
         }
         GameObject go = Instantiate(bossDebuff[itemIndex], GridManager.instance.GetPhaseInitialPosition() + new Vector2(x * GridManager.instance.gridSize.x, y * GridManager.instance.gridSize.y), Quaternion.identity);
         go.GetComponent<BasicDebuff>().Setup(x, y);
+    }
+
+    private void CheckPassAchievements()
+    {
+        try
+        {
+            SteamClient.Init(1840150);
+        }
+        catch (System.Exception e)
+        {
+            // Couldn't init for some reason (steam is closed etc)
+            Debug.LogError("Failed to init Steam!");
+        }
+
+        if (SteamClient.IsValid)
+        {
+            if (GridManager.instance.levelIndex == 1)
+            {
+                var ach = new Achievement("PASS_BOSS1_ALL");
+                if (!ach.State)
+                {
+                    ach.Trigger();
+                }
+            }
+            else if (GridManager.instance.levelIndex == 2)
+            {
+                var ach = new Achievement("PASS_BOSS2_ALL");
+                if (!ach.State)
+                {
+                    ach.Trigger();
+                }
+            }
+            else if (GridManager.instance.levelIndex == 3)
+            {
+                var ach = new Achievement("PASS_ALL_LEVEL");
+                if (!ach.State)
+                {
+                    ach.Trigger();
+                }
+            }
+            SteamClient.Shutdown();
+        }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
+using Steamworks;
+using Steamworks.Data;
 
 public class SimpleMeleeAttackEnemy : BasicEnemy
 {
@@ -166,17 +168,18 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
         }
     }
 
-    public override void TakeDamage(int damage)
+    public override bool TakeDamage(int damage)
     {
         if(TutorialManager.instance != null)
         {
             if (TutorialManager.instance.externalObjects[1].activeSelf)
             {
-                return;
+                return false;
             }
         }
 
-        base.TakeDamage(damage);
+        bool flag = base.TakeDamage(damage);
+        return flag;
     }
 
     public override void Die()
@@ -244,6 +247,11 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
     void CauseDamage()
     {
         GameManager.instance.player.GetComponent<PlayerHealth>().TakeDamage((int)(damage * damageIncreasement));
+
+        if (GameManager.instance.player.GetComponent<PlayerHealth>().IsDead())
+        {
+            CheckDefeatByFishtankAchievement();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -287,5 +295,29 @@ public class SimpleMeleeAttackEnemy : BasicEnemy
         //{
         //    CauseDamage();
         //}
+    }
+
+    private void CheckDefeatByFishtankAchievement()
+    {
+        try
+        {
+            SteamClient.Init(1840150);
+        }
+        catch (System.Exception e)
+        {
+            // Couldn't init for some reason (steam is closed etc)
+            Debug.LogError("Failed to init Steam!");
+        }
+
+        if (SteamClient.IsValid)
+        {
+            var ach = new Achievement("DEFEAT_BY_FISHTANK");
+            if (!ach.State)
+            {
+                ach.Trigger();
+            }
+
+            SteamClient.Shutdown();
+        }
     }
 }
