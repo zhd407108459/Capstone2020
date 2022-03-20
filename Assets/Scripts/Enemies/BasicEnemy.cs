@@ -192,6 +192,10 @@ public class BasicEnemy : RhythmObject
                 CheckLastBeatShieldBuffEnemyAchievement();
             }
         }
+        if (GridManager.instance.GetEnemyCount() == 1)
+        {
+            GridManager.instance.CheckStayRage1MinutesAchievement();
+        }
 
         EventInstance enemyDeathFX;
         enemyDeathFX = RuntimeManager.CreateInstance(enemyDeathFXEventPath);

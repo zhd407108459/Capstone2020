@@ -146,7 +146,7 @@ public class BeatsManager : MonoBehaviour
 
         int pos;
         bgmEvent.getTimelinePosition(out pos);
-        Debug.Log(pos + "," + songLength);
+        //Debug.Log(pos + "," + songLength);
         if (bgmTime < lastAudioTime)
         {
             if (pos >= songLength - 400)

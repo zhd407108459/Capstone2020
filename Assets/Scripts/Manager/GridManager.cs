@@ -87,7 +87,6 @@ public class GridManager : MonoBehaviour
     //private int comboTimer;
 
     private float rageAchTimer = 0;
-    private float lastRageAchTimer = 0;
 
 
     void Awake()
@@ -235,20 +234,16 @@ public class GridManager : MonoBehaviour
                         }
                     }
                 }
-                if(rageTimer == 0 && !isBossFight)
-                {
-                    rageAchTimer += Time.deltaTime;
-                    if(lastRageAchTimer <= 60.0f && rageAchTimer >= 60.0f)
-                    {
-                        CheckStayRage1MinutesAchievement();
-                    }
-                    lastRageAchTimer = rageAchTimer;
-                }
                 rageTimerText.text = ((int)rageTimer).ToString() + "s";
                 rageTimerSlider.value = rageTimer / phases[phaseIndex].rageTime;
                 lastRageTimer = rageTimer;
             }
-            
+
+            if (rageTimer <= 0 && !isBossFight)
+            {
+                rageAchTimer += Time.deltaTime;
+                //Debug.LogError(rageAchTimer);
+            }
         }
     }
 
@@ -1248,27 +1243,30 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    private void CheckStayRage1MinutesAchievement()
+    public void CheckStayRage1MinutesAchievement()
     {
-        try
+        if(rageAchTimer > 60.0f)
         {
-            SteamClient.Init(1840150);
-        }
-        catch (System.Exception e)
-        {
-            // Couldn't init for some reason (steam is closed etc)
-            Debug.LogError("Failed to init Steam!");
-        }
-
-        if (SteamClient.IsValid)
-        {
-            var ach = new Achievement("STAY_RAGE_1_MINUTES");
-            if (!ach.State)
+            try
             {
-                ach.Trigger();
+                SteamClient.Init(1840150);
+            }
+            catch (System.Exception e)
+            {
+                // Couldn't init for some reason (steam is closed etc)
+                Debug.LogError("Failed to init Steam!");
             }
 
-            SteamClient.Shutdown();
+            if (SteamClient.IsValid)
+            {
+                var ach = new Achievement("STAY_RAGE_1_MINUTES");
+                if (!ach.State)
+                {
+                    ach.Trigger();
+                }
+
+                SteamClient.Shutdown();
+            }
         }
     }
 }
