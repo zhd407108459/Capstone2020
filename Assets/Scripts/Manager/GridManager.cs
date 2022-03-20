@@ -210,7 +210,7 @@ public class GridManager : MonoBehaviour
                         rageTimerSlider.gameObject.SetActive(false);
                         rageTimerText.gameObject.SetActive(false);
                         BeatsManager.instance.SwitchToBoss2BGM();
-
+                        CheckComboAchievements();
                         CheckFlawlesslyAchievements();
 
                         boss.StartStage2();
@@ -1080,10 +1080,10 @@ public class GridManager : MonoBehaviour
         //comboTimer = 0;
         comboTipText.transform.localScale = new Vector3(2, 2, 2);
         
-        //if(combo == 64 || combo == 128)
-        //{
-        //    CheckComboAchievements();
-        //}
+        if(combo == 64 || combo == 128)
+        {
+            CheckComboAchievements();
+        }
     }
 
     public void EndCombo()
