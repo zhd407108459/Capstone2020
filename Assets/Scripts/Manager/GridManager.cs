@@ -83,6 +83,7 @@ public class GridManager : MonoBehaviour
     [HideInInspector] public DialogSet currentDialog;
     private DialogSet nextDialog;
     private int combo;
+    private int highestCombo = 0;
     //private int comboTimer;
 
     private float rageAchTimer = 0;
@@ -262,6 +263,7 @@ public class GridManager : MonoBehaviour
             phases[0].rageTime = BeatsManager.instance.GetBoss1BGMLength();
             //Debug.Log(BeatsManager.instance.GetBoss1BGMLength());
         }
+
         for (int i = 0; i < phases.Count; i++)
         {
             phases[i].Initialize();
@@ -365,6 +367,7 @@ public class GridManager : MonoBehaviour
     {
         if(phaseIndex < phases.Count - 1)
         {
+            GridManager.instance.CheckComboAchievements();
             phaseIndex++;
             phases[phaseIndex].startEvent.Invoke();
             setAbilities.RecoverCoolDown();
@@ -528,6 +531,7 @@ public class GridManager : MonoBehaviour
         ResetGeneratingBuffsAndDebuffs();
         Invoke("HideTimerText", BeatsManager.instance.beatsTime);
         combo = 0;
+        highestCombo = 0;
         //comboTimer = 0;
         comboTipObject.SetActive(false);
     }
@@ -1081,19 +1085,24 @@ public class GridManager : MonoBehaviour
         //comboTimer = 0;
         comboTipText.transform.localScale = new Vector3(2, 2, 2);
         
-        if(combo == 64 || combo == 128)
-        {
-            CheckComboAchievements();
-        }
+        //if(combo == 64 || combo == 128)
+        //{
+        //    CheckComboAchievements();
+        //}
     }
 
     public void EndCombo()
     {
+        if(combo > highestCombo)
+        {
+            highestCombo = combo;
+        }
+
         combo = 0;
         //comboTimer = 0;
         comboTipObject.SetActive(false);
 
-        CheckComboAchievements();
+        //CheckComboAchievements();
     }
 
     public void PlayBossEndingCutScene()
@@ -1192,7 +1201,7 @@ public class GridManager : MonoBehaviour
     }
 
 
-    private void CheckComboAchievements()
+    public void CheckComboAchievements()
     {
         try
         {
@@ -1212,11 +1221,11 @@ public class GridManager : MonoBehaviour
             if (!ach64.State)
             {
                 int tempC = SteamUserStats.GetStatInt("COMBO_64_PROGRESS");
-                if(combo > tempC)
+                if(highestCombo > tempC)
                 {
-                    SteamUserStats.SetStat("COMBO_64_PROGRESS", combo > 64 ? 64 : combo);
+                    SteamUserStats.SetStat("COMBO_64_PROGRESS", highestCombo > 64 ? 64 : highestCombo);
                 }
-                if(combo >= 64)
+                if(highestCombo >= 64)
                 {
                     ach64.Trigger();
                 }
@@ -1225,11 +1234,11 @@ public class GridManager : MonoBehaviour
             if (!ach128.State)
             {
                 int tempC = SteamUserStats.GetStatInt("COMBO_128_PROGRESS");
-                if (combo > tempC)
+                if (highestCombo > tempC)
                 {
-                    SteamUserStats.SetStat("COMBO_128_PROGRESS", combo > 128 ? 128 : combo);
+                    SteamUserStats.SetStat("COMBO_128_PROGRESS", highestCombo > 128 ? 128 : highestCombo);
                 }
-                if (combo >= 128)
+                if (highestCombo >= 128)
                 {
                     ach128.Trigger();
                 }

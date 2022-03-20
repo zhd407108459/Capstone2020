@@ -209,6 +209,8 @@ public class GameManager : MonoBehaviour
             }
             deadBGMEvent.start();
         }
+
+        GridManager.instance.CheckComboAchievements();
     }
 
     void RestartCurrentBattle()
@@ -241,6 +243,7 @@ public class GameManager : MonoBehaviour
     public void ShowPausePanel()
     {
         pausePanel.SetActive(true);
+        GridManager.instance.CheckComboAchievements();
     }
 
     public void HidePausePanel()
