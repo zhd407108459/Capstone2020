@@ -5,6 +5,8 @@ using UnityEngine;
 using LitJson;
 using Steamworks;
 using Steamworks.Data;
+using FMOD.Studio;
+using FMODUnity;
 
 public class SettingManager : MonoBehaviour
 {
@@ -35,6 +37,7 @@ public class SettingManager : MonoBehaviour
 
     public int language;
 
+    public List<string> Banks = new List<string>();
 
     [HideInInspector] public float hearingRange = 18.0f;
 
@@ -55,6 +58,7 @@ public class SettingManager : MonoBehaviour
                 // Couldn't init for some reason (steam is closed etc)
                 Debug.LogError("Failed to init Steam!");
             }
+            LoadFMODBank();
         }
         else
         {
@@ -415,5 +419,14 @@ public class SettingManager : MonoBehaviour
     {
         lastSkillIndex1 = 0;
         lastSkillIndex2 = 0;
+    }
+
+    void LoadFMODBank()
+    {
+        foreach (var bank in Banks)
+        {
+            TextAsset textAsset = Resources.Load(bank) as TextAsset;
+            FMODUnity.RuntimeManager.LoadBank(textAsset, true);
+        }
     }
 }
