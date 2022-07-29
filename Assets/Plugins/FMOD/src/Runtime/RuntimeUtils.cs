@@ -1,32 +1,126 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+
+namespace FMOD
+{
+    [Serializable]
+    public partial struct GUID : IEquatable<GUID>
+    {
+        public GUID(Guid guid)
+        {
+            byte[] bytes = guid.ToByteArray();
+
+            Data1 = BitConverter.ToInt32(bytes,  0);
+            Data2 = BitConverter.ToInt32(bytes,  4);
+            Data3 = BitConverter.ToInt32(bytes,  8);
+            Data4 = BitConverter.ToInt32(bytes, 12);
+        }
+
+        public static GUID Parse(string s)
+        {
+            return new GUID(new Guid(s));
+        }
+
+        public bool IsNull
+        {
+            get
+            {
+                return Data1 == 0
+                    && Data2 == 0
+                    && Data3 == 0
+                    && Data4 == 0;
+            }
+        }
+
+        public override bool Equals(object other)
+        {
+            return (other is GUID) && Equals((GUID)other);
+        }
+
+        public bool Equals(GUID other)
+        {
+            return Data1 == other.Data1
+                && Data2 == other.Data2
+                && Data3 == other.Data3
+                && Data4 == other.Data4;
+        }
+
+        public static bool operator==(GUID a, GUID b)
+        {
+            return a.Equals(b);
+        }
+
+        public static bool operator!=(GUID a, GUID b)
+        {
+            return !a.Equals(b);
+        }
+
+        public override int GetHashCode()
+        {
+            return Data1 ^ Data2 ^ Data3 ^ Data4;
+        }
+
+        public static implicit operator Guid(GUID guid)
+        {
+            return new Guid(guid.Data1,
+                    (short) ((guid.Data2 >>  0) & 0xFFFF),
+                    (short) ((guid.Data2 >> 16) & 0xFFFF),
+                    (byte)  ((guid.Data3 >>  0) & 0xFF),
+                    (byte)  ((guid.Data3 >>  8) & 0xFF),
+                    (byte)  ((guid.Data3 >> 16) & 0xFF),
+                    (byte)  ((guid.Data3 >> 24) & 0xFF),
+                    (byte)  ((guid.Data4 >>  0) & 0xFF),
+                    (byte)  ((guid.Data4 >>  8) & 0xFF),
+                    (byte)  ((guid.Data4 >> 16) & 0xFF),
+                    (byte)  ((guid.Data4 >> 24) & 0xFF)
+                );
+        }
+
+        public override string ToString()
+        {
+            return ((Guid)this).ToString("B");
+        }
+    }
+}
 
 namespace FMODUnity
 {
     public class EventNotFoundException : Exception
     {
-        public Guid Guid;
+        public FMOD.GUID Guid;
         public string Path;
+
         public EventNotFoundException(string path)
-            : base("[FMOD] Event not found '" + path + "'")
+            : base("[FMOD] Event not found: '" + path + "'")
         {
             Path = path;
         }
 
-        public EventNotFoundException(Guid guid)
-            : base("[FMOD] Event not found " + guid.ToString("b") + "")
+        public EventNotFoundException(FMOD.GUID guid)
+            : base("[FMOD] Event not found: " + guid)
         {
             Guid = guid;
+        }
+
+        public EventNotFoundException(EventReference eventReference)
+            : base("[FMOD] Event not found: " + eventReference.ToString())
+        {
+            Guid = eventReference.Guid;
+
+#if UNITY_EDITOR
+            Path = eventReference.Path;
+#endif
         }
     }
 
     public class BusNotFoundException : Exception
     {
         public string Path;
+
         public BusNotFoundException(string path)
             : base("[FMOD] Bus not found '" + path + "'")
         {
@@ -37,6 +131,7 @@ namespace FMODUnity
     public class VCANotFoundException : Exception
     {
         public string Path;
+
         public VCANotFoundException(string path)
             : base("[FMOD] VCA not found '" + path + "'")
         {
@@ -111,10 +206,138 @@ namespace FMODUnity
         TriggerExit,
         TriggerEnter2D,
         TriggerExit2D,
+        ObjectEnable,
+        ObjectDisable,
+    }
+
+    // We use our own enum to avoid serialization issues if FMOD.THREAD_TYPE changes
+    public enum ThreadType
+    {
+        Mixer,
+        Feeder,
+        Stream,
+        File,
+        Nonblocking,
+        Record,
+        Geometry,
+        Profiler,
+        Studio_Update,
+        Studio_Load_Bank,
+        Studio_Load_Sample,
+        Convolution_1,
+        Convolution_2,
+    }
+
+    // We use our own enum to avoid serialization issues if FMOD.THREAD_AFFINITY changes
+    [Flags]
+    public enum ThreadAffinity : uint
+    {
+        Any = 0,
+        Core0 = 1 << 0,
+        Core1 = 1 << 1,
+        Core2 = 1 << 2,
+        Core3 = 1 << 3,
+        Core4 = 1 << 4,
+        Core5 = 1 << 5,
+        Core6 = 1 << 6,
+        Core7 = 1 << 7,
+        Core8 = 1 << 8,
+        Core9 = 1 << 9,
+        Core10 = 1 << 10,
+        Core11 = 1 << 11,
+        Core12 = 1 << 12,
+        Core13 = 1 << 13,
+        Core14 = 1 << 14,
+        Core15 = 1 << 15,
+    }
+
+    // Using a separate enum to avoid serialization issues if FMOD.SOUND_TYPE changes.
+    public enum CodecType : int
+    {
+        FADPCM,
+        Vorbis,
+        AT9,
+        XMA,
+        Opus
+    }
+
+    [Serializable]
+    public class ThreadAffinityGroup
+    {
+        public List<ThreadType> threads = new List<ThreadType>();
+        public ThreadAffinity affinity = ThreadAffinity.Any;
+
+        public ThreadAffinityGroup()
+        {
+        }
+
+        public ThreadAffinityGroup(ThreadAffinityGroup other)
+        {
+            threads = new List<ThreadType>(other.threads);
+            affinity = other.affinity;
+        }
+
+        public ThreadAffinityGroup(ThreadAffinity affinity, params ThreadType[] threads)
+        {
+            this.threads = new List<ThreadType>(threads);
+            this.affinity = affinity;
+        }
+    }
+
+    [Serializable]
+    public class CodecChannelCount
+    {
+        public CodecType format;
+        public int channels;
+
+        public CodecChannelCount() { }
+
+        public CodecChannelCount(CodecChannelCount other)
+        {
+            format = other.format;
+            channels = other.channels;
+        }
     }
 
     public static class RuntimeUtils
     {
+#if UNITY_EDITOR
+        private static string pluginBasePath;
+
+        public const string BaseFolderGUID = "06ae579381df01a4a87bb149dec89954";
+        public const string PluginBasePathDefault = "Plugins/FMOD";
+
+        public static string PluginBasePath
+        {
+            get
+            {
+                if (pluginBasePath == null)
+                {
+                    pluginBasePath = AssetDatabase.GUIDToAssetPath(BaseFolderGUID);
+
+                    if (!string.IsNullOrEmpty(pluginBasePath))
+                    {
+                        const string AssetsFolder = "Assets/";
+
+                        if (pluginBasePath.StartsWith(AssetsFolder))
+                        {
+                            pluginBasePath = pluginBasePath.Substring(AssetsFolder.Length);
+                        }
+                    }
+                    else
+                    {
+                        pluginBasePath = PluginBasePathDefault;
+
+                        DebugLogWarningFormat("FMOD: Couldn't find base folder with GUID {0}; defaulting to {1}",
+                            BaseFolderGUID, pluginBasePath);
+                    }
+                }
+
+                return pluginBasePath;
+            }
+        }
+#endif
+
         public static string GetCommonPlatformPath(string path)
         {
             if (string.IsNullOrEmpty(path))
@@ -155,6 +378,12 @@ namespace FMODUnity
             return attributes;
         }
 
+        public static FMOD.ATTRIBUTES_3D To3DAttributes(this GameObject go)
+        {
+            return go.transform.To3DAttributes();
+        }
+
+#if UNITY_PHYSICS_EXIST
         public static FMOD.ATTRIBUTES_3D To3DAttributes(Transform transform, Rigidbody rigidbody = null)
         {
             FMOD.ATTRIBUTES_3D attributes = transform.To3DAttributes();
@@ -167,7 +396,7 @@ namespace FMODUnity
             return attributes;
         }
 
-        public static FMOD.ATTRIBUTES_3D To3DAttributes(GameObject go, Rigidbody rigidbody = null)
+        public static FMOD.ATTRIBUTES_3D To3DAttributes(GameObject go, Rigidbody rigidbody)
         {
             FMOD.ATTRIBUTES_3D attributes = go.transform.To3DAttributes();
 
@@ -178,7 +407,9 @@ namespace FMODUnity
 
             return attributes;
         }
+#endif
 
+#if UNITY_PHYSICS2D_EXIST
         public static FMOD.ATTRIBUTES_3D To3DAttributes(Transform transform, Rigidbody2D rigidbody)
         {
             FMOD.ATTRIBUTES_3D attributes = transform.To3DAttributes();
@@ -195,6 +426,7 @@ namespace FMODUnity
             return attributes;
         }
 
+
         public static FMOD.ATTRIBUTES_3D To3DAttributes(GameObject go, Rigidbody2D rigidbody)
         {
             FMOD.ATTRIBUTES_3D attributes = go.transform.To3DAttributes();
@@ -210,281 +442,153 @@ namespace FMODUnity
 
             return attributes;
         }
+#endif
 
-        // Internal Helper Functions
-        internal static FMODPlatform GetCurrentPlatform()
+        public static FMOD.THREAD_TYPE ToFMODThreadType(ThreadType threadType)
         {
-            #if UNITY_EDITOR
-            return FMODPlatform.PlayInEditor;
-            #elif UNITY_STANDALONE_WIN
-            return FMODPlatform.Windows;
-            #elif UNITY_STANDALONE_OSX
-            return FMODPlatform.Mac;
-            #elif UNITY_STANDALONE_LINUX
-            return FMODPlatform.Linux;
-            #elif UNITY_TVOS
-            return FMODPlatform.AppleTV;
-            #elif UNITY_IOS
-            FMODPlatform result;
-            switch (UnityEngine.iOS.Device.generation)
+            switch (threadType)
             {
-                case UnityEngine.iOS.DeviceGeneration.iPad1Gen:
-                case UnityEngine.iOS.DeviceGeneration.iPad2Gen:
-                case UnityEngine.iOS.DeviceGeneration.iPad3Gen:
-                case UnityEngine.iOS.DeviceGeneration.iPadMini1Gen:
-                case UnityEngine.iOS.DeviceGeneration.iPhone:
-                case UnityEngine.iOS.DeviceGeneration.iPhone3G:
-                case UnityEngine.iOS.DeviceGeneration.iPhone3GS:
-                case UnityEngine.iOS.DeviceGeneration.iPhone4:
-                case UnityEngine.iOS.DeviceGeneration.iPhone4S:
-                    result = FMODPlatform.MobileLow;
-                break;
-            default:
-                result = FMODPlatform.MobileHigh;
-                break;
-            }
-
-            UnityEngine.Debug.Log(String.Format("FMOD Studio: Device {0} classed as {1}", SystemInfo.deviceModel, result.ToString()));
-            return result;
-            #elif UNITY_ANDROID
-            FMODPlatform result;
-            if (SystemInfo.processorCount <= 2)
-            {
-                result = FMODPlatform.MobileLow;
-            }
-            else if (SystemInfo.processorCount >= 8)
-            {
-                result = FMODPlatform.MobileHigh;
-            }
-            else
-            {
-                // check the clock rate on quad core systems
-                string freqinfo = "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq";
-                try
-                {
-                    using (global::System.IO.TextReader reader = new global::System.IO.StreamReader(freqinfo))
-                    {
-                        string line = reader.ReadLine();
-                        int khz = Int32.Parse(line) / 1000;
-                        if (khz >= 1600)
-                        {
-                            result = FMODPlatform.MobileHigh;
-                        }
-                        else
-                        {
-                            result = FMODPlatform.MobileLow;
-                        }
-                    }
-                }
-                catch
-                {
-                    result = FMODPlatform.MobileLow;
-                }
-            }
-            
-            UnityEngine.Debug.Log(String.Format("[FMOD] Device {0} classed as {1}", SystemInfo.deviceModel, result.ToString()));
-            return result;
-            #elif UNITY_WINRT_8_1
-            FMODPlatform result;
-            if (SystemInfo.processorCount <= 2)
-            {
-                result = FMODPlatform.MobileLow;
-            }
-            else
-            {
-                result = FMODPlatform.MobileHigh;
-            }
-
-            UnityEngine.Debug.Log(String.Format("[FMOD] Device {0} classed as {1}", SystemInfo.deviceModel, result.ToString()));
-            return result;
-
-            #elif UNITY_PS4
-            return FMODPlatform.PS4;
-            #elif UNITY_XBOXONE
-            return FMODPlatform.XboxOne;
-            #elif UNITY_WSA_10_0
-            return FMODPlatform.UWP;
-            #elif UNITY_SWITCH
-            return FMODPlatform.Switch;
-            #elif UNITY_WEBGL
-            return FMODPlatform.WebGL;
-            #elif UNITY_STADIA
-            return FMODPlatform.Stadia;
-            #endif
-        }
-
-        const string BankExtension = ".bank";
-        internal static string GetBankPath(string bankName)
-        {
-            #if UNITY_EDITOR
-            // For play in editor use original asset location because streaming asset folder will contain platform specific banks
-            string bankFolder = Settings.Instance.SourceBankPath;
-            if (Settings.Instance.HasPlatforms)
-            {
-                bankFolder = global::System.IO.Path.Combine(bankFolder, Settings.Instance.GetBankPlatform(FMODPlatform.PlayInEditor));
-            } 
-            #elif UNITY_ANDROID
-            string bankFolder = null;
-            if (System.IO.Path.GetExtension(Application.dataPath) == ".apk")
-            {
-                bankFolder = "file:///android_asset";
-            }
-            else
-            {
-                bankFolder = String.Format("jar:file://{0}!/assets", Application.dataPath);
-            }
-            #elif UNITY_WINRT_8_1 || UNITY_WSA_10_0
-            string bankFolder = "ms-appx:///Data/StreamingAssets";
-            #else
-            string bankFolder = Application.streamingAssetsPath;
-            #endif
-
-            // Special case for Switch, remove / at start if needed.
-            #if UNITY_SWITCH
-            if (bankFolder[0] == '/')
-                bankFolder = bankFolder.Substring(1);
-            #endif
-
-            if (System.IO.Path.GetExtension(bankName) != BankExtension)
-            {
-                return string.Format("{0}/{1}.bank", bankFolder, bankName);
-            }
-            else
-            {
-                return string.Format("{0}/{1}", bankFolder, bankName);
+                case ThreadType.Mixer:
+                    return FMOD.THREAD_TYPE.MIXER;
+                case ThreadType.Feeder:
+                    return FMOD.THREAD_TYPE.FEEDER;
+                case ThreadType.Stream:
+                    return FMOD.THREAD_TYPE.STREAM;
+                case ThreadType.File:
+                    return FMOD.THREAD_TYPE.FILE;
+                case ThreadType.Nonblocking:
+                    return FMOD.THREAD_TYPE.NONBLOCKING;
+                case ThreadType.Record:
+                    return FMOD.THREAD_TYPE.RECORD;
+                case ThreadType.Geometry:
+                    return FMOD.THREAD_TYPE.GEOMETRY;
+                case ThreadType.Profiler:
+                    return FMOD.THREAD_TYPE.PROFILER;
+                case ThreadType.Studio_Update:
+                    return FMOD.THREAD_TYPE.STUDIO_UPDATE;
+                case ThreadType.Studio_Load_Bank:
+                    return FMOD.THREAD_TYPE.STUDIO_LOAD_BANK;
+                case ThreadType.Studio_Load_Sample:
+                    return FMOD.THREAD_TYPE.STUDIO_LOAD_SAMPLE;
+                case ThreadType.Convolution_1:
+                    return FMOD.THREAD_TYPE.CONVOLUTION1;
+                case ThreadType.Convolution_2:
+                    return FMOD.THREAD_TYPE.CONVOLUTION2;
+                default:
+                    throw new ArgumentException("Unrecognised thread type '" + threadType.ToString() + "'");
             }
         }
 
-        internal static string GetPluginPath(string pluginName)
+        public static string DisplayName(this ThreadType thread)
         {
-            #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || UNITY_XBOXONE || UNITY_WINRT_8_1 || UNITY_WSA_10_0
-                string pluginFileName = pluginName + ".dll";
-            #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
-                string pluginFileName = pluginName + ".bundle";
-            #elif UNITY_PS4
-                string pluginFileName = pluginName + ".prx";
-            #elif UNITY_ANDROID || UNITY_STANDALONE_LINUX
-                string pluginFileName = "lib" + pluginName + ".so";
-            #elif UNITY_WEBGL
-                string pluginFileName = pluginName + ".bc";
-            #endif
+            return thread.ToString().Replace('_', ' ');
+        }
 
-            string fmodLibPath = "/Plugins/FMOD/lib";
-            #if UNITY_EDITOR_WIN && UNITY_EDITOR_64
-                string pluginFolder = Application.dataPath + fmodLibPath + "/win/X86_64/";
-            #elif UNITY_EDITOR_WIN
-                string pluginFolder = Application.dataPath + fmodLibPath + "/win/X86/";
-            #elif UNITY_EDITOR_OSX
-                string pluginFolder = Application.dataPath + fmodLibPath + "/mac/";
-            #elif UNITY_STANDALONE_WIN || UNITY_PS4 || UNITY_XBOXONE || UNITY_STANDALONE_OSX || UNITY_WEBGL
-                string pluginFolder = Application.dataPath + "/Plugins/";
-            #elif UNITY_STANDALONE_LINUX
-                string pluginFolder = Application.dataPath + fmodLibPath + ((IntPtr.Size == 8) ? "/linux/x86_64/" : "/linux/x86/");
-            #elif UNITY_WSA || UNITY_ANDROID
-                string pluginFolder = "";
-            #else
-                string pluginFileName = "";
-                string pluginFolder = "";
-            #endif
+        public static FMOD.THREAD_AFFINITY ToFMODThreadAffinity(ThreadAffinity affinity)
+        {
+            FMOD.THREAD_AFFINITY fmodAffinity = FMOD.THREAD_AFFINITY.CORE_ALL;
 
-            return pluginFolder + pluginFileName;
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core0, FMOD.THREAD_AFFINITY.CORE_0, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core1, FMOD.THREAD_AFFINITY.CORE_1, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core2, FMOD.THREAD_AFFINITY.CORE_2, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core3, FMOD.THREAD_AFFINITY.CORE_3, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core4, FMOD.THREAD_AFFINITY.CORE_4, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core5, FMOD.THREAD_AFFINITY.CORE_5, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core6, FMOD.THREAD_AFFINITY.CORE_6, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core7, FMOD.THREAD_AFFINITY.CORE_7, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core8, FMOD.THREAD_AFFINITY.CORE_8, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core9, FMOD.THREAD_AFFINITY.CORE_9, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core10, FMOD.THREAD_AFFINITY.CORE_10, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core11, FMOD.THREAD_AFFINITY.CORE_11, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core12, FMOD.THREAD_AFFINITY.CORE_12, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core13, FMOD.THREAD_AFFINITY.CORE_13, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core14, FMOD.THREAD_AFFINITY.CORE_14, ref fmodAffinity);
+            SetFMODAffinityBit(affinity, ThreadAffinity.Core15, FMOD.THREAD_AFFINITY.CORE_15, ref fmodAffinity);
+
+            return fmodAffinity;
+        }
+
+        private static void SetFMODAffinityBit(ThreadAffinity affinity, ThreadAffinity mask,
+            FMOD.THREAD_AFFINITY fmodMask, ref FMOD.THREAD_AFFINITY fmodAffinity)
+        {
+            if ((affinity & mask) != 0)
+            {
+                fmodAffinity |= fmodMask;
+            }
         }
 
         public static void EnforceLibraryOrder()
         {
-            #if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
 
             AndroidJavaClass jSystem = new AndroidJavaClass("java.lang.System");
             jSystem.CallStatic("loadLibrary", FMOD.VERSION.dll);
             jSystem.CallStatic("loadLibrary", FMOD.Studio.STUDIO_VERSION.dll);
 
-            #endif
+#endif
 
             // Call a function in fmod.dll to make sure it's loaded before fmodstudio.dll
             int temp1, temp2;
             FMOD.Memory.GetStats(out temp1, out temp2);
 
-            Guid temp3;
+            FMOD.GUID temp3;
             FMOD.Studio.Util.parseID("", out temp3);
         }
 
-        #if UNITY_EDITOR
-        public static FMODPlatform GetEditorFMODPlatform()
+        public static void DebugLog(string message)
         {
-            switch (EditorUserBuildSettings.activeBuildTarget)
+            if (Settings.Instance == null || Settings.Instance.LoggingLevel == FMOD.DEBUG_FLAGS.LOG)
             {
-                case BuildTarget.Android:
-                    return FMODPlatform.Android;
-                case BuildTarget.iOS:
-                    return FMODPlatform.iOS;
-                case BuildTarget.PS4:
-                    return FMODPlatform.PS4;
-                #if !UNITY_2019_2_OR_NEWER
-                case BuildTarget.StandaloneLinux:
-                case BuildTarget.StandaloneLinuxUniversal:
-                #endif
-                case BuildTarget.StandaloneLinux64:
-                    return FMODPlatform.Linux;
-                case BuildTarget.StandaloneOSX:
-                    return FMODPlatform.Mac;
-                case BuildTarget.StandaloneWindows:
-                case BuildTarget.StandaloneWindows64:
-                    return FMODPlatform.Windows;
-                case BuildTarget.XboxOne:
-                    return FMODPlatform.XboxOne;
-                case BuildTarget.WSAPlayer:
-                    return FMODPlatform.UWP;
-                case BuildTarget.tvOS:
-                    return FMODPlatform.AppleTV;
-                #if UNITY_SWITCH
-                case BuildTarget.Switch:
-                    return FMODPlatform.Switch;
-                #endif
-                #if UNITY_WEBGL
-                case BuildTarget.WebGL:
-                    return FMODPlatform.WebGL;
-                #endif
-                #if UNITY_STADIA
-                case BuildTarget.Stadia:
-                    return FMODPlatform.Stadia;
-                #endif
-                default:
-                    return FMODPlatform.None;
+                Debug.Log(message);
             }
         }
-        #endif
 
-        public static bool VerifyPlatformLibsExist()
+        public static void DebugLogFormat(string format, params object[] args)
         {
-            string pluginDir = Application.dataPath + "/Plugins/";
-            #if UNITY_EDITOR
-            pluginDir += "FMOD/lib/";
-            #if UNITY_XBOXONE
-            pluginDir += "xboxone/fmodstudio.dll";
-            #elif UNITY_PS4
-            pluginDir += "ps4/libfmodstudio.prx";
-            #elif UNITY_STADIA
-            pluginDir += "stadia/libfmodstudio.so";
-            #elif UNITY_SWITCH // Not called at runtime because the static lib is not included in the built game.
-            pluginDir += "switch/libfmodstudiounityplugin.a";
-            #endif
-            #else // !UNITY_EDITOR
-            #if UNITY_XBOXONE
-            pluginDir += "fmodstudio.dll";
-            #elif UNITY_PS4
-            pluginDir += "libfmodstudio.prx";
-            #elif UNITY_STADIA
-            pluginDir += "libfmodstudio.so";
-            #endif
-            #endif // UNITY_EDITOR
-
-            if (Path.HasExtension(pluginDir) && !File.Exists(pluginDir))
+            if (Settings.Instance == null || Settings.Instance.LoggingLevel == FMOD.DEBUG_FLAGS.LOG)
             {
-                Debug.LogWarning("[FMOD] Unable to locate '" + pluginDir + "'.");
-                Debug.LogWarning("[FMOD] This platform requires verification 'https://fmod.com/profile#permissions' and an additional package from 'https://fmod.com/download'.");
-                return false;
+                Debug.LogFormat(format, args);
             }
-            return true;
+        }
+
+        public static void DebugLogWarning(string message)
+        {
+            if (Settings.Instance == null || Settings.Instance.LoggingLevel >= FMOD.DEBUG_FLAGS.WARNING)
+            {
+                Debug.LogWarning(message);
+            }
+        }
+
+        public static void DebugLogWarningFormat(string format, params object[] args)
+        {
+            if (Settings.Instance == null || Settings.Instance.LoggingLevel >= FMOD.DEBUG_FLAGS.WARNING)
+            {
+                Debug.LogWarningFormat(format, args);
+            }
+        }
+
+        public static void DebugLogError(string message)
+        {
+            if (Settings.Instance == null || Settings.Instance.LoggingLevel >= FMOD.DEBUG_FLAGS.ERROR)
+            {
+                Debug.LogError(message);
+            }
+        }
+
+        public static void DebugLogErrorFormat(string format, params object[] args)
+        {
+            if (Settings.Instance == null || Settings.Instance.LoggingLevel >= FMOD.DEBUG_FLAGS.ERROR)
+            {
+                Debug.LogErrorFormat(format, args);
+            }
+        }
+
+        public static void DebugLogException(Exception e)
+        {
+            if (Settings.Instance == null || Settings.Instance.LoggingLevel >= FMOD.DEBUG_FLAGS.ERROR)
+            {
+                Debug.LogException(e);
+            }
         }
     }
 }

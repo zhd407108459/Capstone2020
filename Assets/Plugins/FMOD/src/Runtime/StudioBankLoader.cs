@@ -13,8 +13,8 @@ namespace FMODUnity
         public string CollisionTag;
         public bool PreloadSamples;
         private bool isQuitting;
-        
-        void HandleGameEvent(LoaderGameEvent gameEvent)
+
+        private void HandleGameEvent(LoaderGameEvent gameEvent)
         {
             if (LoadEvent == gameEvent)
             {
@@ -26,18 +26,18 @@ namespace FMODUnity
             }
         }
 
-        void Start()
+        private void Start()
         {
             RuntimeUtils.EnforceLibraryOrder();
             HandleGameEvent(LoaderGameEvent.ObjectStart);
         }
 
-        void OnApplicationQuit()
+        private void OnApplicationQuit()
         {
             isQuitting = true;
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
             if (!isQuitting)
             {
@@ -45,7 +45,8 @@ namespace FMODUnity
             }
         }
 
-        void OnTriggerEnter(Collider other)
+#if UNITY_PHYSICS_EXIST
+        private void OnTriggerEnter(Collider other)
         {
             if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
             {
@@ -53,15 +54,17 @@ namespace FMODUnity
             }
         }
 
-        void OnTriggerExit(Collider other)
+        private void OnTriggerExit(Collider other)
         {
             if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
             {
                 HandleGameEvent(LoaderGameEvent.TriggerExit);
             }
         }
+#endif
 
-        void OnTriggerEnter2D(Collider2D other)
+#if UNITY_PHYSICS2D_EXIST
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
             {
@@ -69,12 +72,23 @@ namespace FMODUnity
             }
         }
 
-        void OnTriggerExit2D(Collider2D other)
+        private void OnTriggerExit2D(Collider2D other)
         {
             if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
             {
                 HandleGameEvent(LoaderGameEvent.TriggerExit2D);
             }
+        }
+#endif
+
+        private void OnEnable()
+        {
+            HandleGameEvent(LoaderGameEvent.ObjectEnable);
+        }
+
+        private void OnDisable()
+        {
+            HandleGameEvent(LoaderGameEvent.ObjectDisable);
         }
 
         public void Load()
@@ -87,10 +101,10 @@ namespace FMODUnity
                 }
                 catch (BankLoadException e)
                 {
-                    UnityEngine.Debug.LogException(e);
+                    RuntimeUtils.DebugLogException(e);
                 }
             }
-            RuntimeManager.WaitForAllLoads();
+            RuntimeManager.WaitForAllSampleLoading();
         }
 
         public void Unload()
