@@ -378,56 +378,10 @@ namespace FMODUnity
             return true;
         }
 
-        private bool DrawLinks()
-        {
-            string color = EditorGUIUtility.isProSkin ? "#fa4d14" : "#0000FF";
-            // Docs link
-            UnityEditor.EditorGUILayout.BeginHorizontal();
-            {
-                var linkStyle = GUI.skin.button;
-                linkStyle.richText = true;
-                string caption = "Open FMOD Getting Started Guide";
-                caption = String.Format("<color={0}>{1}</color>", color, caption);
-                bool bClicked = GUILayout.Button(caption, linkStyle, GUILayout.ExpandWidth(false), GUILayout.Height(30), GUILayout.MaxWidth(300));
-
-                var rect = GUILayoutUtility.GetLastRect();
-                rect.width = linkStyle.CalcSize(new GUIContent(caption)).x;
-                EditorGUIUtility.AddCursorRect(rect, MouseCursor.Link);
-
-                if (bClicked)
-                {
-                    Application.OpenURL("https://fmod.com/resources/documentation-unity?version=2.0&page=user-guide.html");
-                }
-            }
-            GUILayout.FlexibleSpace();
-            // Support Link
-            {
-                var linkStyle = GUI.skin.button;
-                linkStyle.richText = true;
-                string caption = "Open FMOD Q&A";
-                caption = String.Format("<color={0}>{1}</color>", color, caption);
-                bool bClicked = GUILayout.Button(caption, linkStyle, GUILayout.ExpandWidth(false), GUILayout.Height(30), GUILayout.MaxWidth(200));
-
-                var rect = GUILayoutUtility.GetLastRect();
-                rect.width = linkStyle.CalcSize(new GUIContent(caption)).x;
-                EditorGUIUtility.AddCursorRect(rect, MouseCursor.Link);
-
-                if (bClicked)
-                {
-                    Application.OpenURL("https://qa.fmod.com/");
-                }
-            }
-            UnityEditor.EditorGUILayout.EndHorizontal();
-
-            return true;
-        }
-
         public override void OnInspectorGUI()
         {
             Settings settings = target as Settings;
-
-            DrawLinks();
-
+            
             EditorGUI.BeginChangeCheck();
 
             hasBankSourceChanged = false;
@@ -499,7 +453,8 @@ namespace FMODUnity
                     hasBankSourceChanged = true;
                 }
             }
-            else if (sourceType == SourceType.Single || sourceType == SourceType.Multi)
+
+            if (sourceType == SourceType.Single || sourceType == SourceType.Multi)
             {
                 EditorGUILayout.BeginHorizontal();
                 string oldPath = settings.SourceBankPath;
@@ -539,19 +494,7 @@ namespace FMODUnity
             EditorUtils.ValidateSource(out validBanks, out failReason);
             if (!validBanks)
             {
-                failReason += "\n\nFor detailed setup instructions, please see the getting started guide linked above.";
                 EditorGUILayout.HelpBox(failReason, MessageType.Error, true);
-                if (EditorGUI.EndChangeCheck())
-                {
-                    EditorUtility.SetDirty(settings);
-                }
-                return;
-            }
-
-            if (!RuntimeUtils.VerifyPlatformLibsExist())
-            {
-                string errMsg = "Unable to find the FMOD '" + RuntimeUtils.GetEditorFMODPlatform() + "' libs. See console for details.";
-                EditorGUILayout.HelpBox(errMsg, MessageType.Error, true);
                 if (EditorGUI.EndChangeCheck())
                 {
                     EditorUtility.SetDirty(settings);
@@ -590,24 +533,17 @@ namespace FMODUnity
                         {
                             case KeyCode.Return:
                             case KeyCode.KeypadEnter:
-                                if (settings.TargetAssetPath != targetAssetPath)
-                                {
-                                    EventManager.RemoveBanks(Application.dataPath + '/' + settings.TargetAssetPath);
-                                    settings.TargetAssetPath = targetAssetPath;
-                                    hasBankTargetChanged = true;
-                                }
+                                settings.TargetAssetPath = targetAssetPath;
+                                hasBankTargetChanged = true;
                                 break;
                         }
                     }
                 }
                 else if (focused)
                 {
-                    if (settings.TargetAssetPath != targetAssetPath)
-                    {
-                        EventManager.RemoveBanks(Application.dataPath + '/' + settings.TargetAssetPath);
-                        settings.TargetAssetPath = targetAssetPath;
-                        hasBankTargetChanged = true;
-                    }
+                    settings.TargetAssetPath = targetAssetPath;
+                    hasBankTargetChanged = true;
+                    focused = false;
                 }
             }
 
@@ -858,7 +794,7 @@ namespace FMODUnity
             // If the path contains the Unity project path remove it and return the result
             if (fullPath.Contains(fullProjectPath))
             {
-                fullPath = fullPath.Replace(fullProjectPath, "");
+                return fullPath.Replace(fullProjectPath, "");
             }
             // If not, attempt to find a relative path on the same drive
             else if (Path.GetPathRoot(fullPath) == Path.GetPathRoot(fullProjectPath))
@@ -898,10 +834,11 @@ namespace FMODUnity
                     result = "../" + result;
                 }
 
-                fullPath = result;
-            }
+                return result;
 
-            return fullPath.Replace(Path.DirectorySeparatorChar, '/');
+            }
+            // Otherwise return the full path
+            return fullPath;
         }
     }
 }

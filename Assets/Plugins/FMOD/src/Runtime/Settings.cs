@@ -34,8 +34,6 @@ namespace FMODUnity
         Switch,
         WebGL,
         Stadia,
-        Reserved_1,
-        Reserved_2,
         Count,
     }
 
@@ -91,10 +89,8 @@ namespace FMODUnity
     #endif
     public class Settings : ScriptableObject
     {
-        #if UNITY_EDITOR
         [SerializeField]
         bool SwitchSettingsMigration = false;
-        #endif
 
         const string SettingsAssetName = "FMODStudioSettings";
 
@@ -193,7 +189,7 @@ namespace FMODUnity
         public ImportType ImportType;
 
         [SerializeField]
-        public string TargetAssetPath = "FMODBanks";
+        public string TargetAssetPath;
 
         [SerializeField]
         public FMOD.DEBUG_FLAGS LoggingLevel = FMOD.DEBUG_FLAGS.WARNING;
@@ -415,6 +411,8 @@ namespace FMODUnity
             ImportType = ImportType.StreamingAssets;
             AutomaticEventLoading = true;
             AutomaticSampleLoading = false;
+            TargetAssetPath = "";
+
         }
 
         #if UNITY_EDITOR

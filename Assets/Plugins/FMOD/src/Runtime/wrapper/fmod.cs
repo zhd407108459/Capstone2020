@@ -19,7 +19,7 @@ namespace FMOD
     */
     public class VERSION
     {
-        public const int    number = 0x00020010;
+        public const int    number = 0x00020007;
 #if (UNITY_IPHONE || UNITY_TVOS || UNITY_SWITCH || UNITY_WEBGL) && !UNITY_EDITOR
         public const string dll    = "__Internal";
 #elif (UNITY_PS4) && DEVELOPMENT_BUILD
@@ -28,11 +28,12 @@ namespace FMOD
         public const string dll    = "libfmod";
 #elif (UNITY_PSP2) && !UNITY_EDITOR
         public const string dll    = "libfmodstudio";
-#elif ((UNITY_WSA || UNITY_ANDROID || UNITY_XBOXONE || UNITY_STADIA) && DEVELOPMENT_BUILD)
+/* Linux defines moved before the Windows define, otherwise Linux Editor tries to use Win lib when selected as build target.*/
+#elif (UNITY_EDITOR_LINUX) || ((UNITY_STANDALONE_LINUX || UNITY_ANDROID || UNITY_XBOXONE || UNITY_STADIA) && DEVELOPMENT_BUILD)
         public const string dll    = "fmodL";
-#elif (UNITY_EDITOR) || (UNITY_STANDALONE && DEVELOPMENT_BUILD)
+#elif (UNITY_EDITOR_OSX || UNITY_EDITOR_WIN) || ((UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN) && DEVELOPMENT_BUILD)
         public const string dll    = "fmodstudioL";
-#elif (UNITY_STANDALONE)
+#elif (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
         public const string dll    = "fmodstudio";
 #else
         public const string dll    = "fmod";
@@ -340,7 +341,6 @@ namespace FMOD
         PREFER_DOLBY_DOWNMIX       = 0x00080000, /* When using FMOD_SPEAKERMODE_5POINT1 with a stereo output device, use the Dolby Pro Logic II downmix algorithm instead of the default stereo downmix algorithm. */
         THREAD_UNSAFE              = 0x00100000, /* Disables thread safety for API calls. Only use this if FMOD low level is being called from a single thread, and if Studio API is not being used! */
         PROFILE_METER_ALL          = 0x00200000, /* Slower, but adds level metering for every single DSP unit in the graph.  Use DSP::setMeteringEnabled to turn meters off individually. */
-        MEMORY_TRACKING            = 0x00400000, /* Enable detailed memory allocation tracking. Only useful when using the Studio API. */
     }
 
     public enum SOUND_TYPE : int

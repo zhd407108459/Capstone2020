@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using System.IO;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -421,8 +420,8 @@ namespace FMODUnity
                     return FMODPlatform.PS4;
                 #if !UNITY_2019_2_OR_NEWER
                 case BuildTarget.StandaloneLinux:
-                case BuildTarget.StandaloneLinuxUniversal:
                 #endif
+                case BuildTarget.StandaloneLinuxUniversal:
                 case BuildTarget.StandaloneLinux64:
                     return FMODPlatform.Linux;
                 case BuildTarget.StandaloneOSX:
@@ -453,38 +452,5 @@ namespace FMODUnity
             }
         }
         #endif
-
-        public static bool VerifyPlatformLibsExist()
-        {
-            string pluginDir = Application.dataPath + "/Plugins/";
-            #if UNITY_EDITOR
-            pluginDir += "FMOD/lib/";
-            #if UNITY_XBOXONE
-            pluginDir += "xboxone/fmodstudio.dll";
-            #elif UNITY_PS4
-            pluginDir += "ps4/libfmodstudio.prx";
-            #elif UNITY_STADIA
-            pluginDir += "stadia/libfmodstudio.so";
-            #elif UNITY_SWITCH // Not called at runtime because the static lib is not included in the built game.
-            pluginDir += "switch/libfmodstudiounityplugin.a";
-            #endif
-            #else // !UNITY_EDITOR
-            #if UNITY_XBOXONE
-            pluginDir += "fmodstudio.dll";
-            #elif UNITY_PS4
-            pluginDir += "libfmodstudio.prx";
-            #elif UNITY_STADIA
-            pluginDir += "libfmodstudio.so";
-            #endif
-            #endif // UNITY_EDITOR
-
-            if (Path.HasExtension(pluginDir) && !File.Exists(pluginDir))
-            {
-                Debug.LogWarning("[FMOD] Unable to locate '" + pluginDir + "'.");
-                Debug.LogWarning("[FMOD] This platform requires verification 'https://fmod.com/profile#permissions' and an additional package from 'https://fmod.com/download'.");
-                return false;
-            }
-            return true;
-        }
     }
 }
