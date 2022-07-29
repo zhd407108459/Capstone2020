@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.00.00">
 	<object class="Event" id="{36efe9e3-d270-4622-9a1e-5768d55fa19a}">
 		<property name="name">
 			<value>FX-Footsteps</value>
@@ -108,8 +108,8 @@
 			<destination>{fd2550ec-f23f-4c9f-9b5b-bc16b45dfb75}</destination>
 		</relationship>
 		<relationship name="playPercentages">
-			<destination>{d73eb03b-523e-415e-9b76-a8637650e556}</destination>
 			<destination>{7e4afa98-eb8f-4a3c-a6e0-438ebdddd187}</destination>
+			<destination>{d73eb03b-523e-415e-9b76-a8637650e556}</destination>
 			<destination>{dc40c24f-dbbb-4ca4-ad37-e72a3efcd690}</destination>
 		</relationship>
 	</object>
@@ -176,20 +176,20 @@
 			<destination>{31012c70-2bc7-48ea-87bc-bea312f02b0c}</destination>
 		</relationship>
 	</object>
-	<object class="PlayPercentage" id="{d73eb03b-523e-415e-9b76-a8637650e556}">
-		<property name="percentage">
-			<value>40</value>
-		</property>
-		<relationship name="sound">
-			<destination>{202eaebf-0e4f-4749-b471-1f77f72ce4c7}</destination>
-		</relationship>
-	</object>
 	<object class="PlayPercentage" id="{7e4afa98-eb8f-4a3c-a6e0-438ebdddd187}">
 		<property name="percentage">
 			<value>45</value>
 		</property>
 		<relationship name="sound">
 			<destination>{b4d49ab1-f55a-490f-99a7-727cb383de3f}</destination>
+		</relationship>
+	</object>
+	<object class="PlayPercentage" id="{d73eb03b-523e-415e-9b76-a8637650e556}">
+		<property name="percentage">
+			<value>40</value>
+		</property>
+		<relationship name="sound">
+			<destination>{202eaebf-0e4f-4749-b471-1f77f72ce4c7}</destination>
 		</relationship>
 	</object>
 	<object class="PlayPercentage" id="{dc40c24f-dbbb-4ca4-ad37-e72a3efcd690}">

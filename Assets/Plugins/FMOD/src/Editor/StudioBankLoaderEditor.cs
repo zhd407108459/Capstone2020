@@ -35,15 +35,15 @@ namespace FMODUnity
                 SerializedProperty newBank = banks.GetArrayElementAtIndex(banks.arraySize - 1);
                 newBank.stringValue = "";
 
-                EventBrowser browser = CreateInstance<EventBrowser>();
+                var browser = EventBrowser.CreateInstance<EventBrowser>();
 
                 browser.titleContent = new GUIContent("Select FMOD Bank");
 
-                browser.ChooseBank(newBank);
+                browser.SelectBank(newBank);
                 browser.ShowUtility();
             }
 
-            Texture deleteTexture = EditorUtils.LoadImage("Delete.png");
+            Texture deleteTexture = EditorGUIUtility.Load("FMOD/Delete.png") as Texture;
             GUIContent deleteContent = new GUIContent(deleteTexture, "Delete Bank");
 
             var buttonStyle = new GUIStyle(GUI.skin.button);
